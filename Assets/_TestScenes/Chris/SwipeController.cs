@@ -33,17 +33,17 @@ public class SwipeController : MonoBehaviour {
 
 		if (Input.mousePosition.x < screenWidth/2 - centerWidth/2 && Input.mousePosition.x >= 0) 
 		{
-			EventManager.Instance.TriggerEvent(new SwipeMovement(-1f));
+			EventManager.Instance.TriggerEvent(new MovementInput(-1f));
 			Debug.Log ("Left");
 		} 
 		if (Input.mousePosition.x > screenWidth/2 - centerWidth/2 && Input.mousePosition.x < screenWidth/2 + centerWidth/2) 
 		{
-			EventManager.Instance.TriggerEvent(new SwipeMovement(0f));
+			EventManager.Instance.TriggerEvent(new MovementInput(0f));
 			Debug.Log ("Center");
 		} 
 		if (Input.mousePosition.x > screenWidth/2 + centerWidth/2 && Input.mousePosition.x < screenWidth) 
 		{
-			EventManager.Instance.TriggerEvent(new SwipeMovement(1f));
+			EventManager.Instance.TriggerEvent(new MovementInput(1f));
 			Debug.Log ("Right");
 		} 
 			
