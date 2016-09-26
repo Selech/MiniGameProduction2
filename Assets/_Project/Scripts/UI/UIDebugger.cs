@@ -4,26 +4,11 @@ using UnityEngine.SceneManagement;
 
 public class UIDebugger : MonoBehaviour {
 
-	public int fontSize = 10;
 	private string timeDisplayText;
 	private bool toggle = false;
 
-	void Update(){
-
-//		if (Input.GetKeyDown(KeyCode.Tab)){
-//			toggle = !toggle;
-//		}
-
-
-	}
-
 	void OnGUI () {
 
-
-
-
-//		GUI.Button (new Rect (Screen.width - 200, 0, 200, 200), "Activate GUI RIGHT");
-//		GUI.Button (new Rect (0, 0, 200, 200), "Activate GUI LEFT");
 
 		if (GUI.Button (new Rect (Screen.width - 200, 0, 200, 200), "", GUIStyle.none)) {
 			
