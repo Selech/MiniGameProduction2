@@ -34,3 +34,18 @@ public class GetBackCarriableHitEvent : GameEvent
 	{
 	}
 }
+
+
+public class MovementInput : GameEvent 
+{
+	// -1 is left, 0 is center, 1 is right
+	public float touchPosition;
+
+	public MovementInput(float touchPosition) 
+	{
+	
+		this.touchPosition = touchPosition;
+	
+	}
+
+}
