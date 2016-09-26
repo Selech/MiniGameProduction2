@@ -47,7 +47,7 @@ public class PhysicsTurning : MonoBehaviour {
 
 	public void Move(MovementInput e)
 	{
-		float motor = maxMotorTorque * 5.0f;
+		float motor = maxMotorTorque * 1.0f;
 		float steering = maxSteeringAngle * e.touchPosition;
 
 		foreach (AxleInfo axleInfo in axleInfos) {
