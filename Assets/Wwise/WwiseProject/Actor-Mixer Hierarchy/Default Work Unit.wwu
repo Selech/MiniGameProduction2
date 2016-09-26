@@ -3,32 +3,172 @@
 	<AudioObjects>
 		<WorkUnit Name="Default Work Unit" ID="{F97DC177-8C73-410D-9E52-256B80C35CB9}" PersistMode="Standalone">
 			<ChildrenList>
-				<Sound Name="Bell" ID="{3C3CC606-AEB1-4D34-A696-4DB1A28A6D83}" ShortID="78438099" Type="SoundFX">
-					<PropertyList>
-						<Property Name="Volume" Type="Real64">
-							<ValueList>
-								<Value>12</Value>
-							</ValueList>
-						</Property>
-					</PropertyList>
-					<ReferenceList>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
-						</Reference>
-					</ReferenceList>
+				<Folder Name="PlaceHolders" ID="{28D0B00B-18B5-4E02-9740-6CC9B000502F}" ShortID="846647876">
 					<ChildrenList>
-						<AudioFileSource Name="Bell" ID="{01953208-16DB-49E3-81F1-6DB3F8437316}" ShortID="933816275">
-							<Language>SFX</Language>
-							<AudioFile>Bell.wav</AudioFile>
-						</AudioFileSource>
+						<Sound Name="Brake" ID="{6FAC798C-7ACE-4551-BA1D-AA3646D81189}" ShortID="402541566" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Brake" ID="{D9EF3455-EF9B-4D96-8CFB-F898AB2391B2}" ShortID="539749869">
+									<Language>SFX</Language>
+									<AudioFile>Brake.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Brake" ID="{D9EF3455-EF9B-4D96-8CFB-F898AB2391B2}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Bump" ID="{D8378DBB-0E78-45BE-BAA5-4998A5178E96}" ShortID="269259115" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Bump" ID="{AAC050EB-FFC0-4391-B3E7-3ABE888BF455}" ShortID="584934364">
+									<Language>SFX</Language>
+									<AudioFile>Bump.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Bump" ID="{AAC050EB-FFC0-4391-B3E7-3ABE888BF455}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Collision1" ID="{B898E47E-0735-484E-A118-384C9BB4F357}" ShortID="1066975377" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Collision1" ID="{2A7F72A9-6CCC-4731-849D-46A2A5E04366}" ShortID="860480126">
+									<Language>SFX</Language>
+									<AudioFile>Collision1.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Collision1" ID="{2A7F72A9-6CCC-4731-849D-46A2A5E04366}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="LoseItem1" ID="{45DD30F1-D2C5-4F8C-86FD-82B41922B832}" ShortID="747797011" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="LoseItem1" ID="{FB8B980A-AAFC-44BD-9324-3D9F660755BC}" ShortID="633965821">
+									<Language>SFX</Language>
+									<AudioFile>LoseItem1.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="LoseItem1" ID="{FB8B980A-AAFC-44BD-9324-3D9F660755BC}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="UI_Click" ID="{838BA321-7221-47A3-8A50-4E4492BAB734}" ShortID="181828791" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="UI_Click" ID="{1B2C3901-3F92-465A-8A0F-92D1C0743206}" ShortID="9394808">
+									<Language>SFX</Language>
+									<AudioFile>UI_Click.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="UI_Click" ID="{1B2C3901-3F92-465A-8A0F-92D1C0743206}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="UI_Snap" ID="{485673EB-3FB1-46CA-9D77-A881534C2A78}" ShortID="732092781" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="UI_Snap" ID="{D72F44DE-1175-4A37-9805-F6E92EB958DB}" ShortID="348559688">
+									<Language>SFX</Language>
+									<AudioFile>UI_Snap.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="UI_Snap" ID="{D72F44DE-1175-4A37-9805-F6E92EB958DB}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<RandomSequenceContainer Name="MusicDrivePlace" ID="{42A3EC43-24B3-481F-BCE3-B7CD6CD6E375}" ShortID="362269">
+							<PropertyList>
+								<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Music1" ID="{2163867F-AC23-429A-A700-40D9D866AA0B}" ShortID="189960588" Type="SoundFX">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-3</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Music1" ID="{9267C3B0-7E60-4D47-94DC-245C0C33A40D}" ShortID="590120394">
+											<PropertyList>
+												<Property Name="TrimBegin" Type="Real64" Value="9.89810410697493"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Music1.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Music1" ID="{9267C3B0-7E60-4D47-94DC-245C0C33A40D}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+							<Playlist>
+								<ItemRef Name="Music1" ID="{2163867F-AC23-429A-A700-40D9D866AA0B}"/>
+							</Playlist>
+						</RandomSequenceContainer>
 					</ChildrenList>
-					<ActiveSourceList>
-						<ActiveSource Name="Bell" ID="{01953208-16DB-49E3-81F1-6DB3F8437316}" Platform="Linked"/>
-					</ActiveSourceList>
-				</Sound>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

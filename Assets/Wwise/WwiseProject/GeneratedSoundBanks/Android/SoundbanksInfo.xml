@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Android" BasePlatform="Android" SchemaVersion="11" SoundbankVersion="118">
 	<RootPaths>
-		<ProjectRoot>/Users/Christian/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/WwiseTest/Assets/Wwise/WwiseTest/</ProjectRoot>
-		<SourceFilesRoot>/Users/Christian/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/WwiseTest/Assets/Wwise/WwiseTest/.cache/Android/</SourceFilesRoot>
-		<SoundBanksRoot>/Users/Christian/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/WwiseTest/Assets/Wwise/WwiseTest/GeneratedSoundBanks/Android/</SoundBanksRoot>
+		<ProjectRoot>/Users/Christian/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/z:/Volumes/Macintosh HD/DADIU/GIT/MiniGame2/Assets/Wwise/WwiseProject/</ProjectRoot>
+		<SourceFilesRoot>/Users/Christian/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/z:/Volumes/Macintosh HD/DADIU/GIT/MiniGame2/Assets/Wwise/WwiseProject/.cache/Android/</SourceFilesRoot>
+		<SoundBanksRoot>/Users/Christian/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/z:/Volumes/Macintosh HD/DADIU/GIT/MiniGame2/Assets/Wwise/WwiseProject/GeneratedSoundBanks/Android/</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>/Users/Christian/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/y:/WwiseTest/Assets/Wwise/WwiseTest/GeneratedSoundBanks/Android/</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>/Users/Christian/Library/Application Support/Wwise2016/Bottles/wwise/dosdevices/z:/Volumes/Macintosh HD/DADIU/GIT/MiniGame2/Assets/Wwise/WwiseProject/GeneratedSoundBanks/Android/</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
@@ -16,22 +16,33 @@
 			<ShortName>nysb</ShortName>
 			<Path>nysb.bnk</Path>
 			<IncludedEvents>
-				<Event Id="1117071627" Name="Play_Ambience1" ObjectPath="\Events\Default Work Unit\Play_Ambience1"/>
-				<Event Id="1945722105" Name="Play_Bell" ObjectPath="\Events\Default Work Unit\Play_Bell"/>
-				<Event Id="3858275350" Name="Play_Snap" ObjectPath="\Events\Default Work Unit\Play_Snap"/>
+				<Event Id="533659144" Name="PlayBrake" ObjectPath="\Events\Default Work Unit\PlayBrake"/>
+				<Event Id="94192344" Name="PlayHitTrash" ObjectPath="\Events\Default Work Unit\PlayHitTrash"/>
+				<Event Id="723634581" Name="PlayLoseItem" ObjectPath="\Events\Default Work Unit\PlayLoseItem"/>
+				<Event Id="1543240865" Name="PlayUISnap" ObjectPath="\Events\Default Work Unit\PlayUISnap"/>
+				<Event Id="4029077596" Name="PlayUITap" ObjectPath="\Events\Default Work Unit\PlayUITap"/>
+				<Event Id="3413204458" Name="StopMusicDrive" ObjectPath="\Events\Default Work Unit\StopMusicDrive" MaxAttenuation="0.000000"/>
 			</IncludedEvents>
 			<IncludedMemoryFiles>
-				<File Id="237987044" Language="SFX">
-					<ShortName>Ambience1.wav</ShortName>
-					<Path>SFX/Ambience1_9E69E797.wem</Path>
+				<File Id="9394808" Language="SFX">
+					<ShortName>UI_Click.wav</ShortName>
+					<Path>SFX/UI_Click_B1E6DA9B.wem</Path>
 				</File>
-				<File Id="438785130" Language="SFX">
+				<File Id="348559688" Language="SFX">
 					<ShortName>UI_Snap.wav</ShortName>
-					<Path>SFX/UI_Snap_9E69E797.wem</Path>
+					<Path>SFX/UI_Snap_B1E6DA9B.wem</Path>
 				</File>
-				<File Id="933816275" Language="SFX">
-					<ShortName>Bell.wav</ShortName>
-					<Path>SFX/Bell_9E69E797.wem</Path>
+				<File Id="539749869" Language="SFX">
+					<ShortName>Brake.wav</ShortName>
+					<Path>SFX/Brake_B1E6DA9B.wem</Path>
+				</File>
+				<File Id="633965821" Language="SFX">
+					<ShortName>LoseItem1.wav</ShortName>
+					<Path>SFX/LoseItem1_B1E6DA9B.wem</Path>
+				</File>
+				<File Id="860480126" Language="SFX">
+					<ShortName>Collision1.wav</ShortName>
+					<Path>SFX/Collision1_B1E6DA9B.wem</Path>
 				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>

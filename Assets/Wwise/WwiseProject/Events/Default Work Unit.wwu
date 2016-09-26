@@ -3,12 +3,70 @@
 	<Events>
 		<WorkUnit Name="Default Work Unit" ID="{8306DC18-432F-4FA0-A0AC-4196FA10E1FF}" PersistMode="Standalone">
 			<ChildrenList>
-				<Event Name="Play_Bell" ID="{6154A5C9-76FD-40F5-9616-FCFCCDBFD3A1}">
+				<Event Name="PlayBrake" ID="{4192E3E0-E6D4-4F6E-9799-B25BB4292212}">
 					<ChildrenList>
-						<Action Name="Play" ID="{21BDD9D9-0072-4641-807A-520D652D909E}" ShortID="623287573" Type="Play" Scope="One" Global="false">
+						<Action Name="Play" ID="{A11C268B-0B01-42F0-83C3-BF290B5EA7A5}" ShortID="592737231" Type="Play" Scope="One" Global="false">
 							<ElementList>
-								<Element ID="{098BF48E-DAFD-4B01-A28F-DEE94BAF4666}" Global="false">
-									<ObjectRef Name="Bell" ID="{3C3CC606-AEB1-4D34-A696-4DB1A28A6D83}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
+								<Element ID="{4EBA5E55-5B5A-46D3-88BA-F4A017196729}" Global="false">
+									<ObjectRef Name="Brake" ID="{6FAC798C-7ACE-4551-BA1D-AA3646D81189}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayHitTrash" ID="{F438A32C-410D-49D0-A533-5E18D8400384}">
+					<ChildrenList>
+						<Action Name="Play" ID="{8008779D-9B32-4667-86B7-DC53F6DE43BC}" ShortID="536584227" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{C1DBFEB3-407C-48D1-BC0F-C981ACEB42DA}" Global="false">
+									<ObjectRef Name="Collision1" ID="{B898E47E-0735-484E-A118-384C9BB4F357}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayLoseItem" ID="{5DF7DF4D-52DB-48B7-9261-66E76C67966E}">
+					<ChildrenList>
+						<Action Name="Play" ID="{89DC76AB-421D-4278-910D-D3FA16B466A9}" ShortID="1018085284" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{56769468-8C78-4C22-A204-A9F85A2875FD}" Global="false">
+									<ObjectRef Name="LoseItem1" ID="{45DD30F1-D2C5-4F8C-86FD-82B41922B832}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayUITap" ID="{27ACC53A-8EC4-42E2-A452-FA7CED8001E2}">
+					<ChildrenList>
+						<Action Name="Play" ID="{65860616-12D9-4501-9A0B-F770441A3DF7}" ShortID="193753983" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{792FFC12-2FC1-41C8-9D0D-0A9825EF16A0}" Global="false">
+									<ObjectRef Name="UI_Click" ID="{838BA321-7221-47A3-8A50-4E4492BAB734}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlayUISnap" ID="{B6B46A91-21DE-44AE-8645-900EEF1FDC78}">
+					<ChildrenList>
+						<Action Name="Play" ID="{94EB06CA-7116-45EB-9D83-BE5416FD44E0}" ShortID="485258206" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{3365DB91-9619-41A3-A689-591FC4ED1264}" Global="false">
+									<ObjectRef Name="UI_Snap" ID="{485673EB-3FB1-46CA-9D77-A881534C2A78}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PlaySpeedUp" ID="{2C9420F6-3D6A-4AA2-BAD5-4F04E9172E9D}"/>
+				<Event Name="PlayBiking" ID="{7C93AF42-FAC7-4D07-BFD8-F4628B33003F}"/>
+				<Event Name="PlayMusicDrive" ID="{33A7ACBC-E761-4A5F-A023-806856BE9478}"/>
+				<Event Name="StopMusicDrive" ID="{D39AE9B2-8746-4B33-91B2-E46511E3E9A9}">
+					<ChildrenList>
+						<Action Name="Stop" ID="{647716B2-3FFF-42EC-867D-71B4AE951590}" ShortID="528416700" Type="Stop" Scope="One" Global="true">
+							<ElementList>
+								<Element ID="{51902DF4-6ABE-4C81-8C48-39021C694640}" Global="true">
+									<ObjectRef Name="MusicDrivePlace" ID="{42A3EC43-24B3-481F-BCE3-B7CD6CD6E375}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
 								</Element>
 							</ElementList>
 						</Action>
