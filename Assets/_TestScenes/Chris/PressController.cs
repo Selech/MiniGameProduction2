@@ -13,7 +13,9 @@ public class PressController : MonoBehaviour {
 		// Update is called once per frame
 	void Update () {
 		if (Input.GetKey (KeyCode.Mouse0)) {
-				CheckTouchPosition ();
+			CheckTouchPosition ();
+		} else {
+			NoTouch ();
 		}
 	}
 
@@ -34,6 +36,12 @@ public class PressController : MonoBehaviour {
 		} 
 
 			
+
+	}
+
+	public void NoTouch() {
+
+		EventManager.Instance.TriggerEvent (new MovementInput (0f));	
 
 	}
 

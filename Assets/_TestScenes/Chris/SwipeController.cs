@@ -21,6 +21,8 @@ public class SwipeController : MonoBehaviour {
 	void Update () {
 		if (Input.GetKey (KeyCode.Mouse0)) {
 			CheckTouchPosition ();
+		} else {
+			NoTouch ();
 		}
 	}
 
@@ -34,18 +36,24 @@ public class SwipeController : MonoBehaviour {
 		if (Input.mousePosition.x < screenWidth/2 - centerWidth/2 && Input.mousePosition.x >= 0) 
 		{
 			EventManager.Instance.TriggerEvent(new MovementInput(-1f));
-			Debug.Log ("Left");
+
 		} 
 		if (Input.mousePosition.x > screenWidth/2 - centerWidth/2 && Input.mousePosition.x < screenWidth/2 + centerWidth/2) 
 		{
 			EventManager.Instance.TriggerEvent(new MovementInput(0f));
-			Debug.Log ("Center");
+
 		} 
 		if (Input.mousePosition.x > screenWidth/2 + centerWidth/2 && Input.mousePosition.x < screenWidth) 
 		{
 			EventManager.Instance.TriggerEvent(new MovementInput(1f));
-			Debug.Log ("Right");
+
 		} 
 			
+	}
+
+	public void NoTouch() {
+
+		EventManager.Instance.TriggerEvent (new MovementInput (0f));	
+
 	}
 }
