@@ -17,11 +17,11 @@ public class PhysicsTurning : MonoBehaviour {
 	public float maxSteeringAngle;
 
 	void OnEnable(){
-		//EventManager.Instance.StartListening ();
+		EventManager.Instance.StartListening<MovementInput>(Move);
 	}
 
 	void OnDisable(){
-		//EventManager.Instance.StopListening ();
+		EventManager.Instance.StopListening<MovementInput>(Move);
 	}
 	
 	// Update is called once per frame
@@ -52,10 +52,10 @@ public class PhysicsTurning : MonoBehaviour {
 		visualWheel.transform.rotation = rotation;
 	}
 
-	public void Move(float angle)
+	public void Move(MovementInput e)
 	{
 		float motor = maxMotorTorque * 1.0f;
-		float steering = maxSteeringAngle * angle;
+		float steering = maxSteeringAngle * e.touchPosition;
 
 		foreach (AxleInfo axleInfo in axleInfos) {
 			if (axleInfo.steering) {
