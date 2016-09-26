@@ -21,10 +21,12 @@ public class ObstacleHitEvent : GameEvent
 public class BoostPickupHitEvent : GameEvent
 {
 	public float boost;
+	public float time;
 
-	public BoostPickupHitEvent(float boost)
+	public BoostPickupHitEvent(float boost, float time)
 	{
 		this.boost = boost;
+		this.time = time;
 	}
 }
 
