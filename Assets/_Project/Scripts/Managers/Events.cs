@@ -18,30 +18,16 @@ public class ObstacleHitEvent : GameEvent
 	}
 }
 
-public class SwipeMovement : GameEvent 
+public class MovementInput : GameEvent 
 {
 	// -1 is left, 0 is center, 1 is right
 	public float touchPosition;
 
-	public SwipeMovement(float touchPosition) 
+	public MovementInput(float touchPosition) 
 	{
 	
 		this.touchPosition = touchPosition;
 	
-	}
-
-}
-
-public class PressMovement : GameEvent 
-{
-	// -1 is left, 0 is center, 1 is right
-	public float buttonPressed;
-
-	public PressMovement(float buttonPressed)
-	{
-	
-		this.buttonPressed = buttonPressed;
-
 	}
 
 }
