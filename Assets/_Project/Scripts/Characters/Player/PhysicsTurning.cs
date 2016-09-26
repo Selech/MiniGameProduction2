@@ -26,14 +26,7 @@ public class PhysicsTurning : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKey(KeyCode.A)){
-			Move (-1.0f);	
-		}
-		else if (Input.GetKey (KeyCode.D)) {
-			Move (1.0f);
-		} else {
-			Move (0.0f);
-		}
+    
 	}
 
 	public void ApplyLocalPositionToVisuals(WheelCollider collider)

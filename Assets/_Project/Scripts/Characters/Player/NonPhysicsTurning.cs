@@ -3,6 +3,7 @@ using System.Collections;
 
 [RequireComponent(typeof(CharacterController))]
 public class NonPhysicsTurning : MonoBehaviour {
+  public LayerMask groundLayer = -1;
   public float mass = 1.0f;
   public float speed = 3.0F;
   public float rotateSpeed = 3.0F;
@@ -24,7 +25,7 @@ public class NonPhysicsTurning : MonoBehaviour {
 
   float horizontalValue = 0.0f;
 
-  void Enable() {
+  void OnEnable() {
     EventManager.Instance.StartListening <MovementInput>(retrieveInput);
   }
 
@@ -44,13 +45,17 @@ public class NonPhysicsTurning : MonoBehaviour {
     RaycastHit groundHit;
     float step = 10 * Time.deltaTime;
 
-    if (Physics.Raycast(frontBikeLimit.position, -transform.up, out groundHit,rayToGroundLength)) {
+    if (Physics.Raycast(frontBikeLimit.position, -transform.up, out groundHit,rayToGroundLength,groundLayer)) {
+      Debug.DrawRay(frontBikeLimit.position, -transform.up);
       frontGroundpoint = groundHit.point;
-      if (Physics.Raycast(endBikeLimit.position, -transform.up, out groundHit, rayToGroundLength)) {
+      if (Physics.Raycast(endBikeLimit.position, -transform.up, out groundHit, rayToGroundLength,groundLayer)) {
+        Debug.DrawRay(endBikeLimit.position, -transform.up);
         backGroundPoint = groundHit.point;
-        if (Physics.Raycast(leftBikeLimit.position, -transform.up, out groundHit, rayToGroundLength)) {
+        if (Physics.Raycast(leftBikeLimit.position, -transform.up, out groundHit, rayToGroundLength,groundLayer)) {
+          Debug.DrawRay(leftBikeLimit.position, -transform.up);
           leftGroundPoint = groundHit.point;
-          if (Physics.Raycast(rightBikeLimit.position, -transform.up, out groundHit, rayToGroundLength)) {
+          if (Physics.Raycast(rightBikeLimit.position, -transform.up, out groundHit, rayToGroundLength,groundLayer)) {
+            Debug.DrawRay(rightBikeLimit.position, -transform.up);
             rightGroundPoint = groundHit.point;
 
             updatedPlayerForward = frontGroundpoint - backGroundPoint;
