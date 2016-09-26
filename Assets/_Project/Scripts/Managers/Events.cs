@@ -17,3 +17,20 @@ public class ObstacleHitEvent : GameEvent
 		this.upForce = upForce;
 	}
 }
+
+public class BoostPickupHitEvent : GameEvent
+{
+	public float boost;
+
+	public BoostPickupHitEvent(float boost)
+	{
+		this.boost = boost;
+	}
+}
+
+public class GetBackCarriableHitEvent : GameEvent
+{
+	public GetBackCarriableHitEvent()
+	{
+	}
+}
