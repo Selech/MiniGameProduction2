@@ -3,6 +3,7 @@ using System.Collections;
 
 [RequireComponent(typeof(CharacterController))]
 public class NonPhysicsTurning : MonoBehaviour {
+  public LayerMask groundLayer = -1;
   public float mass = 1.0f;
   public float speed = 3.0F;
   public float rotateSpeed = 3.0F;
@@ -22,24 +23,38 @@ public class NonPhysicsTurning : MonoBehaviour {
   Vector3 updatedPlayerRight;
   Vector3 updatedPlayerNormal;
 
+  float horizontalValue = 0.0f;
 
+  void OnEnable() {
+    EventManager.Instance.StartListening <MovementInput>(retrieveInput);
+  }
 
-  // Update is called once per frame
-  void FixedUpdate () {
-    
+  void OnDisable(){
+    EventManager.Instance.StopListening <MovementInput>(retrieveInput);
+  }
+
+  void retrieveInput(MovementInput horizontalInput) {
+    horizontalValue = horizontalInput.touchPosition;
+  }
+
+  void Update () {
+    Move(horizontalValue);
+  }
+
+  public void Move(float horizontalInputValue) {
     RaycastHit groundHit;
     float step = 10 * Time.deltaTime;
 
-    if (Physics.Raycast(frontBikeLimit.position, -transform.up, out groundHit,rayToGroundLength)) { //-transform.up
+    if (Physics.Raycast(frontBikeLimit.position, -transform.up, out groundHit,rayToGroundLength,groundLayer)) {
       Debug.DrawRay(frontBikeLimit.position, -transform.up);
       frontGroundpoint = groundHit.point;
-      if (Physics.Raycast(endBikeLimit.position, -transform.up, out groundHit, rayToGroundLength)) {
+      if (Physics.Raycast(endBikeLimit.position, -transform.up, out groundHit, rayToGroundLength,groundLayer)) {
         Debug.DrawRay(endBikeLimit.position, -transform.up);
         backGroundPoint = groundHit.point;
-        if (Physics.Raycast(leftBikeLimit.position, -transform.up, out groundHit, rayToGroundLength)) {
+        if (Physics.Raycast(leftBikeLimit.position, -transform.up, out groundHit, rayToGroundLength,groundLayer)) {
           Debug.DrawRay(leftBikeLimit.position, -transform.up);
           leftGroundPoint = groundHit.point;
-          if (Physics.Raycast(rightBikeLimit.position, -transform.up, out groundHit, rayToGroundLength)) {
+          if (Physics.Raycast(rightBikeLimit.position, -transform.up, out groundHit, rayToGroundLength,groundLayer)) {
             Debug.DrawRay(rightBikeLimit.position, -transform.up);
             rightGroundPoint = groundHit.point;
 
@@ -50,8 +65,7 @@ public class NonPhysicsTurning : MonoBehaviour {
             if(Vector3.Dot(updatedPlayerNormal,Vector3.up) <= 0)
               updatedPlayerNormal = Vector3.up;
 
-
-            Quaternion rot = Quaternion.Euler(updatedPlayerNormal);//Quaternion.Euler(Vector3.Cross(-groundHit.normal, frontGroundpoint - backGroundPoint));//Quaternion.LookRotation(frontGroundpoint-backGroundPoint,groundHit.normal);//Quaternion.Euler(Vector3.Cross(-groundHit.normal, transform.right));
+            Quaternion rot = Quaternion.Euler(updatedPlayerNormal);
             transform.rotation = Quaternion.LookRotation(updatedPlayerForward, updatedPlayerNormal);
           }
         }
@@ -61,17 +75,11 @@ public class NonPhysicsTurning : MonoBehaviour {
     CharacterController controller = GetComponent<CharacterController>();
 
     if(isTurning)
-      transform.Rotate(0, Input.GetAxis("Horizontal") * rotateSpeed, 0);
+      transform.Rotate(0, horizontalInputValue * rotateSpeed, 0);
     else
-      controller.SimpleMove(updatedPlayerRight * Input.GetAxis("Horizontal") * rotateSpeed);
+      controller.SimpleMove(updatedPlayerRight * horizontalInputValue * rotateSpeed);
 
     float curSpeed = speed;
     controller.Move((updatedPlayerForward * curSpeed + Vector3.down * mass * 3.81f)*Time.deltaTime);
-  }
-
-  void OnControllerColliderHit(ControllerColliderHit hit)  {
-    if (hit.gameObject.tag == "RespawnPlayerOnTouch")
-      transform.position = respawnPoint.position;
-    // transform.Rotate(Vector3.RotateTowards(transform.up, hit.normal, 0.5f, 0.5f));
   }
 }
