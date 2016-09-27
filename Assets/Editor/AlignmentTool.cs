@@ -2,16 +2,12 @@
 using UnityEditor;
 using UnityEngine;
 
+using System.Linq;
+
 public class AlignmentTool : EditorWindow
 {
-	string myString = "Hello World";
-	bool groupEnabled;
-	bool canAlign = false;
-	bool canCopy = false;
-	float myFloat = 1.23f;
-
-	Vector3 alignmentVector;
-	Quaternion alignmentQuaternion;
+	static Vector3 alignmentVector;
+	static Quaternion alignmentQuaternion;
 
 	GameObject selection;
 
@@ -27,6 +23,20 @@ public class AlignmentTool : EditorWindow
 		selection = Selection.activeGameObject;
 	}
 
+	// Add a new menu item with hotkey CTRL-SHIFT-A
+	[MenuItem("Tools/Save Alignment #F1")]
+	private static void SaveAlignment()
+	{
+		SaveStuff ();
+	}
+
+	// Add a new menu item with hotkey CTRL-
+	[MenuItem("Tools/Item #F2")]
+	private static void UseAlignment()
+	{
+		DoStuff ();
+	}
+
 	void OnGUI()
 	{
 		GUILayout.Label ("Alignment Settings", EditorStyles.boldLabel);
@@ -39,12 +49,14 @@ public class AlignmentTool : EditorWindow
 			DoStuff();
 	}
 
-	void SaveStuff(){
-		alignmentVector = Selection.activeGameObject.transform.position;
-		alignmentQuaternion = Selection.activeGameObject.transform.rotation;
+	static void SaveStuff(){
+		Transform endPoint = Selection.activeGameObject.GetComponentsInChildren<Transform> ().Where(t => t.gameObject.name == "EndPoint").FirstOrDefault();
+
+		alignmentVector = endPoint.position;
+		alignmentQuaternion = endPoint.rotation;
 	}
 
-	void DoStuff(){
+	static void DoStuff(){
 		Selection.activeGameObject.transform.position = alignmentVector;
 		Selection.activeGameObject.transform.rotation = alignmentQuaternion;
 	}
