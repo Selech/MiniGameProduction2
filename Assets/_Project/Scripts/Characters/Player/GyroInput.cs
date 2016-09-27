@@ -19,7 +19,7 @@ public class GyroInput : MonoBehaviour {
 	public void GetGyro()
 	{
 		float value = Input.gyro.gravity.x;
-		print (value);
+		//print (value);
 		if (Mathf.Abs (value) > deadZone) {
 			
 			EventManager.Instance.TriggerEvent (new MovementInput (value));
