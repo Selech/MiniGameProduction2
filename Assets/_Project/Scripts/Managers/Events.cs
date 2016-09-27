@@ -8,6 +8,11 @@
     }
 }
 
+public class ChunkEnteredEvent:GameEvent{
+	public ChunkEnteredEvent(){
+	}
+}
+
 public class ObstacleHitEvent : GameEvent
 {
 	public float upForce;
@@ -50,4 +55,13 @@ public class MovementInput : GameEvent
 	
 	}
 
+}
+
+public class LanguageSelect : GameEvent
+{
+	public bool isDanish;
+
+	public LanguageSelect(bool isDanish){
+		this.isDanish = isDanish;
+	}
 }

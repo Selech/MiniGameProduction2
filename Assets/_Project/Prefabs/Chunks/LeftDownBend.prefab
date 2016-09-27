@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012795123552}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: EndPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +35,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000012049871528}
   - 114: {fileID: 114000012299389620}
-  m_Layer: 9
+  - 65: {fileID: 65000013846427660}
+  m_Layer: 2
   m_Name: LeftDownBend
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +68,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013402249796}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: StartPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,6 +314,18 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 958d4c07589b4724082af465540add1e, type: 3}
+--- !u!65 &65000013846427660
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010880782034}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1100, y: 500, z: 50}
+  m_Center: {x: 0, y: 250, z: 25}
 --- !u!95 &95000011590642008
 Animator:
   serializedVersion: 3
