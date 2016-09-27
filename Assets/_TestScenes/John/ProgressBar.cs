@@ -25,7 +25,7 @@ public class ProgressBar : MonoBehaviour {
 	float distanceToMove;
 
 	void Update(){
-		ProgressionPlayerAlongBar.transform.position = Vector3.MoveTowards(ProgressionPlayerAlongBar.transform.position, targetPosition.position, speed);
+		ProgressionPlayerAlongBar.transform.localPosition = Vector3.MoveTowards(ProgressionPlayerAlongBar.transform.localPosition, targetPosition.position, speed);
 	}
 
 	void Init() {
@@ -33,11 +33,11 @@ public class ProgressBar : MonoBehaviour {
 		journeyLength = endMarker.position.x - startMarker.position.x ;
 		distanceToMove = journeyLength / numberOfChunks;
 		targetPosition = startMarker;
-		PlayerProgression (new ChunkEnteredEvent ());
+		//PlayerProgression (new ChunkEnteredEvent ());
 	}
 
 	public void PlayerProgression(ChunkEnteredEvent e) {
-		targetPosition.position = new Vector3(targetPosition.position.x + distanceToMove, startMarker.position.y, startMarker.position.z);
+		targetPosition.position = new Vector3(targetPosition.position.x + distanceToMove, startMarker.position.y, 0);
 	}
 
 	public void InitializeSize(MapStartedEvent e){

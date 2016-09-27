@@ -37,7 +37,7 @@ public class MapController : MonoBehaviour
 		currentPosition = this.gameObject.transform.position;
 		currentRotation = this.gameObject.transform.rotation.eulerAngles;
 
-		for (int i = 0; i < maxAmountOfChunks; i++) {
+		for (int i = 0; i < maxAmountOfChunks-1; i++) {
 			GenerateChunk (new ChunkEnteredEvent ());
 		}
 
