@@ -44,12 +44,9 @@ public class MovementInput : GameEvent
 	public float touchPosition;
 
 	public MovementInput(float touchPosition) 
-	{
-	
+	{	
 		this.touchPosition = touchPosition;
-	
 	}
-
 }
 
 public class LanguageSelect : GameEvent
@@ -60,3 +57,19 @@ public class LanguageSelect : GameEvent
 		this.isDanish = isDanish;
 	}
 }
+
+public class ChangeScheme : GameEvent 
+{
+	public bool isGyro;
+
+	public ChangeScheme()
+	{
+		this.isGyro = !this.isGyro;
+	}
+
+	public ChangeScheme(bool isGyro)
+	{
+		this.isGyro = isGyro;
+	}
+}
+	
