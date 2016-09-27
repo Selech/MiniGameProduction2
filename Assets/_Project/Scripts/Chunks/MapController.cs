@@ -29,27 +29,26 @@ public class MapController : MonoBehaviour
 	[Tooltip ("Amount of initial chunks to load")]
 	public int maxAmountOfChunks = 5;
 
-
-
-	// Use this for initialization
-	void Start ()
+	void OnEnable ()
 	{
+		EventManager.Instance.StartListening<ChunkEnteredEvent> (GenerateChunk);
+		EventManager.Instance.StartListening<StartLevelEvent> (BeginProcedure);
+	}
+
+	void OnDisable ()
+	{
+		EventManager.Instance.StopListening<ChunkEnteredEvent> (GenerateChunk);
+		EventManager.Instance.StopListening<StartLevelEvent> (BeginProcedure);
+	}
+
+	void BeginProcedure(StartLevelEvent e) {
+		print ("Start level"); 
 		currentPosition = this.gameObject.transform.position;
 		currentRotation = this.gameObject.transform.rotation.eulerAngles;
 
 		for (int i = 0; i < maxAmountOfChunks; i++) {
 			GenerateChunk (new ChunkEnteredEvent ());
 		}
-	}
-
-	void OnEnable ()
-	{
-		EventManager.Instance.StartListening<ChunkEnteredEvent> (GenerateChunk);
-	}
-
-	void OnDisable ()
-	{
-		EventManager.Instance.StopListening<ChunkEnteredEvent> (GenerateChunk);
 	}
 
 	private void GenerateChunk (ChunkEnteredEvent e)

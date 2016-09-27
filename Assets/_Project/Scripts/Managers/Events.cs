@@ -1,11 +1,6 @@
-﻿public class TakeDamageEvent : GameEvent
-{
-    public string message { get; private set; }
-
-    public TakeDamageEvent(string message)
-    {
-        this.message = message;
-    }
+﻿public class StartLevelEvent : GameEvent {
+	public StartLevelEvent() {
+	}
 }
 
 public class ChunkEnteredEvent:GameEvent{
