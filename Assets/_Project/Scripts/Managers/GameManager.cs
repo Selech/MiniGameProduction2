@@ -85,9 +85,9 @@ public class GameManager : MonoBehaviour {
   private void UpdateTime() {
     currentTime += Time.deltaTime;
 
-    if(currentTime > maxTimeCompletion) {
-      RestartGame ();
-    }
+//    if(currentTime > maxTimeCompletion) {
+//      RestartGame ();
+//    }
   }
 
   private static GameManager _instance;
