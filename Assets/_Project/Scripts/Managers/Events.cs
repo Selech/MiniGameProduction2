@@ -63,16 +63,11 @@ public class LanguageSelect : GameEvent
 	}
 }
 
-public class ChangeScheme : GameEvent 
+public class ChangeSchemeEvent : GameEvent 
 {
 	public bool isGyro;
 
-	public ChangeScheme()
-	{
-		this.isGyro = !this.isGyro;
-	}
-
-	public ChangeScheme(bool isGyro)
+	public ChangeSchemeEvent(bool isGyro)
 	{
 		this.isGyro = isGyro;
 	}

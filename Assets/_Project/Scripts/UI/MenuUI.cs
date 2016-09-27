@@ -34,7 +34,7 @@ public class MenuUI : MonoBehaviour
 	public void ChangeMovementOptionToGyro ()
 	{
 		if (!gyroButtonEnabled) {
-			EventManager.Instance.TriggerEvent (new ChangeScheme (true));
+			EventManager.Instance.TriggerEvent (new ChangeSchemeEvent (true));
 			gyroButtonEnabled = true;
 			swipeButtonEnabled = false;
 			swipeButton.GetComponent<Image> ().sprite = spriteSwipeImgDeactive;
@@ -45,7 +45,7 @@ public class MenuUI : MonoBehaviour
 	public void ChangeMovementOptionToSwipe ()
 	{
 		if (!swipeButtonEnabled) {
-			EventManager.Instance.TriggerEvent (new ChangeScheme (false));
+			EventManager.Instance.TriggerEvent (new ChangeSchemeEvent (false));
 			gyroButtonEnabled = false;
 			swipeButtonEnabled = true;
 			swipeButton.GetComponent<Image> ().sprite = spriteSwipeImgActive;
@@ -53,7 +53,7 @@ public class MenuUI : MonoBehaviour
 		}
 	}
 
-	public void toggleMenu ()
+	public void ToggleMenu ()
 	{
 		toggleMenuOn = !toggleMenuOn;
 		if (toggleMenuOn) {
