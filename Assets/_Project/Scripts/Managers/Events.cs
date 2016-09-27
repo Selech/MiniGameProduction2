@@ -13,6 +13,11 @@ public class ChunkEnteredEvent:GameEvent{
 	}
 }
 
+public class WinChunkEnteredEvent:GameEvent{
+	public WinChunkEnteredEvent(){
+	}
+}
+
 public class ObstacleHitEvent : GameEvent
 {
 	public float upForce;
