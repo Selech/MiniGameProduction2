@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000012267826244}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: EndPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000014120637188}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: StartPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000013542574602}
   - 114: {fileID: 114000010880505790}
-  m_Layer: 9
+  - 65: {fileID: 65000012792132062}
+  m_Layer: 2
   m_Name: DownStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,6 +314,18 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 35aab0eacf2d0a048bcdecba088b501c, type: 3}
+--- !u!65 &65000012792132062
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013300215848}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1100, y: 500, z: 50}
+  m_Center: {x: 0, y: 250, z: 25}
 --- !u!95 &95000013703317184
 Animator:
   serializedVersion: 3
