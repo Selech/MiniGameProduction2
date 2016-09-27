@@ -9,18 +9,12 @@ public class AlignmentTool : EditorWindow
 	static Vector3 alignmentVector;
 	static Quaternion alignmentQuaternion;
 
-	GameObject selection;
-
 	// Add menu item named "My Window" to the Window menu
 	[MenuItem("Window/AlignmentTool")]
 	public static void ShowWindow()
 	{
 		//Show existing window instance. If one doesn't exist, make one.
 		EditorWindow.GetWindow(typeof(AlignmentTool));
-	}
-
-	void OnSelectionChange() {
-		selection = Selection.activeGameObject;
 	}
 
 	// Add a new menu item with hotkey CTRL-SHIFT-A
