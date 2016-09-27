@@ -7,19 +7,31 @@ public class PlayerReactionsController : MonoBehaviour {
 	PlayerMovementController movementController;
 
 	void OnEnable() {
-		EventManager.Instance.StartListening <MovementInput>(retrieveInput);
+		EventManager.Instance.StartListening <MovementInput>(RetrieveInput);
+		EventManager.Instance.StartListening <BoostPickupHitEvent>(BoostSpeed);
+		EventManager.Instance.StartListening <GetBackCarriableHitEvent>(GetBackCarriable);
 	}
 
 	void OnDisable(){
-		EventManager.Instance.StopListening <MovementInput>(retrieveInput);
+		EventManager.Instance.StartListening <MovementInput>(RetrieveInput);
+		EventManager.Instance.StartListening <BoostPickupHitEvent>(BoostSpeed);
+		EventManager.Instance.StartListening <GetBackCarriableHitEvent>(GetBackCarriable);
 	}
 
-	void retrieveInput(MovementInput horizontalInput) {
+	void RetrieveInput(MovementInput horizontalInput) {
 		movementController.Turn(horizontalInput.touchPosition);
 	}
 
 	// Use this for initialization
 	void Start () {
 		movementController = GetComponent<PlayerMovementController> ();
+	}
+
+	void BoostSpeed(float speed, float time){
+		movementController.speed += speed;
+	}
+
+	void GetBackCarriable(){
+		
 	}
 }
