@@ -8,6 +8,11 @@
     }
 }
 
+public class ChunkEnteredEvent:GameEvent{
+	public ChunkEnteredEvent(){
+	}
+}
+
 public class ObstacleHitEvent : GameEvent
 {
 	public float upForce;
