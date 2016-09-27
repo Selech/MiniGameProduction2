@@ -40,6 +40,9 @@ public class MapController : MonoBehaviour
 		for (int i = 0; i < maxAmountOfChunks; i++) {
 			GenerateChunk (new ChunkEnteredEvent ());
 		}
+
+		EventManager.Instance.TriggerEvent(new MapStartedEvent(winAmountOfChunks));
+
 	}
 
 	void OnEnable ()
