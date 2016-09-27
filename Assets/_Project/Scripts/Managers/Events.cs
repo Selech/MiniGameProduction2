@@ -82,4 +82,14 @@ public class ChangeScheme : GameEvent
 		this.isGyro = isGyro;
 	}
 }
+
+public class MapStartedEvent : GameEvent
+{
+	public int numberOfChunks;
+
+	public MapStartedEvent(int numberOfChunks){
+		this.numberOfChunks = numberOfChunks;
+	}
+
+}
 	
