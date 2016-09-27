@@ -51,3 +51,12 @@ public class MovementInput : GameEvent
 	}
 
 }
+
+public class LanguageSelect : GameEvent
+{
+	public bool isDanish;
+
+	public LanguageSelect(bool isDanish){
+		this.isDanish = isDanish;
+	}
+}
