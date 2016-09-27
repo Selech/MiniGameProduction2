@@ -18,6 +18,26 @@ public class ObstacleHitEvent : GameEvent
 	}
 }
 
+public class BoostPickupHitEvent : GameEvent
+{
+	public float boost;
+	public float time;
+
+	public BoostPickupHitEvent(float boost, float time)
+	{
+		this.boost = boost;
+		this.time = time;
+	}
+}
+
+public class GetBackCarriableHitEvent : GameEvent
+{
+	public GetBackCarriableHitEvent()
+	{
+	}
+}
+
+
 public class MovementInput : GameEvent 
 {
 	// -1 is left, 0 is center, 1 is right
