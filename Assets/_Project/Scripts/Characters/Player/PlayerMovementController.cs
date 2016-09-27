@@ -27,10 +27,26 @@ public class PlayerMovementController : MonoBehaviour
 
 	float horizontalValue = 0.0f;
 
+	bool running = false;
+
+	void OnEnable() {
+		EventManager.Instance.StartListeningOnce<StartLevelEvent> (StartLevel);
+	}
+
+	void OnDisable() {
+		EventManager.Instance.StopListening<StartLevelEvent> (StartLevel);
+	}
+
+	void StartLevel(StartLevelEvent e) {
+		running = true;
+	}
+
 	void Update ()
 	{
-		StabilizeOrientation ();
-		MoveForward ();
+		if (running) {
+			StabilizeOrientation ();
+			MoveForward ();
+		}
 	}
 
 	void StabilizeOrientation(){
@@ -75,7 +91,9 @@ public class PlayerMovementController : MonoBehaviour
 		
 	public void Turn (float horizontalInputValue)
 	{
-		transform.Rotate (0, horizontalInputValue * rotateSpeed, 0);
+		if (running) {
+			transform.Rotate (0, horizontalInputValue * rotateSpeed, 0);		
+		}
 	}
 
 }

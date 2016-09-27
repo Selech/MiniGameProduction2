@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class CarriableManager : MonoBehaviour
 {
 
-	GameObject[] objects;
+	public List<GameObject> objects;
 
 	[Range (0f, 10f)]
 	public int maxStackCarriables = 4;
@@ -14,6 +15,7 @@ public class CarriableManager : MonoBehaviour
 
 	public void beginGame ()
 	{
+		objects =  GameObject.FindGameObjectWithTag ("CarriableDetector").GetComponent<StackingList> ().CollectedCarriables;
 		startPlaying = true;
 		AddJoints ();
 		DisableDragging ();
@@ -30,20 +32,20 @@ public class CarriableManager : MonoBehaviour
 
 	private void SetupCamera ()
 	{
-		CameraController camControl = Camera.main.gameObject.AddComponent<CameraController> ();
-		camControl.target = GameObject.FindGameObjectWithTag ("Player").transform;  
+		FollowCam_Test camControl = Camera.main.gameObject.AddComponent<FollowCam_Test> ();
+		camControl.player = GameObject.FindGameObjectWithTag ("Player");  
 	}
 
 	private void AddJoints ()
 	{
-		objects = GameObject.FindGameObjectsWithTag ("Carriable");
-		int size = objects.Length;
-		for (int i = 0; i < size; i++) {
-			Debug.Log ("Pos: " + i + " Name: " + objects [i].name);
+		int size = objects.Count-1;
+		for (int i = size; i >= 0; i--) {
 			Destroy (objects [i].GetComponent<CarriablesDrag> ());
 			HingeJoint joint = objects [i].AddComponent<HingeJoint> ();
-			if (i != size - 1) {
-				joint.connectedBody = objects [i + 1].GetComponent<Rigidbody> ();
+			if (i > 0) {
+				joint.connectedBody = objects [i - 1].GetComponent<Rigidbody> ();
+			} else {
+				joint.connectedBody = GameObject.Find ("bikePlate").GetComponent<Rigidbody> ();
 			}
 			JointLimits limits = joint.limits;
 			limits.max = 3;
