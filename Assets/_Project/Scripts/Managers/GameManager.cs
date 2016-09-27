@@ -63,6 +63,18 @@ public class GameManager : MonoBehaviour {
     }
   }
 
+		void OnEnable(){
+		EventManager.Instance.StartListening<WinChunkEnteredEvent>(ReactToWin);
+		}
+
+		void OnDisable(){
+		EventManager.Instance.StopListening<WinChunkEnteredEvent>(ReactToWin);
+		}
+
+	void ReactToWin(WinChunkEnteredEvent e){
+		PauseGame ();
+	}
+
   private void StartGame() {
     // EventManager.TriggerEvent (_eventsContainer.beginGame);
     hasGameStarted = true;
