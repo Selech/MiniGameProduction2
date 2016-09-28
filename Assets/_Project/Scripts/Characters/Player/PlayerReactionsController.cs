@@ -68,7 +68,7 @@ public class PlayerReactionsController : MonoBehaviour {
 	void GetBackCarriable(GetBackCarriableHitEvent e){
 	}
 
-	public void DamageObstacle(GameEvent e){
+	public void DamageObstacle(DamageCarriableEvent e){
 		GetTopCarriable ();
 		Debug.Log ("damaged  obstacle");
 		if (currentCarriable) {
