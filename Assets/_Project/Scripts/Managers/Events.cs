@@ -150,3 +150,7 @@ public class MuteMusicEvent : GameEvent
 	}
 }
 	
+public class StartGame:GameEvent{
+    public StartGame(){
+    }
+}

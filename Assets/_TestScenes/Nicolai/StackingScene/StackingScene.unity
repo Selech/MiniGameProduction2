@@ -90,6 +90,47 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &30933994
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 30933995}
+  - 65: {fileID: 30933996}
+  m_Layer: 0
+  m_Name: EndSwipe
+  m_TagString: EndSwipe
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &30933995
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 30933994}
+  m_LocalRotation: {x: -0, y: 0.4790926, z: -0, w: 0.87776446}
+  m_LocalPosition: {x: -88, y: 60, z: 18.5}
+  m_LocalScale: {x: 50.324142, y: 54.18478, z: 65.31948}
+  m_LocalEulerAnglesHint: {x: 0, y: 57.123, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1571622440}
+  m_RootOrder: 1
+--- !u!65 &30933996
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 30933994}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &202975633
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +453,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 365822760}
   - 65: {fileID: 365822761}
-  - 114: {fileID: 365822762}
   m_Layer: 0
   m_Name: WallStacking
   m_TagString: CarriableDetector
@@ -445,22 +485,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &365822762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 365822759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a143aa70e28bea4a8b26745e69ad8eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollectedCarriables: []
-  CurrentCarriable: {fileID: 0}
-  currentHeight: 0
-  stackingDone: 0
-  maxAmountOfCarriables: 4
 --- !u!1 &396617548
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,6 +875,48 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1001 &1183161879
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000010798234482, guid: 1720b57e29078c4419dd4d61545cda8e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010798234482, guid: 1720b57e29078c4419dd4d61545cda8e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010798234482, guid: 1720b57e29078c4419dd4d61545cda8e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010798234482, guid: 1720b57e29078c4419dd4d61545cda8e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010798234482, guid: 1720b57e29078c4419dd4d61545cda8e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010798234482, guid: 1720b57e29078c4419dd4d61545cda8e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010798234482, guid: 1720b57e29078c4419dd4d61545cda8e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010798234482, guid: 1720b57e29078c4419dd4d61545cda8e, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 1720b57e29078c4419dd4d61545cda8e, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1373068225
 Prefab:
   m_ObjectHideFlags: 0
@@ -903,6 +969,47 @@ Transform:
   m_PrefabParentObject: {fileID: 4000011142053154, guid: 56115204aa73fd743a135d6d8bb4eeeb,
     type: 2}
   m_PrefabInternal: {fileID: 1373068225}
+--- !u!1 &1444920882
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1444920883}
+  - 65: {fileID: 1444920884}
+  m_Layer: 0
+  m_Name: StartSwipe
+  m_TagString: StartSwipe
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1444920883
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1444920882}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 50.4, y: 49.1, z: -57.8}
+  m_LocalScale: {x: 9.988878, y: 5.1029058, z: 9.444838}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1571622440}
+  m_RootOrder: 0
+--- !u!65 &1444920884
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1444920882}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 19, z: 5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1571622439
 Prefab:
   m_ObjectHideFlags: 0
@@ -962,6 +1069,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 1620196827}
   - 114: {fileID: 1620196828}
+  - 114: {fileID: 1620196830}
+  - 114: {fileID: 1620196829}
   m_Layer: 0
   m_Name: Stacking Scene
   m_TagString: CarriableManager
@@ -1000,6 +1109,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxStackCarriables: 5
   startPlaying: 0
+  springForce: 2000000
+  maxSpringDistance: 0.01
+--- !u!114 &1620196829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1620196826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e1034181572177459640e31fc02cb2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1620196830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1620196826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a143aa70e28bea4a8b26745e69ad8eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollectedCarriables: []
+  CurrentCarriable: {fileID: 0}
+  currentHeight: 0
+  stackingDone: 0
+  maxAmountOfCarriables: 0
 --- !u!1001 &1640771703
 Prefab:
   m_ObjectHideFlags: 0
