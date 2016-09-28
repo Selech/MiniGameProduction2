@@ -33,10 +33,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010068644824}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: -1}
+  m_LocalRotation: {x: 0, y: 0.9396927, z: 0, w: 0.34202018}
+  m_LocalPosition: {x: 8.69, y: -0.094, z: 1.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 140, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -51,17 +51,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 271b871d8c4ebb140b5cb230c26ded89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Straight: {fileID: 1000010142073434, guid: c3e291e3ce11e6d4dab90d09260acbf2, type: 2}
-  DownStraight: {fileID: 1000013850792306, guid: deae14b71b87a9c4184365134dcbf31b,
-    type: 2}
-  UpStraight: {fileID: 1000013848161602, guid: ab08b03b923f63f48ba3deeb410e1f3c, type: 2}
-  RightTurn: {fileID: 1000010142073434, guid: c3e291e3ce11e6d4dab90d09260acbf2, type: 2}
-  RightTurnDown: {fileID: 1000013850792306, guid: deae14b71b87a9c4184365134dcbf31b,
-    type: 2}
-  LeftTurn: {fileID: 1000013848161602, guid: ab08b03b923f63f48ba3deeb410e1f3c, type: 2}
-  LeftTurnDown: {fileID: 1000010142073434, guid: c3e291e3ce11e6d4dab90d09260acbf2,
-    type: 2}
   winChunk: {fileID: 1000013960825546, guid: 5b5611fed0dabf14b907f65f97c40b58, type: 2}
-  list: []
+  blockChunk: {fileID: 0}
+  list:
+  - {fileID: 1000013748525030, guid: c84d2e8f56a82fa4a990a4e543be3073, type: 2}
+  - {fileID: 1000012867323658, guid: 46908f6a0de0c684d9f5e0a3e317e1a2, type: 2}
+  - {fileID: 1000011435733540, guid: c3e291e3ce11e6d4dab90d09260acbf2, type: 2}
+  - {fileID: 1000013068585276, guid: deae14b71b87a9c4184365134dcbf31b, type: 2}
+  - {fileID: 1000013311259500, guid: ab08b03b923f63f48ba3deeb410e1f3c, type: 2}
+  - {fileID: 1000010836586690, guid: 73f5462cfe1b6e04b9559cbd90feff8d, type: 2}
+  - {fileID: 1000011963159510, guid: 5cd802ad04672f645aa72e011bae9af3, type: 2}
   winAmountOfChunks: 10
   maxAmountOfChunks: 5

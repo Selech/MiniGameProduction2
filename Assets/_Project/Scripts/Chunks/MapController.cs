@@ -69,7 +69,7 @@ public class MapController : MonoBehaviour
 	{
 		ChunkScript script = chunk.GetComponent<ChunkScript> ();
 
-		chunk.transform.position = currentPosition - (script.StartPoint.transform.localPosition / 100);
+		chunk.transform.position = currentPosition - script.StartPoint.transform.localPosition;
 		chunk.transform.rotation = Quaternion.Euler (currentRotation);
 
 		ArrangeChunkList (chunk);
@@ -79,7 +79,7 @@ public class MapController : MonoBehaviour
 	{
 		ChunkScript script = chunk.GetComponent<ChunkScript> ();
 
-		chunk.transform.position = currentPosition - (script.StartPoint.transform.localPosition / 100);
+		chunk.transform.position = currentPosition - script.StartPoint.transform.localPosition;
 		chunk.transform.rotation = Quaternion.Euler (currentRotation);
 
 		currentPosition = script.EndPoint.transform.position;
