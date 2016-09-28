@@ -12,7 +12,7 @@ public class CarriableManager : MonoBehaviour
 	[HideInInspector]
 	public bool startPlaying = false;
 
-	public float springForce = 20000;
+	public float springForce = 2000000f;
 	public float maxSpringDistance = 0.01f;
 
 	void Start ()
@@ -59,26 +59,13 @@ public class CarriableManager : MonoBehaviour
 		int size = objects.Count;
 
 		foreach(var lols in objects){
-			Rigidbody body = lols.AddComponent<Rigidbody> ();
-		}
-		/*
-		for (int i = size-1; i >= 0; i--) {
-			var setParentEvent = new ChangeParentToPlayer ();
-
-			Destroy (objects [i].GetComponent<CarriablesDrag> ());
-			FixedJoint joint = objects [i].AddComponent<FixedJoint> ();
-			if (i > 0) {
-				joint.connectedBody = objects [i - 1].GetComponent<Rigidbody> ();
-			} else {
-				setParentEvent.attachToPlayer = true;
+			lols.AddComponent<Rigidbody> ();
+			var boxes = lols.GetComponents<BoxCollider> ();
+			foreach (var box in boxes) {
+				box.enabled = !box.enabled;
 			}
-			joint.breakForce = Mathf.Infinity;
-			joint.breakTorque = Mathf.Infinity;
-			objects [i].GetComponent<BoxCollider> ().enabled = true;
-			setParentEvent.gameobject = objects [i];
-			EventManager.Instance.TriggerEvent(setParentEvent);
 		}
-		*/
+
 		for (int i = size-1; i >= 0; i--) {
 			var setParentEvent = new ChangeParentToPlayer ();
 
@@ -96,10 +83,9 @@ public class CarriableManager : MonoBehaviour
 			joint.enableCollision = true;
 			//moving the joint anchor
 			joint.anchor = new Vector3(0,objects [i].GetComponent<Renderer>().bounds.min.y,0);
-			joint.maxDistance = maxSpringDistance;
+			joint.maxDistance = 0f;
 
 			//end of setting joint parameters
-			objects [i].GetComponent<BoxCollider> ().enabled = true;
 			setParentEvent.gameobject = objects [i];
 			EventManager.Instance.TriggerEvent(setParentEvent);
 		}
