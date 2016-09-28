@@ -1,4 +1,6 @@
-﻿public class TakeDamageEvent : GameEvent
+﻿using UnityEngine;
+
+public class TakeDamageEvent : GameEvent
 {
     public string message { get; private set; }
 
@@ -15,6 +17,19 @@ public class ChunkEnteredEvent:GameEvent{
 
 public class WinChunkEnteredEvent:GameEvent{
 	public WinChunkEnteredEvent(){
+	}
+}
+
+public class BeginRaceEvent:GameEvent{
+	public BeginRaceEvent(){
+	}
+}
+
+public class ChangeParentToPlayer:GameEvent{
+	public GameObject gameobject;
+	public bool attachToPlayer;
+
+	public ChangeParentToPlayer(){
 	}
 }
 
@@ -86,5 +101,15 @@ public class MapStartedEvent : GameEvent
 		this.numberOfChunks = numberOfChunks;
 	}
 
+}
+
+public class MuteMusicEvent : GameEvent 
+{
+	public bool soundMuted;
+
+	public MuteMusicEvent(bool soundMuted) 
+	{
+		this.soundMuted = soundMuted;
+	}
 }
 	
