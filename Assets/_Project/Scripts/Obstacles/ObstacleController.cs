@@ -32,7 +32,6 @@ public class ObstacleController : MonoBehaviour
 		}
 	}
 
-
 	void OnCollisionEnter(Collision col)
 	{
 		if(col.gameObject.CompareTag("Player"))
@@ -98,8 +97,7 @@ public class ObstacleController : MonoBehaviour
 		{
 			yield return new WaitForSeconds (delay);
 			float curTime = duration;
-			print ("has car obstacle");
-			while(curTime>0)
+			while(curTime > 0)
 			{
 				
 				curTime -= Time.deltaTime;

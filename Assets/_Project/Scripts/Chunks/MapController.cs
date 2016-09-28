@@ -4,16 +4,8 @@ using System.Collections.Generic;
 
 public class MapController : MonoBehaviour
 {
-
-	public GameObject Straight;
-	public GameObject DownStraight;
-	public GameObject UpStraight;
-	public GameObject RightTurn;
-	public GameObject RightTurnDown;
-	public GameObject LeftTurn;
-	public GameObject LeftTurnDown;
-
 	public GameObject winChunk;
+	public GameObject blockChunk;
 
 	private Vector3 currentPosition;
 	private Vector3 currentRotation;
@@ -37,11 +29,11 @@ public class MapController : MonoBehaviour
 		currentPosition = this.gameObject.transform.position;
 		currentRotation = this.gameObject.transform.rotation.eulerAngles;
 
-		for (int i = 0; i < maxAmountOfChunks-1; i++) {
+		for (int i = 0; i < maxAmountOfChunks - 1; i++) {
 			GenerateChunk (new ChunkEnteredEvent ());
 		}
 
-		EventManager.Instance.TriggerEvent(new MapStartedEvent(winAmountOfChunks));
+		EventManager.Instance.TriggerEvent (new MapStartedEvent (winAmountOfChunks));
 
 	}
 
@@ -63,53 +55,9 @@ public class MapController : MonoBehaviour
 			chunk = (GameObject)Instantiate (winChunk);
 			SpawnWinChunk (chunk);
 		} else if (chunks < winAmountOfChunks) {
-			int ran = Random.Range (0, 10);
+			int ran = Random.Range (0, list.Count);
 			int ran2 = Random.Range (0, 1);
-			switch (ran) {
-			case 0:
-				chunk = (GameObject)Instantiate (Straight);
-				break;
-
-			case 1:
-				chunk = (GameObject)Instantiate (Straight);
-				break;
-
-			case 2:
-				chunk = (GameObject)Instantiate (LeftTurn);
-				break;
-
-			case 3:
-				chunk = (GameObject)Instantiate (RightTurn);
-				break;
-
-			case 4:
-				chunk = (GameObject)Instantiate (DownStraight);
-				break;
-
-			case 5:
-				chunk = (GameObject)Instantiate (UpStraight);
-				break;
-
-			case 6:
-				chunk = (GameObject)Instantiate (RightTurn);
-				break;
-
-			case 7:
-				chunk = (GameObject)Instantiate (RightTurnDown);
-				break;
-
-			case 8:
-				chunk = (GameObject)Instantiate (LeftTurn);
-				break;
-
-			case 9:
-				chunk = (GameObject)Instantiate (LeftTurnDown);
-				break;
-
-			case 10:
-				chunk = (GameObject)Instantiate (Straight);
-				break;
-			}
+			chunk = (GameObject)Instantiate (list [ran]);
 
 			SpawnChunk (chunk);
 		} else {
@@ -117,7 +65,8 @@ public class MapController : MonoBehaviour
 		}
 	}
 
-	void SpawnWinChunk(GameObject chunk){
+	void SpawnWinChunk (GameObject chunk)
+	{
 		chunk.transform.position = currentPosition;
 		chunk.transform.rotation = Quaternion.Euler (currentRotation);
 		ChunkScript script = chunk.GetComponent<ChunkScript> ();
@@ -125,7 +74,8 @@ public class MapController : MonoBehaviour
 		ArrangeChunkList (chunk);
 	}
 
-	void SpawnChunk(GameObject chunk){
+	void SpawnChunk (GameObject chunk)
+	{
 		chunk.transform.position = currentPosition;
 		chunk.transform.rotation = Quaternion.Euler (currentRotation);
 		ChunkScript script = chunk.GetComponent<ChunkScript> ();
@@ -153,7 +103,7 @@ public class MapController : MonoBehaviour
 			currentChunks.Remove (oldChunk);
 		}
 
-currentChunks.Add (newChunk);
+		currentChunks.Add (newChunk);
 		chunks++;
 	}
 

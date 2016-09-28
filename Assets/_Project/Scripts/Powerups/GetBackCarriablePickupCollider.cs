@@ -8,6 +8,7 @@ public class GetBackCarriablePickupCollider : MonoBehaviour {
 		if (other.gameObject.CompareTag ("Player"))
 		{
 			EventManager.Instance.TriggerEvent (new GetBackCarriableHitEvent());
+			other.GetComponent<PlayerPickupController> ().isLastPickupBoost = false;
 			Destroy (this.gameObject);
 		}
 	}
