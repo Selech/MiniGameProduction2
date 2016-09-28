@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
 
 	void Awake ()
 	{
+		Time.timeScale = 1;
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
 		_instance = this;
 	}

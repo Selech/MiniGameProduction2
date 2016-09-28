@@ -76,7 +76,9 @@ public class PlayerMovementController : MonoBehaviour
 		
 	public void Turn (float horizontalInputValue)
 	{
-		transform.Rotate (0, horizontalInputValue * rotateSpeed, 0);
+		if (!GameManager.Instance.isPaused) {
+			transform.Rotate (0, horizontalInputValue * rotateSpeed, 0);
+		}
 	}
 
 }
