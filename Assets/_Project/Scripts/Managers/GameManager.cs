@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour
 
 	void Start ()
 	{
-		StartGame ();
 		gyroInput = GetComponent<GyroInput> ();
 		swipeController = GetComponent<SwipeController> ();
 	}
@@ -80,11 +79,13 @@ public class GameManager : MonoBehaviour
 	void OnEnable ()
 	{
 		EventManager.Instance.StartListening<WinChunkEnteredEvent> (ReactToWin);
+        EventManager.Instance.StartListening<StartGame>(StartGame);
 	}
 
 	void OnDisable ()
 	{
-		EventManager.Instance.StopListening<WinChunkEnteredEvent> (ReactToWin);
+        EventManager.Instance.StopListening<WinChunkEnteredEvent> (ReactToWin);
+        EventManager.Instance.StopListening<StartGame>(StartGame);
 	}
 
 	void ReactToWin (WinChunkEnteredEvent e)
@@ -93,9 +94,8 @@ public class GameManager : MonoBehaviour
 		PauseGame ();
 	}
 
-	private void StartGame ()
+    private void StartGame (StartGame e)
 	{
-		// EventManager.TriggerEvent (_eventsContainer.beginGame);
 		hasGameStarted = true;
 		_GameState = GameState.Playing;
 		Time.timeScale = 1;
@@ -103,14 +103,12 @@ public class GameManager : MonoBehaviour
 
 	private void PauseGame ()
 	{
-		// EventManager.TriggerEvent (_eventsContainer.pauseGame);
 		_GameState = GameState.Paused;
 		Time.timeScale = Mathf.Epsilon;
 	}
 
 	private void ResumeGame ()
 	{
-		//EventManager.TriggerEvent (_eventsContainer.resumeGame);
 		_GameState = GameState.Playing;
 		Time.timeScale = 1;
 	}
