@@ -19,13 +19,10 @@ public class CarriablesDrag : MonoBehaviour {
 
   public float heightOfObject;
 
-  void OnEnable(){
-    stackingList = GameObject.FindGameObjectWithTag ("CarriableDetector").GetComponent<StackingList> ();
-  }
-
   void Start() {
     initPosition = new Vector3 (transform.position.x, transform.position.y, transform.position.z);
     initRotation = transform.rotation;
+    stackingList = GameObject.FindGameObjectWithTag ("CarriableManager").GetComponent<StackingList> ();
   }
 
   void OnMouseDown() {
