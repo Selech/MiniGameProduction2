@@ -5,10 +5,12 @@ using System.Collections;
 public class PlayerReactionsController : MonoBehaviour {
 	
 	PlayerMovementController movementController;
+	Rigidbody bikePlate;
 
 	// Use this for initialization
 	void Start () {
 		movementController = GetComponent<PlayerMovementController> ();
+		bikePlate = GetComponentInChildren<Rigidbody> ();
 	}
 
 	void OnEnable() {
@@ -16,6 +18,8 @@ public class PlayerReactionsController : MonoBehaviour {
 		EventManager.Instance.StartListening <ChangeSchemeEvent>(ChangeScheme);
 		EventManager.Instance.StartListening <BoostPickupHitEvent>(BoostSpeed);
 		EventManager.Instance.StartListening <GetBackCarriableHitEvent>(GetBackCarriable);
+		EventManager.Instance.StartListening <BeginRaceEvent>(EnableMovement);
+		EventManager.Instance.StartListening <ChangeParentToPlayer>(ChangeParent);
 	}
 
 	void OnDisable(){
@@ -23,10 +27,14 @@ public class PlayerReactionsController : MonoBehaviour {
 		EventManager.Instance.StopListening <BoostPickupHitEvent>(BoostSpeed);
 		EventManager.Instance.StopListening <GetBackCarriableHitEvent>(GetBackCarriable);
 		EventManager.Instance.StopListening <ChangeSchemeEvent> (ChangeScheme);
+		EventManager.Instance.StartListening <BeginRaceEvent>(EnableMovement);
+		EventManager.Instance.StartListening <ChangeParentToPlayer>(ChangeParent);
+
 	}
 
 	void RetrieveInput(MovementInput horizontalInput) {
-		movementController.Turn(horizontalInput.touchPosition);
+		if(movementController.enabled)
+			movementController.Turn(horizontalInput.touchPosition);
 	}
 
 	void ChangeScheme(ChangeSchemeEvent e){
@@ -37,5 +45,15 @@ public class PlayerReactionsController : MonoBehaviour {
 	}
 
 	void GetBackCarriable(GetBackCarriableHitEvent e){
+	}
+
+	void EnableMovement(BeginRaceEvent e){
+		movementController.enabled = true;
+	}
+
+	void ChangeParent(ChangeParentToPlayer e){
+		e.gameobject.transform.SetParent (this.transform);
+		if (e.attachToPlayer)
+			e.gameobject.GetComponent<SpringJoint> ().connectedBody = bikePlate;
 	}
 }

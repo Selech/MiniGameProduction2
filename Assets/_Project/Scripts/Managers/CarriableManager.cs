@@ -4,10 +4,7 @@ using System.Collections.Generic;
 
 public class CarriableManager : MonoBehaviour
 {
-
 	StackingList stacking;
-	GameObject player;
-	GameObject controller;
 
 	[Range (0f, 10f)]
 	public int maxStackCarriables = 4;
@@ -15,14 +12,17 @@ public class CarriableManager : MonoBehaviour
 	[HideInInspector]
 	public bool startPlaying = false;
 
+	public float springForce = 20000;
+	public float maxSpringDistance = 0.01f;
+
 	void Start ()
 	{
-		player = GameObject.FindGameObjectWithTag ("Player");
-		controller = GameObject.FindGameObjectWithTag ("GameController");
-//		player.GetComponent<PlayerMovementController> ().speed = 0.0f;
-		player.GetComponent<CharacterController> ().enabled = false;
-		controller.GetComponent<SwipeController> ().enabled = false;
-		player.GetComponent<BoxCollider> ().enabled = false;
+//		player = GameObject.FindGameObjectWithTag ("Player");
+//		controller = GameObject.FindGameObjectWithTag ("GameController");
+////		player.GetComponent<PlayerMovementController> ().speed = 0.0f;
+//		player.GetComponent<CharacterController> ().enabled = false;
+//		controller.GetComponent<SwipeController> ().enabled = false;
+//		player.GetComponent<BoxCollider> ().enabled = false;
 		stacking = GameObject.FindGameObjectWithTag ("CarriableDetector").GetComponent<StackingList>();
 	}
 
@@ -35,10 +35,10 @@ public class CarriableManager : MonoBehaviour
 		SetupCamera ();
 
 //		player.GetComponent<PlayerMovementController> ().speed = 1.0f;
-		player.GetComponent<CharacterController> ().enabled = true;
-		controller.GetComponent<SwipeController> ().enabled = true;
-		player.GetComponent<BoxCollider> ().enabled = true;
-
+//		player.GetComponent<CharacterController> ().enabled = true;
+//		controller.GetComponent<SwipeController> ().enabled = true;
+//		player.GetComponent<BoxCollider> ().enabled = true;
+		EventManager.Instance.TriggerEvent(new BeginRaceEvent());
 		EventManager.Instance.TriggerEvent(new ChunkEnteredEvent());
 	}
 
@@ -60,24 +60,49 @@ public class CarriableManager : MonoBehaviour
 
 		foreach(var lols in objects){
 			Rigidbody body = lols.AddComponent<Rigidbody> ();
-			body.isKinematic = true;
-			body.useGravity = false;
 		}
-
+		/*
 		for (int i = size-1; i >= 0; i--) {
+			var setParentEvent = new ChangeParentToPlayer ();
+
 			Destroy (objects [i].GetComponent<CarriablesDrag> ());
-			HingeJoint joint = objects [i].AddComponent<HingeJoint> ();
+			FixedJoint joint = objects [i].AddComponent<FixedJoint> ();
 			if (i > 0) {
 				joint.connectedBody = objects [i - 1].GetComponent<Rigidbody> ();
 			} else {
-				joint.connectedBody = GameObject.Find ("bikePlate").GetComponent<Rigidbody> ();
+				setParentEvent.attachToPlayer = true;
 			}
-			JointLimits limits = joint.limits;
-			limits.max = 3;
-			joint.limits = limits;
-			joint.useLimits = true;
-			objects [i].GetComponent<BoxCollider> ().enabled = false;
-			objects [i].transform.SetParent (player.transform);
+			joint.breakForce = Mathf.Infinity;
+			joint.breakTorque = Mathf.Infinity;
+			objects [i].GetComponent<BoxCollider> ().enabled = true;
+			setParentEvent.gameobject = objects [i];
+			EventManager.Instance.TriggerEvent(setParentEvent);
 		}
+		*/
+		for (int i = size-1; i >= 0; i--) {
+			var setParentEvent = new ChangeParentToPlayer ();
+
+			Destroy (objects [i].GetComponent<CarriablesDrag> ());
+			SpringJoint joint = objects [i].AddComponent<SpringJoint> ();
+			if (i > 0) {
+				joint.connectedBody = objects [i - 1].GetComponent<Rigidbody> ();
+			} else {
+				setParentEvent.attachToPlayer = true;
+			}
+			//setting joint parameters
+			joint.breakForce = Mathf.Infinity;
+			joint.breakTorque = Mathf.Infinity;
+			joint.spring = springForce;
+			joint.enableCollision = true;
+			//moving the joint anchor
+			joint.anchor = new Vector3(0,objects [i].GetComponent<Renderer>().bounds.min.y,0);
+			joint.maxDistance = maxSpringDistance;
+
+			//end of setting joint parameters
+			objects [i].GetComponent<BoxCollider> ().enabled = true;
+			setParentEvent.gameobject = objects [i];
+			EventManager.Instance.TriggerEvent(setParentEvent);
+		}
+
 	}
 }
