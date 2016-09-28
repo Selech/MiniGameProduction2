@@ -10,6 +10,36 @@ public class TakeDamageEvent : GameEvent
     }
 }
 
+
+public class ExposeStackingListEvent:GameEvent{
+	public StackingList stackingList;
+
+	public ExposeStackingListEvent(StackingList stackingList){
+		this.stackingList = stackingList;
+	}
+}
+
+public class SetStartButtonEvent:GameEvent{
+	public bool enableBtn;
+
+	public SetStartButtonEvent(bool enableBtn){
+		this.enableBtn = enableBtn;
+	}
+}
+
+public class TriggerPlayerExposure:GameEvent{
+	public TriggerPlayerExposure(){
+	}
+}
+
+public class ExposePlayerToCamera:GameEvent{
+	public Transform playerTransform;
+
+	public ExposePlayerToCamera(Transform playerTransform){
+		this.playerTransform = playerTransform;
+	}
+}
+
 public class ChunkEnteredEvent:GameEvent{
 	public ChunkEnteredEvent(){
 	}
