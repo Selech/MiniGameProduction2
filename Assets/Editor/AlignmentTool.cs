@@ -51,7 +51,9 @@ public class AlignmentTool : EditorWindow
 	}
 
 	static void DoStuff(){
-		Selection.activeGameObject.transform.position = alignmentVector;
+		Transform startPoint = Selection.activeGameObject.GetComponentsInChildren<Transform> ().Where(t => t.gameObject.name == "StartPoint").FirstOrDefault();
+
+		Selection.activeGameObject.transform.position = alignmentVector-(startPoint.localPosition / 100);
 		Selection.activeGameObject.transform.rotation = alignmentQuaternion;
 	}
 }

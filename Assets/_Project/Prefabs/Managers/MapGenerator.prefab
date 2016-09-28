@@ -34,7 +34,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010068644824}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5}
+  m_LocalPosition: {x: 0, y: -0.5, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -51,13 +51,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 271b871d8c4ebb140b5cb230c26ded89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Straight: {fileID: 1000012817585498, guid: 893d02852d36790459250d9eca2d9507, type: 2}
-  DownStraight: {fileID: 1000013300215848, guid: 1a049f3e2baafd34596e9517afb13ee9,
+  Straight: {fileID: 1000010142073434, guid: c3e291e3ce11e6d4dab90d09260acbf2, type: 2}
+  DownStraight: {fileID: 1000013850792306, guid: deae14b71b87a9c4184365134dcbf31b,
     type: 2}
-  UpStraight: {fileID: 1000013447239970, guid: a0705fd6184d9e74d8ac5cc86aee2308, type: 2}
-  RightTurn: {fileID: 1000012182882106, guid: f38b03aacf7932041b4efaf6e8d3af3e, type: 2}
-  RightTurnDown: {fileID: 1000012101827658, guid: 9da5a7cd15bb9594d9fa800deb6eb12e,
+  UpStraight: {fileID: 1000013848161602, guid: ab08b03b923f63f48ba3deeb410e1f3c, type: 2}
+  RightTurn: {fileID: 1000010142073434, guid: c3e291e3ce11e6d4dab90d09260acbf2, type: 2}
+  RightTurnDown: {fileID: 1000013850792306, guid: deae14b71b87a9c4184365134dcbf31b,
     type: 2}
-  LeftTurn: {fileID: 1000014232777478, guid: d4ae5f9a7b3e68d40ab754a471adb5dd, type: 2}
-  LeftTurnDown: {fileID: 1000010880782034, guid: c11125b61d7fc7144bd1ee19fe44b8f5,
+  LeftTurn: {fileID: 1000013848161602, guid: ab08b03b923f63f48ba3deeb410e1f3c, type: 2}
+  LeftTurnDown: {fileID: 1000010142073434, guid: c3e291e3ce11e6d4dab90d09260acbf2,
     type: 2}
+  winChunk: {fileID: 1000013960825546, guid: 5b5611fed0dabf14b907f65f97c40b58, type: 2}
+  list: []
+  winAmountOfChunks: 10
+  maxAmountOfChunks: 5
