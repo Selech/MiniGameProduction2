@@ -21,6 +21,7 @@ public class PlayerReactionsController : MonoBehaviour {
 		EventManager.Instance.StartListening <BeginRaceEvent>(EnableMovement);
 		EventManager.Instance.StartListening <WinChunkEnteredEvent> (StopMovement);
 		EventManager.Instance.StartListening <ChangeParentToPlayer>(ChangeParent);
+		EventManager.Instance.StartListening <TriggerPlayerExposure>(ExposePlayerToCamera);
 	}
 
 	void OnDisable(){
@@ -31,6 +32,7 @@ public class PlayerReactionsController : MonoBehaviour {
 		EventManager.Instance.StartListening <BeginRaceEvent>(EnableMovement);
 		EventManager.Instance.StopListening <WinChunkEnteredEvent> (StopMovement);
 		EventManager.Instance.StartListening <ChangeParentToPlayer>(ChangeParent);
+		EventManager.Instance.StartListening <TriggerPlayerExposure>(ExposePlayerToCamera);
 
 	}
 
@@ -61,5 +63,9 @@ public class PlayerReactionsController : MonoBehaviour {
 		e.gameobject.transform.SetParent (this.transform);
 		if (e.attachToPlayer)
 			e.gameobject.GetComponent<SpringJoint> ().connectedBody = bikePlate;
+	}
+
+	void ExposePlayerToCamera(TriggerPlayerExposure e){
+		EventManager.Instance.TriggerEvent(new ExposePlayerToCamera(this.transform));
 	}
 }

@@ -351,7 +351,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 50, y: 27.722591, z: 50}
+  m_Size: {x: 100, y: 27.722591, z: 100}
   m_Center: {x: 0.0000019073486, y: 13.696541, z: -0.0000038146973}
 --- !u!1001 &342386274
 Prefab:
@@ -568,7 +568,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 50, y: 46.964203, z: 50}
+  m_Size: {x: 100, y: 46.964203, z: 100}
   m_Center: {x: -1.5149193, y: 24.084255, z: 0.0000000014108785}
 --- !u!1 &498401754
 GameObject:
@@ -582,6 +582,7 @@ GameObject:
   - 92: {fileID: 498401757}
   - 124: {fileID: 498401756}
   - 114: {fileID: 498401755}
+  - 114: {fileID: 498401760}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -662,6 +663,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &498401760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 498401754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46030841432561943be998ffec2ce542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  targetOffset: {x: 0, y: 2, z: 0}
+  distance: 10
+  height: 5
+  heightDamping: 2
+  rotationDamping: 3
 --- !u!1 &519635069 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000013365834796, guid: 134611eb110b23b45a91658ffa8665ab,
@@ -677,7 +695,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 50, y: 80.58985, z: 50}
+  m_Size: {x: 100, y: 80.58985, z: 100}
   m_Center: {x: -0.0000038146973, y: 40.788395, z: 3.5527137e-15}
 --- !u!1001 &784018017
 Prefab:
@@ -1068,7 +1086,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 50, y: 48.367867, z: 50}
+  m_Size: {x: 100, y: 48.367867, z: 100}
   m_Center: {x: 0.45173454, y: 24.173843, z: 0.8612766}
 --- !u!1 &1201785483 stripped
 GameObject:
@@ -1085,7 +1103,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 50, y: 75.67876, z: 50}
+  m_Size: {x: 100, y: 75.67876, z: 100}
   m_Center: {x: -0.031180382, y: 34.577583, z: 2.9038993e-11}
 --- !u!1001 &1300781133
 Prefab:
@@ -1140,6 +1158,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114000011789091888, guid: 3829712daf606f14e9e151e8a35b65f1,
+        type: 2}
+      propertyPath: list.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4000013930917128, guid: 3829712daf606f14e9e151e8a35b65f1, type: 2}
       propertyPath: m_LocalPosition.x
       value: 8.69
@@ -1182,6 +1205,23 @@ Prefab:
       value: 
       objectReference: {fileID: 1000013960825546, guid: 5b5611fed0dabf14b907f65f97c40b58,
         type: 2}
+    - target: {fileID: 114000011789091888, guid: 3829712daf606f14e9e151e8a35b65f1,
+        type: 2}
+      propertyPath: list.Array.data[0]
+      value: 
+      objectReference: {fileID: 1000013300215848, guid: 1a049f3e2baafd34596e9517afb13ee9,
+        type: 2}
+    - target: {fileID: 114000011789091888, guid: 3829712daf606f14e9e151e8a35b65f1,
+        type: 2}
+      propertyPath: list.Array.data[1]
+      value: 
+      objectReference: {fileID: 1000013447239970, guid: a0705fd6184d9e74d8ac5cc86aee2308,
+        type: 2}
+    - target: {fileID: 114000011789091888, guid: 3829712daf606f14e9e151e8a35b65f1,
+        type: 2}
+      propertyPath: maxAmountOfChunks
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3829712daf606f14e9e151e8a35b65f1, type: 2}
   m_IsPrefabParent: 0
@@ -1256,7 +1296,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 50, y: 179.42937, z: 50}
+  m_Size: {x: 100, y: 179.42937, z: 100}
   m_Center: {x: 0.00000381622, y: 90.567085, z: 1.6351299}
 --- !u!1 &1524276120 stripped
 GameObject:
@@ -1273,7 +1313,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 50, y: 110.05596, z: 50}
+  m_Size: {x: 100, y: 110.05596, z: 100}
   m_Center: {x: 3.0802765, y: 53.876995, z: -0.000000002868731}
 --- !u!1 &1620196826
 GameObject:
@@ -1321,7 +1361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxStackCarriables: 5
   startPlaying: 0
-  springForce: 20000000
+  springForce: 9e+17
   maxSpringDistance: 0.01
 --- !u!1001 &1640771703
 Prefab:
