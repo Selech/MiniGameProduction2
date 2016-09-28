@@ -67,18 +67,20 @@ public class MapController : MonoBehaviour
 
 	void SpawnWinChunk (GameObject chunk)
 	{
-		chunk.transform.position = currentPosition;
-		chunk.transform.rotation = Quaternion.Euler (currentRotation);
 		ChunkScript script = chunk.GetComponent<ChunkScript> ();
+
+		chunk.transform.position = currentPosition - (script.StartPoint.transform.localPosition / 100);
+		chunk.transform.rotation = Quaternion.Euler (currentRotation);
 
 		ArrangeChunkList (chunk);
 	}
 
 	void SpawnChunk (GameObject chunk)
 	{
-		chunk.transform.position = currentPosition;
-		chunk.transform.rotation = Quaternion.Euler (currentRotation);
 		ChunkScript script = chunk.GetComponent<ChunkScript> ();
+
+		chunk.transform.position = currentPosition - (script.StartPoint.transform.localPosition / 100);
+		chunk.transform.rotation = Quaternion.Euler (currentRotation);
 
 		currentPosition = script.EndPoint.transform.position;
 		currentRotation += script.EndPoint.transform.localRotation.eulerAngles;
