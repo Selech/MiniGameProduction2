@@ -18,14 +18,14 @@ public class AlignmentTool : EditorWindow
 	}
 
 	// Add a new menu item with hotkey CTRL-SHIFT-A
-	[MenuItem("Tools/Save Alignment #C")]
+	[MenuItem("Tools/Save Alignment %#C")]
 	private static void SaveAlignment()
 	{
 		SaveStuff ();
 	}
 
 	// Add a new menu item with hotkey CTRL-
-	[MenuItem("Tools/Item #V")]
+	[MenuItem("Tools/Item %#V")]
 	private static void UseAlignment()
 	{
 		DoStuff ();

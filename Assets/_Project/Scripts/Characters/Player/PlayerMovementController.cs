@@ -70,7 +70,8 @@ public class PlayerMovementController : MonoBehaviour
 	{
 		CharacterController controller = GetComponent<CharacterController> ();
 		float curSpeed = speed;
-		controller.Move ((updatedPlayerForward * curSpeed + Vector3.down * mass * 9.81f) * Time.deltaTime);
+		if (controller.enabled == true)
+			controller.Move ((updatedPlayerForward * curSpeed + Vector3.down * mass * 9.81f) * Time.deltaTime);
 	}
 		
 	public void Turn (float horizontalInputValue)

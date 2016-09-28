@@ -26,7 +26,7 @@ public class StackingList : MonoBehaviour {
     maxAmountOfCarriables = carriableManager.maxStackCarriables;
 
     // DELETE LATER
-    button = GameObject.Find("ShowButtonCanvas");
+    button = GameObject.Find("Button");
   }
 
   public void addObject(GameObject go, float height) {
