@@ -16,6 +16,7 @@ public class PlayerReactionsController : MonoBehaviour {
 		EventManager.Instance.StartListening <ChangeSchemeEvent>(ChangeScheme);
 		EventManager.Instance.StartListening <BoostPickupHitEvent>(BoostSpeed);
 		EventManager.Instance.StartListening <GetBackCarriableHitEvent>(GetBackCarriable);
+		EventManager.Instance.StartListening <WinChunkEnteredEvent> (StopMovement);
 	}
 
 	void OnDisable(){
@@ -23,6 +24,7 @@ public class PlayerReactionsController : MonoBehaviour {
 		EventManager.Instance.StopListening <BoostPickupHitEvent>(BoostSpeed);
 		EventManager.Instance.StopListening <GetBackCarriableHitEvent>(GetBackCarriable);
 		EventManager.Instance.StopListening <ChangeSchemeEvent> (ChangeScheme);
+		EventManager.Instance.StopListening <WinChunkEnteredEvent> (StopMovement);
 	}
 
 	void RetrieveInput(MovementInput horizontalInput) {
@@ -37,5 +39,9 @@ public class PlayerReactionsController : MonoBehaviour {
 	}
 
 	void GetBackCarriable(GetBackCarriableHitEvent e){
+	}
+
+	void StopMovement(WinChunkEnteredEvent e) {
+		EventManager.Instance.StopListening <MovementInput>(RetrieveInput);
 	}
 }

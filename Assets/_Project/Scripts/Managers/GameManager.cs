@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 public enum GameState
 {
 	Playing,
-	Paused
+	Paused,
+	Won
 }
 
 public class GameManager : MonoBehaviour
@@ -25,6 +26,8 @@ public class GameManager : MonoBehaviour
 	public bool isPaused = false;
 	[HideInInspector] 
 	public bool hasGameStarted = false;
+	[HideInInspector]
+	public bool hasWon = false;
 
 	void Start ()
 	{
@@ -86,6 +89,7 @@ public class GameManager : MonoBehaviour
 
 	void ReactToWin (WinChunkEnteredEvent e)
 	{
+		WinGame ();
 		PauseGame ();
 	}
 
@@ -109,6 +113,13 @@ public class GameManager : MonoBehaviour
 		//EventManager.TriggerEvent (_eventsContainer.resumeGame);
 		_GameState = GameState.Playing;
 		Time.timeScale = 1;
+	}
+
+	private void WinGame () 
+	{
+		_GameState = GameState.Won;
+		Time.timeScale = Mathf.Epsilon;
+		hasWon = true;
 	}
 
 	private void UpdateTime ()

@@ -55,13 +55,13 @@ public class MenuUI : MonoBehaviour
 
 	public void ToggleMenu ()
 	{
-		toggleMenuOn = !toggleMenuOn;
-		if (toggleMenuOn) {
-			Time.timeScale = Mathf.Epsilon;
+		if (GameManager.Instance.hasWon == false) {
+			GameManager.Instance.TogglePause ();
+			menuUI.SetActive (GameManager.Instance.isPaused);
 		} else {
-			Time.timeScale = 1f;	
+			toggleMenuOn = !toggleMenuOn;
+			menuUI.SetActive (toggleMenuOn);
 		}
-		menuUI.SetActive (toggleMenuOn);
 	}
 
 }
