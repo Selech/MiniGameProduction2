@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CarObstacle : MonoBehaviour {
 
-	public float force = 1;
+	public float pushPlayerBackForce = 1;
 	public float carPushForce = 10;
 	public ForceMode forceMode;
 	private PlayerPickupController playerPickupController;
@@ -19,20 +19,24 @@ public class CarObstacle : MonoBehaviour {
 	
 	}
 
-	void OnCollisionEnter(Collision col)
+	void OnTriggerEnter(Collider c)
 	{
-		if(col.gameObject.CompareTag("Player"))
+		if(c.CompareTag ("Player"))
 		{
-			if (playerPickupController.istLastPickupBoost) {
-				PushCar (col.transform);
+			Debug.Log ("hit car");
+			if (playerPickupController.isLastPickupBoost) {
+				PushCar (c.transform);
 			} else {
 				EventManager.Instance.TriggerEvent (new DamageCarriableEvent ());
-				EventManager.Instance.TriggerEvent (new ObstacleHitEvent (force));
+				EventManager.Instance.TriggerEvent (new ObstacleHitEvent (pushPlayerBackForce));
 			}
 		}
 	}
 
+
+
 	void PushCar(Transform transform){
+		Debug.Log ("car jump");
 		if (carRigidBody) {
 			carRigidBody.AddForce (transform.forward * carPushForce, forceMode);
 		}

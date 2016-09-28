@@ -8,9 +8,10 @@ public class PlayerReactionsController : MonoBehaviour {
 	public GameObject currentCarriable;
 	private CarriableHealth carriableHealth;
 	private StackingList stackingList;
-	void Start () {
+	void Awake () {
 		movementController = GetComponent<PlayerMovementController> ();
 		stackingList = GameObject.FindGameObjectWithTag ("CarriableDetector").GetComponent<StackingList>();
+
 	}
 
 	void OnEnable() {
@@ -18,8 +19,10 @@ public class PlayerReactionsController : MonoBehaviour {
 		EventManager.Instance.StartListening <ChangeSchemeEvent>(ChangeScheme);
 		EventManager.Instance.StartListening <BoostPickupHitEvent>(BoostSpeed);
 		EventManager.Instance.StartListening <GetBackCarriableHitEvent>(GetBackCarriable);
-		EventManager.Instance.StartListening <ObstacleHitEvent>(HitObstacle);
+		EventManager.Instance.StartListening <ObstacleHitEvent>(PushBikeBack);
+		EventManager.Instance.StartListening <DamageCarriableEvent>(DamageObstacle);
 		EventManager.Instance.StartListening <WinChunkEnteredEvent> (StopMovement);
+		EventManager.Instance.StartListening<ChunkEnteredEvent> (GetTopCarriable);
 	}
 
 	void OnDisable(){
@@ -27,8 +30,10 @@ public class PlayerReactionsController : MonoBehaviour {
 		EventManager.Instance.StopListening <BoostPickupHitEvent>(BoostSpeed);
 		EventManager.Instance.StopListening <GetBackCarriableHitEvent>(GetBackCarriable);
 		EventManager.Instance.StopListening <ChangeSchemeEvent> (ChangeScheme);
-		EventManager.Instance.StopListening <ObstacleHitEvent>(HitObstacle);
-		EventManager.Instance.StopListening <WinChunkEnteredEvent> (
+		EventManager.Instance.StopListening <ObstacleHitEvent>(PushBikeBack);
+		EventManager.Instance.StopListening <DamageCarriableEvent>(DamageObstacle);
+		EventManager.Instance.StopListening <WinChunkEnteredEvent> (StopMovement);
+		EventManager.Instance.StopListening<ChunkEnteredEvent> (GetTopCarriable);
 	}
 
 	void RetrieveInput(MovementInput horizontalInput) {
@@ -48,25 +53,42 @@ public class PlayerReactionsController : MonoBehaviour {
 		movementController.speed += speed;
 		yield return new WaitForSeconds (time);
 		movementController.speed -= speed;
+		GetComponent<PlayerPickupController> ().isLastPickupBoost = false;
 	}
 
 	void GetBackCarriable(GetBackCarriableHitEvent e){
 	}
 
-	public void HitObstacle(ObstacleHitEvent e){
+	public void DamageObstacle(GameEvent e){
 		GetTopCarriable ();
+		Debug.Log ("damaged  obstacle");
 		if (currentCarriable) {
 			carriableHealth = currentCarriable.GetComponent<CarriableHealth> ();
 			carriableHealth.LoseHealth ();
 		}
 	}
 
+	public void PushBikeBack(ObstacleHitEvent e){
+		Debug.Log (e.upForce);
+	}
+
 	public void GetTopCarriable(){
-		if (stackingList)
+		if (stackingList) {
+			print ("cariable found " + stackingList.gameObject.name);
 			currentCarriable = stackingList.CollectedCarriables [stackingList.CollectedCarriables.Count - 1];
+		
+		}
+	}
+
+	public void GetTopCarriable(ChunkEnteredEvent e){
+		if (stackingList) {
+			print ("cariable found " + stackingList.gameObject.name);
+			currentCarriable = stackingList.CollectedCarriables [stackingList.CollectedCarriables.Count - 1];
+
+		}
 	}
 	
 	void StopMovement(WinChunkEnteredEvent e) {
-		EventManager.Instance.StopListening <MovementInput>(RetrieveInput);
-
+		EventManager.Instance.StopListening <MovementInput> (RetrieveInput);
+	}
 }

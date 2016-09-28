@@ -5,7 +5,7 @@ public class BoostPickupCollider : MonoBehaviour {
 
 	[Tooltip("Boost when Player collides with Pickup")]
 	[Range(0, 100)]
-	public float boost = 10;
+	public float boost = 5;
 
 	[Tooltip("How many seconds should the boost last")]
 	[Range(0, 10)]
@@ -16,7 +16,7 @@ public class BoostPickupCollider : MonoBehaviour {
 		if (other.gameObject.CompareTag ("Player"))
 		{
 			EventManager.Instance.TriggerEvent (new BoostPickupHitEvent (boost, time));
-			other.GetComponent<PlayerPickupController> ().istLastPickupBoost = true;
+			other.GetComponent<PlayerPickupController> ().isLastPickupBoost = true;
 			Destroy (this.gameObject);
 		}
 	}

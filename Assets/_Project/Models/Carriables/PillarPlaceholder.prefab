@@ -23,7 +23,8 @@ GameObject:
   - 23: {fileID: 23000014153876416}
   - 114: {fileID: 114000010999742768}
   - 65: {fileID: 65000011003223690}
-  m_Layer: 0
+  - 114: {fileID: 114000012024917480}
+  m_Layer: 8
   m_Name: PillarPlaceholder
   m_TagString: Carriable
   m_Icon: {fileID: 0}
@@ -106,3 +107,16 @@ MonoBehaviour:
   LerpSpeed: 2
   translateSpeed: 0.1
   heightOfObject: 0.444
+--- !u!114 &114000012024917480
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013094153902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cfc2b361a4a4b741a26cf1e2bd90b04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLifeCounter: 0
+  maxLifeCounter: 3

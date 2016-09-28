@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerPickupController : MonoBehaviour {
 
-	public bool istLastPickupBoost;
+	public bool isLastPickupBoost;
 	// Use this for initialization
 	void Start () {
 	

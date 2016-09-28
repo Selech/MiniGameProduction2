@@ -2,10 +2,11 @@
 using System.Collections;
 
 public class StaticObstacle : MonoBehaviour {
-
+	public float pushForce = 10;
+	Rigidbody staticObstacleRigid;
 	// Use this for initialization
 	void Start () {
-	
+		staticObstacleRigid = GetComponent<Rigidbody> ();
 	}
 	
 	// Update is called once per frame
@@ -13,11 +14,19 @@ public class StaticObstacle : MonoBehaviour {
 	
 	}
 
-	void OnCollisionEnter(Collision col)
+	void OnTriggerEnter(Collider col)
 	{
 		if(col.gameObject.CompareTag("Player"))
 		{
+			Debug.Log ("inside sttaic");
 			EventManager.Instance.TriggerEvent(new DamageCarriableEvent());
+		}
+	}
+
+	void PushCar(Transform transform){
+		Debug.Log ("car jump");
+		if (staticObstacleRigid) {
+			staticObstacleRigid.AddForce (transform.forward * pushForce, ForceMode.Force);
 		}
 	}
 }
