@@ -11,12 +11,17 @@ public class MenuUI : MonoBehaviour
 	public Sprite spriteGyroImgDeactive;
 	public Sprite spriteGyroImgActive;
 
+	public Sprite spriteMuted;
+	public Sprite spriteUnmuted;
+
 	public GameObject gyroButton;
 	public GameObject swipeButton;
+	public GameObject muteButton;
 
 	bool toggleMenuOn = false;
 	bool swipeButtonEnabled = true;
 	bool gyroButtonEnabled = false;
+
 	public GameObject menuUI;
 
 	// Use this for initialization
@@ -51,6 +56,23 @@ public class MenuUI : MonoBehaviour
 			swipeButton.GetComponent<Image> ().sprite = spriteSwipeImgActive;
 			gyroButton.GetComponent<Image> ().sprite = spriteGyroImgDeactive;
 		}
+	}
+
+	public void MuteMusicButton() 
+	{
+		
+		EventManager.Instance.TriggerEvent (new MuteMusicEvent (!SoundManager.Instance.musicMuted));
+		if (SoundManager.Instance.musicMuted == true) {
+			muteButton.GetComponent<Image> ().sprite = spriteMuted;
+		} else {
+			muteButton.GetComponent<Image> ().sprite = spriteUnmuted;
+
+		}
+	}
+
+	public void ReturnToStackingButton()
+	{
+		GameManager.Instance.RestartGame ();
 	}
 
 	public void ToggleMenu ()
