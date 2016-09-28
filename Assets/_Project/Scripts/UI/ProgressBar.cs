@@ -69,7 +69,7 @@ public class ProgressBar : MonoBehaviour {
 	/// </summary>
 	/// <param name="e">E.</param>
 	public void InitializeSize(MapStartedEvent e){
-		numberOfChunks = e.numberOfChunks - 0.5f;
+		numberOfChunks = e.numberOfChunks;
 		Init ();
 	}
 

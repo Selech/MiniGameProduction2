@@ -9,6 +9,7 @@ public class PlayerReactionsController : MonoBehaviour {
 	private CarriableHealth carriableHealth;
 	private StackingList stackingList;
 	Rigidbody bikePlate;
+
 	void Awake () {
 		movementController = GetComponent<PlayerMovementController> ();
 		stackingList = GameObject.FindGameObjectWithTag ("CarriableDetector").GetComponent<StackingList>();
