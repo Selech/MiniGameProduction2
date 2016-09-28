@@ -19,6 +19,7 @@ public class PlayerReactionsController : MonoBehaviour {
 		EventManager.Instance.StartListening <BoostPickupHitEvent>(BoostSpeed);
 		EventManager.Instance.StartListening <GetBackCarriableHitEvent>(GetBackCarriable);
 		EventManager.Instance.StartListening <ObstacleHitEvent>(HitObstacle);
+		EventManager.Instance.StartListening <WinChunkEnteredEvent> (StopMovement);
 	}
 
 	void OnDisable(){
@@ -27,6 +28,7 @@ public class PlayerReactionsController : MonoBehaviour {
 		EventManager.Instance.StopListening <GetBackCarriableHitEvent>(GetBackCarriable);
 		EventManager.Instance.StopListening <ChangeSchemeEvent> (ChangeScheme);
 		EventManager.Instance.StopListening <ObstacleHitEvent>(HitObstacle);
+		EventManager.Instance.StopListening <WinChunkEnteredEvent> (
 	}
 
 	void RetrieveInput(MovementInput horizontalInput) {
@@ -63,4 +65,8 @@ public class PlayerReactionsController : MonoBehaviour {
 		if (stackingList)
 			currentCarriable = stackingList.CollectedCarriables [stackingList.CollectedCarriables.Count - 1];
 	}
+	
+	void StopMovement(WinChunkEnteredEvent e) {
+		EventManager.Instance.StopListening <MovementInput>(RetrieveInput);
+
 }

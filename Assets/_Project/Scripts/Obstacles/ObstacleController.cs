@@ -32,7 +32,6 @@ public class ObstacleController : MonoBehaviour
 		}
 	}
 
-
 	void OnCollisionEnter(Collision col)
 	{
 		if(col.gameObject.CompareTag("Player"))

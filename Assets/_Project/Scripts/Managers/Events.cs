@@ -28,6 +28,13 @@ public class ObstacleHitEvent : GameEvent
 	}
 }
 
+public class DamageCarriableEvent : GameEvent
+{
+	public DamageCarriableEvent()
+	{
+	}
+}
+
 public class BoostPickupHitEvent : GameEvent
 {
 	public float boost;

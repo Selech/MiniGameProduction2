@@ -16,7 +16,9 @@ public class BoostPickupCollider : MonoBehaviour {
 		if (other.gameObject.CompareTag ("Player"))
 		{
 			EventManager.Instance.TriggerEvent (new BoostPickupHitEvent (boost, time));
+			other.GetComponent<PlayerPickupController> ().istLastPickupBoost = true;
 			Destroy (this.gameObject);
 		}
 	}
+
 }
