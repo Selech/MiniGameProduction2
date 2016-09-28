@@ -33,7 +33,15 @@ public class PlayerReactionsController : MonoBehaviour {
 		GameManager.Instance.ChangeScheme (e.isGyro);
 	}
 
-	void BoostSpeed(BoostPickupHitEvent e){
+	public void BoostSpeed(BoostPickupHitEvent e)
+	{
+		StartCoroutine (ChangeSpeed(e.boost, e.time));
+	}
+
+	IEnumerator ChangeSpeed(float speed, float time){
+		movementController.speed += speed;
+		yield return new WaitForSeconds (time);
+		movementController.speed -= speed;
 	}
 
 	void GetBackCarriable(GetBackCarriableHitEvent e){
