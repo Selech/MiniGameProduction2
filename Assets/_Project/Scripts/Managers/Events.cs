@@ -102,4 +102,14 @@ public class MapStartedEvent : GameEvent
 	}
 
 }
+
+public class MuteMusicEvent : GameEvent 
+{
+	public bool soundMuted;
+
+	public MuteMusicEvent(bool soundMuted) 
+	{
+		this.soundMuted = soundMuted;
+	}
+}
 	
