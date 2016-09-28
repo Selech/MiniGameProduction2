@@ -18,7 +18,7 @@ public class PlayerReactionsController : MonoBehaviour {
 		EventManager.Instance.StartListening <ChangeSchemeEvent>(ChangeScheme);
 		EventManager.Instance.StartListening <BoostPickupHitEvent>(BoostSpeed);
 		EventManager.Instance.StartListening <GetBackCarriableHitEvent>(GetBackCarriable);
-		EventManager.Instance.StartListening <BeginRaceEvent>(EnableMovement);
+        EventManager.Instance.StartListening <StartGame>(EnableMovement);
 		EventManager.Instance.StartListening <WinChunkEnteredEvent> (StopMovement);
 		EventManager.Instance.StartListening <ChangeParentToPlayer>(ChangeParent);
 	}
@@ -28,7 +28,7 @@ public class PlayerReactionsController : MonoBehaviour {
 		EventManager.Instance.StopListening <BoostPickupHitEvent>(BoostSpeed);
 		EventManager.Instance.StopListening <GetBackCarriableHitEvent>(GetBackCarriable);
 		EventManager.Instance.StopListening <ChangeSchemeEvent> (ChangeScheme);
-		EventManager.Instance.StopListening <BeginRaceEvent>(EnableMovement);
+		EventManager.Instance.StopListening <StartGame>(EnableMovement);
 		EventManager.Instance.StopListening <WinChunkEnteredEvent> (StopMovement);
 		EventManager.Instance.StopListening <ChangeParentToPlayer>(ChangeParent);
 
@@ -53,7 +53,7 @@ public class PlayerReactionsController : MonoBehaviour {
 		EventManager.Instance.StopListening <MovementInput>(RetrieveInput);
 	}
 
-	void EnableMovement(BeginRaceEvent e){
+	void EnableMovement(StartGame e){
 		movementController.enabled = true;
 	}
 

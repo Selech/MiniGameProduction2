@@ -15,21 +15,27 @@ public class CarriableManager : MonoBehaviour
 	public float springForce = 90000000f;
 	public float maxSpringDistance = 0.01f;
 
+    void OnEnable() {
+        EventManager.Instance.StartListening<StartGame>(BeginGame);
+    }
+
+    void OnDisable() {
+        EventManager.Instance.StopListening<StartGame>(BeginGame);
+    }
+
 	void Start ()
 	{
-		stacking = GameObject.FindGameObjectWithTag ("CarriableDetector").GetComponent<StackingList>();
+		stacking = GetComponent<StackingList>();
 	}
 
-	public void beginGame ()
-	{
+    public void BeginGame (StartGame e)	{
 		stacking.stackingDone = true;
 		startPlaying = true;
 		AddJoints ();
 		DisableDragging ();
 		SetupCamera ();
 
-		EventManager.Instance.TriggerEvent(new BeginRaceEvent());
-		EventManager.Instance.TriggerEvent(new ChunkEnteredEvent());
+		//EventManager.Instance.TriggerEvent(new ChunkEnteredEvent());
 	}
 
 	private void DisableDragging ()

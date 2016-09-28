@@ -31,7 +31,7 @@ public class StackingList : MonoBehaviour {
         CollectedCarriables.Add (go);
         currentHeight += height;
 
-        target = new Vector3 (3.82624f, 1.34537f + (currentHeight * extraHeight), 1.471423f - (currentHeight * extraDepth));
+        target = new Vector3 (3.82624f, 1.46f + (currentHeight * extraHeight), 0.73f - (currentHeight * extraDepth));
       } else {
         sortObjects ();
       }
@@ -53,7 +53,7 @@ public class StackingList : MonoBehaviour {
         break;
       }
     }
-    target = new Vector3 (3.82624f, 1.34537f + (currentHeight * extraHeight), 1.471423f - (currentHeight * extraDepth));
+        target = new Vector3 (3.82624f, 1.46f + (currentHeight * extraHeight), 0.73f - (currentHeight * extraDepth));
     CurrentCarriable = null;
   }
 
