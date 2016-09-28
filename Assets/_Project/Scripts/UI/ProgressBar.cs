@@ -17,7 +17,7 @@ public class ProgressBar : MonoBehaviour {
 		EventManager.Instance.StopListening<WinChunkEnteredEvent> (StopMovingBar);
 	}
 
-	private int numberOfChunks = 10;
+	private float numberOfChunks = 10;
 	public GameObject ProgressionPlayerAlongBar;
 	public GameObject ProgBar;
 	public Transform startMarker;
@@ -28,15 +28,20 @@ public class ProgressBar : MonoBehaviour {
 	float distanceToMove;
 	bool stopMoving = false;
 
+
 	/// <summary>
 	/// Updating position of the character on the bar
 	/// </summary>
 	void Update(){
-		if (!stopMoving) {
-			ProgressionPlayerAlongBar.transform.position = Vector3.MoveTowards (ProgressionPlayerAlongBar.transform.position, targetPosition.position, speed);
-		}
-		else{
-			ProgressionPlayerAlongBar.transform.position = Vector3.MoveTowards (ProgressionPlayerAlongBar.transform.position, endMarker.position, speed);
+		if (GameManager.Instance.isPaused) {
+			
+		} else {
+
+			if (!stopMoving) {
+				ProgressionPlayerAlongBar.transform.position = Vector3.MoveTowards (ProgressionPlayerAlongBar.transform.position, targetPosition.position, speed);
+			} else {
+				//ProgressionPlayerAlongBar.transform.position = Vector3.MoveTowards (ProgressionPlayerAlongBar.transform.position, endMarker.position, speed);
+			}
 		}
 	}
 
@@ -47,6 +52,7 @@ public class ProgressBar : MonoBehaviour {
 		journeyLength = endMarker.position.x - startMarker.position.x ;
 		distanceToMove = journeyLength / numberOfChunks;
 		targetPosition = startMarker;
+		speed = speed * 10 / numberOfChunks;
 		//PlayerProgression (new ChunkEnteredEvent ());
 	}
 
@@ -63,7 +69,7 @@ public class ProgressBar : MonoBehaviour {
 	/// </summary>
 	/// <param name="e">E.</param>
 	public void InitializeSize(MapStartedEvent e){
-		numberOfChunks = e.numberOfChunks;
+		numberOfChunks = e.numberOfChunks - 0.5f;
 		Init ();
 	}
 
