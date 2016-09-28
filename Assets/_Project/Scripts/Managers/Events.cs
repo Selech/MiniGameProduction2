@@ -50,11 +50,6 @@ public class WinChunkEnteredEvent:GameEvent{
 	}
 }
 
-public class BeginRaceEvent:GameEvent{
-	public BeginRaceEvent(){
-	}
-}
-
 public class ChangeParentToPlayer:GameEvent{
 	public GameObject gameobject;
 	public bool attachToPlayer;
@@ -150,3 +145,7 @@ public class MuteMusicEvent : GameEvent
 	}
 }
 	
+public class StartGame:GameEvent{
+    public StartGame(){
+    }
+}
