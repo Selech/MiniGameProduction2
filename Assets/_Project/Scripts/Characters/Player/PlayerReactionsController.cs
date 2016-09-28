@@ -5,10 +5,12 @@ using System.Collections;
 public class PlayerReactionsController : MonoBehaviour {
 	
 	PlayerMovementController movementController;
-
-	// Use this for initialization
+	public GameObject currentCarriable;
+	private CarriableHealth carriableHealth;
+	private StackingList stackingList;
 	void Start () {
 		movementController = GetComponent<PlayerMovementController> ();
+		stackingList = GameObject.FindGameObjectWithTag ("CarriableDetector").GetComponent<StackingList>();
 	}
 
 	void OnEnable() {
@@ -16,6 +18,7 @@ public class PlayerReactionsController : MonoBehaviour {
 		EventManager.Instance.StartListening <ChangeSchemeEvent>(ChangeScheme);
 		EventManager.Instance.StartListening <BoostPickupHitEvent>(BoostSpeed);
 		EventManager.Instance.StartListening <GetBackCarriableHitEvent>(GetBackCarriable);
+		EventManager.Instance.StartListening <ObstacleHitEvent>(HitObstacle);
 	}
 
 	void OnDisable(){
@@ -23,6 +26,7 @@ public class PlayerReactionsController : MonoBehaviour {
 		EventManager.Instance.StopListening <BoostPickupHitEvent>(BoostSpeed);
 		EventManager.Instance.StopListening <GetBackCarriableHitEvent>(GetBackCarriable);
 		EventManager.Instance.StopListening <ChangeSchemeEvent> (ChangeScheme);
+		EventManager.Instance.StopListening <ObstacleHitEvent>(HitObstacle);
 	}
 
 	void RetrieveInput(MovementInput horizontalInput) {
@@ -45,5 +49,18 @@ public class PlayerReactionsController : MonoBehaviour {
 	}
 
 	void GetBackCarriable(GetBackCarriableHitEvent e){
+	}
+
+	public void HitObstacle(ObstacleHitEvent e){
+		GetTopCarriable ();
+		if (currentCarriable) {
+			carriableHealth = currentCarriable.GetComponent<CarriableHealth> ();
+			carriableHealth.LoseHealth ();
+		}
+	}
+
+	public void GetTopCarriable(){
+		if (stackingList)
+			currentCarriable = stackingList.CollectedCarriables [stackingList.CollectedCarriables.Count - 1];
 	}
 }
