@@ -8,10 +8,11 @@ public class PlayerReactionsController : MonoBehaviour {
 	public GameObject currentCarriable;
 	private CarriableHealth carriableHealth;
 	private StackingList stackingList;
+	Rigidbody bikePlate;
 	void Awake () {
 		movementController = GetComponent<PlayerMovementController> ();
 		stackingList = GameObject.FindGameObjectWithTag ("CarriableDetector").GetComponent<StackingList>();
-
+		bikePlate = GetComponentInChildren<Rigidbody> ();
 	}
 
 	void OnEnable() {
@@ -21,8 +22,11 @@ public class PlayerReactionsController : MonoBehaviour {
 		EventManager.Instance.StartListening <GetBackCarriableHitEvent>(GetBackCarriable);
 		EventManager.Instance.StartListening <ObstacleHitEvent>(PushBikeBack);
 		EventManager.Instance.StartListening <DamageCarriableEvent>(DamageObstacle);
+		EventManager.Instance.StartListening <ChunkEnteredEvent> (GetTopCarriable);
+		EventManager.Instance.StartListening <BeginRaceEvent>(EnableMovement);
 		EventManager.Instance.StartListening <WinChunkEnteredEvent> (StopMovement);
-		EventManager.Instance.StartListening<ChunkEnteredEvent> (GetTopCarriable);
+		EventManager.Instance.StartListening <ChangeParentToPlayer>(ChangeParent);
+		EventManager.Instance.StartListening <TriggerPlayerExposure>(ExposePlayerToCamera);
 	}
 
 	void OnDisable(){
@@ -32,12 +36,16 @@ public class PlayerReactionsController : MonoBehaviour {
 		EventManager.Instance.StopListening <ChangeSchemeEvent> (ChangeScheme);
 		EventManager.Instance.StopListening <ObstacleHitEvent>(PushBikeBack);
 		EventManager.Instance.StopListening <DamageCarriableEvent>(DamageObstacle);
+		EventManager.Instance.StopListening <ChunkEnteredEvent> (GetTopCarriable);
+		EventManager.Instance.StopListening <BeginRaceEvent>(EnableMovement);
 		EventManager.Instance.StopListening <WinChunkEnteredEvent> (StopMovement);
-		EventManager.Instance.StopListening<ChunkEnteredEvent> (GetTopCarriable);
+		EventManager.Instance.StopListening <ChangeParentToPlayer>(ChangeParent);
+		EventManager.Instance.StopListening <TriggerPlayerExposure>(ExposePlayerToCamera);
 	}
 
 	void RetrieveInput(MovementInput horizontalInput) {
-		movementController.Turn(horizontalInput.touchPosition);
+		if(movementController.enabled)
+			movementController.Turn(horizontalInput.touchPosition);
 	}
 
 	void ChangeScheme(ChangeSchemeEvent e){
@@ -90,5 +98,19 @@ public class PlayerReactionsController : MonoBehaviour {
 	
 	void StopMovement(WinChunkEnteredEvent e) {
 		EventManager.Instance.StopListening <MovementInput> (RetrieveInput);
+	}
+
+	void EnableMovement(BeginRaceEvent e){
+		movementController.enabled = true;
+	}
+
+	void ChangeParent(ChangeParentToPlayer e){
+		e.gameobject.transform.SetParent (this.transform);
+		if (e.attachToPlayer)
+			e.gameobject.GetComponent<SpringJoint> ().connectedBody = bikePlate;
+	}
+
+	void ExposePlayerToCamera(TriggerPlayerExposure e){
+		EventManager.Instance.TriggerEvent(new ExposePlayerToCamera(this.transform));
 	}
 }

@@ -1,4 +1,6 @@
-﻿public class TakeDamageEvent : GameEvent
+﻿using UnityEngine;
+
+public class TakeDamageEvent : GameEvent
 {
     public string message { get; private set; }
 
@@ -8,6 +10,36 @@
     }
 }
 
+
+public class ExposeStackingListEvent:GameEvent{
+	public StackingList stackingList;
+
+	public ExposeStackingListEvent(StackingList stackingList){
+		this.stackingList = stackingList;
+	}
+}
+
+public class SetStartButtonEvent:GameEvent{
+	public bool enableBtn;
+
+	public SetStartButtonEvent(bool enableBtn){
+		this.enableBtn = enableBtn;
+	}
+}
+
+public class TriggerPlayerExposure:GameEvent{
+	public TriggerPlayerExposure(){
+	}
+}
+
+public class ExposePlayerToCamera:GameEvent{
+	public Transform playerTransform;
+
+	public ExposePlayerToCamera(Transform playerTransform){
+		this.playerTransform = playerTransform;
+	}
+}
+
 public class ChunkEnteredEvent:GameEvent{
 	public ChunkEnteredEvent(){
 	}
@@ -15,6 +47,19 @@ public class ChunkEnteredEvent:GameEvent{
 
 public class WinChunkEnteredEvent:GameEvent{
 	public WinChunkEnteredEvent(){
+	}
+}
+
+public class BeginRaceEvent:GameEvent{
+	public BeginRaceEvent(){
+	}
+}
+
+public class ChangeParentToPlayer:GameEvent{
+	public GameObject gameobject;
+	public bool attachToPlayer;
+
+	public ChangeParentToPlayer(){
 	}
 }
 
@@ -93,5 +138,15 @@ public class MapStartedEvent : GameEvent
 		this.numberOfChunks = numberOfChunks;
 	}
 
+}
+
+public class MuteMusicEvent : GameEvent 
+{
+	public bool soundMuted;
+
+	public MuteMusicEvent(bool soundMuted) 
+	{
+		this.soundMuted = soundMuted;
+	}
 }
 	
