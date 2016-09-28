@@ -23,7 +23,8 @@ GameObject:
   - 23: {fileID: 23000012026797042}
   - 114: {fileID: 114000013587554220}
   - 65: {fileID: 65000012902344706}
-  m_Layer: 0
+  - 114: {fileID: 114000012197578802}
+  m_Layer: 8
   m_Name: FridgePlaceholder
   m_TagString: Carriable
   m_Icon: {fileID: 0}
@@ -91,6 +92,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 84.111374, y: 179.42937, z: 87.38164}
   m_Center: {x: 0.00000381622, y: 90.567085, z: 1.6351299}
+--- !u!114 &114000012197578802
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011224958340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cfc2b361a4a4b741a26cf1e2bd90b04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLifeCounter: 0
+  maxLifeCounter: 3
 --- !u!114 &114000013587554220
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -23,7 +23,8 @@ GameObject:
   - 23: {fileID: 23000013830699354}
   - 114: {fileID: 114000012357304778}
   - 65: {fileID: 65000011063053342}
-  m_Layer: 0
+  - 114: {fileID: 114000014286626190}
+  m_Layer: 8
   m_Name: BoatPlaceholder
   m_TagString: Carriable
   m_Icon: {fileID: 0}
@@ -106,3 +107,16 @@ MonoBehaviour:
   LerpSpeed: 2
   translateSpeed: 0.1
   heightOfObject: 0.65
+--- !u!114 &114000014286626190
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012888115488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cfc2b361a4a4b741a26cf1e2bd90b04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLifeCounter: 0
+  maxLifeCounter: 3
