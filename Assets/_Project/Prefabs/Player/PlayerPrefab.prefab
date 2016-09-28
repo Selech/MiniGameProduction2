@@ -38,6 +38,7 @@ GameObject:
   - 114: {fileID: 114000011861470604}
   - 114: {fileID: 114000014270303438}
   - 65: {fileID: 65000010153041366}
+  - 114: {fileID: 114000011981348898}
   m_Layer: 2
   m_Name: PlayerPrefab
   m_TagString: Player
@@ -90,7 +91,7 @@ GameObject:
   - 65: {fileID: 65000013589310704}
   m_Layer: 8
   m_Name: bikePlate
-  m_TagString: Untagged
+  m_TagString: BikePlate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -339,6 +340,18 @@ MonoBehaviour:
   endBikeLimit: {fileID: 4000013803824284}
   leftBikeLimit: {fileID: 4000012216280090}
   rightBikeLimit: {fileID: 4000013742317096}
+--- !u!114 &114000011981348898
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011293856656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01317fd01a3d3a746a2c7b6a2579a2a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLastPickupBoost: 0
 --- !u!114 &114000014270303438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -350,6 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 169a4941792377d4684b7f5f77252522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentCarriable: {fileID: 0}
 --- !u!143 &143000011681937912
 CharacterController:
   m_ObjectHideFlags: 1
