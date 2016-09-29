@@ -29,6 +29,10 @@ public class CarriableManager : MonoBehaviour
 		stacking = GetComponent<StackingList>();
 	}
 
+	public void BeginGame ()	{
+		EventManager.Instance.TriggerEvent(new StartGame());
+	}
+
     public void BeginGame (StartGame e)	{
 		stacking.stackingDone = true;
 		startPlaying = true;
