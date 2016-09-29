@@ -512,6 +512,26 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: 0.354
       objectReference: {fileID: 0}
+    - target: {fileID: 114000014142676522, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
+        type: 2}
+      propertyPath: lengthTolerance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000014142676522, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
+        type: 2}
+      propertyPath: springDampener
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000014142676522, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
+        type: 2}
+      propertyPath: carriableMass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000014142676522, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
+        type: 2}
+      propertyPath: CarriableMassModifierFactor
+      value: 1.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114000014213687656, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9, type: 2}
@@ -896,7 +916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basePath: Audio\GeneratedSoundBanks
-  language: Danish(DA)
+  language: English(US)
   defaultPoolSize: 4096
   lowerPoolSize: 2048
   streamingPoolSize: 1024

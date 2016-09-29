@@ -45,6 +45,7 @@ public class StackingList : MonoBehaviour {
   }
 
   public void removeObject(GameObject go, float height) {
+
     foreach (var v in CollectedCarriables) {
       if (go == v) {
         CollectedCarriables.Remove (v);
