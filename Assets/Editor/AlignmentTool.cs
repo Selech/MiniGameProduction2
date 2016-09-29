@@ -87,7 +87,6 @@ public class AlignmentTool : EditorWindow
         GameObject endPoint = (GameObject)Instantiate(globalEnd);
 
         overallPos = selection.transform.TransformPoint(globalEnd.transform.position);
-        Debug.Log(overallPos);
 
         startPoint.transform.SetParent(selection.transform);
         endPoint.transform.SetParent(selection.transform);
