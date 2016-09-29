@@ -41,7 +41,14 @@ public class ExposePlayerOnSwipe:GameEvent{
 }
 
 public class ChunkEnteredEvent:GameEvent{
+	
+	public GameObject chunk;
+
 	public ChunkEnteredEvent(){
+	}
+
+	public ChunkEnteredEvent(GameObject chunk){
+		this.chunk = chunk;
 	}
 }
 
