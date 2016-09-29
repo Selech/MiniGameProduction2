@@ -38,9 +38,9 @@ public class CarriableManager : MonoBehaviour
 	public void BeginGame (StartGame e)    {
 		stacking.stackingDone = true;
 		startPlaying = true;
-		AddJoints ();
-		DisableDragging ();
 		SetupCamera ();
+		DisableDragging ();
+		AddJoints ();
 
 		//EventManager.Instance.TriggerEvent(new ChunkEnteredEvent());
 	}
@@ -63,49 +63,63 @@ public class CarriableManager : MonoBehaviour
 
 		foreach(var collectedObject in collectedObjects){
 			collectedObject.AddComponent<Rigidbody> ();
+
 			var boxColliders = collectedObject.GetComponents<BoxCollider> ();
+
 			foreach (var boxCollider in boxColliders) {
 				boxCollider.enabled = !boxCollider.enabled;
 			}
 		}
 
-		for (int i = size-1; i >= 0; i--) {
+		for (int i = size-1; i >= 0; i--) 
+		{
 			var setParentEvent = new ChangeParentToPlayer ();
 
 			Destroy (collectedObjects [i].GetComponent<CarriablesDrag> ());
+
 			SpringJoint joint = collectedObjects [i].AddComponent<SpringJoint> ();
-			if (i > 0) {
-				joint.connectedBody = collectedObjects [i - 1].GetComponent<Rigidbody> ();
-			} else {
-				setParentEvent.attachToPlayer = true;
-			}
-			//setting joint parameters
-			joint.breakForce = Mathf.Infinity;
-			joint.breakTorque = Mathf.Infinity;
-			joint.spring = springForce;
-			joint.damper = springDampener;
-			joint.enableCollision = true;
-			joint.tolerance = lengthTolerance;
+			Rigidbody previousObjectInList_Rigidbody = collectedObjects [i - 1].GetComponent<Rigidbody> ();
 
-
-			//moving the joint anchor
-			joint.anchor = new Vector3(0, collectedObjects [i].GetComponent<Renderer>().bounds.min.y,0);
-			joint.maxDistance = 0f;
+			SetUpCarriableOnStart (joint,previousObjectInList_Rigidbody,setParentEvent,i,size);
 
 			//end of setting joint parameters
 			//setting rigidbody parameters
-			Debug.Log("number of carriables"+size);
-			Rigidbody carriableRigidbody = collectedObjects [i].GetComponent<Rigidbody>();
-			//carriableRigidbody.mass = carriableMass-CarriableMassModifierFactor*(i/size)*(2*collectedObjects [i].GetComponent<Renderer>().bounds.extents.y/maxCarriableHeight);
+			//Debug.Log("number of carriables"+size);
 
-			carriableRigidbody.mass = size * carriableMass - carriableMass * i;//* (2 * collectedObjects [i].GetComponent<Renderer> ().bounds.extents.y / maxCarriableHeight);
 			//carriableRigidbody.drag = 2;
 			//carriableRigidbody.angularDrag = 2;
-
-			//end setting rigidbody parameters
-			setParentEvent.gameobject = collectedObjects [i];
-			EventManager.Instance.TriggerEvent(setParentEvent);
 		}
 
+	}
+
+
+	public void SetUpCarriableOnStart(SpringJoint joint,Rigidbody previousObject,ChangeParentToPlayer changeParentToPlayer,int index,int size)
+	{
+		if (index > 0) {
+			joint.connectedBody = previousObject;
+		} else {
+			changeParentToPlayer.attachToPlayer = true;
+		}
+
+		//setting joint parameters
+		joint.breakForce = Mathf.Infinity;
+		joint.breakTorque = Mathf.Infinity;
+		joint.spring = springForce;
+		joint.damper = springDampener;
+		joint.enableCollision = true;
+		joint.tolerance = lengthTolerance;
+
+
+		//moving the joint anchor
+		joint.anchor = new Vector3(0, joint.gameObject.GetComponent<Renderer>().bounds.min.y,0);
+		joint.maxDistance = 0f;
+
+		Rigidbody carriableRigidbody = joint.gameObject.GetComponent<Rigidbody>();
+		//carriableRigidbody.mass = carriableMass-CarriableMassModifierFactor*(i/size)*(2*collectedObjects [i].GetComponent<Renderer>().bounds.extents.y/maxCarriableHeight);
+
+		carriableRigidbody.mass = size * carriableMass - carriableMass * index;//* (2 * collectedObjects [i].GetComponent<Renderer> ().bounds.extents.y / maxCarriableHeight);
+		//end setting rigidbody parameters
+		changeParentToPlayer.gameobject = joint.gameObject;
+		EventManager.Instance.TriggerEvent(changeParentToPlayer);
 	}
 }
