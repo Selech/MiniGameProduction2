@@ -147,11 +147,11 @@ public class MapStartedEvent : GameEvent
 // used to mute sound from the menu prefab
 public class MuteMusicEvent : GameEvent 
 {
-	public bool soundMuted;
+	public bool musicMuted;
 
 	public MuteMusicEvent(bool soundMuted) 
 	{
-		this.soundMuted = soundMuted;
+		this.musicMuted = soundMuted;
 	}
 }
 	
