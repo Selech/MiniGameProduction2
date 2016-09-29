@@ -15,7 +15,7 @@ public class SoundManager : MonoBehaviour {
 	bool drivingStarted = false;
 
 
-	void Awake ()
+	void Start ()
 	{
 		_instance = this;
 	}
@@ -75,6 +75,14 @@ public class SoundManager : MonoBehaviour {
 	{
 		PlaySound ("Play_UITap");
 		isDanish = e.isDanish;
+        if (isDanish)
+        {
+            AkSoundEngine.SetCurrentLanguage("Danish");
+        } else
+        {
+            AkSoundEngine.SetCurrentLanguage("English(US)");
+        }
+        
 	}
 
 	private void WonGame(WinChunkEnteredEvent e)
