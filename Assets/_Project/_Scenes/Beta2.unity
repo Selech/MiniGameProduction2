@@ -689,7 +689,12 @@ Prefab:
     - target: {fileID: 114000011861470604, guid: 766dcc133c68a5247b53cb287a15c808,
         type: 2}
       propertyPath: decelerationRate
-      value: 0.05
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011861470604, guid: 766dcc133c68a5247b53cb287a15c808,
+        type: 2}
+      propertyPath: maximumSpeed
+      value: 0.12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 766dcc133c68a5247b53cb287a15c808, type: 2}
@@ -864,7 +869,7 @@ Prefab:
     - target: {fileID: 114000011789091888, guid: 3829712daf606f14e9e151e8a35b65f1,
         type: 2}
       propertyPath: winAmountOfChunks
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114000011789091888, guid: 3829712daf606f14e9e151e8a35b65f1,
         type: 2}
@@ -914,6 +919,11 @@ Prefab:
       value: 
       objectReference: {fileID: 1000013447239970, guid: a0705fd6184d9e74d8ac5cc86aee2308,
         type: 2}
+    - target: {fileID: 114000011789091888, guid: 3829712daf606f14e9e151e8a35b65f1,
+        type: 2}
+      propertyPath: maxAmountOfChunks
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3829712daf606f14e9e151e8a35b65f1, type: 2}
   m_IsPrefabParent: 0
@@ -1118,7 +1128,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1579607658
 RectTransform:
   m_ObjectHideFlags: 0
