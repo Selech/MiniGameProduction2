@@ -10,7 +10,7 @@ public class MapController : MonoBehaviour
 	private Vector3 currentPosition;
 	private Vector3 currentRotation;
 
-	public List<GameObject> list;
+	public List<GameObject> chunkList;
 
 	private List<GameObject> currentChunks = new List<GameObject> ();
 	private int chunks = 0;
@@ -27,7 +27,14 @@ public class MapController : MonoBehaviour
 		currentPosition = this.gameObject.transform.position;
 		currentRotation = this.gameObject.transform.rotation.eulerAngles;
 
-		for (int i = 0; i < maxAmountOfChunks; i++) {
+        chunkList = new List<GameObject>();
+
+        var chunkList2 = Resources.LoadAll("GeneratedChunks");
+        foreach (var c in chunkList2) {
+            chunkList.Add(c as GameObject);
+        }
+
+        for (int i = 0; i < maxAmountOfChunks; i++) {
 			GenerateChunk (new ChunkEnteredEvent ());
 		}
 
@@ -53,9 +60,12 @@ public class MapController : MonoBehaviour
 			chunk = (GameObject)Instantiate (winChunk);
 			SpawnWinChunk (chunk);
 		} else if (chunks < winAmountOfChunks) {
-			int ran = Random.Range (0, list.Count);
+			int ran = Random.Range (0, chunkList.Count);
 			int ran2 = Random.Range (0, 1);
-			chunk = (GameObject)Instantiate (list [ran]);
+
+            chunk = (GameObject)Instantiate(chunkList[ran]);
+
+            //chunk = (GameObject)Instantiate (list [ran]);
 
 			SpawnChunk (chunk);
 		} else {
@@ -81,6 +91,7 @@ public class MapController : MonoBehaviour
 		chunk.transform.rotation = Quaternion.Euler (currentRotation);
 
 		currentPosition = script.EndPoint.transform.position;
+        print(currentRotation);
 		currentRotation += script.EndPoint.transform.localRotation.eulerAngles;
 
 		ArrangeChunkList (chunk);
