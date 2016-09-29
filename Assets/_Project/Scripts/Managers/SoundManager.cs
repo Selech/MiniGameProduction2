@@ -28,6 +28,7 @@ public class SoundManager : MonoBehaviour {
 		EventManager.Instance.StartListening<WinChunkEnteredEvent> (WonGame);
 		EventManager.Instance.StartListening<LoseCarriableEvent> (LostCarriable);
 		EventManager.Instance.StartListening<MovementInput> (StrafeBike);
+		EventManager.Instance.StartListening<UISoundEvent>(UITap);
 	}
 
 	void OnDisable ()
@@ -38,6 +39,7 @@ public class SoundManager : MonoBehaviour {
 		EventManager.Instance.StopListening<WinChunkEnteredEvent> (WonGame);
 		EventManager.Instance.StopListening<LoseCarriableEvent> (LostCarriable);
 		EventManager.Instance.StopListening<MovementInput> (StrafeBike);
+		EventManager.Instance.StartListening<UISoundEvent>(UITap);
 	}
 
 	#endregion
@@ -46,6 +48,7 @@ public class SoundManager : MonoBehaviour {
 	private void MuteMusic(MuteMusicEvent e)
 	{
 		musicMuted = e.musicMuted;
+		PlaySound ("Stop_MusicDrive");
 	}
 
 	private void StartRaceMusic(StartGame e)
@@ -63,6 +66,7 @@ public class SoundManager : MonoBehaviour {
 	private void WonGame(WinChunkEnteredEvent e)
 	{
 		PlaySound ("Play_MusicWin");
+		PlaySound ("Stop_Pedal");
 	}
 
 	private void LostCarriable(LoseCarriableEvent e) 
@@ -79,6 +83,12 @@ public class SoundManager : MonoBehaviour {
 			AkSoundEngine.SetRTPCValue ("Strafing",1f);
 		}
 	}
+
+	private void UITap(UISoundEvent e) {
+		PlaySound ("Play_UITap");
+	}
+
+
 
 	#endregion
 
