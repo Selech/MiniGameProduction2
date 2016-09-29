@@ -11,6 +11,8 @@ public class SoundManager : MonoBehaviour {
 
 	[HideInInspector]
 	public bool isStrafing = false;
+	bool drivingStarted = false;
+
 
 	void Awake ()
 	{
@@ -48,12 +50,20 @@ public class SoundManager : MonoBehaviour {
 	private void MuteMusic(MuteMusicEvent e)
 	{
 		musicMuted = e.musicMuted;
-		PlaySound ("Stop_MusicDrive");
+		if (musicMuted) {
+			PlaySound ("Stop_MusicDrive");
+		} else if (!musicMuted && drivingStarted) {
+			
+			PlaySound ("Play_MusicDrive");
+		}
 	}
 
 	private void StartRaceMusic(StartGame e)
 	{
-		PlaySound ("Play_MusicDrive");
+		drivingStarted = true;
+		if (!musicMuted) {
+			PlaySound ("Play_MusicDrive");
+		}
 		PlaySound ("Play_Pedal");
 	}
 
