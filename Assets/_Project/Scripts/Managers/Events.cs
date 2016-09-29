@@ -11,27 +11,33 @@ public class TakeDamageEvent : GameEvent
 }
 
 
-public class ExposeStackingListEvent:GameEvent{
+/*public class ExposeStackingListEvent:GameEvent{
 	public StackingList stackingList;
 
 	public ExposeStackingListEvent(StackingList stackingList){
 		this.stackingList = stackingList;
 	}
-}
+}*/
 
-public class SetStartButtonEvent:GameEvent{
+/*public class SetStartButtonEvent:GameEvent{
 	public bool enableBtn;
 
 	public SetStartButtonEvent(bool enableBtn){
 		this.enableBtn = enableBtn;
 	}
-}
+}*/
 
+/// <summary>
+/// Asks the PlayerReactionsController to send back the player transform
+/// </summary>
 public class TriggerPlayerExposure:GameEvent{
 	public TriggerPlayerExposure(){
 	}
 }
 
+/// <summary>
+/// Sends the player transform to CameraController
+/// </summary>
 public class ExposePlayerOnSwipe:GameEvent{
 	public Transform playerTransform;
 
