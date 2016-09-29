@@ -14,9 +14,13 @@ public class MenuUI : MonoBehaviour
 	public Sprite spriteMuted;
 	public Sprite spriteUnmuted;
 
+	public Image menuButton;
 	public GameObject gyroButton;
 	public GameObject swipeButton;
 	public GameObject muteButton;
+
+	public Sprite playSprite;
+	public Sprite pauseSprite;
 
 	bool toggleMenuOn = false;
 	bool swipeButtonEnabled = true;
@@ -84,6 +88,7 @@ public class MenuUI : MonoBehaviour
 		if (GameManager.Instance.hasWon == false) {
 			GameManager.Instance.TogglePause ();
 			menuUI.SetActive (GameManager.Instance.isPaused);
+			menuButton.sprite = GameManager.Instance.isPaused ? playSprite : pauseSprite;
 		} else {
 			toggleMenuOn = !toggleMenuOn;
 			menuUI.SetActive (toggleMenuOn);
