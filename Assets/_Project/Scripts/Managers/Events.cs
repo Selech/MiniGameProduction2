@@ -10,6 +10,12 @@ public class TakeDamageEvent : GameEvent
 	}
 }
 
+public class SkipSwipeTutorial : GameEvent
+{
+    public SkipSwipeTutorial()
+    {
+    }
+}
 
 public class ExposeStackingListEvent:GameEvent
 {

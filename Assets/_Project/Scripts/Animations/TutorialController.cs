@@ -13,24 +13,24 @@ public class TutorialController : MonoBehaviour {
     void OnEnable()
     {
         EventManager.Instance.StartListening<StartGame>(SkipSwipeTutorial);
-        EventManager.Instance.StartListening<ChangeParentToPlayer>(SkipStackTutorial);
+        EventManager.Instance.StartListening<SkipSwipeTutorial>(SkipStackTutorial);
     }
 
     void OnDisable()
     {
         EventManager.Instance.StopListening<StartGame>(SkipSwipeTutorial);
-        EventManager.Instance.StopListening<ChangeParentToPlayer>(SkipStackTutorial);
+        EventManager.Instance.StopListening<SkipSwipeTutorial>(SkipStackTutorial);
     }
 
-    void SkipStackTutorial(ChangeParentToPlayer e)
+    void SkipStackTutorial(SkipSwipeTutorial e)
     {
-        StopCoroutine(StartStackTutorial());
+        StopAllCoroutines();
         StartCoroutine(StartBikeTutorial());
     }
 
     void SkipSwipeTutorial(StartGame e)
     {
-        StopCoroutine(StartBikeTutorial());
+        StopAllCoroutines();
     }
 
     IEnumerator StartStackTutorial(){
