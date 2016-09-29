@@ -14,9 +14,13 @@ public class MenuUI : MonoBehaviour
 	public Sprite spriteMuted;
 	public Sprite spriteUnmuted;
 
+	public Image menuButton;
 	public GameObject gyroButton;
 	public GameObject swipeButton;
 	public GameObject muteButton;
+
+	public Sprite playSprite;
+	public Sprite pauseSprite;
 
 	bool toggleMenuOn = false;
 	bool swipeButtonEnabled = true;
@@ -38,6 +42,7 @@ public class MenuUI : MonoBehaviour
 
 	public void ChangeMovementOptionToGyro ()
 	{
+		EventManager.Instance.TriggerEvent(new UISoundEvent ());
 		if (!gyroButtonEnabled) {
 			EventManager.Instance.TriggerEvent (new ChangeSchemeEvent (true));
 			gyroButtonEnabled = true;
@@ -49,8 +54,10 @@ public class MenuUI : MonoBehaviour
 
 	public void ChangeMovementOptionToSwipe ()
 	{
+		EventManager.Instance.TriggerEvent(new UISoundEvent ());
 		if (!swipeButtonEnabled) {
 			EventManager.Instance.TriggerEvent (new ChangeSchemeEvent (false));
+
 			gyroButtonEnabled = false;
 			swipeButtonEnabled = true;
 			swipeButton.GetComponent<Image> ().sprite = spriteSwipeImgActive;
@@ -60,7 +67,7 @@ public class MenuUI : MonoBehaviour
 
 	public void MuteMusicButton() 
 	{
-		
+		EventManager.Instance.TriggerEvent(new UISoundEvent ());
 		EventManager.Instance.TriggerEvent (new MuteMusicEvent (!SoundManager.Instance.musicMuted));
 		if (SoundManager.Instance.musicMuted == true) {
 			muteButton.GetComponent<Image> ().sprite = spriteMuted;
@@ -77,13 +84,16 @@ public class MenuUI : MonoBehaviour
 
 	public void ToggleMenu ()
 	{
+		EventManager.Instance.TriggerEvent(new UISoundEvent ());
 		if (GameManager.Instance.hasWon == false) {
 			GameManager.Instance.TogglePause ();
 			menuUI.SetActive (GameManager.Instance.isPaused);
+			menuButton.sprite = GameManager.Instance.isPaused ? playSprite : pauseSprite;
 		} else {
 			toggleMenuOn = !toggleMenuOn;
 			menuUI.SetActive (toggleMenuOn);
 		}
 	}
+
 
 }

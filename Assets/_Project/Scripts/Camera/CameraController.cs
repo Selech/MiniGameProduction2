@@ -28,16 +28,17 @@ Then we apply the smoothed values to the transform's position.
 
 	void OnEnable ()
 	{
-		EventManager.Instance.StartListening <ExposePlayerToCamera> (SetupTarget);
+		EventManager.Instance.StartListening <ExposePlayerOnSwipe> (SetupTarget);
 	}
 
 	void OnDisable ()
 	{
-		EventManager.Instance.StopListening <ExposePlayerToCamera> (SetupTarget);
+		EventManager.Instance.StopListening <ExposePlayerOnSwipe> (SetupTarget);
 	}
 
-	void SetupTarget(ExposePlayerToCamera e){
+	void SetupTarget(ExposePlayerOnSwipe e){
 		target = e.playerTransform;
+		GetComponentInChildren<ShakeCam> ().enabled = true;
 	}
 
 	void LateUpdate ()
