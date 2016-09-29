@@ -679,7 +679,17 @@ Prefab:
     - target: {fileID: 114000011861470604, guid: 766dcc133c68a5247b53cb287a15c808,
         type: 2}
       propertyPath: accelerationRate
-      value: 0.2
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011861470604, guid: 766dcc133c68a5247b53cb287a15c808,
+        type: 2}
+      propertyPath: defaultSpeed
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011861470604, guid: 766dcc133c68a5247b53cb287a15c808,
+        type: 2}
+      propertyPath: decelerationRate
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 766dcc133c68a5247b53cb287a15c808, type: 2}
@@ -713,7 +723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basePath: Audio\GeneratedSoundBanks
-  language: English(US)
+  language: Danish
   defaultPoolSize: 4096
   lowerPoolSize: 2048
   streamingPoolSize: 1024
@@ -775,8 +785,8 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
-    m_Resolution: 3
+    m_Type: 1
+    m_Resolution: 0
     m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0.2
@@ -814,6 +824,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114000011789091888, guid: 3829712daf606f14e9e151e8a35b65f1,
+        type: 2}
+      propertyPath: list.Array.size
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4000013930917128, guid: 3829712daf606f14e9e151e8a35b65f1, type: 2}
       propertyPath: m_LocalPosition.x
       value: 18.22
@@ -849,8 +864,56 @@ Prefab:
     - target: {fileID: 114000011789091888, guid: 3829712daf606f14e9e151e8a35b65f1,
         type: 2}
       propertyPath: winAmountOfChunks
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114000011789091888, guid: 3829712daf606f14e9e151e8a35b65f1,
+        type: 2}
+      propertyPath: list.Array.data[0]
+      value: 
+      objectReference: {fileID: 1000013300215848, guid: 1a049f3e2baafd34596e9517afb13ee9,
+        type: 2}
+    - target: {fileID: 114000011789091888, guid: 3829712daf606f14e9e151e8a35b65f1,
+        type: 2}
+      propertyPath: list.Array.data[1]
+      value: 
+      objectReference: {fileID: 1000010880782034, guid: c11125b61d7fc7144bd1ee19fe44b8f5,
+        type: 2}
+    - target: {fileID: 114000011789091888, guid: 3829712daf606f14e9e151e8a35b65f1,
+        type: 2}
+      propertyPath: list.Array.data[2]
+      value: 
+      objectReference: {fileID: 1000014232777478, guid: d4ae5f9a7b3e68d40ab754a471adb5dd,
+        type: 2}
+    - target: {fileID: 114000011789091888, guid: 3829712daf606f14e9e151e8a35b65f1,
+        type: 2}
+      propertyPath: list.Array.data[3]
+      value: 
+      objectReference: {fileID: 1000012101827658, guid: 9da5a7cd15bb9594d9fa800deb6eb12e,
+        type: 2}
+    - target: {fileID: 114000011789091888, guid: 3829712daf606f14e9e151e8a35b65f1,
+        type: 2}
+      propertyPath: list.Array.data[4]
+      value: 
+      objectReference: {fileID: 1000012182882106, guid: f38b03aacf7932041b4efaf6e8d3af3e,
+        type: 2}
+    - target: {fileID: 114000011789091888, guid: 3829712daf606f14e9e151e8a35b65f1,
+        type: 2}
+      propertyPath: list.Array.data[5]
+      value: 
+      objectReference: {fileID: 1000010913176302, guid: 07c744b1b0ab44047967519513c62095,
+        type: 2}
+    - target: {fileID: 114000011789091888, guid: 3829712daf606f14e9e151e8a35b65f1,
+        type: 2}
+      propertyPath: list.Array.data[6]
+      value: 
+      objectReference: {fileID: 1000012817585498, guid: 893d02852d36790459250d9eca2d9507,
+        type: 2}
+    - target: {fileID: 114000011789091888, guid: 3829712daf606f14e9e151e8a35b65f1,
+        type: 2}
+      propertyPath: list.Array.data[7]
+      value: 
+      objectReference: {fileID: 1000013447239970, guid: a0705fd6184d9e74d8ac5cc86aee2308,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3829712daf606f14e9e151e8a35b65f1, type: 2}
   m_IsPrefabParent: 0
@@ -1055,7 +1118,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1579607658
 RectTransform:
   m_ObjectHideFlags: 0

@@ -93,20 +93,29 @@ public class GameManager : MonoBehaviour
 		EventManager.Instance.StartListening<WinChunkEnteredEvent> (ReactToWin);
         EventManager.Instance.StartListening<ChangeSchemeEvent>(ReactToControlSchemeChange);
         EventManager.Instance.StartListening<StartGame>(StartGame);
-	}
+        EventManager.Instance.StartListening<RestartGameEvent>(ResetWin);
+    }
 
 	void OnDisable ()
 	{
         EventManager.Instance.StopListening<WinChunkEnteredEvent> (ReactToWin);
         EventManager.Instance.StopListening<ChangeSchemeEvent>(ReactToControlSchemeChange);
         EventManager.Instance.StopListening<StartGame>(StartGame);
-	}
+        EventManager.Instance.StopListening<RestartGameEvent>(ResetWin);
+    }
 
 	void ReactToWin (WinChunkEnteredEvent e)
 	{
 		WinGame ();
 		PauseGame ();
 	}
+
+    void ResetWin(RestartGameEvent e)
+    {
+        hasWon = false;
+        _GameState = GameState.Playing;
+        isPaused = false;
+    }
 
     void ReactToControlSchemeChange(ChangeSchemeEvent e)
     {

@@ -64,8 +64,11 @@ public class PlayerMovementController : MonoBehaviour
     void Update ()
 	{
 		StabilizeOrientation ();
-		MoveForward ();
-	}
+        if (!GameManager.Instance.isPaused)
+        {
+            MoveForward();
+        }
+    }
 
 	void StabilizeOrientation(){
 
@@ -102,6 +105,7 @@ public class PlayerMovementController : MonoBehaviour
 
 	public void MoveForward ()
 	{
+
 
         //ACCELERATION CALCULUS
         float steepAngle = Vector3.Angle(updatedPlayerForward, Vector3.up);
