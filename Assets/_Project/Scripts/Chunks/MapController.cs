@@ -21,15 +21,13 @@ public class MapController : MonoBehaviour
 	[Tooltip ("Amount of initial chunks to load")]
 	public int maxAmountOfChunks = 5;
 
-
-
 	// Use this for initialization
 	void Start ()
 	{
 		currentPosition = this.gameObject.transform.position;
 		currentRotation = this.gameObject.transform.rotation.eulerAngles;
 
-		for (int i = 0; i < maxAmountOfChunks-1; i++) {
+		for (int i = 0; i < maxAmountOfChunks; i++) {
 			GenerateChunk (new ChunkEnteredEvent ());
 		}
 
@@ -90,10 +88,13 @@ public class MapController : MonoBehaviour
 
 	private void ArrangeChunkList ()
 	{
-		GameObject oldChunk = (GameObject)currentChunks [0];
-		Destroy (oldChunk,1);
-		ReturnToPool (oldChunk);
-		currentChunks.Remove (oldChunk);
+        if (currentChunks.Count > maxAmountOfChunks)
+        {
+            GameObject oldChunk = (GameObject)currentChunks[0];
+            Destroy(oldChunk, 1);
+            ReturnToPool(oldChunk);
+            currentChunks.Remove(oldChunk);
+        }
 	}
 
 	private void ArrangeChunkList (GameObject newChunk)
