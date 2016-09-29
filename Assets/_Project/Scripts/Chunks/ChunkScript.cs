@@ -8,6 +8,6 @@ public class ChunkScript : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col){
 		if(col.gameObject.tag == "Player")
-			EventManager.Instance.TriggerEvent(new ChunkEnteredEvent());
+			EventManager.Instance.TriggerEvent(new ChunkEnteredEvent(this.gameObject));
 	}
 }

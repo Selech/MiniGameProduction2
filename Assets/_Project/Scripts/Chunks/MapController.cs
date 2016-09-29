@@ -29,7 +29,7 @@ public class MapController : MonoBehaviour
 		currentPosition = this.gameObject.transform.position;
 		currentRotation = this.gameObject.transform.rotation.eulerAngles;
 
-		for (int i = 0; i < maxAmountOfChunks - 1; i++) {
+		for (int i = 0; i < maxAmountOfChunks-1; i++) {
 			GenerateChunk (new ChunkEnteredEvent ());
 		}
 
@@ -67,7 +67,7 @@ public class MapController : MonoBehaviour
 
 	void SpawnWinChunk (GameObject chunk)
 	{
-		ChunkScript script = chunk.GetComponent<ChunkScript> ();
+		WinChunkScript script = chunk.GetComponent<WinChunkScript> ();
 
 		chunk.transform.position = currentPosition - script.StartPoint.transform.localPosition;
 		chunk.transform.rotation = Quaternion.Euler (currentRotation);
