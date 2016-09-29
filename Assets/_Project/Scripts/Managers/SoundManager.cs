@@ -9,6 +9,9 @@ public class SoundManager : MonoBehaviour {
 	//[HideInInspector]
 	public bool isDanish;
 
+	[HideInInspector]
+	public bool isStrafing = false;
+
 	void Awake ()
 	{
 		
@@ -19,31 +22,36 @@ public class SoundManager : MonoBehaviour {
 
 	void OnEnable ()
 	{
-		EventManager.Instance.StartListening<BeginRaceEvent> (StartRaceMusic);
+		EventManager.Instance.StartListening<StartGame> (StartRaceMusic);
 		EventManager.Instance.StartListening<MuteMusicEvent> (MuteMusic);
 		EventManager.Instance.StartListening<LanguageSelect> (LanguageSelection);
 		EventManager.Instance.StartListening<WinChunkEnteredEvent> (WonGame);
+		EventManager.Instance.StartListening<LoseCarriableEvent> (LostCarriable);
+		EventManager.Instance.StartListening<MovementInput> (StrafeBike);
 	}
 
 	void OnDisable ()
 	{
-		EventManager.Instance.StopListening<BeginRaceEvent> (StartRaceMusic);
+		EventManager.Instance.StopListening<StartGame> (StartRaceMusic);
 		EventManager.Instance.StopListening<MuteMusicEvent> (MuteMusic);
 		EventManager.Instance.StopListening<LanguageSelect> (LanguageSelection);
 		EventManager.Instance.StopListening<WinChunkEnteredEvent> (WonGame);
+		EventManager.Instance.StopListening<LoseCarriableEvent> (LostCarriable);
+		EventManager.Instance.StopListening<MovementInput> (StrafeBike);
 	}
 
 	#endregion
 
-	#region Listener Methods
+	#region Event Methods
 	private void MuteMusic(MuteMusicEvent e)
 	{
 		musicMuted = e.musicMuted;
 	}
 
-	private void StartRaceMusic(BeginRaceEvent e)
+	private void StartRaceMusic(StartGame e)
 	{
-
+		PlaySound ("Play_MusicDrive");
+		PlaySound ("Play_Pedal");
 	}
 
 	private void LanguageSelection(LanguageSelect e) 
@@ -55,6 +63,21 @@ public class SoundManager : MonoBehaviour {
 	private void WonGame(WinChunkEnteredEvent e)
 	{
 		PlaySound ("Play_MusicWin");
+	}
+
+	private void LostCarriable(LoseCarriableEvent e) 
+	{
+		PlaySound ("Play_LoseItem");
+
+	}
+
+	private void StrafeBike(MovementInput e)
+	{
+		if (e.touchPosition == 0f) {
+			AkSoundEngine.SetRTPCValue ("Strafing", 0f);
+		} else {
+			AkSoundEngine.SetRTPCValue ("Strafing",1f);
+		}
 	}
 
 	#endregion
