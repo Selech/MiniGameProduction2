@@ -30,7 +30,7 @@ public class CarriableManager : MonoBehaviour
 	}
 
 	public void BeginGame ()	{
-		BeginGame (new StartGame ());
+		EventManager.Instance.TriggerEvent(new StartGame());
 	}
 
     public void BeginGame (StartGame e)	{
