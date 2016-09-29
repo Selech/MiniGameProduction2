@@ -199,9 +199,23 @@ public class LoseCarriableEvent : GameEvent
 	}
 }
 
+// used for menu tapping sounds
 public class UISoundEvent : GameEvent
 {
 	public UISoundEvent ()
 	{
 	}
+}
+
+public class RestartGameEvent : GameEvent {
+    public RestartGameEvent ()
+    {
+    }
+}
+
+public class SnapSoundEvent : GameEvent
+{
+    public SnapSoundEvent ()
+    {
+    }
 }
