@@ -14,6 +14,7 @@ public class CarriableManager : MonoBehaviour
 
 	public float springForce = 90000000f;
 	public float maxSpringDistance = 0.01f;
+	public float springDampener = 1.0f;
 
     void OnEnable() {
         EventManager.Instance.StartListening<StartGame>(BeginGame);
@@ -26,6 +27,10 @@ public class CarriableManager : MonoBehaviour
 	void Start ()
 	{
 		stacking = GetComponent<StackingList>();
+	}
+
+	public void BeginGame ()	{
+		EventManager.Instance.TriggerEvent(new StartGame());
 	}
 
     public void BeginGame (StartGame e)	{
@@ -75,6 +80,7 @@ public class CarriableManager : MonoBehaviour
 			joint.breakForce = Mathf.Infinity;
 			joint.breakTorque = Mathf.Infinity;
 			joint.spring = springForce;
+			joint.damper = springDampener;
 			joint.enableCollision = true;
 			joint.damper = 0f;
 			joint.tolerance = 0f;

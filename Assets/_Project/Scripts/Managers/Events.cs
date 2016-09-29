@@ -32,10 +32,10 @@ public class TriggerPlayerExposure:GameEvent{
 	}
 }
 
-public class ExposePlayerToCamera:GameEvent{
+public class ExposePlayerOnSwipe:GameEvent{
 	public Transform playerTransform;
 
-	public ExposePlayerToCamera(Transform playerTransform){
+	public ExposePlayerOnSwipe(Transform playerTransform){
 		this.playerTransform = playerTransform;
 	}
 }
@@ -106,6 +106,7 @@ public class MovementInput : GameEvent
 	}
 }
 
+// Used to change language in language selection prefab
 public class LanguageSelect : GameEvent
 {
 	public bool isDanish;
@@ -115,6 +116,7 @@ public class LanguageSelect : GameEvent
 	}
 }
 
+// used to change control scheme in menu prefab
 public class ChangeSchemeEvent : GameEvent 
 {
 	public bool isGyro;
@@ -124,7 +126,7 @@ public class ChangeSchemeEvent : GameEvent
 		this.isGyro = isGyro;
 	}
 }
-
+	
 public class MapStartedEvent : GameEvent
 {
 	public int numberOfChunks;
@@ -135,6 +137,7 @@ public class MapStartedEvent : GameEvent
 
 }
 
+// used to mute sound from the menu prefab
 public class MuteMusicEvent : GameEvent 
 {
 	public bool soundMuted;
@@ -148,4 +151,14 @@ public class MuteMusicEvent : GameEvent
 public class StartGame:GameEvent{
     public StartGame(){
     }
+}
+
+public class BeginRaceEvent : GameEvent {
+	public BeginRaceEvent() {
+	}
+}
+
+public class LoseCarriableEvent : GameEvent {
+	public LoseCarriableEvent() {
+	}
 }

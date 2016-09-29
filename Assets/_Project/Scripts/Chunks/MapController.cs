@@ -91,7 +91,7 @@ public class MapController : MonoBehaviour
 	private void ArrangeChunkList ()
 	{
 		GameObject oldChunk = (GameObject)currentChunks [0];
-		Destroy (oldChunk);
+		Destroy (oldChunk,1);
 		ReturnToPool (oldChunk);
 		currentChunks.Remove (oldChunk);
 	}
@@ -100,7 +100,7 @@ public class MapController : MonoBehaviour
 	{
 		if (currentChunks.Count > maxAmountOfChunks) {
 			GameObject oldChunk = (GameObject)currentChunks [0];
-			Destroy (oldChunk);
+			Destroy (oldChunk,1);
 			ReturnToPool (oldChunk);
 			currentChunks.Remove (oldChunk);
 		}
