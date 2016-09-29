@@ -16,9 +16,9 @@ public class StaticObstacle : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col)
 	{
-		if(col.gameObject.CompareTag("Player"))
+		if(col.gameObject.CompareTag("BikePlate"))
 		{
-			Debug.Log ("inside sttaic");
+			Debug.Log ("inside static");
 			EventManager.Instance.TriggerEvent(new DamageCarriableEvent());
 		}
 	}

@@ -13,17 +13,24 @@ public class SoundManager : MonoBehaviour {
 
 	void OnEnable ()
 	{
+		EventManager.Instance.StartListening<BeginRaceEvent> (StartRaceMusic);
 		EventManager.Instance.StartListening<MuteMusicEvent> (MuteMusic);
 	}
 
 	void OnDisable ()
 	{
+		EventManager.Instance.StopListening<BeginRaceEvent> (StartRaceMusic);
 		EventManager.Instance.StopListening<MuteMusicEvent> (MuteMusic);
 	}
 
 	private void MuteMusic(MuteMusicEvent e)
 	{
 		musicMuted = e.soundMuted;
+	}
+
+	private void StartRaceMusic(BeginRaceEvent e)
+	{
+
 	}
 
 	private static SoundManager _instance;

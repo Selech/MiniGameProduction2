@@ -149,3 +149,13 @@ public class StartGame:GameEvent{
     public StartGame(){
     }
 }
+
+public class BeginRaceEvent : GameEvent {
+	public BeginRaceEvent() {
+	}
+}
+
+public class LoseCarriableEvent : GameEvent {
+	public LoseCarriableEvent() {
+	}
+}
