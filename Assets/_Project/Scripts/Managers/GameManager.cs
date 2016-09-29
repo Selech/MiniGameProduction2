@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
 	public bool hasGameStarted = false;
 	[HideInInspector]
 	public bool hasWon = false;
+    [HideInInspector]
+    public bool isGyro = false;
 
 	void Start ()
 	{
@@ -89,12 +91,14 @@ public class GameManager : MonoBehaviour
 	void OnEnable ()
 	{
 		EventManager.Instance.StartListening<WinChunkEnteredEvent> (ReactToWin);
+        EventManager.Instance.StartListening<ChangeSchemeEvent>(ReactToControlSchemeChange);
         EventManager.Instance.StartListening<StartGame>(StartGame);
 	}
 
 	void OnDisable ()
 	{
         EventManager.Instance.StopListening<WinChunkEnteredEvent> (ReactToWin);
+        EventManager.Instance.StopListening<ChangeSchemeEvent>(ReactToControlSchemeChange);
         EventManager.Instance.StopListening<StartGame>(StartGame);
 	}
 
@@ -103,6 +107,11 @@ public class GameManager : MonoBehaviour
 		WinGame ();
 		PauseGame ();
 	}
+
+    void ReactToControlSchemeChange(ChangeSchemeEvent e)
+    {
+        isGyro = e.isGyro;
+    }
 
     private void StartGame (StartGame e)
 	{
