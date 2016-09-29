@@ -22,10 +22,10 @@ public class ObstacleController : MonoBehaviour
 
 	void Update()
 	{
-		if(Input.GetButtonDown("Fire1"))
-		{
-			SpawnDynamicObstacle ();
-		}
+//		if(Input.GetButtonDown("Fire1"))
+//		{
+//			SpawnDynamicObstacle ();
+//		}
 	}
 
 	/// <summary>
