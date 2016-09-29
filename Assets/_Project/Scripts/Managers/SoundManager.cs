@@ -43,4 +43,44 @@ public class SoundManager : MonoBehaviour {
 			return _instance;
 		}
 	}
+
+
+// TODO: Implement this
+//	//generic method for playing sound
+//	public void PlaySoundVO(int index)
+//	{
+//
+//		foreach (Sound_Item v in _soundEventsContainer._voiceOver_Collection.soundsCollection) 
+//		{
+//			if (CarriableManager.Instance.isEnglish) {
+//				if (v.soundIndex == index && v._Language == Language.English) {
+//					PlaySound (v.soundEventName);
+//					break;
+//				}
+//			} else {
+//				if (v.soundIndex == index && v._Language == Language.Danish) {
+//					PlaySound (v.soundEventName);
+//					break;
+//				}
+//			}
+//
+//		}
+//	}
+
+	public void PlaySound(string s)
+	{
+		if(!string.IsNullOrEmpty(s))
+		{
+			AkSoundEngine.PostEvent (s, this.gameObject);
+		}
+	}
+
+	//play sound from other object
+	public void PlaySound(string s,GameObject b)
+	{
+		if(!string.IsNullOrEmpty(s) && b != null )
+		{
+			AkSoundEngine.PostEvent (s, b);
+		}
+	}
 }
