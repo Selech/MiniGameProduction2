@@ -3,8 +3,16 @@ using System.Collections;
 
 public class ObstacleController : MonoBehaviour 
 {
+	public bool isRandom = false;
 	public Transform obstacleDirectionIndicator;
+	[Tooltip("Use if spawner is not random")]
 	public ObstacleStats currentObstacle;
+	[Tooltip("Use for static objects if spawner is random")]
+	public ObstacleCollection obstacleCollection_Statik;
+	[Tooltip("Use for throwables objects if spawner is random")]
+	public ObstacleCollection obstacleCollection_Throwables;
+	[Tooltip("Use for car objects if spawner is random")]
+	public ObstacleCollection obstacleCollection_Cars;
 	public float obstacleInfluenceHit = 10;
 	public float delay = 1;
 
@@ -47,8 +55,15 @@ public class ObstacleController : MonoBehaviour
 	{
 		if(currentObstacle._obstacleType == ObstacleType.statik)
 		{
-			Rigidbody obstacle = Instantiate (currentObstacle.obstaclePrefab,transform.position,Quaternion.identity) as Rigidbody;
-			obstacle.transform.parent = this.transform;
+			if (isRandom) {
+				int rand = Random.Range (0,obstacleCollection_Statik._ObstacleStatCollection.Count);
+				Rigidbody obstacle = Instantiate (obstacleCollection_Statik._ObstacleStatCollection[rand].obstaclePrefab,transform.position,obstacleDirectionIndicator.rotation) as Rigidbody;
+				obstacle.transform.parent = this.transform;
+			} else {
+				Rigidbody obstacle = Instantiate (currentObstacle.obstaclePrefab,transform.position,obstacleDirectionIndicator.rotation) as Rigidbody;
+				obstacle.transform.parent = this.transform;
+			}
+
 		}
 	}
 
@@ -67,20 +82,44 @@ public class ObstacleController : MonoBehaviour
 
 	void SpawnThrowable ()
 	{
-		Rigidbody r = Instantiate (currentObstacle.obstaclePrefab,transform.position,Quaternion.identity) as Rigidbody;
-		//Rigidbody r = obstacle.GetComponent<Rigidbody> ();
-		r.AddForce (obstacleDirectionIndicator.forward*currentObstacle.obstacleSpeed,currentObstacle.obstacleForceMode);
-		print ("has pan obstacle");
-		Destroy (r.gameObject,currentObstacle.obstacleLife);
+		if (isRandom) {
+			int rand = Random.Range (0,obstacleCollection_Throwables._ObstacleStatCollection.Count);
+			Rigidbody r = Instantiate (obstacleCollection_Throwables._ObstacleStatCollection[rand].obstaclePrefab,transform.position,Quaternion.identity) as Rigidbody;
+			//Rigidbody r = obstacle.GetComponent<Rigidbody> ();
+			r.AddForce (obstacleDirectionIndicator.forward*obstacleCollection_Throwables._ObstacleStatCollection[rand].obstacleSpeed,obstacleCollection_Throwables._ObstacleStatCollection[rand].obstacleForceMode);
+			print ("has pan obstacle");
+			Destroy (r.gameObject,obstacleCollection_Throwables._ObstacleStatCollection[rand].obstacleLife);
+		} else {
+			Rigidbody r = Instantiate (currentObstacle.obstaclePrefab,transform.position,Quaternion.identity) as Rigidbody;
+			//Rigidbody r = obstacle.GetComponent<Rigidbody> ();
+			r.AddForce (obstacleDirectionIndicator.forward*currentObstacle.obstacleSpeed,currentObstacle.obstacleForceMode);
+			print ("has pan obstacle");
+			Destroy (r.gameObject,currentObstacle.obstacleLife);
+		}
+
+
 	}
 
 	void SpawnCar()
 	{
-		Rigidbody obstacle = Instantiate (currentObstacle.obstaclePrefab,transform.position,obstacleDirectionIndicator.rotation) as Rigidbody;
 
-		obstacle.transform.parent = this.transform;
+		if (isRandom) {
+			int rand = Random.Range (0, obstacleCollection_Cars._ObstacleStatCollection.Count);
+			Rigidbody obstacle = Instantiate (obstacleCollection_Cars._ObstacleStatCollection[rand].obstaclePrefab,transform.position,obstacleDirectionIndicator.rotation) as Rigidbody;
 
-		StartCoroutine (MoveCar(obstacle.gameObject,currentObstacle.obstacleLife,currentObstacle.obstacleSpeed,currentObstacle.obstacleForceMode));
+			obstacle.transform.parent = this.transform;
+
+			StartCoroutine (MoveCar(obstacle.gameObject,obstacleCollection_Cars._ObstacleStatCollection[rand].obstacleLife,obstacleCollection_Cars._ObstacleStatCollection[rand].obstacleSpeed,obstacleCollection_Cars._ObstacleStatCollection[rand].obstacleForceMode));
+
+		} else {
+			Rigidbody obstacle = Instantiate (currentObstacle.obstaclePrefab,transform.position,obstacleDirectionIndicator.rotation) as Rigidbody;
+
+			obstacle.transform.parent = this.transform;
+
+			StartCoroutine (MoveCar(obstacle.gameObject,currentObstacle.obstacleLife,currentObstacle.obstacleSpeed,currentObstacle.obstacleForceMode));
+		}
+
+
 	}
 	/// <summary>
 	/// Moves the car and destroys it after some time

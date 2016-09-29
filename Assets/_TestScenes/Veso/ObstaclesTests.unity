@@ -208,6 +208,30 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114000013709001198, guid: e85c27c57aff4464b8446663328f0c1d,
+        type: 2}
+      propertyPath: obstacleCollection
+      value: 
+      objectReference: {fileID: 11400000, guid: 3a2770bacdce5e5428c454d0555272b1,
+        type: 2}
+    - target: {fileID: 114000013709001198, guid: e85c27c57aff4464b8446663328f0c1d,
+        type: 2}
+      propertyPath: obstacleCollection_Cars
+      value: 
+      objectReference: {fileID: 11400000, guid: b53fa0147d241fb4d946cb799c95c491,
+        type: 2}
+    - target: {fileID: 114000013709001198, guid: e85c27c57aff4464b8446663328f0c1d,
+        type: 2}
+      propertyPath: obstacleCollection_Throwables
+      value: 
+      objectReference: {fileID: 11400000, guid: c6a0d6fa6e62ee34a910b271156816f7,
+        type: 2}
+    - target: {fileID: 114000013709001198, guid: e85c27c57aff4464b8446663328f0c1d,
+        type: 2}
+      propertyPath: obstacleCollection_Statik
+      value: 
+      objectReference: {fileID: 11400000, guid: 3a2770bacdce5e5428c454d0555272b1,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e85c27c57aff4464b8446663328f0c1d, type: 2}
   m_IsPrefabParent: 0
@@ -398,6 +422,24 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: 8b9008e2aa56ab74da482b79478d40b1,
         type: 2}
+    - target: {fileID: 114000013653860894, guid: 486f1bcc42f92124198ea0819597de6b,
+        type: 2}
+      propertyPath: obstacleCollection_Cars
+      value: 
+      objectReference: {fileID: 11400000, guid: b53fa0147d241fb4d946cb799c95c491,
+        type: 2}
+    - target: {fileID: 114000013653860894, guid: 486f1bcc42f92124198ea0819597de6b,
+        type: 2}
+      propertyPath: obstacleCollection_Throwables
+      value: 
+      objectReference: {fileID: 11400000, guid: c6a0d6fa6e62ee34a910b271156816f7,
+        type: 2}
+    - target: {fileID: 114000013653860894, guid: 486f1bcc42f92124198ea0819597de6b,
+        type: 2}
+      propertyPath: obstacleCollection_Statik
+      value: 
+      objectReference: {fileID: 11400000, guid: 3a2770bacdce5e5428c454d0555272b1,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 486f1bcc42f92124198ea0819597de6b, type: 2}
   m_IsPrefabParent: 0
@@ -573,8 +615,95 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.x
       value: -71.15401
       objectReference: {fileID: 0}
+    - target: {fileID: 114000012280511676, guid: 9416e8739eeb1cc4884d4c308ae3efd4,
+        type: 2}
+      propertyPath: obstacleCollection_Cars
+      value: 
+      objectReference: {fileID: 11400000, guid: b53fa0147d241fb4d946cb799c95c491,
+        type: 2}
+    - target: {fileID: 114000012280511676, guid: 9416e8739eeb1cc4884d4c308ae3efd4,
+        type: 2}
+      propertyPath: obstacleCollection_Throwables
+      value: 
+      objectReference: {fileID: 11400000, guid: c6a0d6fa6e62ee34a910b271156816f7,
+        type: 2}
+    - target: {fileID: 114000012280511676, guid: 9416e8739eeb1cc4884d4c308ae3efd4,
+        type: 2}
+      propertyPath: obstacleCollection_Statik
+      value: 
+      objectReference: {fileID: 11400000, guid: 3a2770bacdce5e5428c454d0555272b1,
+        type: 2}
+    - target: {fileID: 114000012280511676, guid: 9416e8739eeb1cc4884d4c308ae3efd4,
+        type: 2}
+      propertyPath: isRandom
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9416e8739eeb1cc4884d4c308ae3efd4, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1807756550
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000013615169882, guid: e85c27c57aff4464b8446663328f0c1d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 7.300701
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013615169882, guid: e85c27c57aff4464b8446663328f0c1d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 8.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013615169882, guid: e85c27c57aff4464b8446663328f0c1d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -4.013386
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013615169882, guid: e85c27c57aff4464b8446663328f0c1d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013615169882, guid: e85c27c57aff4464b8446663328f0c1d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013615169882, guid: e85c27c57aff4464b8446663328f0c1d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013615169882, guid: e85c27c57aff4464b8446663328f0c1d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013615169882, guid: e85c27c57aff4464b8446663328f0c1d, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013785024006, guid: e85c27c57aff4464b8446663328f0c1d, type: 2}
+      propertyPath: m_Name
+      value: Obstacle_Spawner_Static_Random
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013709001198, guid: e85c27c57aff4464b8446663328f0c1d,
+        type: 2}
+      propertyPath: obstacleCollection_Cars
+      value: 
+      objectReference: {fileID: 11400000, guid: b53fa0147d241fb4d946cb799c95c491,
+        type: 2}
+    - target: {fileID: 114000013709001198, guid: e85c27c57aff4464b8446663328f0c1d,
+        type: 2}
+      propertyPath: obstacleCollection_Throwables
+      value: 
+      objectReference: {fileID: 11400000, guid: c6a0d6fa6e62ee34a910b271156816f7,
+        type: 2}
+    - target: {fileID: 114000013709001198, guid: e85c27c57aff4464b8446663328f0c1d,
+        type: 2}
+      propertyPath: obstacleCollection_Statik
+      value: 
+      objectReference: {fileID: 11400000, guid: 3a2770bacdce5e5428c454d0555272b1,
+        type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: e85c27c57aff4464b8446663328f0c1d, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &2083036847
 GameObject:
