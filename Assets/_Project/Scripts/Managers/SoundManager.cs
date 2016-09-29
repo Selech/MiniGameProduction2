@@ -6,15 +6,17 @@ public class SoundManager : MonoBehaviour {
 	[HideInInspector]
 	public bool musicMuted = false;
 
-	//[HideInInspector]
+	[HideInInspector]
 	public bool isDanish;
 
 	[HideInInspector]
 	public bool isStrafing = false;
 
-	void Awake ()
+	bool drivingStarted = false;
+
+
+	void Start ()
 	{
-		
 		_instance = this;
 	}
 
@@ -29,7 +31,9 @@ public class SoundManager : MonoBehaviour {
 		EventManager.Instance.StartListening<LoseCarriableEvent> (LostCarriable);
 		EventManager.Instance.StartListening<MovementInput> (StrafeBike);
 		EventManager.Instance.StartListening<UISoundEvent>(UITap);
-	}
+        EventManager.Instance.StartListening<RestartGameEvent>(StopAllSounds);
+        EventManager.Instance.StartListening<SnapSoundEvent>(SnapSound);
+    }
 
 	void OnDisable ()
 	{
@@ -39,8 +43,10 @@ public class SoundManager : MonoBehaviour {
 		EventManager.Instance.StopListening<WinChunkEnteredEvent> (WonGame);
 		EventManager.Instance.StopListening<LoseCarriableEvent> (LostCarriable);
 		EventManager.Instance.StopListening<MovementInput> (StrafeBike);
-		EventManager.Instance.StartListening<UISoundEvent>(UITap);
-	}
+		EventManager.Instance.StopListening<UISoundEvent>(UITap);
+        EventManager.Instance.StopListening<RestartGameEvent>(StopAllSounds);
+        EventManager.Instance.StopListening<SnapSoundEvent>(SnapSound);
+    }
 
 	#endregion
 
@@ -48,12 +54,20 @@ public class SoundManager : MonoBehaviour {
 	private void MuteMusic(MuteMusicEvent e)
 	{
 		musicMuted = e.musicMuted;
-		PlaySound ("Stop_MusicDrive");
+		if (musicMuted) {
+			PlaySound ("Stop_MusicDrive");
+		} else if (!musicMuted && drivingStarted) {
+			
+			PlaySound ("Play_MusicDrive");
+		}
 	}
 
 	private void StartRaceMusic(StartGame e)
 	{
-		PlaySound ("Play_MusicDrive");
+		drivingStarted = true;
+		if (!musicMuted) {
+			PlaySound ("Play_MusicDrive");
+		}
 		PlaySound ("Play_Pedal");
 	}
 
@@ -61,12 +75,21 @@ public class SoundManager : MonoBehaviour {
 	{
 		PlaySound ("Play_UITap");
 		isDanish = e.isDanish;
+        if (isDanish)
+        {
+            AkSoundEngine.SetCurrentLanguage("Danish");
+        } else
+        {
+            AkSoundEngine.SetCurrentLanguage("English(US)");
+        }
+        
 	}
 
 	private void WonGame(WinChunkEnteredEvent e)
 	{
 		PlaySound ("Play_MusicWin");
-		PlaySound ("Stop_Pedal");
+        PlaySound ("Stop_MusicDrive");
+        PlaySound ("Stop_Pedal");
 	}
 
 	private void LostCarriable(LoseCarriableEvent e) 
@@ -88,7 +111,17 @@ public class SoundManager : MonoBehaviour {
 		PlaySound ("Play_UITap");
 	}
 
+    // place all stops in here
+    private void StopAllSounds(RestartGameEvent e)
+    {
+        PlaySound("Stop_MusicDrive");
+        PlaySound("Stop_Pedal");
+    }
 
+    private void SnapSound(SnapSoundEvent e)
+    {
+        PlaySound("Play_UISnap");
+    }
 
 	#endregion
 
