@@ -67,6 +67,7 @@ public class MenuUI : MonoBehaviour
 
 	public void ReturnToStackingButton()
 	{
+        GameManager.Instance.isPaused = false;
         EventManager.Instance.TriggerEvent(new RestartGameEvent());
 		GameManager.Instance.RestartGame ();
 	}

@@ -31,16 +31,24 @@ public class GameManager : MonoBehaviour
 
 	void Start ()
 	{
-		gyroInput = GetComponent<GyroInput> ();
+        if (_instance != null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        _instance = this;
+        gyroInput = GetComponent<GyroInput> ();
 		swipeController = GetComponent<SwipeController> ();
         DontDestroyOnLoad(gameObject);
 	}
 
 	void Awake ()
 	{
-		Time.timeScale = 1;
+        
+        
+        Time.timeScale = 1;
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
-		_instance = this;
+		
 	}
 
 	void Update ()
@@ -149,7 +157,7 @@ public class GameManager : MonoBehaviour
 			if (_instance == null) {
 				GameObject go = new GameObject ("GameManager");
 				go.AddComponent<GameManager> ();
-			}
+			} 
 			return _instance;
 		}
 	}
