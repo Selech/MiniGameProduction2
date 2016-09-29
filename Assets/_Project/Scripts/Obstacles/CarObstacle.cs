@@ -19,11 +19,25 @@ public class CarObstacle : MonoBehaviour {
 	
 	}
 
-	void OnTriggerEnter(Collider c)
+//	void OnTriggerEnter(Collider c)
+//	{
+//		Debug.Log ("hit car " + c.name);
+//		if(c.CompareTag ("Player"))
+//		{
+//			if (playerPickupController.isLastPickupBoost) {
+//				PushCar (c.transform);
+//			} else {
+//				EventManager.Instance.TriggerEvent (new DamageCarriableEvent ());
+//				EventManager.Instance.TriggerEvent (new ObstacleHitEvent (pushPlayerBackForce));
+//			}
+//		}
+//	}
+
+	void OnCollisionEnter(Collision c)
 	{
-		if(c.CompareTag ("Player"))
+		Debug.Log ("hit car " + c.collider.name);
+		if(c.collider.CompareTag ("BikePlate"))
 		{
-			Debug.Log ("hit car");
 			if (playerPickupController.isLastPickupBoost) {
 				PushCar (c.transform);
 			} else {
