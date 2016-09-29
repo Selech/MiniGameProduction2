@@ -32,10 +32,10 @@ public class TriggerPlayerExposure:GameEvent{
 	}
 }
 
-public class ExposePlayerToCamera:GameEvent{
+public class ExposePlayerOnSwipe:GameEvent{
 	public Transform playerTransform;
 
-	public ExposePlayerToCamera(Transform playerTransform){
+	public ExposePlayerOnSwipe(Transform playerTransform){
 		this.playerTransform = playerTransform;
 	}
 }

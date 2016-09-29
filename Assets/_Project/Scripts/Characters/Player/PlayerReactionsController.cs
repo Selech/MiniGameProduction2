@@ -113,6 +113,6 @@ public class PlayerReactionsController : MonoBehaviour {
 	}
 
 	void SetupCamera(TriggerPlayerExposure e){
-		EventManager.Instance.TriggerEvent (new ExposePlayerToCamera(this.transform));
+		EventManager.Instance.TriggerEvent (new ExposePlayerOnSwipe(this.transform));
 	}
 }
