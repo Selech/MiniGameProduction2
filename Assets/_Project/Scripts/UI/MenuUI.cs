@@ -27,19 +27,7 @@ public class MenuUI : MonoBehaviour
 	bool gyroButtonEnabled = false;
 
 	public GameObject menuUI;
-
-	// Use this for initialization
-	void Start ()
-	{
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-	
-	}
-
+    
 	public void ChangeMovementOptionToGyro ()
 	{
 		EventManager.Instance.TriggerEvent(new UISoundEvent ());
@@ -79,6 +67,7 @@ public class MenuUI : MonoBehaviour
 
 	public void ReturnToStackingButton()
 	{
+        EventManager.Instance.TriggerEvent(new RestartGameEvent());
 		GameManager.Instance.RestartGame ();
 	}
 

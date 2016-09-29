@@ -25,7 +25,7 @@ public class StackingList : MonoBehaviour {
 
   public void addObject(GameObject go, float height) {
     CurrentCarriable = go;
-
+        EventManager.Instance.TriggerEvent(new SnapSoundEvent());
     if (CollectedCarriables.Count < maxAmountOfCarriables) { 
       if (!CollectedCarriables.Contains (go)) {
         CollectedCarriables.Add (go);

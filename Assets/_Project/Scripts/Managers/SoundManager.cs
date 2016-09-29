@@ -6,17 +6,17 @@ public class SoundManager : MonoBehaviour {
 	[HideInInspector]
 	public bool musicMuted = false;
 
-	//[HideInInspector]
+	[HideInInspector]
 	public bool isDanish;
 
 	[HideInInspector]
 	public bool isStrafing = false;
+
 	bool drivingStarted = false;
 
 
 	void Awake ()
 	{
-		
 		_instance = this;
 	}
 
@@ -31,7 +31,9 @@ public class SoundManager : MonoBehaviour {
 		EventManager.Instance.StartListening<LoseCarriableEvent> (LostCarriable);
 		EventManager.Instance.StartListening<MovementInput> (StrafeBike);
 		EventManager.Instance.StartListening<UISoundEvent>(UITap);
-	}
+        EventManager.Instance.StartListening<RestartGameEvent>(StopAllSounds);
+        EventManager.Instance.StartListening<SnapSoundEvent>(SnapSound);
+    }
 
 	void OnDisable ()
 	{
@@ -41,8 +43,10 @@ public class SoundManager : MonoBehaviour {
 		EventManager.Instance.StopListening<WinChunkEnteredEvent> (WonGame);
 		EventManager.Instance.StopListening<LoseCarriableEvent> (LostCarriable);
 		EventManager.Instance.StopListening<MovementInput> (StrafeBike);
-		EventManager.Instance.StartListening<UISoundEvent>(UITap);
-	}
+		EventManager.Instance.StopListening<UISoundEvent>(UITap);
+        EventManager.Instance.StopListening<RestartGameEvent>(StopAllSounds);
+        EventManager.Instance.StopListening<SnapSoundEvent>(SnapSound);
+    }
 
 	#endregion
 
@@ -76,7 +80,8 @@ public class SoundManager : MonoBehaviour {
 	private void WonGame(WinChunkEnteredEvent e)
 	{
 		PlaySound ("Play_MusicWin");
-		PlaySound ("Stop_Pedal");
+        PlaySound ("Stop_MusicDrive");
+        PlaySound ("Stop_Pedal");
 	}
 
 	private void LostCarriable(LoseCarriableEvent e) 
@@ -98,7 +103,17 @@ public class SoundManager : MonoBehaviour {
 		PlaySound ("Play_UITap");
 	}
 
+    // place all stops in here
+    private void StopAllSounds(RestartGameEvent e)
+    {
+        PlaySound("Stop_MusicDrive");
+        PlaySound("Stop_Pedal");
+    }
 
+    private void SnapSound(SnapSoundEvent e)
+    {
+        PlaySound("Play_UISnap");
+    }
 
 	#endregion
 

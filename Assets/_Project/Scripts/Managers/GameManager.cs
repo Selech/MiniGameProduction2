@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
 	{
 		gyroInput = GetComponent<GyroInput> ();
 		swipeController = GetComponent<SwipeController> ();
+        DontDestroyOnLoad(gameObject);
 	}
 
 	void Awake ()
