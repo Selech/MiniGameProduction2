@@ -3,35 +3,61 @@ using System.Collections;
 
 public class SoundManager : MonoBehaviour {
 
-	//[HideInInspector]
+	[HideInInspector]
 	public bool musicMuted = false;
+
+	//[HideInInspector]
+	public bool isDanish;
 
 	void Awake ()
 	{
+		
 		_instance = this;
 	}
+
+	#region Listeners
 
 	void OnEnable ()
 	{
 		EventManager.Instance.StartListening<BeginRaceEvent> (StartRaceMusic);
 		EventManager.Instance.StartListening<MuteMusicEvent> (MuteMusic);
+		EventManager.Instance.StartListening<LanguageSelect> (LanguageSelection);
+		EventManager.Instance.StartListening<WinChunkEnteredEvent> (WonGame);
 	}
 
 	void OnDisable ()
 	{
 		EventManager.Instance.StopListening<BeginRaceEvent> (StartRaceMusic);
 		EventManager.Instance.StopListening<MuteMusicEvent> (MuteMusic);
+		EventManager.Instance.StopListening<LanguageSelect> (LanguageSelection);
+		EventManager.Instance.StopListening<WinChunkEnteredEvent> (WonGame);
 	}
 
+	#endregion
+
+	#region Listener Methods
 	private void MuteMusic(MuteMusicEvent e)
 	{
-		musicMuted = e.soundMuted;
+		musicMuted = e.musicMuted;
 	}
 
 	private void StartRaceMusic(BeginRaceEvent e)
 	{
 
 	}
+
+	private void LanguageSelection(LanguageSelect e) 
+	{
+		PlaySound ("Play_UITap");
+		isDanish = e.isDanish;
+	}
+
+	private void WonGame(WinChunkEnteredEvent e)
+	{
+		PlaySound ("Play_MusicWin");
+	}
+
+	#endregion
 
 	private static SoundManager _instance;
 
@@ -43,29 +69,6 @@ public class SoundManager : MonoBehaviour {
 			return _instance;
 		}
 	}
-
-
-// TODO: Implement this
-//	//generic method for playing sound
-//	public void PlaySoundVO(int index)
-//	{
-//
-//		foreach (Sound_Item v in _soundEventsContainer._voiceOver_Collection.soundsCollection) 
-//		{
-//			if (CarriableManager.Instance.isEnglish) {
-//				if (v.soundIndex == index && v._Language == Language.English) {
-//					PlaySound (v.soundEventName);
-//					break;
-//				}
-//			} else {
-//				if (v.soundIndex == index && v._Language == Language.Danish) {
-//					PlaySound (v.soundEventName);
-//					break;
-//				}
-//			}
-//
-//		}
-//	}
 
 	public void PlaySound(string s)
 	{
