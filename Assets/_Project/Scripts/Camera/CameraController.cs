@@ -38,6 +38,7 @@ Then we apply the smoothed values to the transform's position.
 
 	void SetupTarget(ExposePlayerOnSwipe e){
 		target = e.playerTransform;
+		GetComponentInChildren<ShakeCam> ().enabled = true;
 	}
 
 	void LateUpdate ()
