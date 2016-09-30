@@ -23,6 +23,7 @@ public class IntroCutsceneController : MonoBehaviour {
     [Header("Scene2 objects")]
     //Scene2 moving objects
     public Animation elevator;
+    public Animation elevator2;
 
     [Header("Scene3 objects")]
     //Scene3 elements
@@ -51,11 +52,13 @@ public class IntroCutsceneController : MonoBehaviour {
     {
         if (Input.GetMouseButtonDown(0))
         {
+            AkSoundEngine.SetRTPCValue("SkipScene", 1f);
             Time.timeScale = 10f;
         }
 
         if (Input.GetMouseButtonUp(0))
         {
+            AkSoundEngine.SetRTPCValue("SkipScene", 0f);
             Time.timeScale = 1f;
         }
     }
@@ -112,7 +115,8 @@ public class IntroCutsceneController : MonoBehaviour {
         scene4.SetActive(false);
 
         cameraAnimation.Play("Scene2_Camera");
-        elevator.Play("Scene2_Elevator");
+        elevator.Play("Scene2_Elevator2");
+        elevator2.Play("Scene2_Elevator");
         sceneIndex++;
     }
 
@@ -133,7 +137,7 @@ public class IntroCutsceneController : MonoBehaviour {
 
     void PlayScene4()
     {
-        AkSoundEngine.PostEvent("Play_IntroSc4", this.gameObject);
+        AkSoundEngine.PostEvent("Stop_MusicCutScene", this.gameObject);
 
         scene1.SetActive(false);
         scene2.SetActive(false);
@@ -148,7 +152,6 @@ public class IntroCutsceneController : MonoBehaviour {
     {
         if (SceneManager.GetActiveScene().buildIndex + 1 != SceneManager.sceneCountInBuildSettings)
         {
-            AkSoundEngine.PostEvent("Stop_MusicCutScene", this.gameObject);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
