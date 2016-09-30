@@ -11,7 +11,7 @@ public class PlayerReactionsController : MonoBehaviour {
 	List<GameObject> stackingList;
 	PlayerMovementController movementController;
 	Rigidbody bikePlate;
-
+	bool isBoosted = false;
 	void Awake () {
 		movementController = GetComponent<PlayerMovementController> ();
 		stackingList = new List<GameObject> ();
@@ -64,7 +64,21 @@ public class PlayerReactionsController : MonoBehaviour {
 		GameManager.Instance.ChangeScheme (e.isGyro);
 	}
 
-	void BoostSpeed(BoostPickupHitEvent e){
+	void BoostSpeed(BoostPickupHitEvent e)
+	{
+		if(isBoosted == false)
+		{
+			isBoosted = true;
+			StartCoroutine (BoostPickUp(e.boost,e.time));
+		}
+	}
+
+	IEnumerator BoostPickUp(float speed,float time)
+	{
+		movementController.speedFactor = speed;
+		yield return new WaitForSeconds(time);
+		movementController.speedFactor = 1;
+		isBoosted = false;
 	}
 
 	void GetBackCarriable(GetBackCarriableHitEvent e){
