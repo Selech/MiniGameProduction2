@@ -53,7 +53,7 @@ public class IntroCutsceneController : MonoBehaviour {
         if (Input.GetMouseButtonDown(0))
         {
             AkSoundEngine.SetRTPCValue("SkipScene", 1f);
-            Time.timeScale = 10f;
+            Time.timeScale = 8f;
         }
 
         if (Input.GetMouseButtonUp(0))
