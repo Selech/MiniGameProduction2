@@ -349,4 +349,44 @@ public class AfterSpeedPowerUpEvent : GameEvent
 
     }
 }
+
+public class CarWatchOutEvent : GameEvent
+{
+    public CarWatchOutEvent()
+    {
+
+    }
+}
+
+public class WhereDidThatComeFromEvent : GameEvent
+{
+    public WhereDidThatComeFromEvent()
+    {
+
+    }
+}
+
+public class NowItsEasyEvent : GameEvent
+{
+    public NowItsEasyEvent()
+    {
+
+    }
+}
+
+public class NowItsHarderEvent : GameEvent
+{
+    public NowItsHarderEvent()
+    {
+
+    }
+}
+
+public class NowItsHardEvent : GameEvent
+{
+    public NowItsHardEvent()
+    {
+
+    }
+}
 #endregion

@@ -58,6 +58,21 @@ public class TutorialColliderSounds : MonoBehaviour
                 case 11:
                     EventManager.Instance.TriggerEvent(new AfterSpeedPowerUpEvent());
                     break;
+                case 12:
+                    EventManager.Instance.TriggerEvent(new CarWatchOutEvent());
+                    break;
+                case 13:
+                    EventManager.Instance.TriggerEvent(new WhereDidThatComeFromEvent());
+                    break;
+                case 14:
+                    EventManager.Instance.TriggerEvent(new NowItsEasyEvent());
+                    break;
+                case 15:
+                    EventManager.Instance.TriggerEvent(new NowItsHarderEvent());
+                    break;
+                case 16:
+                    EventManager.Instance.TriggerEvent(new NowItsHardEvent());
+                    break;
                 default:
                     Debug.Log("Invalid TriggerID");
                     break;
