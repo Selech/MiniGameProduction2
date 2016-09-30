@@ -11,6 +11,21 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1000011293856656}
   m_IsPrefabParent: 1
+--- !u!1 &1000010953021510
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000012951351480}
+  m_Layer: 0
+  m_Name: CenterOfBike
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1000011218816102
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,6 +194,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000013097228172}
   m_RootOrder: 1
+--- !u!4 &4000012951351480
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010953021510}
+  m_LocalRotation: {x: -0, y: 0.011853813, z: -0, w: 0.9999298}
+  m_LocalPosition: {x: -0.23591903, y: 0.42999998, z: 0.2632486}
+  m_LocalScale: {x: 0.0100000035, y: 0.01, z: 0.0100000035}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000013097228172}
+  m_RootOrder: 5
 --- !u!4 &4000013097228172
 Transform:
   m_ObjectHideFlags: 1
@@ -195,6 +223,7 @@ Transform:
   - {fileID: 4000013803824284}
   - {fileID: 4000012216280090}
   - {fileID: 4000013742317096}
+  - {fileID: 4000012951351480}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &4000013742317096
@@ -330,10 +359,17 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   mass: 1
-  speed: 5
+  defaultSpeed: 0.12
+  accelerationRate: 0.1
+  decelerationRate: 0.1
+  maximumSpeed: 1.5
+  minimumSpeed: 0.05
   rotateSpeed: 2
+  steepAccelerationDegree: 5
+  steepDecelerationDegree: 5
+  currentForwardSpeed: 0
+  currentVerticalSpeed: 0
   reorientSpeed: 7
-  isTurning: 1
   playerModel: {fileID: 4000011641955830}
   respawnPoint: {fileID: 0}
   frontBikeLimit: {fileID: 4000012469699820}
@@ -353,6 +389,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLastPickupBoost: 0
   lastLostCarriable: {fileID: 0}
+  lastUsedJoint: {fileID: 0}
+  carriablesDrag: {fileID: 0}
 --- !u!114 &114000014270303438
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -364,6 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 169a4941792377d4684b7f5f77252522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPickupController: {fileID: 0}
 --- !u!143 &143000011681937912
 CharacterController:
   m_ObjectHideFlags: 1

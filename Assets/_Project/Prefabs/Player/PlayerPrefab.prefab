@@ -185,10 +185,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011293856656}
-  m_LocalRotation: {x: -0, y: 0.9355724, z: -0, w: 0.35313508}
+  m_LocalRotation: {x: 0, y: 0.9396927, z: 0, w: 0.34202018}
   m_LocalPosition: {x: 5.19, y: 0, z: 5.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 140, z: 0}
   m_Children:
   - {fileID: 4000011641955830}
   - {fileID: 4000012469699820}
@@ -285,7 +285,7 @@ BoxCollider:
   m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1.11, y: 0.2, z: 1.95}
-  m_Center: {x: 0, y: 0.28, z: 0.21}
+  m_Center: {x: 0, y: 0.49, z: 0.21}
 --- !u!65 &65000013589310704
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -329,11 +329,17 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
-  mass: 1
-  speed: 5
+  mass: 0.1
+  defaultSpeed: 0.12
+  accelerationRate: 0.1
+  maximumSpeed: 3
+  minimumSpeed: 0.05
   rotateSpeed: 2
+  steepAcelerationDegree: 5
+  steepDecelerationDegree: 5
+  currentForwardSpeed: 0
+  currentVerticalSpeed: 0
   reorientSpeed: 7
-  isTurning: 1
   playerModel: {fileID: 4000011641955830}
   respawnPoint: {fileID: 0}
   frontBikeLimit: {fileID: 4000012469699820}
@@ -379,4 +385,4 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: -0.24, y: 0.62, z: 0.83}
+  m_Center: {x: -0.24, y: 0.63, z: 0.83}

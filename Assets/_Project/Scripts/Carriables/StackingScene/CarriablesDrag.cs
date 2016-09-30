@@ -95,6 +95,8 @@ public class CarriablesDrag : MonoBehaviour {
 
       this.GetComponent<BoxCollider> ().enabled = true;
       transThis.position = newPosition;
+
+            EventManager.Instance.TriggerEvent(new SkipSwipeTutorial());
     }
   }
 

@@ -8,20 +8,21 @@ public class PlayerReactionsController : MonoBehaviour {
 	GameObject currentCarriable;
 	int indexOfCarriable;
 	CarriableHealth carriableHealth;
-	List<GameObject> stackingList;
 	PlayerMovementController movementController;
 	Rigidbody bikePlate;
 	public PlayerPickupController playerPickupController;
-	StackingList _stackingList;
+	StackingList stackedList;
+	GameObject carriableManager;
 	CarriableManager carriableManagerScript;
+
 	void Awake () {
 		movementController = GetComponent<PlayerMovementController> ();
-		stackingList = new List<GameObject> ();
 		bikePlate = GetComponentInChildren<Rigidbody> ();
 		indexOfCarriable = 0;
 		playerPickupController = GetComponent<PlayerPickupController> ();
-		_stackingList = GameObject.FindGameObjectWithTag ("CarriableManager").GetComponent<StackingList>();
-		carriableManagerScript = GameObject.FindGameObjectWithTag ("CarriableManager").GetComponent<CarriableManager>();
+		carriableManager = GameObject.FindGameObjectWithTag ("CarriableManager");
+		stackedList = carriableManager.GetComponent<StackingList>();
+		carriableManagerScript = carriableManager.GetComponent<CarriableManager>();
 	}
 
 	void OnEnable() {
@@ -36,8 +37,6 @@ public class PlayerReactionsController : MonoBehaviour {
 		EventManager.Instance.StartListening <DamageCarriableEvent>(DamageObstacle);
 		EventManager.Instance.StartListening <ObstacleHitEvent>(PushBikeBack);
 		EventManager.Instance.StartListening <LoseCarriableEvent>(LostCarriable);
-
-
 	}
 
 	void OnDisable(){
@@ -52,12 +51,32 @@ public class PlayerReactionsController : MonoBehaviour {
 		EventManager.Instance.StopListening <DamageCarriableEvent>(DamageObstacle);
 		EventManager.Instance.StopListening <ObstacleHitEvent>(PushBikeBack);
 		EventManager.Instance.StopListening <LoseCarriableEvent>(LostCarriable);
-
-
 	}
 
-	void LostCarriable(LoseCarriableEvent e){
-		indexOfCarriable++;
+	void LostCarriable(LoseCarriableEvent e){ 
+		Debug.Log ("CURRENTCARIABLE : " + currentCarriable);
+
+		if (carriableManagerScript.runningHeight > 0f) {
+			indexOfCarriable++;
+			Debug.Log ("HEIGHT : " + carriableManagerScript.runningHeight);
+			carriableManagerScript.runningHeight -= currentCarriable.GetComponent<CarriablesDrag> ().heightOfObject;
+			Debug.Log ("HEIGHT 2 : " + carriableManagerScript.runningHeight);
+		}
+	}
+
+	void GetBackCarriable(GetBackCarriableHitEvent e){
+		if (playerPickupController.lastLostCarriable != null) {
+
+			int trueIndex = (stackedList.CollectedCarriables.Count - 1) - indexOfCarriable;
+
+			carriableManagerScript.PutBackCarriable (indexOfCarriable);
+			Debug.Log("OBJ : " + stackedList.CollectedCarriables[trueIndex] + " HEIGHT : " + stackedList.CollectedCarriables[trueIndex].GetComponent<CarriablesDrag> ().heightOfObject);
+			Debug.Log ("HEIGHT : " + carriableManagerScript.runningHeight);
+			carriableManagerScript.runningHeight += stackedList.CollectedCarriables[trueIndex].GetComponent<CarriablesDrag> ().heightOfObject;
+			Debug.Log ("HEIGHT 2 : " + carriableManagerScript.runningHeight);
+
+			indexOfCarriable--;
+		}
 	}
 
 	void RetrieveInput(MovementInput horizontalInput) {
@@ -72,24 +91,8 @@ public class PlayerReactionsController : MonoBehaviour {
 	void BoostSpeed(BoostPickupHitEvent e){
 	}
 
-	void GetBackCarriable(GetBackCarriableHitEvent e){
-		print ("trying to get carraible back");
-		if (playerPickupController.lastLostCarriable != null) {
-			_stackingList.addObject (playerPickupController.lastLostCarriable, playerPickupController.carriablesDrag.heightOfObject);
-
-			var carriableEvent = new ChangeParentToPlayer();
-
-			carriableManagerScript.SetUpCarriableOnStart (playerPickupController.lastLostCarriable.AddComponent<SpringJoint>(),currentCarriable.GetComponent<Rigidbody>(),carriableEvent,stackingList.Count+1,stackingList.Count);
-//			carriable.attachToPlayer = false;
-//			carriable.gameobject = playerPickupController.lastLostCarriable;
-//			EventManager.Instance.TriggerEvent(carriable);
-		}
-
-	}
-
 	public void DamageObstacle(DamageCarriableEvent e){
 		GetTopCarriable ();
-		Debug.Log ("damaged  obstacle");
 		if (currentCarriable) {
 			carriableHealth = currentCarriable.GetComponent<CarriableHealth> ();
 			carriableHealth.LoseHealth ();
@@ -101,21 +104,23 @@ public class PlayerReactionsController : MonoBehaviour {
 	}
 
 	public void GetTopCarriable(){
-		if (stackingList.Count > 0) {
-			currentCarriable = stackingList [indexOfCarriable];
-		
+
+		for (int i = 0; i < stackedList.CollectedCarriables.Count; i++) {
+			Debug.Log (" IDX : " + i + " OBJ : " + stackedList.CollectedCarriables [i]);
+		}
+
+		Debug.Log (indexOfCarriable);
+
+		int trueIndex = (stackedList.CollectedCarriables.Count - 1) - indexOfCarriable;
+
+		if (stackedList.CollectedCarriables.Count > trueIndex) {
+			currentCarriable = stackedList.CollectedCarriables[trueIndex];
 		}
 	}
 
-	public void GetTopCarriable(ChunkEnteredEvent e){
-		if (stackingList.Count > 0) {
-			currentCarriable = stackingList[indexOfCarriable];
-
-		}
-	}
-	
 	void StopMovement(WinChunkEnteredEvent e) {
-		EventManager.Instance.StopListening <MovementInput>(RetrieveInput);
+        movementController.enabled = false;
+        EventManager.Instance.StopListening <MovementInput>(RetrieveInput);
 	}
 
 	void EnableMovement(StartGame e){
@@ -123,7 +128,6 @@ public class PlayerReactionsController : MonoBehaviour {
 	}
 
 	void ChangeParent(ChangeParentToPlayer e){
-		stackingList.Add (e.gameobject);
 		e.gameobject.transform.SetParent (this.transform);
 		if (e.attachToPlayer)
 			e.gameobject.GetComponent<SpringJoint> ().connectedBody = bikePlate;

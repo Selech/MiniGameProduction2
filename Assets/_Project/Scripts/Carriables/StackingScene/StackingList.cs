@@ -25,7 +25,7 @@ public class StackingList : MonoBehaviour {
 
   public void addObject(GameObject go, float height) {
     CurrentCarriable = go;
-
+    EventManager.Instance.TriggerEvent(new SnapSoundEvent());
     if (CollectedCarriables.Count < maxAmountOfCarriables) { 
       if (!CollectedCarriables.Contains (go)) {
         CollectedCarriables.Add (go);
@@ -53,7 +53,8 @@ public class StackingList : MonoBehaviour {
         break;
       }
     }
-        target = new Vector3 (3.82624f, 1.46f + (currentHeight * extraHeight), 0.73f - (currentHeight * extraDepth));
+
+    target = new Vector3 (3.82624f, 1.46f + (currentHeight * extraHeight), 0.73f - (currentHeight * extraDepth));
     CurrentCarriable = null;
   }
 
