@@ -329,7 +329,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
-  mass: 0.06
+  mass: 1
   defaultSpeed: 0.12
   accelerationRate: 0.075
   decelerationRate: 0.45
@@ -348,6 +348,7 @@ MonoBehaviour:
   leftBikeLimit: {fileID: 4000012216280090}
   rightBikeLimit: {fileID: 4000013742317096}
   rayToGroundLength: 4
+  speedFactor: 1
 --- !u!114 &114000011981348898
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -382,9 +383,9 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 1
-  m_Radius: 0.54
+  m_Radius: 0.5
   m_SlopeLimit: 180
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: -0.24, y: 0.63, z: 0.83}
+  m_Center: {x: 0, y: 0.5, z: 0}

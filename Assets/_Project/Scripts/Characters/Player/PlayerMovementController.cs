@@ -55,6 +55,7 @@ public class PlayerMovementController : MonoBehaviour
     RaycastHit backHit;
     RaycastHit leftHit;
     RaycastHit rightHit;
+    RaycastHit centerGroundHit;
     bool isFrontPointHit;
     bool isBackPointHit;
     bool isLeftPointHit;
@@ -120,13 +121,14 @@ public class PlayerMovementController : MonoBehaviour
         isRightPointHit = Physics.Raycast(rightBikeLimit.position, -transform.up, out rightHit, rayToGroundLength, groundLayer);
         rightGroundPoint = rightHit.point;
 
-        if (!charController.isGrounded)
+        Debug.DrawRay(transform.position, Vector3.down);
+        if (!Physics.Raycast(transform.position,Vector3.down, out centerGroundHit, 2*rayToGroundLength, groundLayer)) //charController.isGrounded
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(updatedPlayerForward * currentForwardSpeed + Vector3.down * currentVerticalSpeed), Time.deltaTime * reorientSpeed);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.Normalize(updatedPlayerForward * currentForwardSpeed + Vector3.down * currentVerticalSpeed)), Time.deltaTime * reorientSpeed);
         }
-        else if (isFrontPointHit) { 
-            if (isBackPointHit & isLeftPointHit & isRightPointHit)
-            {
+        else if (isBackPointHit & isFrontPointHit & isLeftPointHit & isRightPointHit) { 
+            
+
                 Debug.DrawRay(rightBikeLimit.position, -transform.up);
            
                 updatedPlayerForward = frontGroundpoint - backGroundPoint;
@@ -139,15 +141,23 @@ public class PlayerMovementController : MonoBehaviour
                 Quaternion rot = Quaternion.Euler(updatedPlayerNormal);
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(updatedPlayerForward, updatedPlayerNormal), Time.deltaTime * reorientSpeed);
 
-            }
+
         }
+        /*
         else
         {
-            if (isBackPointHit & isLeftPointHit & isRightPointHit)
+            updatedPlayerNormal = centerGroundHit.normal;
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(updatedPlayerForward, updatedPlayerNormal), Time.deltaTime * reorientSpeed);
+        }*/
+        /*
+        else //back point but not the front point
+        {
+            if (isLeftPointHit & isRightPointHit)
             {
                 updatedPlayerNormal = backHit.normal;
                 updatedPlayerRight = rightGroundPoint - leftGroundPoint;
                 updatedPlayerForward = Vector3.Cross(updatedPlayerRight, updatedPlayerNormal);
+
 
                 if (Vector3.Dot(updatedPlayerNormal, Vector3.up) <= 0)
                     updatedPlayerNormal = Vector3.up;
@@ -157,8 +167,8 @@ public class PlayerMovementController : MonoBehaviour
 
             }
         }
-
-
+        Debug.DrawRay(transform.position+new Vector3(0,1,2), transform.forward,Color.red);
+        */
     }
 
     public void MoveForward()
