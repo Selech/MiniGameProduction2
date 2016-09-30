@@ -21,8 +21,8 @@ GameObject:
   - 4: {fileID: 4000011474428268}
   - 54: {fileID: 54000012682003698}
   - 114: {fileID: 114000010417605524}
-  - 64: {fileID: 64000014254804622}
-  - 64: {fileID: 64000012315948970}
+  - 65: {fileID: 65000011080443942}
+  - 65: {fileID: 65000014278018988}
   m_Layer: 8
   m_Name: Obstacle_Car
   m_TagString: Obstacle
@@ -83,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010157389396}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.46, y: 8.78, z: 0.62}
+  m_LocalPosition: {x: -6.46, y: 0, z: 0.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -167,20 +167,8 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 1
   m_Mesh: {fileID: 4300004, guid: 967936f11bb985844a17d61409e82019, type: 3}
---- !u!64 &64000012315948970
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010157389396}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 1
-  m_Mesh: {fileID: 4300004, guid: 967936f11bb985844a17d61409e82019, type: 3}
---- !u!64 &64000014254804622
-MeshCollider:
+--- !u!65 &65000011080443942
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -189,8 +177,20 @@ MeshCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 1
-  m_Mesh: {fileID: 4300004, guid: 967936f11bb985844a17d61409e82019, type: 3}
+  m_Size: {x: 3.38, y: 1.34, z: 1.45}
+  m_Center: {x: 0, y: 0.7, z: 0}
+--- !u!65 &65000014278018988
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010157389396}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.38, y: 1.34, z: 1.45}
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!114 &114000010417605524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88e1ddbd3f001474a9450aa101cccb0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _obstacleType: 0
+  _obstacleType: 1
   shakeAmount: 5
   shakeDuration: 1
   pushForce: 10
