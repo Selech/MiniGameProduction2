@@ -186,7 +186,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011293856656}
   m_LocalRotation: {x: 0, y: 0.9396927, z: 0, w: 0.34202018}
-  m_LocalPosition: {x: 5.19, y: 0, z: 5.34}
+  m_LocalPosition: {x: 5.02, y: 0, z: 3.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 140, z: 0}
   m_Children:
@@ -330,12 +330,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   mass: 0.1
-  defaultSpeed: 0.12
-  accelerationRate: 0.1
-  maximumSpeed: 3
+  defaultSpeed: 0.06
+  accelerationRate: 0.08
+  decelerationRate: 0.02
+  maximumSpeed: 0.12
   minimumSpeed: 0.05
   rotateSpeed: 2
-  steepAcelerationDegree: 5
+  steepAccelerationDegree: 5
   steepDecelerationDegree: 5
   currentForwardSpeed: 0
   currentVerticalSpeed: 0
