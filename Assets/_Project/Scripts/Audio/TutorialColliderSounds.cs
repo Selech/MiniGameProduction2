@@ -73,6 +73,12 @@ public class TutorialColliderSounds : MonoBehaviour
                 case 16:
                     EventManager.Instance.TriggerEvent(new NowItsHardEvent());
                     break;
+                case 17:
+                    EventManager.Instance.TriggerEvent(new WatchOutEvent());
+                    break;
+                case 18:
+                    EventManager.Instance.TriggerEvent(new YouHaveToAvoidEvent());
+                    break;
                 default:
                     Debug.Log("Invalid TriggerID");
                     break;

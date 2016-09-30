@@ -58,6 +58,11 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StartListening<AfterSpeedPowerUpEvent>(AfterSpeedPowerUp);
         EventManager.Instance.StartListening<CarWatchOutEvent>(CarWatchOut);
         EventManager.Instance.StartListening<WhereDidThatComeFromEvent>(WhereDidThatComeFrom);
+        EventManager.Instance.StartListening<NowItsEasyEvent>(NowItsEasy);
+        EventManager.Instance.StartListening<NowItsHarderEvent>(NowItsHarder);
+        EventManager.Instance.StartListening<NowItsHardEvent>(NowItsHard);
+        EventManager.Instance.StartListening<WatchOutEvent>(WatchOut);
+        EventManager.Instance.StartListening<YouHaveToAvoidEvent>(YouHaveToAvoid);
     }
 
     void OnDisable()
@@ -74,9 +79,7 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StopListening<MenuActiveEvent>(MenuActive);
         EventManager.Instance.StopListening<LoseCarriableEvent>(LoseCarriable);
         EventManager.Instance.StopListening<GetBackCarriableHitEvent>(GainCarriable);
-        EventManager.Instance.StopListening<NowItsEasyEvent>(NowItsEasy);
-        EventManager.Instance.StopListening<NowItsHarderEvent>(NowItsHarder);
-        EventManager.Instance.StopListening<NowItsHardEvent>(NowItsHard);
+        
 
 
         // tutorial sounds below
@@ -94,6 +97,11 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StopListening<AfterSpeedPowerUpEvent>(AfterSpeedPowerUp);
         EventManager.Instance.StopListening<CarWatchOutEvent>(CarWatchOut);
         EventManager.Instance.StopListening<WhereDidThatComeFromEvent>(WhereDidThatComeFrom);
+        EventManager.Instance.StopListening<NowItsEasyEvent>(NowItsEasy);
+        EventManager.Instance.StopListening<NowItsHarderEvent>(NowItsHarder);
+        EventManager.Instance.StopListening<NowItsHardEvent>(NowItsHard);
+        EventManager.Instance.StopListening<WatchOutEvent>(WatchOut);
+        EventManager.Instance.StopListening<YouHaveToAvoidEvent>(YouHaveToAvoid);
     }
 
     #endregion
@@ -150,6 +158,7 @@ public class SoundManager : MonoBehaviour
     private void HitObstacle(DamageCarriableEvent e)
     {
         PlaySound("Play_LoseItem");
+        PlaySound("Play_MusVO16");
 
     }
 
@@ -199,6 +208,7 @@ public class SoundManager : MonoBehaviour
     private void LoseCarriable(LoseCarriableEvent e)
     {
         PlaySound("Play_LoseItem");
+        PlaySound("Play_MusVO17");
     }
 
     private void GainCarriable(GetBackCarriableHitEvent e)
@@ -313,6 +323,16 @@ public class SoundManager : MonoBehaviour
     {
         PlaySound("Play_MusVO9");
     }
+
+    private void WatchOut(WatchOutEvent e)
+    {
+        PlaySound("Play_MusVO14");
+    }
+
+    private void YouHaveToAvoid(YouHaveToAvoidEvent e)
+    {
+        PlaySound("Play_MisVO16");
+    }
     #endregion
 
     #region 
@@ -346,5 +366,7 @@ public class SoundManager : MonoBehaviour
             AkSoundEngine.PostEvent(s, b);
         }
     }
+
+   
     #endregion
 }

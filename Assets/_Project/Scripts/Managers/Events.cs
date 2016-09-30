@@ -389,4 +389,20 @@ public class NowItsHardEvent : GameEvent
 
     }
 }
+
+public class WatchOutEvent : GameEvent
+{
+    public WatchOutEvent()
+    {
+
+    }
+}
+
+public class YouHaveToAvoidEvent : GameEvent
+{
+    public YouHaveToAvoidEvent()
+    {
+
+    }
+}
 #endregion
