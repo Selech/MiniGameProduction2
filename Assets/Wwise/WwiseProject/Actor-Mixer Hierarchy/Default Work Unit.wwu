@@ -2259,6 +2259,36 @@
 				<Folder Name="CutScene" ID="{7C019476-FD98-4B47-97AF-3E6699FBA6BF}" ShortID="957731137">
 					<ChildrenList>
 						<Sound Name="IntroSc1" ID="{1D456057-622A-4339-8B2A-5056A9C40C28}" ShortID="652900194" Type="Voice">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<RTPCList>
+										<RTPC Name="" ID="{295A67D2-EBE4-4596-A0B5-3044C3CAFEE3}" ShortID="191699740">
+											<ReferenceList>
+												<Reference Name="ControlInput">
+													<ObjectRef Name="SkipScene" ID="{5D265A66-B65C-4FDE-BA6E-22457454AA3D}" WorkUnitID="{BF7C0DD8-E293-457A-844E-EF2FD3D1B823}"/>
+												</Reference>
+											</ReferenceList>
+											<Curve Name="" ID="{C125DA9B-F065-40BA-AA52-FCA291993B8E}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="65537"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>0</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>1</XPos>
+														<YPos>1500</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</RTPC>
+									</RTPCList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
@@ -2283,6 +2313,36 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="IntroSc2" ID="{A327D47C-68E6-42B6-AAF5-571B52BBD9CD}" ShortID="396843905" Type="Voice">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<RTPCList>
+										<RTPC Name="" ID="{F967E196-2CB6-4B6D-BDEE-6943D28352CC}" ShortID="474006068">
+											<ReferenceList>
+												<Reference Name="ControlInput">
+													<ObjectRef Name="SkipScene" ID="{5D265A66-B65C-4FDE-BA6E-22457454AA3D}" WorkUnitID="{BF7C0DD8-E293-457A-844E-EF2FD3D1B823}"/>
+												</Reference>
+											</ReferenceList>
+											<Curve Name="" ID="{792B643D-D6E6-4B02-8EDD-C219095C30EC}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="65537"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>0</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>1</XPos>
+														<YPos>1500</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</RTPC>
+									</RTPCList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
@@ -2307,6 +2367,36 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="IntroSc3" ID="{B8125C79-2920-4C9D-BDC7-5916B5C9E4FB}" ShortID="588133355" Type="Voice">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<RTPCList>
+										<RTPC Name="" ID="{0BF60D22-6BDA-4E73-8139-53AA4774C3C3}" ShortID="659581763">
+											<ReferenceList>
+												<Reference Name="ControlInput">
+													<ObjectRef Name="SkipScene" ID="{5D265A66-B65C-4FDE-BA6E-22457454AA3D}" WorkUnitID="{BF7C0DD8-E293-457A-844E-EF2FD3D1B823}"/>
+												</Reference>
+											</ReferenceList>
+											<Curve Name="" ID="{E5F58664-4CE9-4AEF-8E2B-08147D27A9C8}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="65537"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>0</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>1</XPos>
+														<YPos>1500</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</RTPC>
+									</RTPCList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
@@ -2392,6 +2482,25 @@
 						</Sound>
 					</ChildrenList>
 				</Folder>
+				<Sound Name="MenuMusic2_0" ID="{6AAC1069-D6CD-4760-80B9-A3029DBCD242}" ShortID="869572276" Type="SoundFX">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="MenuMusic2_0" ID="{D2927906-3A5A-4407-9F3F-308470258323}" ShortID="379469203">
+							<Language>SFX</Language>
+							<AudioFile>MenuMusic2.0.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="MenuMusic2_0" ID="{D2927906-3A5A-4407-9F3F-308470258323}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>
