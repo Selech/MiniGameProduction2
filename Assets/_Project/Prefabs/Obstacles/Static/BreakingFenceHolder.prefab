@@ -98,7 +98,7 @@ GameObject:
   - 114: {fileID: 114000011513027670}
   - 65: {fileID: 65000010732538304}
   m_Layer: 0
-  m_Name: FenceHolder
+  m_Name: BreakingFenceHolder
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -163,7 +163,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013771225180}
   m_LocalRotation: {x: -0, y: -0.60876167, z: -0, w: 0.79335326}
-  m_LocalPosition: {x: 14.144005, y: 0, z: 4.566883}
+  m_LocalPosition: {x: 21.03, y: 0, z: 2.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: -75.30801, z: 0}
   m_Children:
@@ -579,5 +579,5 @@ MonoBehaviour:
   - {fileID: 54000012465012254}
   - {fileID: 54000011522773602}
   - {fileID: 54000010285710112}
-  explosionForce: 10
-  explosionRadius: 10
+  explosionForce: 500
+  explosionRadius: 500
