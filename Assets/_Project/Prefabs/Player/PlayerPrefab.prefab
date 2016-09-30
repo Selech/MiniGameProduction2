@@ -160,7 +160,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012544586714}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.783, y: 0.81, z: 0}
+  m_LocalPosition: {x: -0.783, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -173,7 +173,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013051582380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.81, z: 1.15}
+  m_LocalPosition: {x: 0, y: 1, z: 1.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -186,7 +186,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011293856656}
   m_LocalRotation: {x: 0, y: 0.9396927, z: 0, w: 0.34202018}
-  m_LocalPosition: {x: 5.19, y: 0, z: 5.34}
+  m_LocalPosition: {x: 5.02, y: 0, z: 3.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 140, z: 0}
   m_Children:
@@ -204,7 +204,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012139238594}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.816, y: 0.81, z: 0}
+  m_LocalPosition: {x: 0.816, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -217,7 +217,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011218816102}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.81, z: -1.15}
+  m_LocalPosition: {x: 0, y: 1, z: -1.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -329,13 +329,14 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
-  mass: 0.1
+  mass: 0.06
   defaultSpeed: 0.12
-  accelerationRate: 0.1
-  maximumSpeed: 3
-  minimumSpeed: 0.05
-  rotateSpeed: 2
-  steepAcelerationDegree: 5
+  accelerationRate: 0.075
+  decelerationRate: 0.45
+  maximumSpeed: 0.172
+  minimumSpeed: 0.08
+  rotateSpeed: 1.45
+  steepAccelerationDegree: 5
   steepDecelerationDegree: 5
   currentForwardSpeed: 0
   currentVerticalSpeed: 0
@@ -346,6 +347,7 @@ MonoBehaviour:
   endBikeLimit: {fileID: 4000013803824284}
   leftBikeLimit: {fileID: 4000012216280090}
   rightBikeLimit: {fileID: 4000013742317096}
+  rayToGroundLength: 4
 --- !u!114 &114000011981348898
 MonoBehaviour:
   m_ObjectHideFlags: 1

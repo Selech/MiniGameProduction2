@@ -5,8 +5,7 @@
 			<ChildrenList>
 				<GameParameter Name="Strafing" ID="{3BCCF659-7113-44C6-B198-50568FB06A54}">
 					<PropertyList>
-						<Property Name="FilterTimeDown" Type="Real64" Value="1.5"/>
-						<Property Name="FilterTimeUp" Type="Real64" Value="0.3"/>
+						<Property Name="FilterTimeDown" Type="Real64" Value="0.4"/>
 						<Property Name="InitialValue" Type="Real64" Value="0"/>
 						<Property Name="Max" Type="Real64" Value="1"/>
 						<Property Name="RTPCRamping" Type="int16" Value="2"/>
@@ -16,10 +15,26 @@
 				</GameParameter>
 				<GameParameter Name="Speed" ID="{4DB5AB35-BB19-45CE-9064-C01558680CF3}">
 					<PropertyList>
-						<Property Name="InitialValue" Type="Real64" Value="30"/>
+						<Property Name="InitialValue" Type="Real64" Value="25"/>
 						<Property Name="RTPCRamping" Type="int16" Value="1"/>
 						<Property Name="SlewRateDown" Type="Real64" Value="30"/>
 						<Property Name="SlewRateUp" Type="Real64" Value="27"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="Progress" ID="{9D65D76C-30CD-485B-A925-9CB6799E35B7}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="0"/>
+						<Property Name="Max" Type="Real64" Value="1"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="PowerUp" ID="{E2103E37-1D51-47EC-BD69-4F7FE23003B4}">
+					<PropertyList>
+						<Property Name="FilterTimeDown" Type="Real64" Value="1.4"/>
+						<Property Name="FilterTimeUp" Type="Real64" Value="0.1"/>
+						<Property Name="InitialValue" Type="Real64" Value="0"/>
+						<Property Name="Max" Type="Real64" Value="1"/>
+						<Property Name="RTPCRamping" Type="int16" Value="2"/>
+						<Property Name="SlewRateDown" Type="Real64" Value="100"/>
 					</PropertyList>
 				</GameParameter>
 			</ChildrenList>
