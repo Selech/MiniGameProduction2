@@ -220,14 +220,21 @@ public class SnapSoundEvent : GameEvent
     }
 }
 
-public class WindBlowEvent : GameEvent
+public class StartWindEvent : GameEvent
 {
 	public Vector3 windPosition;
 	public float windForce;
 
-	public WindBlowEvent(Vector3 windPosition, float windForce)
+	public StartWindEvent(Vector3 windPosition, float windForce)
 	{
 		this.windPosition = windPosition;
 		this.windForce = windForce;
+	}
+}
+
+public class StopWindEvent : GameEvent
+{
+	public StopWindEvent()
+	{
 	}
 }

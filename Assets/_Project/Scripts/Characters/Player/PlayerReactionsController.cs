@@ -31,7 +31,8 @@ public class PlayerReactionsController : MonoBehaviour {
 		EventManager.Instance.StartListening <DamageCarriableEvent>(DamageObstacle);
 		EventManager.Instance.StartListening <ObstacleHitEvent>(PushBikeBack);
 		EventManager.Instance.StartListening <LoseCarriableEvent>(LostCarriable);
-		EventManager.Instance.StartListening <WindBlowEvent>(StartWind);
+		EventManager.Instance.StartListening <StartWindEvent>(StartWind);
+		EventManager.Instance.StartListening <StopWindEvent>(StopWind);
 
 	}
 
@@ -47,7 +48,8 @@ public class PlayerReactionsController : MonoBehaviour {
 		EventManager.Instance.StopListening <DamageCarriableEvent>(DamageObstacle);
 		EventManager.Instance.StopListening <ObstacleHitEvent>(PushBikeBack);
 		EventManager.Instance.StopListening <LoseCarriableEvent>(LostCarriable);
-		EventManager.Instance.StopListening <WindBlowEvent>(StartWind);
+		EventManager.Instance.StartListening <StartWindEvent>(StartWind);
+		EventManager.Instance.StartListening <StopWindEvent>(StopWind);
 
 	}
 
@@ -64,16 +66,13 @@ public class PlayerReactionsController : MonoBehaviour {
 		GameManager.Instance.ChangeScheme (e.isGyro);
 	}
 
-	void StartWind(WindBlowEvent e){
-		StartCoroutine (StartWindCoroutine (e.windPosition, e.windForce));
+	public void StartWind(StartWindEvent e){
+		movementController.wind = true;
+		movementController.windPosition = e.windPosition;
+		movementController.windForce = e.windForce;
 	}
 
-	IEnumerator StartWindCoroutine(Vector3 windPosition, float windForce){
-		movementController.wind = true;
-		movementController.windPosition = windPosition;
-		movementController.windForce = windForce;
-		yield return new WaitForSeconds (3);
-		Debug.Log ("wind done");
+	public void StopWind(StopWindEvent e){
 		movementController.wind = false;
 		movementController.windForce = 0;
 	}

@@ -65,10 +65,11 @@ public class PlayerMovementController : MonoBehaviour
 		StabilizeOrientation ();
         if (!GameManager.Instance.isPaused)
         {
+			MoveForward();
 			if (wind)
 				MoveAside(windPosition, windForce);
-			else
-				MoveForward();
+			
+
         }
     }
 
@@ -159,7 +160,7 @@ public class PlayerMovementController : MonoBehaviour
 	public void MoveAside (Vector3 windPosition, float windForce){
 		Debug.Log ("moving");
 		float move = windForce * Time.deltaTime;
-		Vector3 windDir = windPosition - transform.position;
-		transform.Translate(((updatedPlayerForward * currentForwardSpeed) + (windDir * windForce)) * Time.deltaTime);
+		Vector3 windDir = windPosition;
+		transform.Translate(((updatedPlayerForward * Mathf.Clamp (currentForwardSpeed, minimumSpeed, maximumSpeed)) + (windDir * windForce)) * Time.deltaTime);
 	}
 }
