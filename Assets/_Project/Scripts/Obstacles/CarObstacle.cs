@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class CarObstacle : MonoBehaviour {
-
+	public float shakeAmount = 5f;
+	public float shakeDuration = 1f;
 	public float pushPlayerBackForce = 1;
 	public float carPushForce = 10;
 	public ForceMode forceMode;
@@ -33,11 +34,13 @@ public class CarObstacle : MonoBehaviour {
 //		}
 //	}
 
-	void OnCollisionEnter(Collision c)
+	void OnTriggerEnter(Collider c)
 	{
-		Debug.Log ("hit car " + c.collider.name);
-		if(c.collider.CompareTag ("BikePlate"))
+		Debug.Log ("hit car " + c.GetComponent<Collider>().name);
+		if(c.GetComponent<Collider>().CompareTag ("BikePlate"))
 		{
+			EventManager.Instance.TriggerEvent (new FeedbackCameraShakeEvent (shakeAmount,shakeDuration));
+			
 			if (playerPickupController.isLastPickupBoost) {
 				PushCar (c.transform);
 			} else {

@@ -219,3 +219,16 @@ public class SnapSoundEvent : GameEvent
     {
     }
 }
+
+public class FeedbackCameraShakeEvent : GameEvent
+{
+	public float amount;
+	public float duration;
+
+	public FeedbackCameraShakeEvent (float amount,float duration)
+	{
+		this.amount = amount;
+		this.duration = duration;
+	}
+}
+
