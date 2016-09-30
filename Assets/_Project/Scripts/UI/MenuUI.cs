@@ -54,7 +54,8 @@ public class MenuUI : MonoBehaviour
         if (gyroButtonEnabled)
         {
             EventManager.Instance.TriggerEvent(new ChangeSchemeEvent(true));
-        } else
+        }
+        else
         {
             EventManager.Instance.TriggerEvent(new ChangeSchemeEvent(false));
         }
@@ -124,13 +125,14 @@ public class MenuUI : MonoBehaviour
         if (SoundManager.Instance.musicMuted)
         {
             muteButton.GetComponent<Image>().sprite = spriteMuted;
-        } else
+        }
+        else
         {
             muteButton.GetComponent<Image>().sprite = spriteUnmuted;
         }
-        
-            EventManager.Instance.TriggerEvent(new MenuActiveEvent(menuUI)); 
-        
+
+        EventManager.Instance.TriggerEvent(new MenuActiveEvent(menuUI));
+
     }
 
 

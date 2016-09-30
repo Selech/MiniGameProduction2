@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
 	public bool hasWon = false;
     [HideInInspector]
     public bool isGyro = false;
+    [HideInInspector]
+    public bool tutorialCompleted = false;
 
 	void Start ()
 	{
