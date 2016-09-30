@@ -716,6 +716,17 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
+				<Event Name="Play_MenuMusic" ID="{FE8B3DC3-27AF-4F36-A790-39473074A51D}">
+					<ChildrenList>
+						<Action Name="Play" ID="{91C72CAF-B5AE-4A01-B2A7-958226726513}" ShortID="957249001" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{1218944F-7809-480C-BE01-70D688E0970C}" Global="false">
+									<ObjectRef Name="MenuMusic2_0" ID="{6AAC1069-D6CD-4760-80B9-A3029DBCD242}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
