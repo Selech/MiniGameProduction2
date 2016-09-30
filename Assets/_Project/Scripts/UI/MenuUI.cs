@@ -33,7 +33,7 @@ public class MenuUI : MonoBehaviour
     }
     void OnDisable()
     {
-        EventManager.Instance.StartListening<RestartGameEvent>(KeepControlScheme);
+        EventManager.Instance.StopListening<RestartGameEvent>(KeepControlScheme);
     }
 
     public void ChangeMovementOptionToGyro()
@@ -121,6 +121,16 @@ public class MenuUI : MonoBehaviour
             swipeButton.GetComponent<Image>().sprite = spriteSwipeImgActive;
             gyroButton.GetComponent<Image>().sprite = spriteGyroImgDeactive;
         }
+        if (SoundManager.Instance.musicMuted)
+        {
+            muteButton.GetComponent<Image>().sprite = spriteMuted;
+        } else
+        {
+            muteButton.GetComponent<Image>().sprite = spriteUnmuted;
+        }
+        
+            EventManager.Instance.TriggerEvent(new MenuActiveEvent(menuUI)); 
+        
     }
 
 

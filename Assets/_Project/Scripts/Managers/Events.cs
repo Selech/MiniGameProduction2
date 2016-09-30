@@ -220,6 +220,16 @@ public class SnapSoundEvent : GameEvent
     }
 }
 
+public class MenuActiveEvent : GameEvent
+{
+    public bool menuActive = false;
+
+    public MenuActiveEvent(bool menuActive)
+    {
+        this.menuActive = menuActive;
+    }
+}
+
 public class FeedbackCameraShakeEvent : GameEvent
 {
 	public float amount;
@@ -231,4 +241,3 @@ public class FeedbackCameraShakeEvent : GameEvent
 		this.duration = duration;
 	}
 }
-
