@@ -219,3 +219,13 @@ public class SnapSoundEvent : GameEvent
     {
     }
 }
+
+public class MenuActiveEvent : GameEvent
+{
+    public bool menuActive = false;
+
+    public MenuActiveEvent(bool menuActive)
+    {
+        this.menuActive = menuActive;
+    }
+}
