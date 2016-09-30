@@ -152,7 +152,7 @@ public class SoundManager : MonoBehaviour
 
 
         }
-        PlaySound("Play_IntroVO1");
+        //PlaySound("Play_IntroVO1");
 
     }
 
