@@ -63,10 +63,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010349033102}
-  m_LocalRotation: {x: -0, y: -0, z: 0.2588186, w: 0.965926}
+  m_LocalRotation: {x: 0.05736996, y: 0.74569786, z: 0.6463046, w: 0.15143923}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 30.016}
+  m_LocalEulerAnglesHint: {x: -71.15401, y: 111.33101, z: 60.691}
   m_Children: []
   m_Father: {fileID: 4000010457311192}
   m_RootOrder: 0
@@ -93,12 +93,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52032b64c29b27f49b0c56ec64c400bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRandom: 1
+  isRandom: 0
   obstacleDirectionIndicator: {fileID: 4000010660804940}
   currentObstacle: {fileID: 11400000, guid: 06d1f4618f92a4343a26f44418f31a59, type: 2}
-  obstacleCollection_Statik: {fileID: 0}
+  obstacleCollection_Statik: {fileID: 11400000, guid: 3a2770bacdce5e5428c454d0555272b1,
+    type: 2}
   obstacleCollection_Throwables: {fileID: 11400000, guid: c6a0d6fa6e62ee34a910b271156816f7,
     type: 2}
-  obstacleCollection_Cars: {fileID: 0}
+  obstacleCollection_Cars: {fileID: 11400000, guid: b53fa0147d241fb4d946cb799c95c491,
+    type: 2}
   obstacleInfluenceHit: 10
   delay: 1
