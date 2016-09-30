@@ -5,12 +5,14 @@ using System.Collections;
 public class PlayerMovementController : MonoBehaviour
 {
 	public LayerMask groundLayer = -1;
-    [Tooltip("Player mass for gravity and aceleration calculus")]
+    [Tooltip("Player mass for gravity and acceleration calculus")]
     public float mass = 1.0f;
-    [Tooltip("Player speed when out of slopes. Slopes are defined by SteepAceleration/Deceleration angles.")]
+    [Tooltip("Player speed when out of slopes. Slopes are defined by SteepAcceleration/Deceleration angles.")]
     public float defaultSpeed = 0.12f;
     [Tooltip("Acceleration taken by the player in downhills and also the opposite of deceleration to climb.")]
     public float accelerationRate = 0.1f;
+    [Tooltip("Deceleration to climb ramps and uphills.")]
+    public float decelerationRate = 0.1f;
     [Tooltip("Maximum forward speed the player can reach in ANY situation.")]
     public float maximumSpeed = 1.5f;
     [Tooltip("Minimum forward speed the player can reach in ANY situation.")]
@@ -18,7 +20,7 @@ public class PlayerMovementController : MonoBehaviour
     [Tooltip("How fast the player turns")]
     public float rotateSpeed = 3.0F;
     [Tooltip("Down Angle from the horizon line in order to accelerate for a downhill.")]
-    public float steepAcelerationDegree = 5;
+    public float steepAccelerationDegree = 5;
     [Tooltip("Up Angle from the horizon line in order to decelerate for a downhill.")]
     public float steepDecelerationDegree = 5;
     [Tooltip("For debugging purposes, the current forward speed of the player.")]
@@ -62,8 +64,11 @@ public class PlayerMovementController : MonoBehaviour
     void Update ()
 	{
 		StabilizeOrientation ();
-		MoveForward ();
-	}
+        if (!GameManager.Instance.isPaused)
+        {
+            MoveForward();
+        }
+    }
 
 	void StabilizeOrientation(){
 
@@ -101,6 +106,7 @@ public class PlayerMovementController : MonoBehaviour
 	public void MoveForward ()
 	{
 
+
         //ACCELERATION CALCULUS
         float steepAngle = Vector3.Angle(updatedPlayerForward, Vector3.up);
 
@@ -111,7 +117,7 @@ public class PlayerMovementController : MonoBehaviour
             {
                 Debug.Log("I'm climbing!");
                 //add to the current velocity according while accelerating
-                currentForwardSpeed = currentForwardSpeed - (accelerationRate * Time.deltaTime);
+                currentForwardSpeed = currentForwardSpeed - (decelerationRate * Time.deltaTime);
             }
             else if (steepAngle > 95)
             {

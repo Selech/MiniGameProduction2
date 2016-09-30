@@ -98,7 +98,8 @@ public class PlayerReactionsController : MonoBehaviour {
 	}
 	
 	void StopMovement(WinChunkEnteredEvent e) {
-		EventManager.Instance.StopListening <MovementInput>(RetrieveInput);
+        movementController.enabled = false;
+        EventManager.Instance.StopListening <MovementInput>(RetrieveInput);
 	}
 
 	void EnableMovement(StartGame e){
