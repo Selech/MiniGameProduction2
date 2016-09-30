@@ -21,9 +21,9 @@ public class PlayerReactionsController : MonoBehaviour {
 
 	void OnEnable() {
 		EventManager.Instance.StartListening <MovementInput>(RetrieveInput);
-		EventManager.Instance.StartListening <ChangeSchemeEvent>(ChangeScheme);
 		EventManager.Instance.StartListening <BoostPickupHitEvent>(BoostSpeed);
 		EventManager.Instance.StartListening <GetBackCarriableHitEvent>(GetBackCarriable);
+		EventManager.Instance.StartListening <ChangeSchemeEvent>(ChangeScheme);
         EventManager.Instance.StartListening <StartGame>(EnableMovement);
 		EventManager.Instance.StartListening <WinChunkEnteredEvent> (StopMovement);
 		EventManager.Instance.StartListening <ChangeParentToPlayer>(ChangeParent);
@@ -31,7 +31,7 @@ public class PlayerReactionsController : MonoBehaviour {
 		EventManager.Instance.StartListening <DamageCarriableEvent>(DamageObstacle);
 		EventManager.Instance.StartListening <ObstacleHitEvent>(PushBikeBack);
 		EventManager.Instance.StartListening <LoseCarriableEvent>(LostCarriable);
-
+		EventManager.Instance.StartListening <WindBlowEvent>(StartWind);
 
 	}
 
@@ -47,7 +47,7 @@ public class PlayerReactionsController : MonoBehaviour {
 		EventManager.Instance.StopListening <DamageCarriableEvent>(DamageObstacle);
 		EventManager.Instance.StopListening <ObstacleHitEvent>(PushBikeBack);
 		EventManager.Instance.StopListening <LoseCarriableEvent>(LostCarriable);
-
+		EventManager.Instance.StopListening <WindBlowEvent>(StartWind);
 
 	}
 
@@ -64,7 +64,30 @@ public class PlayerReactionsController : MonoBehaviour {
 		GameManager.Instance.ChangeScheme (e.isGyro);
 	}
 
-	void BoostSpeed(BoostPickupHitEvent e){
+	void StartWind(WindBlowEvent e){
+		StartCoroutine (StartWindCoroutine (e.windPosition, e.windForce));
+	}
+
+	IEnumerator StartWindCoroutine(Vector3 windPosition, float windForce){
+		movementController.wind = true;
+		movementController.windPosition = windPosition;
+		movementController.windForce = windForce;
+		yield return new WaitForSeconds (3);
+		Debug.Log ("wind done");
+		movementController.wind = false;
+		movementController.windForce = 0;
+	}
+
+	public void BoostSpeed(BoostPickupHitEvent e)
+	{
+		StartCoroutine (ChangeSpeed(e.boost, e.time));
+	}
+
+	IEnumerator ChangeSpeed(float speed, float time){
+		movementController.defaultSpeed += speed;
+		yield return new WaitForSeconds (time);
+		movementController.defaultSpeed -= speed;
+		GetComponent<PlayerPickupController> ().isLastPickupBoost = false;
 	}
 
 	void GetBackCarriable(GetBackCarriableHitEvent e){

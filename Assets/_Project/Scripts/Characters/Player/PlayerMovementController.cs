@@ -37,6 +37,9 @@ public class PlayerMovementController : MonoBehaviour
 	public Transform endBikeLimit;
 	public Transform leftBikeLimit;
 	public Transform rightBikeLimit;
+	public bool wind = false;
+	public Vector3 windPosition;
+	public float windForce = 0;
 	Vector3 frontGroundpoint;
 	Vector3 backGroundPoint;
 	Vector3 leftGroundPoint;
@@ -50,10 +53,6 @@ public class PlayerMovementController : MonoBehaviour
 
     CharacterController charController;
     //linear accelerated motion variables
-    
-   
-    
-    
 
     void OnEnable()
     {
@@ -66,7 +65,10 @@ public class PlayerMovementController : MonoBehaviour
 		StabilizeOrientation ();
         if (!GameManager.Instance.isPaused)
         {
-            MoveForward();
+			if (wind)
+				MoveAside(windPosition, windForce);
+			else
+				MoveForward();
         }
     }
 
@@ -105,8 +107,6 @@ public class PlayerMovementController : MonoBehaviour
 
 	public void MoveForward ()
 	{
-
-
         //ACCELERATION CALCULUS
         float steepAngle = Vector3.Angle(updatedPlayerForward, Vector3.up);
 
@@ -133,9 +133,6 @@ public class PlayerMovementController : MonoBehaviour
                 else
                     currentForwardSpeed = currentForwardSpeed + (accelerationRate * Time.deltaTime);
             }
-                
-
-
             currentVerticalSpeed = 0F;
             
             //ensure the velocity never goes out of the initial/final boundaries
@@ -145,15 +142,11 @@ public class PlayerMovementController : MonoBehaviour
         { // forward speed remains the same and gravity will drag the player down
             currentVerticalSpeed = currentVerticalSpeed + mass * 9.81f * Time.deltaTime;
 
-        }
-            
-            //ACCELERATION CALCULUS ENDS
+        } 
+        //ACCELERATION CALCULUS ENDS
 
         //if (charController.enabled == true)  Debug.Log("Grounded!!");
         charController.Move ((updatedPlayerForward * currentForwardSpeed + Vector3.down * currentVerticalSpeed) );
-
-
-
 	}
 		
 	public void Turn (float horizontalInputValue)
@@ -161,9 +154,12 @@ public class PlayerMovementController : MonoBehaviour
 		if (!GameManager.Instance.isPaused) {
 			transform.Rotate (0, horizontalInputValue * rotateSpeed, 0);
 		}
-
-
-
 	}
 
+	public void MoveAside (Vector3 windPosition, float windForce){
+		Debug.Log ("moving");
+		float move = windForce * Time.deltaTime;
+		Vector3 windDir = windPosition - transform.position;
+		transform.Translate(((updatedPlayerForward * currentForwardSpeed) + (windDir * windForce)) * Time.deltaTime);
+	}
 }
