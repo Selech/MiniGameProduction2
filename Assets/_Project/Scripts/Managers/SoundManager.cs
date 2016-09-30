@@ -137,14 +137,30 @@ public class SoundManager : MonoBehaviour
         isDanish = e.isDanish;
         if (isDanish)
         {
+          
+
             AkSoundEngine.SetCurrentLanguage("Danish");
+            AkBankManager.LoadBank("nysb", false, false);
+
+
         }
         else
         {
+            
             AkSoundEngine.SetCurrentLanguage("English(US)");
+            AkBankManager.LoadBank("nysb", false, false);
+
+
         }
         PlaySound("Play_IntroVO1");
 
+    }
+
+    IEnumerator Test()
+    {
+        print(Time.time);
+        yield return new WaitForSeconds(1);
+        print(Time.time);
     }
 
     private void WonGame(WinChunkEnteredEvent e)

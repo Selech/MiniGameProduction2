@@ -4,7 +4,7 @@ using System.Collections;
 public class TutorialColliderSounds : MonoBehaviour
 {
 
-
+    [Tooltip("Number corresponds to case which triggers an event")]
     public int TriggerID = 1;
 
     // Use this for initialization
