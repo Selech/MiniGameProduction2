@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class IntroCutsceneController : MonoBehaviour {
 
     [Header("Main settings")]
-    public float MotionSpeed = 0.1f;
     private int sceneIndex;
     public Animation cameraAnimation;
 
@@ -29,11 +29,22 @@ public class IntroCutsceneController : MonoBehaviour {
     public Animation title;
     public Animation bike;
 
+    void OnEnable()
+    {
+        EventManager.Instance.StartListening<LanguageSelect>(PlayCutscene);
+    }
+
+    void OnDisable()
+    {
+        EventManager.Instance.StopListening<LanguageSelect>(PlayCutscene);
+    }
+
     // Use this for initialization
-    void Start () {
-        Time.timeScale = MotionSpeed;
+    public void PlayCutscene(LanguageSelect e) {
         sceneIndex = 1;
         PlayScene1();
+
+        AkSoundEngine.PostEvent("Play_MusicCutScene", this.gameObject);
     }
 
     void Update()
@@ -78,6 +89,8 @@ public class IntroCutsceneController : MonoBehaviour {
 
     void PlayScene1()
     {
+        AkSoundEngine.PostEvent("Play_IntroSc1",this.gameObject);
+
         scene1.SetActive(true);
         scene2.SetActive(false);
         scene3.SetActive(false);
@@ -91,6 +104,8 @@ public class IntroCutsceneController : MonoBehaviour {
 
     void PlayScene2()
     {
+        AkSoundEngine.PostEvent("Play_IntroSc2", this.gameObject);
+
         scene1.SetActive(false);
         scene2.SetActive(true);
         scene3.SetActive(false);
@@ -103,6 +118,8 @@ public class IntroCutsceneController : MonoBehaviour {
 
     void PlayScene3()
     {
+        AkSoundEngine.PostEvent("Play_IntroSc3", this.gameObject);
+
         scene1.SetActive(false);
         scene2.SetActive(false);
         scene3.SetActive(true);
@@ -116,6 +133,8 @@ public class IntroCutsceneController : MonoBehaviour {
 
     void PlayScene4()
     {
+        AkSoundEngine.PostEvent("Play_IntroSc4", this.gameObject);
+
         scene1.SetActive(false);
         scene2.SetActive(false);
         scene3.SetActive(false);
@@ -127,11 +146,10 @@ public class IntroCutsceneController : MonoBehaviour {
 
     void StartGame()
     {
-        scene1.SetActive(false);
-        scene2.SetActive(false);
-        scene3.SetActive(false);
-        scene4.SetActive(false);
-
-        Debug.Log("Start game");
+        if (SceneManager.GetActiveScene().buildIndex + 1 != SceneManager.sceneCountInBuildSettings)
+        {
+            AkSoundEngine.PostEvent("Stop_MusicCutScene", this.gameObject);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }
