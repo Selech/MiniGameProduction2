@@ -25,6 +25,7 @@ GameObject:
   - 114: {fileID: 114000012927689182}
   - 114: {fileID: 114000013083891626}
   - 114: {fileID: 114000013657784008}
+  - 114: {fileID: 114000010370273592}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,6 +46,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &114000010370273592
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010544614884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c21ada3c0b84114f9335d363f9e67cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: 
+  useOtherObject: 0
+  valueGuid: 71edd2e61642664b9e90f745f00c1158
+  bankName: nysb
+  loadAsynchronous: 0
+  decodeBank: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 958ca0ea
 --- !u!114 &114000011193669436
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -62,6 +82,8 @@ MonoBehaviour:
   isPaused: 0
   hasGameStarted: 0
   hasWon: 0
+  isGyro: 0
+  tutorialCompleted: 0
 --- !u!114 &114000011959656728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -122,3 +144,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicMuted: 0
+  isDanish: 0
+  isStrafing: 0
+  isTutorial: 1
