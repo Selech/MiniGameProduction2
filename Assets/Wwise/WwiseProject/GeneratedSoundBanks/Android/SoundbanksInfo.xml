@@ -22,6 +22,10 @@
 				<Event Id="1553219250" Name="Play_Collision" ObjectPath="\Events\Default Work Unit\Collisions\Play_Collision"/>
 				<Event Id="2616216205" Name="Play_ColRoadBlock" ObjectPath="\Events\Default Work Unit\Collisions\Play_ColRoadBlock"/>
 				<Event Id="1131747068" Name="Play_ColTrashCan" ObjectPath="\Events\Default Work Unit\Collisions\Play_ColTrashCan"/>
+				<Event Id="3985233564" Name="Play_EvilCat" ObjectPath="\Events\Default Work Unit\IntroCutScene\Play_EvilCat"/>
+				<Event Id="2999886687" Name="Play_IntroSc1" ObjectPath="\Events\Default Work Unit\IntroCutScene\Play_IntroSc1"/>
+				<Event Id="2999886684" Name="Play_IntroSc2" ObjectPath="\Events\Default Work Unit\IntroCutScene\Play_IntroSc2"/>
+				<Event Id="2999886685" Name="Play_IntroSc3" ObjectPath="\Events\Default Work Unit\IntroCutScene\Play_IntroSc3"/>
 				<Event Id="2933320662" Name="Play_IntroVO1" ObjectPath="\Events\Default Work Unit\VO\Play_IntroVO1"/>
 				<Event Id="2933320661" Name="Play_IntroVO2" ObjectPath="\Events\Default Work Unit\VO\Play_IntroVO2"/>
 				<Event Id="2933320660" Name="Play_IntroVO3" ObjectPath="\Events\Default Work Unit\VO\Play_IntroVO3"/>
@@ -41,6 +45,7 @@
 				<Event Id="3715273544" Name="Play_MisVO6" ObjectPath="\Events\Default Work Unit\VO\Play_MisVO6"/>
 				<Event Id="3715273545" Name="Play_MisVO7" ObjectPath="\Events\Default Work Unit\VO\Play_MisVO7"/>
 				<Event Id="3715273542" Name="Play_MisVO8" ObjectPath="\Events\Default Work Unit\VO\Play_MisVO8"/>
+				<Event Id="2619588003" Name="Play_MusicCutScene" ObjectPath="\Events\Default Work Unit\IntroCutScene\Play_MusicCutScene"/>
 				<Event Id="2280156869" Name="Play_MusicDrive" ObjectPath="\Events\Default Work Unit\Play_MusicDrive"/>
 				<Event Id="2232773569" Name="Play_MusVO10" ObjectPath="\Events\Default Work Unit\VO\Play_MusVO10"/>
 				<Event Id="2232773568" Name="Play_MusVO11" ObjectPath="\Events\Default Work Unit\VO\Play_MusVO11"/>
@@ -63,9 +68,12 @@
 				<Event Id="4034944738" Name="Play_MusVO8" ObjectPath="\Events\Default Work Unit\VO\Play_MusVO8"/>
 				<Event Id="4034944739" Name="Play_MusVO9" ObjectPath="\Events\Default Work Unit\VO\Play_MusVO9"/>
 				<Event Id="2599818666" Name="Play_Pedal" ObjectPath="\Events\Default Work Unit\Play_Pedal"/>
+				<Event Id="2164775684" Name="Play_SpeedUp" ObjectPath="\Events\Default Work Unit\Play_SpeedUp"/>
 				<Event Id="1089845932" Name="Play_Swipe" ObjectPath="\Events\Default Work Unit\Play_Swipe"/>
+				<Event Id="2143341600" Name="Play_TextCue" ObjectPath="\Events\Default Work Unit\IntroCutScene\Play_TextCue"/>
 				<Event Id="3859473420" Name="Play_UISnap" ObjectPath="\Events\Default Work Unit\Play_UISnap"/>
 				<Event Id="4259013031" Name="Play_UITap" ObjectPath="\Events\Default Work Unit\Play_UITap"/>
+				<Event Id="972970413" Name="Stop_MusicCutScene" ObjectPath="\Events\Default Work Unit\IntroCutScene\Stop_MusicCutScene" MaxAttenuation="0.000000"/>
 				<Event Id="2558034155" Name="Stop_MusicDrive" ObjectPath="\Events\Default Work Unit\Stop_MusicDrive" MaxAttenuation="0.000000"/>
 				<Event Id="1731467220" Name="Stop_Pedal" ObjectPath="\Events\Default Work Unit\Stop_Pedal" MaxAttenuation="0.000000"/>
 			</IncludedEvents>
@@ -86,6 +94,10 @@
 					<ShortName>MisVO12.wav</ShortName>
 					<Path>Voices/Danish/MisVO12_2A77C9DB.wem</Path>
 				</File>
+				<File Id="23083929" Language="SFX">
+					<ShortName>Banjo.wav</ShortName>
+					<Path>SFX/Banjo_CE760089.wem</Path>
+				</File>
 				<File Id="36833778" Language="Danish">
 					<ShortName>MusVO9.wav</ShortName>
 					<Path>Voices/Danish/MusVO9_2A77C9DB.wem</Path>
@@ -97,6 +109,10 @@
 				<File Id="78431307" Language="Danish">
 					<ShortName>MisVO19.wav</ShortName>
 					<Path>Voices/Danish/MisVO19_2A77C9DB.wem</Path>
+				</File>
+				<File Id="89202516" Language="SFX">
+					<ShortName>EvilCat.wav</ShortName>
+					<Path>SFX/EvilCat_2A77C9DB.wem</Path>
 				</File>
 				<File Id="94943697" Language="Danish">
 					<ShortName>MusVO20.wav</ShortName>
@@ -158,9 +174,17 @@
 					<ShortName>UI_Snap.wav</ShortName>
 					<Path>SFX/UI_Snap_2A77C9DB.wem</Path>
 				</File>
+				<File Id="350605565" Language="Danish">
+					<ShortName>IntroSc3.wav</ShortName>
+					<Path>Voices/Danish/IntroSc3_2A77C9DB.wem</Path>
+				</File>
 				<File Id="361917667" Language="SFX">
 					<ShortName>Pedal6.wav</ShortName>
 					<Path>SFX/Pedal6_2A77C9DB.wem</Path>
+				</File>
+				<File Id="363901665" Language="SFX">
+					<ShortName>BaseLayer.wav</ShortName>
+					<Path>SFX/BaseLayer_CE760089.wem</Path>
 				</File>
 				<File Id="373638915" Language="Danish">
 					<ShortName>MusVO5.wav</ShortName>
@@ -170,6 +194,10 @@
 					<ShortName>MisVO4.wav</ShortName>
 					<Path>Voices/Danish/MisVO4_2A77C9DB.wem</Path>
 				</File>
+				<File Id="387470969" Language="SFX">
+					<ShortName>Melody.wav</ShortName>
+					<Path>SFX/Melody_CE760089.wem</Path>
+				</File>
 				<File Id="416851705" Language="Danish">
 					<ShortName>MisVO7.wav</ShortName>
 					<Path>Voices/Danish/MisVO7_2A77C9DB.wem</Path>
@@ -177,6 +205,18 @@
 				<File Id="427945897" Language="Danish">
 					<ShortName>MusVO18.wav</ShortName>
 					<Path>Voices/Danish/MusVO18_2A77C9DB.wem</Path>
+				</File>
+				<File Id="437092154" Language="Danish">
+					<ShortName>IntroSc2.wav</ShortName>
+					<Path>Voices/Danish/IntroSc2_2A77C9DB.wem</Path>
+				</File>
+				<File Id="442451733" Language="SFX">
+					<ShortName>WinMusic.wav</ShortName>
+					<Path>SFX/WinMusic_CE760089.wem</Path>
+				</File>
+				<File Id="452193525" Language="SFX">
+					<ShortName>Drums.wav</ShortName>
+					<Path>SFX/Drums_CE760089.wem</Path>
 				</File>
 				<File Id="491471594" Language="SFX">
 					<ShortName>ColContainer.wav</ShortName>
@@ -189,10 +229,6 @@
 				<File Id="589427419" Language="SFX">
 					<ShortName>ColTrashCan.wav</ShortName>
 					<Path>SFX/ColTrashCan_2A77C9DB.wem</Path>
-				</File>
-				<File Id="590120394" Language="SFX">
-					<ShortName>Music1.wav</ShortName>
-					<Path>SFX/Music1_5B49DA1A.wem</Path>
 				</File>
 				<File Id="592831378" Language="Danish">
 					<ShortName>MisVO15.wav</ShortName>
@@ -214,6 +250,10 @@
 					<ShortName>LoseItem1.wav</ShortName>
 					<Path>SFX/LoseItem1_2A77C9DB.wem</Path>
 				</File>
+				<File Id="680817381" Language="SFX">
+					<ShortName>SpeedUp.wav</ShortName>
+					<Path>SFX/SpeedUp_2A77C9DB.wem</Path>
+				</File>
 				<File Id="689472659" Language="Danish">
 					<ShortName>MusVO21.wav</ShortName>
 					<Path>Voices/Danish/MusVO21_2A77C9DB.wem</Path>
@@ -229,6 +269,10 @@
 				<File Id="750985689" Language="SFX">
 					<ShortName>Pedal3_Strafe.wav</ShortName>
 					<Path>SFX/Pedal3_Strafe_2A77C9DB.wem</Path>
+				</File>
+				<File Id="752859091" Language="SFX">
+					<ShortName>Horns.wav</ShortName>
+					<Path>SFX/Horns_CE760089.wem</Path>
 				</File>
 				<File Id="766947050" Language="Danish">
 					<ShortName>MisVO8.wav</ShortName>
@@ -258,6 +302,10 @@
 					<ShortName>MisVO14.wav</ShortName>
 					<Path>Voices/Danish/MisVO14_2A77C9DB.wem</Path>
 				</File>
+				<File Id="828435634" Language="SFX">
+					<ShortName>TextCue.wav</ShortName>
+					<Path>SFX/TextCue_2A77C9DB.wem</Path>
+				</File>
 				<File Id="834418003" Language="SFX">
 					<ShortName>Pedal5_Strafe.wav</ShortName>
 					<Path>SFX/Pedal5_Strafe_2A77C9DB.wem</Path>
@@ -278,6 +326,10 @@
 					<ShortName>MusVO13.wav</ShortName>
 					<Path>Voices/Danish/MusVO13_2A77C9DB.wem</Path>
 				</File>
+				<File Id="917023365" Language="SFX">
+					<ShortName>Sax.wav</ShortName>
+					<Path>SFX/Sax_CE760089.wem</Path>
+				</File>
 				<File Id="920086610" Language="Danish">
 					<ShortName>MisVO11.wav</ShortName>
 					<Path>Voices/Danish/MisVO11_2A77C9DB.wem</Path>
@@ -289,6 +341,14 @@
 				<File Id="935445354" Language="Danish">
 					<ShortName>MisVO13.wav</ShortName>
 					<Path>Voices/Danish/MisVO13_2A77C9DB.wem</Path>
+				</File>
+				<File Id="946231287" Language="Danish">
+					<ShortName>IntroSc1.wav</ShortName>
+					<Path>Voices/Danish/IntroSc1_2A77C9DB.wem</Path>
+				</File>
+				<File Id="962258917" Language="SFX">
+					<ShortName>Music.wav</ShortName>
+					<Path>SFX/Music_2A77C9DB.wem</Path>
 				</File>
 				<File Id="968795671" Language="Danish">
 					<ShortName>MusVO19.wav</ShortName>
@@ -331,6 +391,10 @@
 				<Event Id="1553219250" Name="Play_Collision" ObjectPath="\Events\Default Work Unit\Collisions\Play_Collision"/>
 				<Event Id="2616216205" Name="Play_ColRoadBlock" ObjectPath="\Events\Default Work Unit\Collisions\Play_ColRoadBlock"/>
 				<Event Id="1131747068" Name="Play_ColTrashCan" ObjectPath="\Events\Default Work Unit\Collisions\Play_ColTrashCan"/>
+				<Event Id="3985233564" Name="Play_EvilCat" ObjectPath="\Events\Default Work Unit\IntroCutScene\Play_EvilCat"/>
+				<Event Id="2999886687" Name="Play_IntroSc1" ObjectPath="\Events\Default Work Unit\IntroCutScene\Play_IntroSc1"/>
+				<Event Id="2999886684" Name="Play_IntroSc2" ObjectPath="\Events\Default Work Unit\IntroCutScene\Play_IntroSc2"/>
+				<Event Id="2999886685" Name="Play_IntroSc3" ObjectPath="\Events\Default Work Unit\IntroCutScene\Play_IntroSc3"/>
 				<Event Id="2933320662" Name="Play_IntroVO1" ObjectPath="\Events\Default Work Unit\VO\Play_IntroVO1"/>
 				<Event Id="2933320661" Name="Play_IntroVO2" ObjectPath="\Events\Default Work Unit\VO\Play_IntroVO2"/>
 				<Event Id="2933320660" Name="Play_IntroVO3" ObjectPath="\Events\Default Work Unit\VO\Play_IntroVO3"/>
@@ -350,6 +414,7 @@
 				<Event Id="3715273544" Name="Play_MisVO6" ObjectPath="\Events\Default Work Unit\VO\Play_MisVO6"/>
 				<Event Id="3715273545" Name="Play_MisVO7" ObjectPath="\Events\Default Work Unit\VO\Play_MisVO7"/>
 				<Event Id="3715273542" Name="Play_MisVO8" ObjectPath="\Events\Default Work Unit\VO\Play_MisVO8"/>
+				<Event Id="2619588003" Name="Play_MusicCutScene" ObjectPath="\Events\Default Work Unit\IntroCutScene\Play_MusicCutScene"/>
 				<Event Id="2280156869" Name="Play_MusicDrive" ObjectPath="\Events\Default Work Unit\Play_MusicDrive"/>
 				<Event Id="2232773569" Name="Play_MusVO10" ObjectPath="\Events\Default Work Unit\VO\Play_MusVO10"/>
 				<Event Id="2232773568" Name="Play_MusVO11" ObjectPath="\Events\Default Work Unit\VO\Play_MusVO11"/>
@@ -372,9 +437,12 @@
 				<Event Id="4034944738" Name="Play_MusVO8" ObjectPath="\Events\Default Work Unit\VO\Play_MusVO8"/>
 				<Event Id="4034944739" Name="Play_MusVO9" ObjectPath="\Events\Default Work Unit\VO\Play_MusVO9"/>
 				<Event Id="2599818666" Name="Play_Pedal" ObjectPath="\Events\Default Work Unit\Play_Pedal"/>
+				<Event Id="2164775684" Name="Play_SpeedUp" ObjectPath="\Events\Default Work Unit\Play_SpeedUp"/>
 				<Event Id="1089845932" Name="Play_Swipe" ObjectPath="\Events\Default Work Unit\Play_Swipe"/>
+				<Event Id="2143341600" Name="Play_TextCue" ObjectPath="\Events\Default Work Unit\IntroCutScene\Play_TextCue"/>
 				<Event Id="3859473420" Name="Play_UISnap" ObjectPath="\Events\Default Work Unit\Play_UISnap"/>
 				<Event Id="4259013031" Name="Play_UITap" ObjectPath="\Events\Default Work Unit\Play_UITap"/>
+				<Event Id="972970413" Name="Stop_MusicCutScene" ObjectPath="\Events\Default Work Unit\IntroCutScene\Stop_MusicCutScene" MaxAttenuation="0.000000"/>
 				<Event Id="2558034155" Name="Stop_MusicDrive" ObjectPath="\Events\Default Work Unit\Stop_MusicDrive" MaxAttenuation="0.000000"/>
 				<Event Id="1731467220" Name="Stop_Pedal" ObjectPath="\Events\Default Work Unit\Stop_Pedal" MaxAttenuation="0.000000"/>
 			</IncludedEvents>
@@ -387,13 +455,25 @@
 					<ShortName>UI_Click.wav</ShortName>
 					<Path>SFX/UI_Click_2A77C9DB.wem</Path>
 				</File>
+				<File Id="23083929" Language="SFX">
+					<ShortName>Banjo.wav</ShortName>
+					<Path>SFX/Banjo_CE760089.wem</Path>
+				</File>
 				<File Id="38680491" Language="SFX">
 					<ShortName>Swipe.wav</ShortName>
 					<Path>SFX/Swipe_2A77C9DB.wem</Path>
 				</File>
+				<File Id="74548040" Language="English(US)">
+					<ShortName>IntroSc1.wav</ShortName>
+					<Path>Voices/English(US)/IntroSc1_2A77C9DB.wem</Path>
+				</File>
 				<File Id="76267963" Language="English(US)">
 					<ShortName>MisVO16.wav</ShortName>
 					<Path>Voices/English(US)/MisVO16_2A77C9DB.wem</Path>
+				</File>
+				<File Id="89202516" Language="SFX">
+					<ShortName>EvilCat.wav</ShortName>
+					<Path>SFX/EvilCat_2A77C9DB.wem</Path>
 				</File>
 				<File Id="126972504" Language="English(US)">
 					<ShortName>MusVO18.wav</ShortName>
@@ -447,9 +527,17 @@
 					<ShortName>Pedal6.wav</ShortName>
 					<Path>SFX/Pedal6_2A77C9DB.wem</Path>
 				</File>
+				<File Id="363901665" Language="SFX">
+					<ShortName>BaseLayer.wav</ShortName>
+					<Path>SFX/BaseLayer_CE760089.wem</Path>
+				</File>
 				<File Id="385132719" Language="English(US)">
 					<ShortName>MusVO9.wav</ShortName>
 					<Path>Voices/English(US)/MusVO9_2A77C9DB.wem</Path>
+				</File>
+				<File Id="387470969" Language="SFX">
+					<ShortName>Melody.wav</ShortName>
+					<Path>SFX/Melody_CE760089.wem</Path>
 				</File>
 				<File Id="425832494" Language="English(US)">
 					<ShortName>MusVO11.wav</ShortName>
@@ -458,6 +546,14 @@
 				<File Id="439434083" Language="English(US)">
 					<ShortName>MisVO20.wav</ShortName>
 					<Path>Voices/English(US)/MisVO20_2A77C9DB.wem</Path>
+				</File>
+				<File Id="442451733" Language="SFX">
+					<ShortName>WinMusic.wav</ShortName>
+					<Path>SFX/WinMusic_CE760089.wem</Path>
+				</File>
+				<File Id="452193525" Language="SFX">
+					<ShortName>Drums.wav</ShortName>
+					<Path>SFX/Drums_CE760089.wem</Path>
 				</File>
 				<File Id="469387131" Language="English(US)">
 					<ShortName>MusVO5.wav</ShortName>
@@ -491,10 +587,6 @@
 					<ShortName>ColTrashCan.wav</ShortName>
 					<Path>SFX/ColTrashCan_2A77C9DB.wem</Path>
 				</File>
-				<File Id="590120394" Language="SFX">
-					<ShortName>Music1.wav</ShortName>
-					<Path>SFX/Music1_5B49DA1A.wem</Path>
-				</File>
 				<File Id="633965821" Language="SFX">
 					<ShortName>LoseItem1.wav</ShortName>
 					<Path>SFX/LoseItem1_2A77C9DB.wem</Path>
@@ -503,6 +595,10 @@
 					<ShortName>MisVO11.wav</ShortName>
 					<Path>Voices/English(US)/MisVO11_2A77C9DB.wem</Path>
 				</File>
+				<File Id="680817381" Language="SFX">
+					<ShortName>SpeedUp.wav</ShortName>
+					<Path>SFX/SpeedUp_2A77C9DB.wem</Path>
+				</File>
 				<File Id="729200283" Language="SFX">
 					<ShortName>Pedal4.wav</ShortName>
 					<Path>SFX/Pedal4_2A77C9DB.wem</Path>
@@ -510,6 +606,10 @@
 				<File Id="750985689" Language="SFX">
 					<ShortName>Pedal3_Strafe.wav</ShortName>
 					<Path>SFX/Pedal3_Strafe_2A77C9DB.wem</Path>
+				</File>
+				<File Id="752859091" Language="SFX">
+					<ShortName>Horns.wav</ShortName>
+					<Path>SFX/Horns_CE760089.wem</Path>
 				</File>
 				<File Id="766511735" Language="English(US)">
 					<ShortName>MusVO16.wav</ShortName>
@@ -543,6 +643,10 @@
 					<ShortName>Pedal5.wav</ShortName>
 					<Path>SFX/Pedal5_2A77C9DB.wem</Path>
 				</File>
+				<File Id="828435634" Language="SFX">
+					<ShortName>TextCue.wav</ShortName>
+					<Path>SFX/TextCue_2A77C9DB.wem</Path>
+				</File>
 				<File Id="834418003" Language="SFX">
 					<ShortName>Pedal5_Strafe.wav</ShortName>
 					<Path>SFX/Pedal5_Strafe_2A77C9DB.wem</Path>
@@ -563,6 +667,10 @@
 					<ShortName>Pedal1_Strafe.wav</ShortName>
 					<Path>SFX/Pedal1_Strafe_2A77C9DB.wem</Path>
 				</File>
+				<File Id="896624165" Language="English(US)">
+					<ShortName>IntroSc3.wav</ShortName>
+					<Path>Voices/English(US)/IntroSc3_2A77C9DB.wem</Path>
+				</File>
 				<File Id="898009374" Language="English(US)">
 					<ShortName>MusVO10.wav</ShortName>
 					<Path>Voices/English(US)/MusVO10_2A77C9DB.wem</Path>
@@ -575,6 +683,14 @@
 					<ShortName>MisVO6.wav</ShortName>
 					<Path>Voices/English(US)/MisVO6_2A77C9DB.wem</Path>
 				</File>
+				<File Id="917023365" Language="SFX">
+					<ShortName>Sax.wav</ShortName>
+					<Path>SFX/Sax_CE760089.wem</Path>
+				</File>
+				<File Id="924267541" Language="English(US)">
+					<ShortName>IntroSc2.wav</ShortName>
+					<Path>Voices/English(US)/IntroSc2_2A77C9DB.wem</Path>
+				</File>
 				<File Id="928755797" Language="SFX">
 					<ShortName>ColCar.wav</ShortName>
 					<Path>SFX/ColCar_2A77C9DB.wem</Path>
@@ -586,6 +702,10 @@
 				<File Id="946468520" Language="English(US)">
 					<ShortName>MisVO12.wav</ShortName>
 					<Path>Voices/English(US)/MisVO12_2A77C9DB.wem</Path>
+				</File>
+				<File Id="962258917" Language="SFX">
+					<ShortName>Music.wav</ShortName>
+					<Path>SFX/Music_2A77C9DB.wem</Path>
 				</File>
 				<File Id="967637945" Language="English(US)">
 					<ShortName>MusVO20.wav</ShortName>
