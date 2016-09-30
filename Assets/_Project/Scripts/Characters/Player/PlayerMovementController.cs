@@ -57,7 +57,6 @@ public class PlayerMovementController : MonoBehaviour
     void OnEnable()
     {
         charController = GetComponent<CharacterController>();
-        
     }
 
     void Update ()
@@ -68,8 +67,6 @@ public class PlayerMovementController : MonoBehaviour
 			MoveForward();
 			if (wind)
 				MoveAside(windPosition, windForce);
-			
-
         }
     }
 
@@ -110,7 +107,6 @@ public class PlayerMovementController : MonoBehaviour
 	{
         //ACCELERATION CALCULUS
         float steepAngle = Vector3.Angle(updatedPlayerForward, Vector3.up);
-
 
         if (charController.isGrounded)
         {
@@ -159,7 +155,6 @@ public class PlayerMovementController : MonoBehaviour
 
 	public void MoveAside (Vector3 windPosition, float windForce){
 		Debug.Log ("moving");
-		float move = windForce * Time.deltaTime;
 		Vector3 windDir = windPosition;
 		transform.Translate(((updatedPlayerForward * Mathf.Clamp (currentForwardSpeed, minimumSpeed, maximumSpeed)) + (windDir * windForce)) * Time.deltaTime);
 	}
