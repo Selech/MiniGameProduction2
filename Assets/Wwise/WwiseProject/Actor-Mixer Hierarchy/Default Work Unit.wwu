@@ -2260,15 +2260,15 @@
 					<ChildrenList>
 						<Sound Name="IntroSc1" ID="{1D456057-622A-4339-8B2A-5056A9C40C28}" ShortID="652900194" Type="Voice">
 							<PropertyList>
-								<Property Name="Pitch" Type="int32">
+								<Property Name="Lowpass" Type="int16">
 									<RTPCList>
-										<RTPC Name="" ID="{295A67D2-EBE4-4596-A0B5-3044C3CAFEE3}" ShortID="191699740">
+										<RTPC Name="" ID="{DFF9C23E-982C-499C-B2AA-8A9C975B304C}" ShortID="1046392011">
 											<ReferenceList>
 												<Reference Name="ControlInput">
 													<ObjectRef Name="SkipScene" ID="{5D265A66-B65C-4FDE-BA6E-22457454AA3D}" WorkUnitID="{BF7C0DD8-E293-457A-844E-EF2FD3D1B823}"/>
 												</Reference>
 											</ReferenceList>
-											<Curve Name="" ID="{C125DA9B-F065-40BA-AA52-FCA291993B8E}">
+											<Curve Name="" ID="{0BAF16FE-FEB4-4E8D-8F11-3C73CA1E8D9D}">
 												<PropertyList>
 													<Property Name="Flags" Type="int32" Value="65537"/>
 												</PropertyList>
@@ -2280,7 +2280,50 @@
 													</Point>
 													<Point>
 														<XPos>1</XPos>
-														<YPos>1500</YPos>
+														<YPos>40</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</RTPC>
+									</RTPCList>
+								</Property>
+								<Property Name="Pitch" Type="int32">
+									<RTPCList>
+										<RTPC Name="" ID="{227093C5-C33C-45F7-B310-92158B1CDD71}" ShortID="571853579">
+											<ReferenceList>
+												<Reference Name="ControlInput">
+													<ObjectRef Name="SkipScene" ID="{5D265A66-B65C-4FDE-BA6E-22457454AA3D}" WorkUnitID="{BF7C0DD8-E293-457A-844E-EF2FD3D1B823}"/>
+												</Reference>
+											</ReferenceList>
+											<Curve Name="" ID="{DF01BC64-629A-4B78-A649-DC31E5E34D58}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="65537"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>0</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>0.25</XPos>
+														<YPos>1200</YPos>
+														<Flags>0</Flags>
+													</Point>
+													<Point>
+														<XPos>0.5</XPos>
+														<YPos>2400</YPos>
+														<Flags>0</Flags>
+													</Point>
+													<Point>
+														<XPos>0.75</XPos>
+														<YPos>3750</YPos>
+														<Flags>0</Flags>
+													</Point>
+													<Point>
+														<XPos>1</XPos>
+														<YPos>4800</YPos>
 														<Flags>37</Flags>
 													</Point>
 												</PointList>
@@ -2316,13 +2359,13 @@
 							<PropertyList>
 								<Property Name="Pitch" Type="int32">
 									<RTPCList>
-										<RTPC Name="" ID="{F967E196-2CB6-4B6D-BDEE-6943D28352CC}" ShortID="474006068">
+										<RTPC Name="" ID="{6F7AFF4D-B539-4130-88E9-B8E5582EA2EB}" ShortID="802807297">
 											<ReferenceList>
 												<Reference Name="ControlInput">
 													<ObjectRef Name="SkipScene" ID="{5D265A66-B65C-4FDE-BA6E-22457454AA3D}" WorkUnitID="{BF7C0DD8-E293-457A-844E-EF2FD3D1B823}"/>
 												</Reference>
 											</ReferenceList>
-											<Curve Name="" ID="{792B643D-D6E6-4B02-8EDD-C219095C30EC}">
+											<Curve Name="" ID="{8D6572E8-ABAC-4272-A654-E479DB053DAA}">
 												<PropertyList>
 													<Property Name="Flags" Type="int32" Value="65537"/>
 												</PropertyList>
@@ -2333,8 +2376,23 @@
 														<Flags>5</Flags>
 													</Point>
 													<Point>
+														<XPos>0.25</XPos>
+														<YPos>1200</YPos>
+														<Flags>0</Flags>
+													</Point>
+													<Point>
+														<XPos>0.5</XPos>
+														<YPos>2400</YPos>
+														<Flags>0</Flags>
+													</Point>
+													<Point>
+														<XPos>0.75</XPos>
+														<YPos>3750</YPos>
+														<Flags>0</Flags>
+													</Point>
+													<Point>
 														<XPos>1</XPos>
-														<YPos>1500</YPos>
+														<YPos>4800</YPos>
 														<Flags>37</Flags>
 													</Point>
 												</PointList>
@@ -2368,6 +2426,39 @@
 						</Sound>
 						<Sound Name="IntroSc3" ID="{B8125C79-2920-4C9D-BDC7-5916B5C9E4FB}" ShortID="588133355" Type="Voice">
 							<PropertyList>
+								<Property Name="Lowpass" Type="int16">
+									<RTPCList>
+										<RTPC Name="" ID="{7AADDD20-6D62-478A-A87E-E631E400F09B}" ShortID="302280044">
+											<ReferenceList>
+												<Reference Name="ControlInput">
+													<ObjectRef Name="SkipScene" ID="{5D265A66-B65C-4FDE-BA6E-22457454AA3D}" WorkUnitID="{BF7C0DD8-E293-457A-844E-EF2FD3D1B823}"/>
+												</Reference>
+											</ReferenceList>
+											<Curve Name="" ID="{9E7532C9-4133-4B09-A323-34589E3877D8}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="65537"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>0</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>0.75</XPos>
+														<YPos>22</YPos>
+														<Flags>0</Flags>
+													</Point>
+													<Point>
+														<XPos>1</XPos>
+														<YPos>32</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</RTPC>
+									</RTPCList>
+								</Property>
 								<Property Name="Pitch" Type="int32">
 									<RTPCList>
 										<RTPC Name="" ID="{0BF60D22-6BDA-4E73-8139-53AA4774C3C3}" ShortID="659581763">
@@ -2387,8 +2478,23 @@
 														<Flags>5</Flags>
 													</Point>
 													<Point>
+														<XPos>0.25</XPos>
+														<YPos>1200</YPos>
+														<Flags>0</Flags>
+													</Point>
+													<Point>
+														<XPos>0.5</XPos>
+														<YPos>2400</YPos>
+														<Flags>0</Flags>
+													</Point>
+													<Point>
+														<XPos>0.75</XPos>
+														<YPos>3750</YPos>
+														<Flags>0</Flags>
+													</Point>
+													<Point>
 														<XPos>1</XPos>
-														<YPos>1500</YPos>
+														<YPos>4800</YPos>
 														<Flags>37</Flags>
 													</Point>
 												</PointList>
