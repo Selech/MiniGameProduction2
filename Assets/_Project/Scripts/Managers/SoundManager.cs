@@ -41,7 +41,23 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StartListening<SnapSoundEvent>(SnapSound);
         EventManager.Instance.StartListening<MenuActiveEvent>(MenuActive);
         EventManager.Instance.StartListening<LoseCarriableEvent>(LoseCarriable);
+        EventManager.Instance.StartListening<GetBackCarriableHitEvent>(GainCarriable);
+
+        // tutorial sounds below
         EventManager.Instance.StartListening<ChangeSchemeEvent>(ChangeScheme);
+        EventManager.Instance.StartListening<FirstSoundEvent>(FirstSound);
+        EventManager.Instance.StartListening<RoadWorkAheadEvent>(RoadWorkAhead);
+        EventManager.Instance.StartListening<WhatOccursThereEvent>(WhatOccursThere);
+        EventManager.Instance.StartListening<CanUseAsRampEvent>(WeCanUseThatAsRamp);
+        EventManager.Instance.StartListening<PeopleAreDirtyEvent>(PeopleAreDirty);
+        EventManager.Instance.StartListening<ThatWasCoolEvent>(ThatWasCool);
+        EventManager.Instance.StartListening<ThatWentFastEvent>(ThatWentFast);
+        EventManager.Instance.StartListening<SuperEvent>(Superr);
+        EventManager.Instance.StartListening<WatchOutOrHeMightHitUsEvent>(WatchOutCar);
+        EventManager.Instance.StartListening<SpeedPowerUpAheadEvent>(SpeedPowerUpAhead);
+        EventManager.Instance.StartListening<AfterSpeedPowerUpEvent>(AfterSpeedPowerUp);
+        EventManager.Instance.StartListening<CarWatchOutEvent>(CarWatchOut);
+        EventManager.Instance.StartListening<WhereDidThatComeFromEvent>(WhereDidThatComeFrom);
     }
 
     void OnDisable()
@@ -57,7 +73,27 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StopListening<SnapSoundEvent>(SnapSound);
         EventManager.Instance.StopListening<MenuActiveEvent>(MenuActive);
         EventManager.Instance.StopListening<LoseCarriableEvent>(LoseCarriable);
+        EventManager.Instance.StopListening<GetBackCarriableHitEvent>(GainCarriable);
+        EventManager.Instance.StopListening<NowItsEasyEvent>(NowItsEasy);
+        EventManager.Instance.StopListening<NowItsHarderEvent>(NowItsHarder);
+        EventManager.Instance.StopListening<NowItsHardEvent>(NowItsHard);
+
+
+        // tutorial sounds below
         EventManager.Instance.StopListening<ChangeSchemeEvent>(ChangeScheme);
+        EventManager.Instance.StopListening<FirstSoundEvent>(FirstSound);
+        EventManager.Instance.StopListening<RoadWorkAheadEvent>(RoadWorkAhead);
+        EventManager.Instance.StopListening<WhatOccursThereEvent>(WhatOccursThere);
+        EventManager.Instance.StopListening<CanUseAsRampEvent>(WeCanUseThatAsRamp);
+        EventManager.Instance.StopListening<PeopleAreDirtyEvent>(PeopleAreDirty);
+        EventManager.Instance.StopListening<ThatWasCoolEvent>(ThatWasCool);
+        EventManager.Instance.StopListening<ThatWentFastEvent>(ThatWentFast);
+        EventManager.Instance.StopListening<SuperEvent>(Superr);
+        EventManager.Instance.StopListening<WatchOutOrHeMightHitUsEvent>(WatchOutCar);
+        EventManager.Instance.StopListening<SpeedPowerUpAheadEvent>(SpeedPowerUpAhead);
+        EventManager.Instance.StopListening<AfterSpeedPowerUpEvent>(AfterSpeedPowerUp);
+        EventManager.Instance.StopListening<CarWatchOutEvent>(CarWatchOut);
+        EventManager.Instance.StopListening<WhereDidThatComeFromEvent>(WhereDidThatComeFrom);
     }
 
     #endregion
@@ -165,7 +201,18 @@ public class SoundManager : MonoBehaviour
         PlaySound("Play_LoseItem");
     }
 
+    private void GainCarriable(GetBackCarriableHitEvent e)
+    {
+        PlaySound("Play_MisVO10");
+    }
 
+    // TODO:
+    private void HitByWind()
+    {
+        PlaySound("Play_MusVO5");
+    }
+
+    #endregion
     #region Tutorial sounds:
 
     private void ChangeScheme(ChangeSchemeEvent e)
@@ -183,12 +230,12 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    private void FirstSound()
+    private void FirstSound(FirstSoundEvent e)
     {
         PlaySound("Play_MisVO4");
     }
 
-    private void RoadWorkAhead()
+    private void RoadWorkAhead(RoadWorkAheadEvent e)
     {
         PlaySound("Play_MusVO4");
     }
@@ -198,18 +245,74 @@ public class SoundManager : MonoBehaviour
         PlaySound("Play_MusVO5");
     }
 
-    private void WhatOccursThere()
+    private void WhatOccursThere(WhatOccursThereEvent e)
     {
         PlaySound("Play_MisVO6");
     }
 
-    private void WeCanUseThatAsRamp()
+    private void WeCanUseThatAsRamp(CanUseAsRampEvent e)
     {
         PlaySound("Play_MisVO7");
     }
 
-    #endregion
+    private void PeopleAreDirty(PeopleAreDirtyEvent e)
+    {
+        PlaySound("Play_MusVO6");
+    }
 
+    private void ThatWasCool(ThatWasCoolEvent e)
+    {
+        PlaySound("Play_MisVO8");
+    }
+
+    private void ThatWentFast(ThatWentFastEvent e)
+    {
+        PlaySound("Play_MusVO7");
+    }
+
+    private void Superr(SuperEvent e)
+    {
+        PlaySound("Play_MusVO8");
+    }
+
+    private void WatchOutCar(WatchOutOrHeMightHitUsEvent e)
+    {
+        PlaySound("Play_MusVO10");
+    }
+
+    private void SpeedPowerUpAhead(SpeedPowerUpAheadEvent e)
+    {
+        PlaySound("Play_MisVO18");
+    }
+
+    private void AfterSpeedPowerUp(AfterSpeedPowerUpEvent e)
+    {
+        PlaySound("Play_MusVO20");
+    }
+
+    private void CarWatchOut(CarWatchOutEvent e)
+    {
+        PlaySound("Play_MusVO19");
+    }
+
+    private void WhereDidThatComeFrom(WhereDidThatComeFromEvent e)
+    {
+        PlaySound("Play_MusVO9");
+    }
+    private void NowItsEasy(NowItsEasyEvent e)
+    {
+        PlaySound("Play_MusVO9");
+    }
+
+    private void NowItsHarder(NowItsHarderEvent e)
+    {
+        PlaySound("Play_MusVO9");
+    }
+
+    private void NowItsHard(NowItsHardEvent e)
+    {
+        PlaySound("Play_MusVO9");
+    }
     #endregion
 
     #region 
