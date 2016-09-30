@@ -3,7 +3,6 @@ using System.Collections;
 
 public class SoundManager : MonoBehaviour
 {
-
     [HideInInspector]
     public bool musicMuted = false;
 
@@ -12,6 +11,9 @@ public class SoundManager : MonoBehaviour
 
     [HideInInspector]
     public bool isStrafing = false;
+
+    [HideInInspector]
+    public bool isTutorial = true;
 
     bool drivingStarted = false;
 
@@ -38,6 +40,8 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StartListening<RestartGameEvent>(StopAllSounds);
         EventManager.Instance.StartListening<SnapSoundEvent>(SnapSound);
         EventManager.Instance.StartListening<MenuActiveEvent>(MenuActive);
+        EventManager.Instance.StartListening<LoseCarriableEvent>(LoseCarriable);
+        EventManager.Instance.StartListening<ChangeSchemeEvent>(ChangeScheme);
     }
 
     void OnDisable()
@@ -52,6 +56,8 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StopListening<RestartGameEvent>(StopAllSounds);
         EventManager.Instance.StopListening<SnapSoundEvent>(SnapSound);
         EventManager.Instance.StopListening<MenuActiveEvent>(MenuActive);
+        EventManager.Instance.StopListening<LoseCarriableEvent>(LoseCarriable);
+        EventManager.Instance.StopListening<ChangeSchemeEvent>(ChangeScheme);
     }
 
     #endregion
@@ -93,6 +99,7 @@ public class SoundManager : MonoBehaviour
         {
             AkSoundEngine.SetCurrentLanguage("English(US)");
         }
+        PlaySound("Play_IntroVO1");
 
     }
 
@@ -101,6 +108,7 @@ public class SoundManager : MonoBehaviour
         PlaySound("Play_MusicWin");
         PlaySound("Stop_MusicDrive");
         PlaySound("Stop_Pedal");
+        drivingStarted = false;
     }
 
     private void HitObstacle(DamageCarriableEvent e)
@@ -141,18 +149,70 @@ public class SoundManager : MonoBehaviour
 
     private void MenuActive(MenuActiveEvent e)
     {
-       
+
         if (GameManager.Instance.isPaused)
         {
             PlaySound("Stop_Pedal");
-        } else if (!GameManager.Instance.isPaused && drivingStarted)
+        }
+        else if (!GameManager.Instance.isPaused && drivingStarted)
         {
             PlaySound("Play_Pedal");
         }
     }
 
+    private void LoseCarriable(LoseCarriableEvent e)
+    {
+        PlaySound("Play_LoseItem");
+    }
+
+
+    #region Tutorial sounds:
+
+    private void ChangeScheme(ChangeSchemeEvent e)
+    {
+        if (isTutorial)
+        {
+            if (GameManager.Instance.isGyro)
+            {
+                PlaySound("Play_MisVO19");
+            }
+            else
+            {
+                PlaySound("Play_MisVO20");
+            }
+        }
+    }
+
+    private void FirstSound()
+    {
+        PlaySound("Play_MisVO4");
+    }
+
+    private void RoadWorkAhead()
+    {
+        PlaySound("Play_MusVO4");
+    }
+
+    private void WindBlown()
+    {
+        PlaySound("Play_MusVO5");
+    }
+
+    private void WhatOccursThere()
+    {
+        PlaySound("Play_MisVO6");
+    }
+
+    private void WeCanUseThatAsRamp()
+    {
+        PlaySound("Play_MisVO7");
+    }
+
     #endregion
 
+    #endregion
+
+    #region 
     private static SoundManager _instance;
 
     public static SoundManager Instance
@@ -183,4 +243,5 @@ public class SoundManager : MonoBehaviour
             AkSoundEngine.PostEvent(s, b);
         }
     }
+    #endregion
 }
