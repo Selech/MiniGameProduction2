@@ -1290,6 +1290,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88e1ddbd3f001474a9450aa101cccb0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _obstacleType: 0
+  shakeAmount: 5
+  shakeDuration: 1
   pushForce: 10
 --- !u!114 &114000011182252078
 MonoBehaviour:
@@ -1302,6 +1305,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88e1ddbd3f001474a9450aa101cccb0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _obstacleType: 0
+  shakeAmount: 5
+  shakeDuration: 1
   pushForce: 10
 --- !u!114 &114000011496249640
 MonoBehaviour:
@@ -1314,6 +1320,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88e1ddbd3f001474a9450aa101cccb0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _obstacleType: 0
+  shakeAmount: 5
+  shakeDuration: 1
   pushForce: 10
 --- !u!114 &114000011987875644
 MonoBehaviour:
@@ -1326,9 +1335,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2af154286294bd542bc09d0b36ed63e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shakeAmount: 5
+  shakeDuration: 1
   pushPlayerBackForce: 100
-  carPushForce: 500
+  carPushForceForward: 10
+  carPushForceUp: 10
   forceMode: 1
+  carMeshCollider: {fileID: 0}
 --- !u!136 &136000010539788516
 CapsuleCollider:
   m_ObjectHideFlags: 1
