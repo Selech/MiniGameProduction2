@@ -122,7 +122,9 @@ public class GetBackCarriableHitEvent : GameEvent
 	}
 }
 
-
+/// <summary>
+/// Controls input from gyro and swipe
+/// </summary>
 public class MovementInput : GameEvent
 {
 	// -1 is left, 0 is center, 1 is right
@@ -134,7 +136,9 @@ public class MovementInput : GameEvent
 	}
 }
 
-// Used to change language in language selection prefab
+/// <summary>
+/// Used to change language in language selection prefab
+/// </summary>
 public class LanguageSelect : GameEvent
 {
 	public bool isDanish;
@@ -145,7 +149,9 @@ public class LanguageSelect : GameEvent
 	}
 }
 
-// used to change control scheme in menu prefab
+/// <summary>
+/// used to change control scheme in menu prefab
+/// </summary>
 public class ChangeSchemeEvent : GameEvent
 {
 	public bool isGyro;
@@ -167,7 +173,9 @@ public class MapStartedEvent : GameEvent
 
 }
 
-// used to mute sound from the menu prefab
+/// <summary>
+/// used to mute sound in soundmanager from the menu prefab
+/// </summary>
 public class MuteMusicEvent : GameEvent
 {
 	public bool musicMuted;
@@ -199,7 +207,10 @@ public class LoseCarriableEvent : GameEvent
 	}
 }
 
-// used for menu tapping sounds
+/// <summary>
+/// used for menu tapping sounds in soundmanager
+/// </summary>
+
 public class UISoundEvent : GameEvent
 {
 	public UISoundEvent ()
@@ -213,6 +224,9 @@ public class RestartGameEvent : GameEvent {
     }
 }
 
+/// <summary>
+/// used in soundmanager to play sounds when carriable snap to bike
+/// </summary>
 public class SnapSoundEvent : GameEvent
 {
     public SnapSoundEvent ()
@@ -220,6 +234,9 @@ public class SnapSoundEvent : GameEvent
     }
 }
 
+/// <summary>
+/// used to inform soundmanager whether the menu is active
+/// </summary>
 public class MenuActiveEvent : GameEvent
 {
     public bool menuActive = false;

@@ -129,6 +129,7 @@ public class SoundManager : MonoBehaviour
     // place all stops in here
     private void StopAllSounds(RestartGameEvent e)
     {
+        drivingStarted = false;
         PlaySound("Stop_MusicDrive");
         PlaySound("Stop_Pedal");
     }
@@ -144,7 +145,7 @@ public class SoundManager : MonoBehaviour
         if (GameManager.Instance.isPaused)
         {
             PlaySound("Stop_Pedal");
-        } else
+        } else if (!GameManager.Instance.isPaused && drivingStarted)
         {
             PlaySound("Play_Pedal");
         }
