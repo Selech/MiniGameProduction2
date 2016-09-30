@@ -258,3 +258,78 @@ public class FeedbackCameraShakeEvent : GameEvent
 		this.duration = duration;
 	}
 }
+
+#region Tutorial level sound events
+// Tutorial level sound events below:
+
+public class FirstSoundEvent : GameEvent
+{
+    public FirstSoundEvent()
+    {
+    }
+}
+
+public class RoadWorkAheadEvent : GameEvent
+{
+    public RoadWorkAheadEvent()
+    {
+
+    }
+}
+
+public class WhatOccursThereEvent : GameEvent
+{
+    public WhatOccursThereEvent()
+    {
+
+    }
+}
+
+public class CanUseAsRampEvent : GameEvent
+{
+    public CanUseAsRampEvent()
+    {
+
+    }
+}
+
+public class PeopleAreDirtyEvent : GameEvent
+{
+    public PeopleAreDirtyEvent()
+    {
+
+    }
+}
+
+public class ThatWasCoolEvent : GameEvent
+{
+    public ThatWasCoolEvent()
+    {
+
+    }
+}
+
+public class ThatWentFastEvent : GameEvent
+{
+    public ThatWentFastEvent()
+    {
+
+    }
+}
+
+public class SuperEvent : GameEvent
+{
+    public SuperEvent()
+    {
+
+    }
+}
+
+public class WatchOutOrHeMightHitUsEvent : GameEvent
+{
+    public WatchOutOrHeMightHitUsEvent()
+    {
+
+    }
+}
+#endregion
