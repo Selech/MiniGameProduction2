@@ -15,6 +15,11 @@ public class IntroCutsceneController : MonoBehaviour {
     public GameObject scene3;
     public GameObject scene4;
 
+    [Header("Scene1 objects")]
+    //Scene2 moving objects
+    public Animation mouse;
+    public Animation cat;
+
     [Header("Scene2 objects")]
     //Scene2 moving objects
     public Animation elevator;
@@ -22,6 +27,7 @@ public class IntroCutsceneController : MonoBehaviour {
     [Header("Scene3 objects")]
     //Scene3 elements
     public Animation title;
+    public Animation bike;
 
     // Use this for initialization
     void Start () {
@@ -78,6 +84,8 @@ public class IntroCutsceneController : MonoBehaviour {
         scene4.SetActive(false);
 
         cameraAnimation.Play("Scene1_Camera");
+        mouse.Play("Scene1_Mouse");
+        cat.Play("Scene1_Cat");
         sceneIndex++;
     }
 
@@ -100,6 +108,7 @@ public class IntroCutsceneController : MonoBehaviour {
         scene3.SetActive(true);
         scene4.SetActive(false);
 
+        bike.Play("Scene3_Bike");
         cameraAnimation.Play("Scene3_Camera");
         title.Play("Scene3_Title");
         sceneIndex++;
