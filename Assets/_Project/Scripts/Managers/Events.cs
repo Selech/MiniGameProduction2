@@ -405,4 +405,28 @@ public class YouHaveToAvoidEvent : GameEvent
 
     }
 }
+
+public class IntroVO1event : GameEvent
+{
+    public IntroVO1event()
+    {
+
+    }
+}
+
+public class IntroVO2event : GameEvent
+{
+    public IntroVO2event()
+    {
+
+    }
+}
+
+public class IntroVO3event : GameEvent
+{
+    public IntroVO3event()
+    {
+
+    }
+}
 #endregion
