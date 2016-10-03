@@ -6,15 +6,46 @@ public class SwipeBike : MonoBehaviour {
     bool swiping = false;
     StackingList stackingList;
 
+    private int tapCount;
+    private bool tapped;
+    private Touch touch;
+
     void Start() {
         stackingList = GetComponent<StackingList>();
     }
 
-    void Update() {
-        controlSwipe();
+	void Update() {
+        ControlTap();
     }
 
-    void controlSwipe() {
+    void ControlTap()
+    {
+        if (Input.touchCount > 0) {
+            touch = Input.GetTouch(0);
+            var ray = Camera.main.ScreenPointToRay(touch.position);
+            RaycastHit hit;
+
+            if (touch.phase == TouchPhase.Ended && stackingList.CollectedCarriables.Count > 0 && Physics.Raycast(ray, out hit)) {
+                if (hit.collider.gameObject.tag == "StartSwipe") {
+                    tapped = true;
+
+                    if (tapCount <= 0) {
+                        tapCount = 20;
+                    }
+                    else if (tapCount >= 0) {
+                        EventManager.Instance.TriggerEvent(new StartGame());
+                    }
+                }
+            }
+        }
+
+        if (tapCount <= 0) {
+            tapped = false;
+        }
+        tapCount--;
+    }
+
+	void ControlSwipe() {
         if (Input.touchCount != 0) {
             foreach (Touch touch in Input.touches) {
                 if (touch.phase == TouchPhase.Began) {
