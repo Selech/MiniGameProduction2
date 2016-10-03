@@ -113,6 +113,7 @@ public class GameManager : MonoBehaviour
 
 	void ReactToWin (WinChunkEnteredEvent e)
 	{
+		SceneManager.LoadScene (2);
 		WinGame ();
 		PauseGame ();
 	}
