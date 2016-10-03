@@ -101,6 +101,7 @@ public class PlayerReactionsController : MonoBehaviour
         yield return new WaitForSeconds(time);
         movementController.speedFactor = 1;
         isBoosted = false;
+
     }
 
     void GetBackCarriable(GetBackCarriableHitEvent e)
