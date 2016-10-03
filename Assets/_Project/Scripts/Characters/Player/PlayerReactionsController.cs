@@ -36,8 +36,8 @@ public class PlayerReactionsController : MonoBehaviour
         EventManager.Instance.StartListening<DamageCarriableEvent>(DamageObstacle);
         EventManager.Instance.StartListening<ObstacleHitEvent>(PushBikeBack);
         EventManager.Instance.StartListening<LoseCarriableEvent>(LostCarriable);
-
-
+		EventManager.Instance.StartListening<StartWindEvent>(StartWind);
+		EventManager.Instance.StartListening<StopWindEvent>(StopWind);
     }
 
     void OnDisable()
@@ -53,8 +53,8 @@ public class PlayerReactionsController : MonoBehaviour
         EventManager.Instance.StopListening<DamageCarriableEvent>(DamageObstacle);
         EventManager.Instance.StopListening<ObstacleHitEvent>(PushBikeBack);
         EventManager.Instance.StopListening<LoseCarriableEvent>(LostCarriable);
-
-
+		EventManager.Instance.StopListening<StartWindEvent>(StartWind);
+		EventManager.Instance.StopListening<StopWindEvent>(StopWind);
     }
 
     void LostCarriable(LoseCarriableEvent e)
@@ -169,5 +169,16 @@ public class PlayerReactionsController : MonoBehaviour
                 break;
         }
     }
+
+	public void StartWind(StartWindEvent e){
+		movementController.wind = true;
+		movementController.windPosition = e.windPosition;
+		movementController.windForce = e.windForce;
+	}
+
+	public void StopWind(StopWindEvent e){
+		movementController.wind = false;
+		movementController.windForce = 0;
+	}
 
 }
