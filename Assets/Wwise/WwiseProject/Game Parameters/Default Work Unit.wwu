@@ -45,6 +45,15 @@
 						<Property Name="RTPCRamping" Type="int16" Value="2"/>
 					</PropertyList>
 				</GameParameter>
+				<GameParameter Name="Fly" ID="{7AE0638E-59B3-4ECC-94F1-4A796D9F80E0}">
+					<PropertyList>
+						<Property Name="FilterTimeDown" Type="Real64" Value="2"/>
+						<Property Name="FilterTimeUp" Type="Real64" Value="0.5"/>
+						<Property Name="InitialValue" Type="Real64" Value="0"/>
+						<Property Name="Max" Type="Real64" Value="1"/>
+						<Property Name="RTPCRamping" Type="int16" Value="2"/>
+					</PropertyList>
+				</GameParameter>
 			</ChildrenList>
 		</WorkUnit>
 	</GameParameters>

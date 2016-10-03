@@ -727,6 +727,133 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_Build" ID="{0F6561BF-F6CC-4635-A4C7-5BEC0A030AB7}">
+					<ChildrenList>
+						<Action Name="Play" ID="{D516D95E-6B83-4184-AC90-DCC096BC2B73}" ShortID="829833004" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{D54524C3-C1EE-4ABB-98D3-44FFD8562E3A}" Global="false">
+									<ObjectRef Name="Build" ID="{5AAF1BA3-7CC7-4C4A-B441-E1A9A1145F29}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_MusicWin" ID="{17BB333A-9C16-4C59-9249-4BC050E547A4}">
+					<ChildrenList>
+						<Action Name="Set State" ID="{DB377E59-F2F3-4FD8-8909-C68518A9B37A}" ShortID="91665605" Type="SetState" Scope="All" Global="true">
+							<SetItemParam>
+								<Group Name="DriveWin" ID="{8F13732F-846B-45EA-8909-BD6C12A65B6D}"/>
+								<GroupItem Name="Win" ID="{7F334DAD-E78E-45A1-BD8B-3C9D1609B052}"/>
+							</SetItemParam>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Throw" ID="{24D776DA-9A8B-4B78-B0EE-9F1BBF3086DC}">
+					<ChildrenList>
+						<Action Name="Play" ID="{CEA43C9F-6807-459C-8615-1E14F274DBAE}" ShortID="940146923" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{B3E42AED-5D8A-4EBC-ACB3-70592DA5FAF0}" Global="false">
+									<ObjectRef Name="AngryWoman" ID="{D61D9EC7-71C0-4BC5-9F2F-F3527CA15157}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
+								</Element>
+							</ElementList>
+						</Action>
+						<Action Name="Play" ID="{02828CF7-BCEA-4FD0-BD6F-63DE09295CE7}" ShortID="331003514" Type="Play" Scope="One" Global="false">
+							<PropertyList>
+								<Property Name="Delay" Type="Real64" Value="0.1"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.2"/>
+							</PropertyList>
+							<ElementList>
+								<Element ID="{7982548C-ABF9-4B20-BEDE-AED7F45A4FB9}" Global="false">
+									<ObjectRef Name="Throw" ID="{C90943B4-37AD-4F51-A157-B3DDBC0D4525}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Flying" ID="{0A22BA78-95DA-4FCF-8D74-6D411B16973E}">
+					<ChildrenList>
+						<Action Name="Set Game Parameter" ID="{F85CD813-6F71-4269-B78B-EC10CED6596D}" ShortID="48087490" Type="SetGameParameter" Scope="One" Global="true">
+							<PropertyList>
+								<Property Name="GameParameterValue" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ElementList>
+								<Element ID="{B7F81C71-1797-4AD8-B655-68EF08BE7B75}" Global="true">
+									<ObjectRef Name="Fly" ID="{7AE0638E-59B3-4ECC-94F1-4A796D9F80E0}" WorkUnitID="{BF7C0DD8-E293-457A-844E-EF2FD3D1B823}"/>
+								</Element>
+							</ElementList>
+						</Action>
+						<Action Name="Play" ID="{C8349CC2-622B-48A7-9DF7-E23C26E13EA1}" ShortID="562051035" Type="Play" Scope="One" Global="false">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ElementList>
+								<Element ID="{26AE00B2-F6D7-4367-B2AD-F11E53652DCA}" Global="false">
+									<ObjectRef Name="FlyingWind" ID="{1FC69F34-7622-4A76-A800-A36C96BF5D22}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_Flying" ID="{FF681E84-F104-4A06-A3B7-FBCC02D48B86}">
+					<ChildrenList>
+						<Action Name="Set Game Parameter" ID="{DA984CD1-06EC-4E61-9D8C-B415943C8B37}" ShortID="897698809" Type="SetGameParameter" Scope="One" Global="true">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+							<ElementList>
+								<Element ID="{EEE113C5-C20F-4695-BBA6-CE937BD996EA}" Global="true">
+									<ObjectRef Name="Fly" ID="{7AE0638E-59B3-4ECC-94F1-4A796D9F80E0}" WorkUnitID="{BF7C0DD8-E293-457A-844E-EF2FD3D1B823}"/>
+								</Element>
+							</ElementList>
+						</Action>
+						<Action Name="Stop" ID="{5A4F6306-4925-4450-B40B-997B5A879561}" ShortID="70813611" Type="Stop" Scope="One" Global="true">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+							<ElementList>
+								<Element ID="{DD60C361-61CC-41BF-85F2-9DF31F229AEB}" Global="true">
+									<ObjectRef Name="FlyingWind" ID="{1FC69F34-7622-4A76-A800-A36C96BF5D22}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Blow" ID="{AF4B0386-0BB4-47C3-B906-CD8EF80FDF3D}">
+					<ChildrenList>
+						<Action Name="Play" ID="{F7E3C080-5390-4F06-A1E5-5DD3AE628D90}" ShortID="285961251" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{0F627121-8842-4E46-BBF8-673DB16CB5EA}" Global="false">
+									<ObjectRef Name="Blow" ID="{DE7BDB8C-8104-4000-BEC8-7D496AA3905B}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_BuildMusic" ID="{04095198-07D2-47F5-A997-5DE0FE1052D5}">
+					<ChildrenList>
+						<Action Name="Play" ID="{276790CE-FEBC-4446-8D7C-CAAF3417054B}" ShortID="369059655" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{4B88A5AC-D9F6-4F7A-96F7-99003DE0CF9A}" Global="false">
+									<ObjectRef Name="BuildMusic" ID="{05F08D1F-422C-406D-83CE-BE04DE1FE420}" WorkUnitID="{9BE5B37D-4814-42B5-AD97-431DE2BC86C4}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_BuildMusic" ID="{31C561C5-FC38-4B74-9ECB-7E51F98842AF}">
+					<ChildrenList>
+						<Action Name="Stop" ID="{67463B68-795D-450D-959D-3F47092F89CC}" ShortID="858415979" Type="Stop" Scope="One" Global="true">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="2"/>
+							</PropertyList>
+							<ElementList>
+								<Element ID="{1AB28ADB-CF38-4CC1-8952-C82C948DA203}" Global="true">
+									<ObjectRef Name="BuildMusic" ID="{05F08D1F-422C-406D-83CE-BE04DE1FE420}" WorkUnitID="{9BE5B37D-4814-42B5-AD97-431DE2BC86C4}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
