@@ -14,28 +14,38 @@ public class WinCutsceneController : MonoBehaviour {
 
     public GameObject RestackButton;
 
+    private bool Building;
+
     // Use this for initialization
     void Start () {
         AkSoundEngine.PostEvent("Play_MisVO13", this.gameObject);
-        AkSoundEngine.PostEvent("Play_Build", this.gameObject);
+       // AkSoundEngine.PostEvent("Play_Build", this.gameObject);
         AkSoundEngine.PostEvent("Play_BuildMusic", this.gameObject);
 
         Time.timeScale = 1f;
         StartCoroutine(GetReward1());
+        Building = true;
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (!Building)
         {
-            AkSoundEngine.SetRTPCValue("SkipScene", 1f);
-            Time.timeScale = 10f;
+            
         }
-
-        if (Input.GetMouseButtonUp(0))
+        else
         {
-            AkSoundEngine.SetRTPCValue("SkipScene", 0f);
-            Time.timeScale = 1f;
+            if (Input.GetMouseButtonDown(0) && Building)
+            {
+                AkSoundEngine.SetRTPCValue("SkipScene", 1f);
+                Time.timeScale = 10f;
+            }
+
+            if (Input.GetMouseButtonUp(0) && Building)
+            {
+                AkSoundEngine.SetRTPCValue("SkipScene", 0f);
+                Time.timeScale = 1f;
+            }
         }
     }
 
@@ -86,6 +96,11 @@ public class WinCutsceneController : MonoBehaviour {
 
     void HouseBuilt()
     {
+        Building = false;
+
+        AkSoundEngine.SetRTPCValue("SkipScene", 0f);
+        Time.timeScale = 1f;
+
         AkSoundEngine.PostEvent("Stop_Build", this.gameObject);
         AkSoundEngine.PostEvent("Play_MisVO14",this.gameObject);
 
@@ -94,7 +109,7 @@ public class WinCutsceneController : MonoBehaviour {
 
     IEnumerator ShowButton()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
 
         AkSoundEngine.PostEvent("Play_MusVO13", this.gameObject);
         RestackButton.SetActive(true);
