@@ -68,13 +68,8 @@ public class CarriableManager : MonoBehaviour
 
 		for (int i = size-1; i >= 0; i--) {
 			var setParentEvent = new ChangeParentToPlayer ();
-
-			//Destroy (collectedObjects [i].GetComponent<CarriablesDrag> ());
-
+            
 			SpringJoint joint = collectedObjects [i].AddComponent<SpringJoint> ();
-			//Rigidbody previousObjectInList_Rigidbody = collectedObjects [i - 1].GetComponent<Rigidbody> ();
-
-			//SetUpCarriableOnStart (joint,previousObjectInList_Rigidbody,setParentEvent,i,size);
 
 			if (i > 0) {
 				joint.connectedBody = collectedObjects [i - 1].GetComponent<Rigidbody> ();
@@ -105,16 +100,25 @@ public class CarriableManager : MonoBehaviour
 		}
 
 	}
-		
-	public void PutBackCarriable(int indexOfCarriable) {
-		GameObject carriable = stacking.CollectedCarriables[indexOfCarriable];
+
+    /// <summary>
+    /// CARRIABLE IS BEING PLACED BACK TO THE STACKED ITEMS
+    /// </summary>
+	public void PutBackCarriable(int numberOfLostCarriables) {
+
+        int indexToCarriableSetBack = stacking.CollectedCarriables.Count - numberOfLostCarriables;
+
+        GameObject carriable = stacking.CollectedCarriables[indexToCarriableSetBack];
 
 		var setParentEvent = new ChangeParentToPlayer ();
 
 		SpringJoint joint = carriable.AddComponent<SpringJoint> ();
+        Rigidbody carriableRigidbody = joint.gameObject.GetComponent<Rigidbody>();
 
-		if (indexOfCarriable > 0) {
-			joint.connectedBody = stacking.CollectedCarriables[indexOfCarriable - 1].GetComponent<Rigidbody> ();
+        carriableRigidbody.isKinematic = true;
+
+        if (numberOfLostCarriables != stacking.CollectedCarriables.Count) {
+			joint.connectedBody = stacking.CollectedCarriables[indexToCarriableSetBack - 1].GetComponent<Rigidbody> ();
 		} else {
 			setParentEvent.attachToPlayer = true;
 		}
@@ -122,8 +126,10 @@ public class CarriableManager : MonoBehaviour
 		Vector3 middleOfBike = carriable.GetComponent<CarriablesDrag> ().MiddleofBike.transform.position;
 		carriable.transform.position = new Vector3(middleOfBike.x, middleOfBike.y + runningHeight, middleOfBike.z);
 
-		//setting joint parameters
-		joint.breakForce = Mathf.Infinity;
+        carriableRigidbody.isKinematic = false;
+
+        //setting joint parameters
+        joint.breakForce = Mathf.Infinity;
 		joint.breakTorque = Mathf.Infinity;
 		joint.spring = springForce;
 		joint.damper = springDampener;
@@ -134,10 +140,10 @@ public class CarriableManager : MonoBehaviour
 		joint.anchor = new Vector3(0, carriable.GetComponent<Renderer>().bounds.min.y + runningHeight,0);
 		joint.maxDistance = 0f;
 
-		Rigidbody carriableRigidbody = joint.gameObject.GetComponent<Rigidbody>();
-
-		carriableRigidbody.mass = indexOfCarriable + 1;
+		carriableRigidbody.mass = numberOfLostCarriables;
 		setParentEvent.gameobject = carriable;
 		EventManager.Instance.TriggerEvent(setParentEvent);
-	}
+
+        runningHeight += carriable.GetComponent<CarriablesDrag>().heightOfObject;
+    }
 }

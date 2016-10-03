@@ -5,8 +5,8 @@ using System.Collections.Generic;
 [RequireComponent(typeof(PlayerMovementController))]
 public class PlayerReactionsController : MonoBehaviour {
 
-	GameObject currentCarriable;
-	int indexOfCarriable;
+	GameObject carriableFallingOff;
+	int numberOfLostCarriables;
 	CarriableHealth carriableHealth;
 	PlayerMovementController movementController;
 	Rigidbody bikePlate;
@@ -15,24 +15,18 @@ public class PlayerReactionsController : MonoBehaviour {
 	GameObject carriableManager;
 	CarriableManager carriableManagerScript;
 
-	//new 
-	int indexMaxCarriable; // bottom carriable has index 0
-	int indexTopCurrentCarriable;
-	//
-	bool isBoosted = false;
+    private int indexOfCurrentTopCarriable = 0;
+
+    bool isBoosted = false;
 
 	void Awake () {
 		movementController = GetComponent<PlayerMovementController> ();
 		bikePlate = GetComponentInChildren<Rigidbody> ();
-		indexOfCarriable = 0;
+		numberOfLostCarriables = 0;
 		playerPickupController = GetComponent<PlayerPickupController> ();
 		carriableManager = GameObject.FindGameObjectWithTag ("CarriableManager");
 		stackedList = carriableManager.GetComponent<StackingList>();
 		carriableManagerScript = carriableManager.GetComponent<CarriableManager>();
-		//new
-		indexMaxCarriable = stackedList.CollectedCarriables.Count - 1;
-		//
-		Debug.Log(indexMaxCarriable);
 	}
 
 	void OnEnable() {
@@ -67,97 +61,86 @@ public class PlayerReactionsController : MonoBehaviour {
 		EventManager.Instance.StartListening <StopWindEvent>(StopWind);
 	}
 
-	void LostCarriable(LoseCarriableEvent e){ 
-		Debug.Log ("CURRENTCARIABLE : " + currentCarriable);
-		if (carriableManagerScript.runningHeight > 0f) {
-			indexOfCarriable++;
-			Debug.Log ("HEIGHT : " + carriableManagerScript.runningHeight);
-			carriableManagerScript.runningHeight -= currentCarriable.GetComponent<CarriablesDrag> ().heightOfObject;
-			Debug.Log ("HEIGHT 2 : " + carriableManagerScript.runningHeight);
-		}
-	}
-
 	void GetBackCarriable(GetBackCarriableHitEvent e){
-		if (playerPickupController.lastLostCarriable != null) {
-
-			int trueIndex = (stackedList.CollectedCarriables.Count - 1) - indexOfCarriable;
-
-			carriableManagerScript.PutBackCarriable (indexOfCarriable);
-			Debug.Log("OBJ : " + stackedList.CollectedCarriables[trueIndex] + " HEIGHT : " + stackedList.CollectedCarriables[trueIndex].GetComponent<CarriablesDrag> ().heightOfObject);
-			Debug.Log ("HEIGHT : " + carriableManagerScript.runningHeight);
-			carriableManagerScript.runningHeight += stackedList.CollectedCarriables[trueIndex].GetComponent<CarriablesDrag> ().heightOfObject;
-			Debug.Log ("HEIGHT 2 : " + carriableManagerScript.runningHeight);
-
-			indexOfCarriable--;
-		}
+        if (numberOfLostCarriables != 0) {
+            carriableManagerScript.PutBackCarriable(numberOfLostCarriables);
+            numberOfLostCarriables--;
+        }
 	}
 
-	void RetrieveInput(MovementInput horizontalInput) {
-		if(movementController.enabled)
-			movementController.Turn(horizontalInput.touchPosition);
-	}
-
-	void ChangeScheme(ChangeSchemeEvent e){
-		GameManager.Instance.ChangeScheme (e.isGyro);
-	}
-
-void BoostSpeed(BoostPickupHitEvent e)
-	{
-		if(isBoosted == false)
-		{
-			isBoosted = true;
-			StartCoroutine (BoostPickUp(e.boost,e.time));
-		}
-	}
-
-	IEnumerator BoostPickUp(float speed,float time)
-	{
-		movementController.speedFactor = speed;
-		yield return new WaitForSeconds(time);
-		movementController.speedFactor = 1;
-		isBoosted = false;
-	}
-	
-	public void StartWind(StartWindEvent e){
-		movementController.wind = true;
-		movementController.windPosition = e.windPosition;
-		movementController.windForce = e.windForce;
-	}
-
-	public void StopWind(StopWindEvent e){
-		movementController.wind = false;
-		movementController.windForce = 0;
-	}
-
+    /// <summary>
+    /// BEING CALLED WHEN PLAYER TRIGGER ON OBSTACLES (1)
+    /// </summary>
 	public void DamageObstacle(DamageCarriableEvent e){
-		GetTopCarriable ();
-		if (currentCarriable) {
-			carriableHealth = currentCarriable.GetComponent<CarriableHealth> ();
+        Debug.Log("numberOfLostCarriables :" + numberOfLostCarriables);
+        if (numberOfLostCarriables != stackedList.CollectedCarriables.Count) {
+            GetCarriableFallingOff();
+            carriableHealth = carriableFallingOff.GetComponent<CarriableHealth> ();
 			carriableHealth.LoseHealth ();
 		}
 	}
 
-	public void PushBikeBack(ObstacleHitEvent e){
-		Debug.Log (e.upForce);
+    /// <summary>
+    /// Being called inside "DamageObstacle" after we have breaked the joint
+    /// </summary>
+    void LostCarriable(LoseCarriableEvent e)
+    {
+        numberOfLostCarriables++;
+        carriableManagerScript.runningHeight -= carriableFallingOff.GetComponent<CarriablesDrag>().heightOfObject;
+    }
+
+    public void GetCarriableFallingOff(){
+        indexOfCurrentTopCarriable = (stackedList.CollectedCarriables.Count - 1) - numberOfLostCarriables;
+        carriableFallingOff = stackedList.CollectedCarriables[indexOfCurrentTopCarriable];
 	}
 
-	public void GetTopCarriable(){
+    void RetrieveInput(MovementInput horizontalInput)
+    {
+        if (movementController.enabled)
+            movementController.Turn(horizontalInput.touchPosition);
+    }
 
-		for (int i = 0; i < stackedList.CollectedCarriables.Count; i++) {
-			Debug.Log (" IDX : " + i + " OBJ : " + stackedList.CollectedCarriables [i]);
-		}
+    void ChangeScheme(ChangeSchemeEvent e)
+    {
+        GameManager.Instance.ChangeScheme(e.isGyro);
+    }
 
-		Debug.Log ("indexOfCarriable: " + indexOfCarriable);
+    void BoostSpeed(BoostPickupHitEvent e)
+    {
+        if (isBoosted == false)
+        {
+            isBoosted = true;
+            StartCoroutine(BoostPickUp(e.boost, e.time));
+        }
+    }
 
-		int trueIndex = (stackedList.CollectedCarriables.Count - 1) - indexOfCarriable;
-		Debug.Log ("trueIndex: " + trueIndex);
+    IEnumerator BoostPickUp(float speed, float time)
+    {
+        movementController.speedFactor = speed;
+        yield return new WaitForSeconds(time);
+        movementController.speedFactor = 1;
+        isBoosted = false;
+    }
 
-		if (stackedList.CollectedCarriables.Count > trueIndex) {
-			currentCarriable = stackedList.CollectedCarriables[trueIndex];
-		}
-	}
+    public void StartWind(StartWindEvent e)
+    {
+        movementController.wind = true;
+        movementController.windPosition = e.windPosition;
+        movementController.windForce = e.windForce;
+    }
 
-	void StopMovement(WinChunkEnteredEvent e) {
+    public void StopWind(StopWindEvent e)
+    {
+        movementController.wind = false;
+        movementController.windForce = 0;
+    }
+
+    public void PushBikeBack(ObstacleHitEvent e)
+    {
+        Debug.Log(e.upForce);
+    }
+
+    void StopMovement(WinChunkEnteredEvent e) {
         movementController.enabled = false;
         EventManager.Instance.StopListening <MovementInput>(RetrieveInput);
 	}
