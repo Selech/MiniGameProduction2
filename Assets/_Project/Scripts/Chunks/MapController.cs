@@ -7,10 +7,12 @@ public class MapController : MonoBehaviour
 	public GameObject winChunk;
 	public GameObject blockChunk;
 
-	private Vector3 currentPosition;
+    private GameObject roundabout;
+
+    private Vector3 currentPosition;
 	private Vector3 currentRotation;
 
-	public List<GameObject> list;
+	public List<GameObject> chunkList;
 
 	private List<GameObject> currentChunks = new List<GameObject> ();
 	private int chunks = 0;
@@ -21,21 +23,45 @@ public class MapController : MonoBehaviour
 	[Tooltip ("Amount of initial chunks to load")]
 	public int maxAmountOfChunks = 5;
 
-
+    private bool moveRoundAbout;
+    private int counter;
 
 	// Use this for initialization
 	void Start ()
 	{
-		currentPosition = this.gameObject.transform.position;
+        counter = 30;
+        // puts the roundabout below the ground 
+        roundabout = (GameObject) Instantiate(blockChunk,new Vector3(0,-50f,0),Quaternion.identity);
+
+        currentPosition = this.gameObject.transform.position;
 		currentRotation = this.gameObject.transform.rotation.eulerAngles;
 
-		for (int i = 0; i < maxAmountOfChunks-1; i++) {
+        chunkList = new List<GameObject>();
+
+        var chunkList2 = Resources.LoadAll("GeneratedChunks");
+        foreach (var c in chunkList2) {
+            chunkList.Add(c as GameObject);
+        }
+
+        for (int i = 0; i < maxAmountOfChunks; i++) {
 			GenerateChunk (new ChunkEnteredEvent ());
 		}
 
 		EventManager.Instance.TriggerEvent (new MapStartedEvent (winAmountOfChunks));
 
 	}
+
+    void FixedUpdate()
+    {
+        if (moveRoundAbout)
+        {
+            if (counter <= 0)
+            {
+                UpdateRoundabout();
+            }
+            counter--;
+        }
+    }
 
 	void OnEnable ()
 	{
@@ -55,9 +81,12 @@ public class MapController : MonoBehaviour
 			chunk = (GameObject)Instantiate (winChunk);
 			SpawnWinChunk (chunk);
 		} else if (chunks < winAmountOfChunks) {
-			int ran = Random.Range (0, list.Count);
+			int ran = Random.Range (0, chunkList.Count);
 			int ran2 = Random.Range (0, 1);
-			chunk = (GameObject)Instantiate (list [ran]);
+
+            chunk = (GameObject)Instantiate(chunkList[ran]);
+
+            //chunk = (GameObject)Instantiate (list [ran]);
 
 			SpawnChunk (chunk);
 		} else {
@@ -83,6 +112,7 @@ public class MapController : MonoBehaviour
 		chunk.transform.rotation = Quaternion.Euler (currentRotation);
 
 		currentPosition = script.EndPoint.transform.position;
+        print(currentRotation);
 		currentRotation += script.EndPoint.transform.localRotation.eulerAngles;
 
 		ArrangeChunkList (chunk);
@@ -90,10 +120,14 @@ public class MapController : MonoBehaviour
 
 	private void ArrangeChunkList ()
 	{
-		GameObject oldChunk = (GameObject)currentChunks [0];
-		Destroy (oldChunk,1);
-		ReturnToPool (oldChunk);
-		currentChunks.Remove (oldChunk);
+        if (currentChunks.Count > maxAmountOfChunks)
+        {
+            GameObject oldChunk = (GameObject)currentChunks[0];
+            Destroy(oldChunk, 1);
+            ReturnToPool(oldChunk);
+            currentChunks.Remove(oldChunk);
+            moveRoundAbout = true;
+        }
 	}
 
 	private void ArrangeChunkList (GameObject newChunk)
@@ -103,11 +137,21 @@ public class MapController : MonoBehaviour
 			Destroy (oldChunk,1);
 			ReturnToPool (oldChunk);
 			currentChunks.Remove (oldChunk);
-		}
+            moveRoundAbout = true;
+        }
 
 		currentChunks.Add (newChunk);
 		chunks++;
 	}
+
+    private void UpdateRoundabout()
+    {
+        moveRoundAbout = false;
+        counter = 30;
+        var start = currentChunks[0].GetComponent<ChunkScript>().StartPoint;
+        roundabout.transform.position = start.transform.position;
+        roundabout.transform.rotation = start.transform.rotation;
+    }
 
 	private void ReturnToPool (GameObject oldChunk)
 	{

@@ -19,8 +19,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000014008709342}
-  - 135: {fileID: 135000010729035782}
   - 114: {fileID: 114000012629318164}
+  - 65: {fileID: 65000011715162948}
   m_Layer: 10
   m_Name: BoostPickup
   m_TagString: BoostPickup
@@ -108,6 +108,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012906054756}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65000011715162948
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010734497130}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.4, z: 1}
+  m_Center: {x: 0, y: -0.7, z: 0}
 --- !u!114 &114000012629318164
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -119,17 +131,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c78103c575354f744893ca34f795e0c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boost: 5
-  time: 2
---- !u!135 &135000010729035782
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010734497130}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  boost: 2.1
+  time: 4.5

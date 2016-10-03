@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 
 public class TakeDamageEvent : GameEvent
 {
@@ -237,21 +238,21 @@ public class SnapSoundEvent : GameEvent
 
 public class StartWindEvent : GameEvent
 {
-	public Vector3 windPosition;
-	public float windForce;
+    public Vector3 windPosition;
+    public float windForce;
 
-	public StartWindEvent(Vector3 windPosition, float windForce)
-	{
-		this.windPosition = windPosition;
-		this.windForce = windForce;
-	}
+    public StartWindEvent(Vector3 windPosition, float windForce)
+    {
+        this.windPosition = windPosition;
+        this.windForce = windForce;
+    }
 }
 
 public class StopWindEvent : GameEvent
 {
-	public StopWindEvent()
-	{
-	}
+    public StopWindEvent()
+    {
+    }
 }
 
 /// <summary>
@@ -278,6 +279,60 @@ public class FeedbackCameraShakeEvent : GameEvent
     }
 }
 
+public class PlayerHitRoadProp : GameEvent
+{
+    public GameObject roadProp;
+    public PlayerHitRoadProp(GameObject roadProp)
+    {
+        this.roadProp = roadProp;
+    }
+}
+
+public class NearEnd01Event : GameEvent
+{
+    public NearEnd01Event()
+    {
+
+    }
+}
+public class NearEnd02Event : GameEvent
+{
+    public NearEnd02Event()
+    {
+
+    }
+}
+public class NearEnd03Event : GameEvent
+{
+    public NearEnd03Event()
+    {
+
+    }
+}
+
+public class AtEnd01Event : GameEvent
+{
+    public AtEnd01Event()
+    {
+
+    }
+}
+
+public class AtEnd02Event : GameEvent
+{
+    public AtEnd02Event()
+    {
+
+    }
+}
+
+public class StartStackingSceneEvent : GameEvent
+{
+    public StartStackingSceneEvent()
+    {
+
+    }
+}
 #region Tutorial level sound events
 // Tutorial level sound events below:
 
@@ -448,3 +503,15 @@ public class IntroVO3event : GameEvent
     }
 }
 #endregion
+
+public class SetAberrationEvent : GameEvent
+{
+	public float strenght;
+	public float duration;
+
+	public SetAberrationEvent(float strenght, float duration)
+	{
+		this.strenght = strenght;
+		this.duration = duration;
+	}
+}
