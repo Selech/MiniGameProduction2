@@ -333,6 +333,16 @@ public class StartStackingSceneEvent : GameEvent
 
     }
 }
+
+public class MapProgressionForSoundEvent : GameEvent
+{
+    public float percentage;
+    
+    public MapProgressionForSoundEvent(float percentage)
+    {
+        this.percentage = percentage;
+    }
+}
 #region Tutorial level sound events
 // Tutorial level sound events below:
 

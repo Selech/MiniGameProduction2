@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
     public bool tutorialCompleted = false;
     [HideInInspector]
     public bool isStackingScene = false;
+    [HideInInspector]
+    public bool isDanish = true;
 
 	void Start ()
 	{
@@ -97,6 +99,7 @@ public class GameManager : MonoBehaviour
         EventManager.Instance.StartListening<ChangeSchemeEvent>(ReactToControlSchemeChange);
         EventManager.Instance.StartListening<StartGame>(StartGame);
         EventManager.Instance.StartListening<RestartGameEvent>(ResetWin);
+        EventManager.Instance.StartListening<LanguageSelect>(Language);
     }
 
 	void OnDisable ()
@@ -105,6 +108,7 @@ public class GameManager : MonoBehaviour
         EventManager.Instance.StopListening<ChangeSchemeEvent>(ReactToControlSchemeChange);
         EventManager.Instance.StopListening<StartGame>(StartGame);
         EventManager.Instance.StopListening<RestartGameEvent>(ResetWin);
+        EventManager.Instance.StopListening<LanguageSelect>(Language);
     }
 
 	void ReactToWin (WinChunkEnteredEvent e)
@@ -170,6 +174,11 @@ public class GameManager : MonoBehaviour
 			gyroInput.enabled = false;
 		}
 	}
+
+    public void Language (LanguageSelect e)
+    {
+        isDanish = e.isDanish;
+    }
 
 	private static GameManager _instance;
 
