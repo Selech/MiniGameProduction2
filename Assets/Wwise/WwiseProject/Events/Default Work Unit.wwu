@@ -727,10 +727,10 @@
 				</Folder>
 				<Event Name="Play_Build" ID="{0F6561BF-F6CC-4635-A4C7-5BEC0A030AB7}">
 					<ChildrenList>
-						<Action Name="Play" ID="{D516D95E-6B83-4184-AC90-DCC096BC2B73}" ShortID="829833004" Type="Play" Scope="One" Global="false">
+						<Action Name="Play" ID="{381D8825-0BF7-42C6-AFD6-3A7FAE0A6E2B}" ShortID="55602802" Type="Play" Scope="One" Global="false">
 							<ElementList>
-								<Element ID="{D54524C3-C1EE-4ABB-98D3-44FFD8562E3A}" Global="false">
-									<ObjectRef Name="Build" ID="{5AAF1BA3-7CC7-4C4A-B441-E1A9A1145F29}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
+								<Element ID="{B3D60EBC-8A75-4467-BA0C-39FF8AD4CBA4}" Global="false">
+									<ObjectRef Name="Build" ID="{A610AB03-757A-4D0D-B4E5-8BA77B4FEE1D}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
 								</Element>
 							</ElementList>
 						</Action>
@@ -908,7 +908,7 @@
 								<Action Name="Stop" ID="{647716B2-3FFF-42EC-867D-71B4AE951590}" ShortID="528416700" Type="Stop" Scope="One" Global="false">
 									<ElementList>
 										<Element ID="{51902DF4-6ABE-4C81-8C48-39021C694640}" Global="false">
-											<ObjectRef Name="MusicDrivePlace" ID="{42A3EC43-24B3-481F-BCE3-B7CD6CD6E375}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
+											<ObjectRef Name="DriveMusic" ID="{C8F7F11F-2351-498A-8CED-50AE71171088}" WorkUnitID="{9BE5B37D-4814-42B5-AD97-431DE2BC86C4}"/>
 										</Element>
 									</ElementList>
 								</Action>
@@ -916,6 +916,31 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
+				<Event Name="Stop_Build" ID="{9630E952-A725-47BA-BFB1-9EEBD65751BB}">
+					<ChildrenList>
+						<Action Name="Stop" ID="{5C575C3D-DA79-483A-9120-AC0C5F3A60D4}" ShortID="636937175" Type="Stop" Scope="One" Global="false">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="1.5"/>
+							</PropertyList>
+							<ElementList>
+								<Element ID="{4EF521EB-CAA0-4DC2-9B35-D707D7629EF7}" Global="false">
+									<ObjectRef Name="Build" ID="{A610AB03-757A-4D0D-B4E5-8BA77B4FEE1D}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_CloudPuff" ID="{2CF80530-BED9-4961-80BA-FCECE1CE987B}">
+					<ChildrenList>
+						<Action Name="Play" ID="{B0554182-44DC-4804-A61C-CC63A7A195E5}" ShortID="897055955" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{EB3ADFA8-3112-4B13-97B1-0077523AAED7}" Global="false">
+									<ObjectRef Name="CloudPuff" ID="{728FBA0E-58BB-4FA1-B81C-BDB510CA0361}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

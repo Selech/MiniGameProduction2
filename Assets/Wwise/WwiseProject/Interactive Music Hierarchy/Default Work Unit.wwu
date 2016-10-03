@@ -958,6 +958,34 @@
 								<Value>18</Value>
 							</ValueList>
 						</Property>
+						<Property Name="PlaybackSpeed" Type="Real64">
+							<RTPCList>
+								<RTPC Name="" ID="{940E90A9-E74C-4AFE-8C4A-C5D22766EF79}" ShortID="393942367">
+									<ReferenceList>
+										<Reference Name="ControlInput">
+											<ObjectRef Name="SkipScene" ID="{5D265A66-B65C-4FDE-BA6E-22457454AA3D}" WorkUnitID="{BF7C0DD8-E293-457A-844E-EF2FD3D1B823}"/>
+										</Reference>
+									</ReferenceList>
+									<Curve Name="" ID="{574033E8-F23A-4D9E-8309-2C0D24A1AB0F}">
+										<PropertyList>
+											<Property Name="Flags" Type="int32" Value="1"/>
+										</PropertyList>
+										<PointList>
+											<Point>
+												<XPos>0</XPos>
+												<YPos>1</YPos>
+												<Flags>5</Flags>
+											</Point>
+											<Point>
+												<XPos>1</XPos>
+												<YPos>2.5</YPos>
+												<Flags>37</Flags>
+											</Point>
+										</PointList>
+									</Curve>
+								</RTPC>
+							</RTPCList>
+						</Property>
 						<Property Name="UserAuxSendVolume1" Type="Real64">
 							<ValueList>
 								<Value>-31</Value>
