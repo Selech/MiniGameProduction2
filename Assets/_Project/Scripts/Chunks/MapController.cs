@@ -7,7 +7,9 @@ public class MapController : MonoBehaviour
 	public GameObject winChunk;
 	public GameObject blockChunk;
 
-	private Vector3 currentPosition;
+    private GameObject roundabout;
+
+    private Vector3 currentPosition;
 	private Vector3 currentRotation;
 
 	public List<GameObject> chunkList;
@@ -21,10 +23,17 @@ public class MapController : MonoBehaviour
 	[Tooltip ("Amount of initial chunks to load")]
 	public int maxAmountOfChunks = 5;
 
+    private bool moveRoundAbout;
+    private int counter;
+
 	// Use this for initialization
 	void Start ()
 	{
-		currentPosition = this.gameObject.transform.position;
+        counter = 30;
+        // puts the roundabout below the ground 
+        roundabout = (GameObject) Instantiate(blockChunk,new Vector3(0,-50f,0),Quaternion.identity);
+
+        currentPosition = this.gameObject.transform.position;
 		currentRotation = this.gameObject.transform.rotation.eulerAngles;
 
         chunkList = new List<GameObject>();
@@ -41,6 +50,18 @@ public class MapController : MonoBehaviour
 		EventManager.Instance.TriggerEvent (new MapStartedEvent (winAmountOfChunks));
 
 	}
+
+    void FixedUpdate()
+    {
+        if (moveRoundAbout)
+        {
+            if (counter <= 0)
+            {
+                UpdateRoundabout();
+            }
+            counter--;
+        }
+    }
 
 	void OnEnable ()
 	{
@@ -105,6 +126,7 @@ public class MapController : MonoBehaviour
             Destroy(oldChunk, 1);
             ReturnToPool(oldChunk);
             currentChunks.Remove(oldChunk);
+            moveRoundAbout = true;
         }
 	}
 
@@ -115,11 +137,21 @@ public class MapController : MonoBehaviour
 			Destroy (oldChunk,1);
 			ReturnToPool (oldChunk);
 			currentChunks.Remove (oldChunk);
-		}
+            moveRoundAbout = true;
+        }
 
 		currentChunks.Add (newChunk);
 		chunks++;
 	}
+
+    private void UpdateRoundabout()
+    {
+        moveRoundAbout = false;
+        counter = 30;
+        var start = currentChunks[0].GetComponent<ChunkScript>().StartPoint;
+        roundabout.transform.position = start.transform.position;
+        roundabout.transform.rotation = start.transform.rotation;
+    }
 
 	private void ReturnToPool (GameObject oldChunk)
 	{

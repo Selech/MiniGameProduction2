@@ -23,7 +23,19 @@ public class Prefabbing : EditorWindow
         foreach(var obj in objects)
         {
             var finalName = obj.name.Remove(0, 10);
+
+            var displayers = obj.GetComponentsInChildren<Transform>().Where(t => t.gameObject.name == "DISPLAYER").ToList();
+            foreach (var l in displayers)
+            {
+                l.gameObject.SetActive(false);
+            }
+
             PrefabUtility.CreatePrefab("Assets/Resources/GeneratedChunks/" + finalName +".prefab", obj);
+
+            foreach (var l in displayers)
+            {
+                l.gameObject.SetActive(true);
+            }
         }
 
     }
