@@ -7,20 +7,29 @@ using System.Collections.Generic;
 public class PlayerReactionsController : MonoBehaviour
 {
 
-    GameObject currentCarriable;
-    int indexOfCarriable;
+    GameObject carriableFallingOff;
+    int numberOfLostCarriables;
     CarriableHealth carriableHealth;
-    List<GameObject> stackingList;
     PlayerMovementController movementController;
     Rigidbody bikePlate;
     bool isBoosted = false;
 
+    public PlayerPickupController playerPickupController;
+    StackingList stackedList;
+    GameObject carriableManager;
+    CarriableManager carriableManagerScript;
+
+    private int indexOfCurrentTopCarriable = 0;
+
     void Awake()
     {
         movementController = GetComponent<PlayerMovementController>();
-        stackingList = new List<GameObject>();
         bikePlate = GetComponentInChildren<Rigidbody>();
         indexOfCarriable = 0;
+        playerPickupController = GetComponent<PlayerPickupController>();
+        carriableManager = GameObject.FindGameObjectWithTag("CarriableManager");
+        stackedList = carriableManager.GetComponent<StackingList>();
+        carriableManagerScript = carriableManager.GetComponent<CarriableManager>();
     }
 
     void OnEnable()
@@ -57,9 +66,13 @@ public class PlayerReactionsController : MonoBehaviour
 		EventManager.Instance.StopListening<StopWindEvent>(StopWind);
     }
 
+    /// <summary>
+    /// Being called inside "DamageObstacle" after we have breaked the joint
+    /// </summary>
     void LostCarriable(LoseCarriableEvent e)
     {
-        indexOfCarriable++;
+        numberOfLostCarriables++;
+        carriableManagerScript.runningHeight -= carriableFallingOff.GetComponent<CarriablesDrag>().heightOfObject;
     }
 
     void RetrieveInput(MovementInput horizontalInput)
@@ -92,15 +105,23 @@ public class PlayerReactionsController : MonoBehaviour
 
     void GetBackCarriable(GetBackCarriableHitEvent e)
     {
+        if (numberOfLostCarriables != 0)
+        {
+            carriableManagerScript.PutBackCarriable(numberOfLostCarriables);
+            numberOfLostCarriables--;
+        }
     }
 
-    public void DamageObstacle(DamageCarriableEvent e)
+    /// <summary>
+    /// BEING CALLED WHEN PLAYER TRIGGER ON OBSTACLES (1)
+    /// </summary>
+	public void DamageObstacle(DamageCarriableEvent e)
     {
-        GetTopCarriable();
-        Debug.Log("damaged  obstacle");
-        if (currentCarriable)
+        Debug.Log("numberOfLostCarriables :" + numberOfLostCarriables);
+        if (numberOfLostCarriables != stackedList.CollectedCarriables.Count)
         {
-            carriableHealth = currentCarriable.GetComponent<CarriableHealth>();
+            GetCarriableFallingOff();
+            carriableHealth = carriableFallingOff.GetComponent<CarriableHealth>();
             carriableHealth.LoseHealth();
         }
     }
@@ -110,22 +131,10 @@ public class PlayerReactionsController : MonoBehaviour
         Debug.Log(e.upForce);
     }
 
-    public void GetTopCarriable()
+    public void GetCarriableFallingOff()
     {
-        if (stackingList.Count > 0)
-        {
-            currentCarriable = stackingList[indexOfCarriable];
-
-        }
-    }
-
-    public void GetTopCarriable(ChunkEnteredEvent e)
-    {
-        if (stackingList.Count > 0)
-        {
-            currentCarriable = stackingList[indexOfCarriable];
-
-        }
+        indexOfCurrentTopCarriable = (stackedList.CollectedCarriables.Count - 1) - numberOfLostCarriables;
+        carriableFallingOff = stackedList.CollectedCarriables[indexOfCurrentTopCarriable];
     }
 
     void StopMovement(WinChunkEnteredEvent e)
