@@ -4,6 +4,13 @@
 		<WorkUnit Name="Default Work Unit" ID="{0A3694B7-4BEB-47ED-A5EE-527994BD2602}" PersistMode="Standalone">
 			<ChildrenList>
 				<Effect Name="New_Wwise_Pitch_Shifter" ID="{C0D20FAB-3D49-4405-9BF8-E226144F6ADC}" PluginName="Wwise Pitch Shifter" CompanyID="0" PluginID="136" PluginType="3"/>
+				<Effect Name="Delay" ID="{4E70B991-B5DC-4EC9-887B-E8ED02B69414}" PluginName="Wwise Delay" CompanyID="0" PluginID="106" PluginType="3">
+					<PropertyList>
+						<Property Name="DelayTime" Type="Real32" Value="0.47"/>
+						<Property Name="Feedback" Type="Real32" Value="40"/>
+						<Property Name="WetDryMix" Type="Real32" Value="18"/>
+					</PropertyList>
+				</Effect>
 			</ChildrenList>
 		</WorkUnit>
 	</Effects>
