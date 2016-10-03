@@ -2324,6 +2324,13 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="AngryWoman" ID="{D61D9EC7-71C0-4BC5-9F2F-F3527CA15157}" ShortID="354685667" Type="SoundFX">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>8</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
@@ -2346,7 +2353,7 @@
 							<PropertyList>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-3</Value>
+										<Value>2</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -2366,6 +2373,89 @@
 							</ChildrenList>
 							<ActiveSourceList>
 								<ActiveSource Name="Throw" ID="{4B20A3D9-9ECA-46C2-824A-D874F2FD633F}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="ColBall" ID="{0D48B860-15E1-4A20-957D-84A8E1615D4C}" ShortID="104711206" Type="SoundFX">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-2</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="ColBall" ID="{3EE8E94C-FB87-4DA1-9270-E96BFF646049}" ShortID="999354876">
+									<Language>SFX</Language>
+									<AudioFile>ColBall.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="ColBall" ID="{3EE8E94C-FB87-4DA1-9270-E96BFF646049}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="ColBricks" ID="{B8C5BBEE-2DC5-46E3-8C24-899E8AF59AA3}" ShortID="469443602" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="ColBricks" ID="{C697C67D-75BD-41D0-A730-549AA033FC0D}" ShortID="106088312">
+									<Language>SFX</Language>
+									<AudioFile>ColBricks.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="ColBricks" ID="{C697C67D-75BD-41D0-A730-549AA033FC0D}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="ColPan" ID="{717A73E1-2D5E-4B3A-91C1-6FC71EB9786A}" ShortID="959440889" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="ColPan" ID="{0C3B01A1-4B6D-4F4B-A08F-8DF3D2C0CEA1}" ShortID="580247750">
+									<Language>SFX</Language>
+									<AudioFile>ColPan.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="ColPan" ID="{0C3B01A1-4B6D-4F4B-A08F-8DF3D2C0CEA1}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="ColShoes" ID="{FA93E22D-5997-451F-A5F3-80C42DB1EC92}" ShortID="970766379" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="ColShoes" ID="{F71FBC57-3608-49E8-96EB-9D310CE5FC68}" ShortID="661648573">
+									<Language>SFX</Language>
+									<AudioFile>ColShoes.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="ColShoes" ID="{F71FBC57-3608-49E8-96EB-9D310CE5FC68}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
@@ -2787,6 +2877,9 @@
 					</ChildrenList>
 				</Folder>
 				<Sound Name="MenuMusic2_0" ID="{6AAC1069-D6CD-4760-80B9-A3029DBCD242}" ShortID="869572276" Type="SoundFX">
+					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
@@ -2797,6 +2890,12 @@
 					</ReferenceList>
 					<ChildrenList>
 						<AudioFileSource Name="MenuMusic2_0" ID="{D2927906-3A5A-4407-9F3F-308470258323}" ShortID="379469203">
+							<PropertyList>
+								<Property Name="FadeInDuration" Type="Real64" Value="1.42828835399951"/>
+								<Property Name="FadeOutDuration" Type="Real64" Value="0.454455385363481"/>
+								<Property Name="TrimBegin" Type="Real64" Value="1.55813274981765"/>
+								<Property Name="TrimEnd" Type="Real64" Value="58.4299781181619"/>
+							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>MenuMusic2.0.wav</AudioFile>
 						</AudioFileSource>

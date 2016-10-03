@@ -4,12 +4,21 @@ using System.Collections;
 public class CarriableHealth : MonoBehaviour {
 
 	public int currentLifeCounter = 0;
-	public int maxLifeCounter = 3;
+	public int maxLifeCounter = 1;
 	public float upForce = 300.0f;
+	public PlayerPickupController playerPickUpController;
+	GameObject player;
+    CarriableManager carriableManager;
+
+	public int waitTimeDrop = 2;
+
 	// Use this for initialization
 	void Start () {
 		ResetCurrentLifeCounter ();
-	}
+		player = GameObject.FindGameObjectWithTag ("Player");
+        carriableManager = GameObject.FindGameObjectWithTag("CarriableManager").GetComponent<CarriableManager>();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -17,13 +26,15 @@ public class CarriableHealth : MonoBehaviour {
 	}
 
 	public void LoseHealth(){
-		print ("Lost health"); 
-		currentLifeCounter--;
-		if (currentLifeCounter <= 0) {
-			BreakJoint (GetComponent<SpringJoint> ());
-			EventManager.Instance.TriggerEvent (new LoseCarriableEvent ());
-		}
-			
+        if (carriableManager.canBreak) {
+            currentLifeCounter--;
+		if (currentLifeCounter <= 0)
+            {
+                carriableManager.canBreak = false;
+                BreakJoint (GetComponent<SpringJoint> ());
+			    EventManager.Instance.TriggerEvent (new LoseCarriableEvent ());
+            }
+        }
 	}
 
 	public void BreakJoint(SpringJoint joint){
@@ -36,10 +47,12 @@ public class CarriableHealth : MonoBehaviour {
 
 	IEnumerator BreakJointCo (SpringJoint joint) {
 		if (joint) {
+			playerPickUpController = player.GetComponent<PlayerPickupController> ();
+			playerPickUpController.SetLastLostCarriable(joint.gameObject);
 			joint.gameObject.transform.parent = null;	
 			Destroy (joint);
-			yield return new WaitForSeconds (0.1f);
-			//GetComponent<Rigidbody> ().AddForce (-transform.forward * upForce * 0.5f + Vector3.up * upForce, ForceMode.Impulse);
-		}
+            yield return new WaitForSeconds (waitTimeDrop);
+            carriableManager.canBreak = true;
+        }
 	}
 }
