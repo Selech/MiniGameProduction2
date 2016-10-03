@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
     public bool isGyro = false;
     [HideInInspector]
     public bool tutorialCompleted = false;
+    [HideInInspector]
+    public bool isStackingScene = false;
 
 	void Start ()
 	{
@@ -48,7 +50,6 @@ public class GameManager : MonoBehaviour
 
 	void Awake ()
 	{
-        
         
         Time.timeScale = 1;
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;

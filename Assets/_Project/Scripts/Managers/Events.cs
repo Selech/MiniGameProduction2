@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 
 public class TakeDamageEvent : GameEvent
 {
@@ -235,6 +236,25 @@ public class SnapSoundEvent : GameEvent
     }
 }
 
+public class StartWindEvent : GameEvent
+{
+    public Vector3 windPosition;
+    public float windForce;
+
+    public StartWindEvent(Vector3 windPosition, float windForce)
+    {
+        this.windPosition = windPosition;
+        this.windForce = windForce;
+    }
+}
+
+public class StopWindEvent : GameEvent
+{
+    public StopWindEvent()
+    {
+    }
+}
+
 /// <summary>
 /// used to inform soundmanager whether the menu is active
 /// </summary>
@@ -252,7 +272,6 @@ public class FeedbackCameraShakeEvent : GameEvent
 {
     public float amount;
     public float duration;
-
     public FeedbackCameraShakeEvent(float amount, float duration)
     {
         this.amount = amount;
@@ -260,6 +279,60 @@ public class FeedbackCameraShakeEvent : GameEvent
     }
 }
 
+public class PlayerHitRoadProp : GameEvent
+{
+    public GameObject roadProp;
+    public PlayerHitRoadProp(GameObject roadProp)
+    {
+        this.roadProp = roadProp;
+    }
+}
+
+public class NearEnd01Event : GameEvent
+{
+    public NearEnd01Event()
+    {
+
+    }
+}
+public class NearEnd02Event : GameEvent
+{
+    public NearEnd02Event()
+    {
+
+    }
+}
+public class NearEnd03Event : GameEvent
+{
+    public NearEnd03Event()
+    {
+
+    }
+}
+
+public class AtEnd01Event : GameEvent
+{
+    public AtEnd01Event()
+    {
+
+    }
+}
+
+public class AtEnd02Event : GameEvent
+{
+    public AtEnd02Event()
+    {
+
+    }
+}
+
+public class StartStackingSceneEvent : GameEvent
+{
+    public StartStackingSceneEvent()
+    {
+
+    }
+}
 #region Tutorial level sound events
 // Tutorial level sound events below:
 
@@ -406,6 +479,31 @@ public class YouHaveToAvoidEvent : GameEvent
     }
 }
 
+public class IntroVO1event : GameEvent
+{
+    public IntroVO1event()
+    {
+
+    }
+}
+
+public class IntroVO2event : GameEvent
+{
+    public IntroVO2event()
+    {
+
+    }
+}
+
+public class IntroVO3event : GameEvent
+{
+    public IntroVO3event()
+    {
+
+    }
+}
+#endregion
+
 public class SetAberrationEvent : GameEvent
 {
 	public float strenght;
@@ -417,4 +515,3 @@ public class SetAberrationEvent : GameEvent
 		this.duration = duration;
 	}
 }
-#endregion
