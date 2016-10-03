@@ -82,6 +82,10 @@ public class PlayerMovementController : MonoBehaviour
     private bool isCenterGroundHit;
     public float speedFactor = 1f;
 
+	public bool wind = false;		
+	public Vector3 windPosition;		
+	public float windForce = 0;
+
     void OnEnable()
     {
         charController = GetComponent<CharacterController>();
@@ -94,6 +98,8 @@ public class PlayerMovementController : MonoBehaviour
         if (!GameManager.Instance.isPaused)
         {
             MoveForward();
+			if (wind)		
+				MoveAside(windPosition, windForce);
         }
     }
 
@@ -221,5 +227,9 @@ public class PlayerMovementController : MonoBehaviour
 
     }
 
-
+	public void MoveAside (Vector3 windPosition, float windForce){
+		Debug.Log ("moving");
+		Vector3 windDir = windPosition;		
+		transform.Translate(((updatedPlayerForward * Mathf.Clamp (currentForwardSpeed, minimumSpeed, maximumSpeed)) + (windDir * windForce)) * Time.deltaTime);		
+	}
 }
