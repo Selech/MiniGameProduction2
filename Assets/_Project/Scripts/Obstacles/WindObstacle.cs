@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum WindDirection {Left, Right};
+public enum WindDirection { Left, Right }
 
 public class WindObstacle : MonoBehaviour {
 
@@ -9,7 +9,10 @@ public class WindObstacle : MonoBehaviour {
 	[Range(0, 1)]
 	public float windForce = 0.05f;
 
-	public Vector3 windPosition;
+	[Tooltip("Direction from which the wind blows")]
+	public WindDirection windDirection;
+
+	Vector3 windPosition;
 
 	// Use this for initialization
 	void Start () {
@@ -21,7 +24,10 @@ public class WindObstacle : MonoBehaviour {
 		if(col.gameObject.CompareTag("BikePlate") || col.gameObject.CompareTag("Player"))
 		{
 			Debug.Log ("hit by wind");
-			windPosition = windPosition - transform.GetChild (0).position;
+			if (windDirection == WindDirection.Right)
+				windPosition = windPosition - transform.GetChild (0).position;
+			else
+				windPosition = transform.GetChild (0).position - windPosition;
 			EventManager.Instance.TriggerEvent (new StartWindEvent (windPosition, windForce));
 		}
 	}
