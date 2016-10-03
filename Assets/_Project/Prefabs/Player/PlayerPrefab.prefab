@@ -89,6 +89,7 @@ GameObject:
   - 4: {fileID: 4000011813853948}
   - 54: {fileID: 54000011319011056}
   - 65: {fileID: 65000013589310704}
+  - 65: {fileID: 65000013842526100}
   m_Layer: 11
   m_Name: bikePlate
   m_TagString: BikePlate
@@ -296,8 +297,20 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 90, y: 1, z: 100}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 43.01, y: 1, z: 34.5}
+  m_Center: {x: 72.4, y: 0, z: -77.97}
+--- !u!65 &65000013842526100
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012142068196}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 71.04, y: 1, z: 110.7}
+  m_Center: {x: 5.1, y: 0, z: 5.6}
 --- !u!95 &95000011378591066
 Animator:
   serializedVersion: 3
@@ -329,7 +342,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
-  mass: 1
+  mass: 0.02
   defaultSpeed: 0.12
   accelerationRate: 0.075
   decelerationRate: 0.45
@@ -338,16 +351,19 @@ MonoBehaviour:
   rotateSpeed: 1.45
   steepAccelerationDegree: 5
   steepDecelerationDegree: 5
+  maxVerticalAngle: 145
+  reorientSpeed: 3
+  rayToGroundLength: 2
+  centeredRayToGroundLength: 0.4
   currentForwardSpeed: 0
   currentVerticalSpeed: 0
-  reorientSpeed: 7
+  steepAngle: 0
   playerModel: {fileID: 4000011641955830}
   respawnPoint: {fileID: 0}
   frontBikeLimit: {fileID: 4000012469699820}
   endBikeLimit: {fileID: 4000013803824284}
   leftBikeLimit: {fileID: 4000012216280090}
   rightBikeLimit: {fileID: 4000013742317096}
-  rayToGroundLength: 4
   speedFactor: 1
 --- !u!114 &114000011981348898
 MonoBehaviour:
@@ -388,4 +404,4 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Center: {x: 0, y: 0.58, z: 0}
