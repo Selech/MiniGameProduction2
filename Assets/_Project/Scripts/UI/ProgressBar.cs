@@ -37,7 +37,8 @@ public class ProgressBar : MonoBehaviour
     private float playerPositionInChunk = 0;
     private int numberOfPreviousChunks = -1;
     private bool gameStarted = false;
-
+    // used to map sound progression
+    private float positionInPercentage;
 
     /// <summary>
     /// Updating position of the character on the bar
@@ -58,7 +59,8 @@ public class ProgressBar : MonoBehaviour
                 playerPositionInChunk = Vector3.Distance(playerTransform.position, startPoint);
                 positionPercentage = playerPositionInChunk / chunkLength;
                 ProgressionPlayerAlongBar.transform.position = new Vector3(startMarker.position.x + numberOfPreviousChunks * distanceToMove + positionPercentage * distanceToMove, startMarker.position.y, 0);
-
+                positionInPercentage = ProgressionPlayerAlongBar.transform.position.x/endMarker.transform.position.x;
+                EventManager.Instance.TriggerEvent(new MapProgressionForSoundEvent(positionInPercentage));
             }
         }
     }
