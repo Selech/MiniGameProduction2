@@ -178,19 +178,8 @@ public class SoundManager : MonoBehaviour
     {
 
         isDanish = e.isDanish;
-        if (isDanish)
-        {
-            AkSoundEngine.SetCurrentLanguage("Danish");
-            AkBankManager.LoadBank("nysb", false, true);
-            PlaySound("Play_UITap");
-        }
-        else
-        {
-            AkSoundEngine.SetCurrentLanguage("English(US)");
-            AkBankManager.LoadBank("nysb", false, true);
-            PlaySound("Play_UITap");
-        }
-
+        PlaySound("Play_UITap");
+        
     }
 
     private void WonGame(WinChunkEnteredEvent e)
@@ -281,6 +270,13 @@ public class SoundManager : MonoBehaviour
 
     private void StackingSceneSound(StartStackingSceneEvent e)
     {
+        if (isDanish) {
+            AkSoundEngine.SetCurrentLanguage("Danish");
+        } else
+        {
+            AkSoundEngine.SetCurrentLanguage("English(US)");
+        }
+        AkBankManager.LoadBank("nysb", false, true);
         PlaySound("Play_MenuMusic");
     }
 
