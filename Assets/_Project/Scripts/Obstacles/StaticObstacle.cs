@@ -1,7 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum ObstacleKind
+{
+	general,
+	car,
+	dumpster,
+	roadblock,
+	roadblockBig,
+	trashcan_Body,
+	trashcan_Top
+}
+
 public class StaticObstacle : MonoBehaviour {
+
+	public ObstacleKind _obstacleType;
+
+	public float shakeAmount = 5f;
+	public float shakeDuration = 1f;
 	public float pushForce = 10;
 	Rigidbody staticObstacleRigid;
 	// Use this for initialization
@@ -20,6 +36,7 @@ public class StaticObstacle : MonoBehaviour {
 		{
 			Debug.Log ("inside static");
 			EventManager.Instance.TriggerEvent(new DamageCarriableEvent());
+			EventManager.Instance.TriggerEvent (new FeedbackCameraShakeEvent (shakeAmount,shakeDuration));
 		}
 	}
 
