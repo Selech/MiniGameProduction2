@@ -21,9 +21,9 @@ public class PlayerReactionsController : MonoBehaviour {
 
 	void OnEnable() {
 		EventManager.Instance.StartListening <MovementInput>(RetrieveInput);
-		EventManager.Instance.StartListening <ChangeSchemeEvent>(ChangeScheme);
 		EventManager.Instance.StartListening <BoostPickupHitEvent>(BoostSpeed);
 		EventManager.Instance.StartListening <GetBackCarriableHitEvent>(GetBackCarriable);
+		EventManager.Instance.StartListening <ChangeSchemeEvent>(ChangeScheme);
         EventManager.Instance.StartListening <StartGame>(EnableMovement);
 		EventManager.Instance.StartListening <WinChunkEnteredEvent> (StopMovement);
 		EventManager.Instance.StartListening <ChangeParentToPlayer>(ChangeParent);
@@ -31,7 +31,8 @@ public class PlayerReactionsController : MonoBehaviour {
 		EventManager.Instance.StartListening <DamageCarriableEvent>(DamageObstacle);
 		EventManager.Instance.StartListening <ObstacleHitEvent>(PushBikeBack);
 		EventManager.Instance.StartListening <LoseCarriableEvent>(LostCarriable);
-
+		EventManager.Instance.StartListening <StartWindEvent>(StartWind);
+		EventManager.Instance.StartListening <StopWindEvent>(StopWind);
 
 	}
 
@@ -47,7 +48,8 @@ public class PlayerReactionsController : MonoBehaviour {
 		EventManager.Instance.StopListening <DamageCarriableEvent>(DamageObstacle);
 		EventManager.Instance.StopListening <ObstacleHitEvent>(PushBikeBack);
 		EventManager.Instance.StopListening <LoseCarriableEvent>(LostCarriable);
-
+		EventManager.Instance.StartListening <StartWindEvent>(StartWind);
+		EventManager.Instance.StartListening <StopWindEvent>(StopWind);
 
 	}
 
@@ -64,7 +66,7 @@ public class PlayerReactionsController : MonoBehaviour {
 		GameManager.Instance.ChangeScheme (e.isGyro);
 	}
 
-	void BoostSpeed(BoostPickupHitEvent e)
+void BoostSpeed(BoostPickupHitEvent e)
 	{
 		if(isBoosted == false)
 		{
@@ -79,6 +81,17 @@ public class PlayerReactionsController : MonoBehaviour {
 		yield return new WaitForSeconds(time);
 		movementController.speedFactor = 1;
 		isBoosted = false;
+	}
+	
+	public void StartWind(StartWindEvent e){
+		movementController.wind = true;
+		movementController.windPosition = e.windPosition;
+		movementController.windForce = e.windForce;
+	}
+
+	public void StopWind(StopWindEvent e){
+		movementController.wind = false;
+		movementController.windForce = 0;
 	}
 
 	void GetBackCarriable(GetBackCarriableHitEvent e){

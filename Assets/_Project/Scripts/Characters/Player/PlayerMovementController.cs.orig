@@ -30,6 +30,31 @@ public class PlayerMovementController : MonoBehaviour
 
     [Tooltip("How fast the player re-align itself with the ground. You probably don't need to change this!")]
     public float reorientSpeed = 7.0F;
+<<<<<<< HEAD
+	bool isTurning = true;
+	public Transform playerModel;
+	public Transform respawnPoint;
+	public Transform frontBikeLimit;
+	public Transform endBikeLimit;
+	public Transform leftBikeLimit;
+	public Transform rightBikeLimit;
+	public bool wind = false;
+	public Vector3 windPosition;
+	public float windForce = 0;
+	Vector3 frontGroundpoint;
+	Vector3 backGroundPoint;
+	Vector3 leftGroundPoint;
+	Vector3 rightGroundPoint;
+	float rayToGroundLength = 4f;
+	Vector3 updatedPlayerForward;
+	Vector3 updatedPlayerRight;
+	Vector3 updatedPlayerNormal;
+
+	float horizontalValue = 0.0f;
+
+    CharacterController charController;
+    //linear accelerated motion variables
+=======
     bool isTurning = true;
     public Transform playerModel;
     public Transform respawnPoint;
@@ -37,9 +62,6 @@ public class PlayerMovementController : MonoBehaviour
     public Transform endBikeLimit;
     public Transform leftBikeLimit;
     public Transform rightBikeLimit;
-	public bool wind = false;
-	public Vector3 windPosition;
-	public float windForce = 0;
     Vector3 frontGroundpoint;
     Vector3 backGroundPoint;
     Vector3 leftGroundPoint;
@@ -65,10 +87,15 @@ public class PlayerMovementController : MonoBehaviour
     bool isRightPointHit;
 
     public float speedFactor = 1f;
+>>>>>>> master
+
     void OnEnable()
     {
         charController = GetComponent<CharacterController>();
+<<<<<<< HEAD
+=======
 
+>>>>>>> master
     }
 
     void Update()
@@ -163,6 +190,10 @@ public class PlayerMovementController : MonoBehaviour
                 updatedPlayerForward = Vector3.Cross(updatedPlayerRight, updatedPlayerNormal);
 
 
+<<<<<<< HEAD
+	public void MoveForward ()
+	{
+=======
                 if (Vector3.Dot(updatedPlayerNormal, Vector3.up) <= 0)
                     updatedPlayerNormal = Vector3.up;
 
@@ -177,6 +208,9 @@ public class PlayerMovementController : MonoBehaviour
 
     public void MoveForward()
     {
+
+
+>>>>>>> master
         //ACCELERATION CALCULUS
         float steepAngle = Vector3.Angle(updatedPlayerForward, Vector3.up);
 
@@ -202,7 +236,12 @@ public class PlayerMovementController : MonoBehaviour
                 else
                     currentForwardSpeed = currentForwardSpeed + (accelerationRate * Time.deltaTime);
             }
+<<<<<<< HEAD
+=======
 
+
+
+>>>>>>> master
             currentVerticalSpeed = 0F;
 
             //ensure the velocity never goes out of the initial/final boundaries
@@ -212,12 +251,30 @@ public class PlayerMovementController : MonoBehaviour
         { // forward speed remains the same and gravity will drag the player down
             currentVerticalSpeed = currentVerticalSpeed + mass * 9.81f * Time.deltaTime;
 
+<<<<<<< HEAD
         } 
+        //ACCELERATION CALCULUS ENDS
+
+        //if (charController.enabled == true)  Debug.Log("Grounded!!");
+        charController.Move ((updatedPlayerForward * currentForwardSpeed + Vector3.down * currentVerticalSpeed) );
+	}
+		
+	public void Turn (float horizontalInputValue)
+	{
+		if (!GameManager.Instance.isPaused) {
+			transform.Rotate (0, horizontalInputValue * rotateSpeed, 0);
+		}
+	}
+=======
+        }
 
         //ACCELERATION CALCULUS ENDS
 
         //if (charController.enabled == true)  Debug.Log("Grounded!!");
         charController.Move((updatedPlayerForward * currentForwardSpeed * speedFactor + Vector3.down * currentVerticalSpeed));
+
+
+
     }
 
     public void Turn(float horizontalInputValue)
@@ -226,7 +283,11 @@ public class PlayerMovementController : MonoBehaviour
         {
             transform.Rotate(0, horizontalInputValue * rotateSpeed, 0);
         }
+
+
+
     }
+>>>>>>> master
 
 	public void MoveAside (Vector3 windPosition, float windForce){
 		Debug.Log ("moving");
