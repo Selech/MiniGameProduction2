@@ -15,17 +15,19 @@ public class ObstacleController : MonoBehaviour
 	public ObstacleCollection obstacleCollection_Cars;
 	public float obstacleInfluenceHit = 10;
 	public float delay = 1;
-
-	void OnEnable(){
+	bool isTriggered = false;
+	void OnEnable()
+	{
 		SpawnStatikObstacle ();
+		isTriggered = false;
 	}
 
 	void Update()
 	{
-//		if(Input.GetButtonDown("Fire1"))
-//		{
-//			SpawnDynamicObstacle ();
-//		}
+		if(Input.GetButtonDown("Fire1"))
+		{
+			SpawnDynamicObstacle ();
+		}
 	}
 
 	/// <summary>
@@ -34,8 +36,9 @@ public class ObstacleController : MonoBehaviour
 	/// <param name="col">Col.</param>
 	void OnTriggerEnter(Collider col)
 	{
-		if(col.gameObject.CompareTag("BikePlate"))
+		if(col.gameObject.CompareTag("BikePlate") && !isTriggered)
 		{
+			isTriggered = true;
 			SpawnDynamicObstacle ();
 		}
 	}
