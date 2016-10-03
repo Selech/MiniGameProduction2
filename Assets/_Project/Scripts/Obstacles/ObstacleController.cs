@@ -34,7 +34,7 @@ public class ObstacleController : MonoBehaviour
 	/// <param name="col">Col.</param>
 	void OnTriggerEnter(Collider col)
 	{
-		if(col.gameObject.CompareTag("Player"))
+		if(col.gameObject.CompareTag("BikePlate"))
 		{
 			SpawnDynamicObstacle ();
 		}
@@ -42,7 +42,7 @@ public class ObstacleController : MonoBehaviour
 
 	void OnCollisionEnter(Collision col)
 	{
-		if(col.gameObject.CompareTag("Player"))
+		if(col.gameObject.CompareTag("BikePlate"))
 		{
 			//EventManager.Instance.TriggerEvent(new ObstacleHitEvent(obstacleInfluenceHit));
 		}
