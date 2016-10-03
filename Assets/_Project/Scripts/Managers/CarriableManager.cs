@@ -19,8 +19,9 @@ public class CarriableManager : MonoBehaviour
 	public float maxCarriableHeight = 3f;
 
 	public float runningHeight;
+    public bool canBreak = true;
 
-	void OnEnable() {
+    void OnEnable() {
 		EventManager.Instance.StartListening<StartGame>(BeginGame);
 	}
 
@@ -145,5 +146,6 @@ public class CarriableManager : MonoBehaviour
 		EventManager.Instance.TriggerEvent(setParentEvent);
 
         runningHeight += carriable.GetComponent<CarriablesDrag>().heightOfObject;
+        carriable.GetComponent<CarriableHealth>().ResetCurrentLifeCounter();
     }
 }
