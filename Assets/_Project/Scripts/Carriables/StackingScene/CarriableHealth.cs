@@ -4,11 +4,18 @@ using System.Collections;
 public class CarriableHealth : MonoBehaviour {
 
 	public int currentLifeCounter = 0;
-	public int maxLifeCounter = 3;
+	public int maxLifeCounter = 1;
 	public float upForce = 300.0f;
+	public PlayerPickupController playerPickUpController;
+	GameObject player;
+
+	private bool canBreak = false;
+	public int waitTimeDrop = 2;
+
 	// Use this for initialization
 	void Start () {
 		ResetCurrentLifeCounter ();
+		player = GameObject.FindGameObjectWithTag ("Player");
 	}
 	
 	// Update is called once per frame
@@ -17,13 +24,13 @@ public class CarriableHealth : MonoBehaviour {
 	}
 
 	public void LoseHealth(){
-		print ("Lost health"); 
 		currentLifeCounter--;
 		if (currentLifeCounter <= 0) {
-			BreakJoint (GetComponent<SpringJoint> ());
-			EventManager.Instance.TriggerEvent (new LoseCarriableEvent ());
-		}
-			
+            if(canBreak) { 
+			    BreakJoint (GetComponent<SpringJoint> ());
+			    EventManager.Instance.TriggerEvent (new LoseCarriableEvent ());
+            }
+        }
 	}
 
 	public void BreakJoint(SpringJoint joint){
@@ -36,10 +43,11 @@ public class CarriableHealth : MonoBehaviour {
 
 	IEnumerator BreakJointCo (SpringJoint joint) {
 		if (joint) {
+			playerPickUpController = player.GetComponent<PlayerPickupController> ();
+			playerPickUpController.SetLastLostCarriable(joint.gameObject);
 			joint.gameObject.transform.parent = null;	
 			Destroy (joint);
-			yield return new WaitForSeconds (0.1f);
-			//GetComponent<Rigidbody> ().AddForce (-transform.forward * upForce * 0.5f + Vector3.up * upForce, ForceMode.Impulse);
+			yield return new WaitForSeconds (waitTimeDrop);
 		}
 	}
 }

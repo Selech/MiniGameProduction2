@@ -18,6 +18,8 @@ public class CarriableManager : MonoBehaviour
 	public float CarriableMassModifierFactor = 1.2f;
 	public float maxCarriableHeight = 3f;
 
+	public float runningHeight;
+
 	void OnEnable() {
 		EventManager.Instance.StartListening<StartGame>(BeginGame);
 	}
@@ -37,17 +39,10 @@ public class CarriableManager : MonoBehaviour
 
 	public void BeginGame (StartGame e)    {
 		stacking.stackingDone = true;
+		runningHeight = stacking.currentHeight;
 		startPlaying = true;
-		AddJoints ();
-		DisableDragging ();
 		SetupCamera ();
-
-		//EventManager.Instance.TriggerEvent(new ChunkEnteredEvent());
-	}
-
-	private void DisableDragging ()
-	{
-
+		AddJoints ();
 	}
 
 	private void SetupCamera ()
@@ -63,7 +58,9 @@ public class CarriableManager : MonoBehaviour
 
 		foreach(var collectedObject in collectedObjects){
 			collectedObject.AddComponent<Rigidbody> ();
+
 			var boxColliders = collectedObject.GetComponents<BoxCollider> ();
+
 			foreach (var boxCollider in boxColliders) {
 				boxCollider.enabled = !boxCollider.enabled;
 			}
@@ -71,14 +68,15 @@ public class CarriableManager : MonoBehaviour
 
 		for (int i = size-1; i >= 0; i--) {
 			var setParentEvent = new ChangeParentToPlayer ();
-
-			Destroy (collectedObjects [i].GetComponent<CarriablesDrag> ());
+            
 			SpringJoint joint = collectedObjects [i].AddComponent<SpringJoint> ();
+
 			if (i > 0) {
 				joint.connectedBody = collectedObjects [i - 1].GetComponent<Rigidbody> ();
 			} else {
 				setParentEvent.attachToPlayer = true;
 			}
+
 			//setting joint parameters
 			joint.breakForce = Mathf.Infinity;
 			joint.breakTorque = Mathf.Infinity;
@@ -89,23 +87,63 @@ public class CarriableManager : MonoBehaviour
 
 
 			//moving the joint anchor
-			joint.anchor = new Vector3(0, collectedObjects [i].GetComponent<Renderer>().bounds.min.y,0);
+			joint.anchor = new Vector3(0, collectedObjects[i].GetComponent<Renderer>().bounds.min.y,0);
 			joint.maxDistance = 0f;
 
-			//end of setting joint parameters
-			//setting rigidbody parameters
-			Debug.Log("number of carriables"+size);
-			Rigidbody carriableRigidbody = collectedObjects [i].GetComponent<Rigidbody>();
+			Rigidbody carriableRigidbody = joint.gameObject.GetComponent<Rigidbody>();
 			//carriableRigidbody.mass = carriableMass-CarriableMassModifierFactor*(i/size)*(2*collectedObjects [i].GetComponent<Renderer>().bounds.extents.y/maxCarriableHeight);
 
 			carriableRigidbody.mass = size * carriableMass - carriableMass * i;//* (2 * collectedObjects [i].GetComponent<Renderer> ().bounds.extents.y / maxCarriableHeight);
-			//carriableRigidbody.drag = 2;
-			//carriableRigidbody.angularDrag = 2;
-
 			//end setting rigidbody parameters
-			setParentEvent.gameobject = collectedObjects [i];
+			setParentEvent.gameobject = collectedObjects[i];
 			EventManager.Instance.TriggerEvent(setParentEvent);
 		}
 
 	}
+
+    /// <summary>
+    /// CARRIABLE IS BEING PLACED BACK TO THE STACKED ITEMS
+    /// </summary>
+	public void PutBackCarriable(int numberOfLostCarriables) {
+
+        int indexToCarriableSetBack = stacking.CollectedCarriables.Count - numberOfLostCarriables;
+
+        GameObject carriable = stacking.CollectedCarriables[indexToCarriableSetBack];
+
+		var setParentEvent = new ChangeParentToPlayer ();
+
+		SpringJoint joint = carriable.AddComponent<SpringJoint> ();
+        Rigidbody carriableRigidbody = joint.gameObject.GetComponent<Rigidbody>();
+
+        carriableRigidbody.isKinematic = true;
+
+        if (numberOfLostCarriables != stacking.CollectedCarriables.Count) {
+			joint.connectedBody = stacking.CollectedCarriables[indexToCarriableSetBack - 1].GetComponent<Rigidbody> ();
+		} else {
+			setParentEvent.attachToPlayer = true;
+		}
+
+		Vector3 middleOfBike = carriable.GetComponent<CarriablesDrag> ().MiddleofBike.transform.position;
+		carriable.transform.position = new Vector3(middleOfBike.x, middleOfBike.y + runningHeight, middleOfBike.z);
+
+        carriableRigidbody.isKinematic = false;
+
+        //setting joint parameters
+        joint.breakForce = Mathf.Infinity;
+		joint.breakTorque = Mathf.Infinity;
+		joint.spring = springForce;
+		joint.damper = springDampener;
+		joint.enableCollision = true;
+		joint.tolerance = lengthTolerance;
+
+		//moving the joint anchor
+		joint.anchor = new Vector3(0, carriable.GetComponent<Renderer>().bounds.min.y + runningHeight,0);
+		joint.maxDistance = 0f;
+
+		carriableRigidbody.mass = numberOfLostCarriables;
+		setParentEvent.gameobject = carriable;
+		EventManager.Instance.TriggerEvent(setParentEvent);
+
+        runningHeight += carriable.GetComponent<CarriablesDrag>().heightOfObject;
+    }
 }
