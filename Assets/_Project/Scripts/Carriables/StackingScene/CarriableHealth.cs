@@ -28,7 +28,7 @@ public class CarriableHealth : MonoBehaviour {
 	public void LoseHealth(){
         if (carriableManager.canBreak) {
             currentLifeCounter--;
-		if (currentLifeCounter <= 0)
+			if (currentLifeCounter <= 0)
             {
                 carriableManager.canBreak = false;
                 BreakJoint (GetComponent<SpringJoint> ());

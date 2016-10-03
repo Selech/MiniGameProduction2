@@ -16,7 +16,6 @@ public class TestCollision : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col)
 	{
-		Debug.Log ("plaer" + col.gameObject.name);
 	}
 
 

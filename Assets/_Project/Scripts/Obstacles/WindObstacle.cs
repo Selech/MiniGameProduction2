@@ -23,7 +23,7 @@ public class WindObstacle : MonoBehaviour {
 	{
 		if(col.gameObject.CompareTag("BikePlate") || col.gameObject.CompareTag("Player"))
 		{
-			Debug.Log ("hit by wind");
+			
 			if (windDirection == WindDirection.Right)
 				windPosition = windPosition - transform.GetChild (0).position;
 			else
@@ -36,7 +36,7 @@ public class WindObstacle : MonoBehaviour {
 	{
 		if(col.gameObject.CompareTag("BikePlate") || col.gameObject.CompareTag("Player"))
 		{
-			Debug.Log ("stop wind");
+			
 			EventManager.Instance.TriggerEvent (new StopWindEvent ());
 		}
 	}

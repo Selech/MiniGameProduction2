@@ -34,14 +34,13 @@ public class StaticObstacle : MonoBehaviour {
 	{
 		if(col.gameObject.CompareTag("BikePlate"))
 		{
-			Debug.Log ("inside static");
 			EventManager.Instance.TriggerEvent(new DamageCarriableEvent());
 			EventManager.Instance.TriggerEvent (new FeedbackCameraShakeEvent (shakeAmount,shakeDuration));
 		}
 	}
 
 	void PushCar(Transform transform){
-		Debug.Log ("car jump");
+		
 		if (staticObstacleRigid) {
 			staticObstacleRigid.AddForce (transform.forward * pushForce, ForceMode.Force);
 		}

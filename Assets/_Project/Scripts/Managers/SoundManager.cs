@@ -195,6 +195,7 @@ public class SoundManager : MonoBehaviour
     {
         drivingStarted = false;
         PlaySound("Stop_Pedal");
+        PlaySound("Stop_MusicDrive");
         PlaySound("Play_MusicWin");
     }
 

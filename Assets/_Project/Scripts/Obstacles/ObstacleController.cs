@@ -22,14 +22,6 @@ public class ObstacleController : MonoBehaviour
 		isTriggered = false;
 	}
 
-	void Update()
-	{
-		if(Input.GetButtonDown("Fire1"))
-		{
-			SpawnDynamicObstacle ();
-		}
-	}
-
 	/// <summary>
 	/// spawns obstacle when player enters big collider if obstacle is dynamic(car or throwable)
 	/// </summary>
@@ -90,13 +82,13 @@ public class ObstacleController : MonoBehaviour
 			Rigidbody r = Instantiate (obstacleCollection_Throwables._ObstacleStatCollection[rand].obstaclePrefab,transform.position,Quaternion.identity) as Rigidbody;
 			//Rigidbody r = obstacle.GetComponent<Rigidbody> ();
 			r.AddForce (obstacleDirectionIndicator.forward*obstacleCollection_Throwables._ObstacleStatCollection[rand].obstacleSpeed,obstacleCollection_Throwables._ObstacleStatCollection[rand].obstacleForceMode);
-			print ("has pan obstacle");
+			//print ("has pan obstacle");
 			Destroy (r.gameObject,obstacleCollection_Throwables._ObstacleStatCollection[rand].obstacleLife);
 		} else {
 			Rigidbody r = Instantiate (currentObstacle.obstaclePrefab,transform.position,Quaternion.identity) as Rigidbody;
 			//Rigidbody r = obstacle.GetComponent<Rigidbody> ();
 			r.AddForce (obstacleDirectionIndicator.forward*currentObstacle.obstacleSpeed,currentObstacle.obstacleForceMode);
-			print ("has pan obstacle");
+			//print ("has pan obstacle");
 			Destroy (r.gameObject,currentObstacle.obstacleLife);
 		}
 

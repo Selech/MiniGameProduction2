@@ -25,6 +25,7 @@ GameObject:
   - 65: {fileID: 65000012417918232}
   - 65: {fileID: 65000010165437388}
   - 114: {fileID: 114000012672770632}
+  - 114: {fileID: 114000013324369768}
   m_Layer: 8
   m_Name: BoatPlaceholder (1)
   m_TagString: Carriable
@@ -67,6 +68,7 @@ GameObject:
   - 65: {fileID: 65000013254150738}
   - 65: {fileID: 65000011697426544}
   - 114: {fileID: 114000010926032470}
+  - 114: {fileID: 114000010591046724}
   m_Layer: 8
   m_Name: PuffSofaPlaceholder (1)
   m_TagString: Carriable
@@ -85,24 +87,11 @@ GameObject:
   - 114: {fileID: 114000014142676522}
   - 114: {fileID: 114000010543087246}
   - 114: {fileID: 114000010968487136}
+  - 114: {fileID: 114000013574644926}
+  - 114: {fileID: 114000012531552016}
   m_Layer: 0
   m_Name: Stacking Scene
   m_TagString: CarriableManager
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1000010942147718
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 4000011026262332}
-  m_Layer: 0
-  m_Name: CenterOfBike
-  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,6 +110,7 @@ GameObject:
   - 65: {fileID: 65000013166176356}
   - 65: {fileID: 65000010540903688}
   - 114: {fileID: 114000012684507316}
+  - 114: {fileID: 114000011654131270}
   m_Layer: 8
   m_Name: StovePlaceholder (2)
   m_TagString: Carriable
@@ -142,6 +132,7 @@ GameObject:
   - 65: {fileID: 65000011647511002}
   - 65: {fileID: 65000011677193836}
   - 114: {fileID: 114000012524659224}
+  - 114: {fileID: 114000012071806056}
   m_Layer: 8
   m_Name: SpeakersPlaceholder (2)
   m_TagString: Carriable
@@ -259,6 +250,7 @@ GameObject:
   - 65: {fileID: 65000013161614748}
   - 65: {fileID: 65000012459069972}
   - 114: {fileID: 114000012987784066}
+  - 114: {fileID: 114000012386016048}
   m_Layer: 8
   m_Name: PaintPlaceholder (3)
   m_TagString: Carriable
@@ -301,6 +293,7 @@ GameObject:
   - 65: {fileID: 65000010537413740}
   - 65: {fileID: 65000013166002704}
   - 114: {fileID: 114000014066607354}
+  - 114: {fileID: 114000012476598510}
   m_Layer: 8
   m_Name: PillarPlaceholder (2)
   m_TagString: Carriable
@@ -341,24 +334,6 @@ GameObject:
   m_Layer: 8
   m_Name: SpeakersPlaceholder (1)
   m_TagString: Carriable
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1000013104173022
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 4000010898624774}
-  - 65: {fileID: 65000013257593464}
-  - 65: {fileID: 65000013311975418}
-  - 65: {fileID: 65000011055772928}
-  m_Layer: 0
-  m_Name: EndPoint
-  m_TagString: EndSwipe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -413,6 +388,7 @@ GameObject:
   - 65: {fileID: 65000013389744022}
   - 65: {fileID: 65000014023868610}
   - 114: {fileID: 114000010319198592}
+  - 114: {fileID: 114000012940304118}
   m_Layer: 8
   m_Name: FridgePlaceholder
   m_TagString: Carriable
@@ -551,19 +527,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000013207815168}
   m_RootOrder: 3
---- !u!4 &4000010898624774
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013104173022}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.33, y: 0, z: -0}
-  m_LocalScale: {x: 1.0000005, y: 1, z: 1.0000005}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 4000013410127560}
-  m_RootOrder: 4
 --- !u!4 &4000011026205700
 Transform:
   m_ObjectHideFlags: 1
@@ -576,22 +539,8 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000012374439376}
-  - {fileID: 4000011026262332}
   m_Father: {fileID: 4000013410127560}
   m_RootOrder: 0
---- !u!4 &4000011026262332
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010942147718}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.73, y: 0.42999998, z: 1.39}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 4000011026205700}
-  m_RootOrder: 1
 --- !u!4 &4000011209490852
 Transform:
   m_ObjectHideFlags: 1
@@ -612,7 +561,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014001586304}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.356, y: 0, z: 0.073}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -771,7 +720,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010895151762}
-  m_LocalRotation: {x: 0, y: 0.9396927, z: 0, w: 0.34202018}
+  m_LocalRotation: {x: -0, y: 0.9355724, z: -0, w: 0.35313508}
   m_LocalPosition: {x: 5.04, y: 0, z: 5.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 140, z: 0}
@@ -780,7 +729,6 @@ Transform:
   - {fileID: 4000013207815168}
   - {fileID: 4000011969552710}
   - {fileID: 4000011311030456}
-  - {fileID: 4000010898624774}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &4000013841441424
@@ -1568,18 +1516,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 50, y: 80.58985, z: 50}
   m_Center: {x: -0.0000038146973, y: 40.788395, z: 3.5527137e-15}
---- !u!65 &65000011055772928
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013104173022}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 0.5686598, z: 0.94191486}
-  m_Center: {x: 0.81000113, y: 0.29432988, z: 1.5190471}
 --- !u!65 &65000011488445256
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1880,30 +1816,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 59.724808, y: 46.964203, z: 59.72481}
   m_Center: {x: -1.5149193, y: 24.084255, z: 0.0000000014108785}
---- !u!65 &65000013257593464
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013104173022}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.4076858, z: 2.4564762}
-  m_Center: {x: -0.000005006788, y: 0.7038429, z: 0.7582365}
---- !u!65 &65000013311975418
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013104173022}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.5180577, y: 0.39985347, z: 1.142258}
-  m_Center: {x: 1.6370993, y: 0.21872294, z: 0.4225806}
 --- !u!65 &65000013389744022
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1987,7 +1899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1650a96a6d213464e946d16557864e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MiddleofBike: {fileID: 4000011026262332}
+  MiddleofBike: {fileID: 0}
   LerpSpeed: 2
   translateSpeed: 0.1
   heightOfObject: 0.28
@@ -2002,7 +1914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1650a96a6d213464e946d16557864e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MiddleofBike: {fileID: 4000011026262332}
+  MiddleofBike: {fileID: 0}
   LerpSpeed: 2
   translateSpeed: 0.1
   heightOfObject: 0.17
@@ -2020,6 +1932,8 @@ MonoBehaviour:
   currentLifeCounter: 0
   maxLifeCounter: 3
   upForce: 300
+  playerPickUpController: {fileID: 0}
+  waitTimeDrop: 2
 --- !u!114 &114000010511944514
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2031,7 +1945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1650a96a6d213464e946d16557864e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MiddleofBike: {fileID: 4000011026262332}
+  MiddleofBike: {fileID: 0}
   LerpSpeed: 2
   translateSpeed: 0.1
   heightOfObject: 0.444
@@ -2051,6 +1965,22 @@ MonoBehaviour:
   currentHeight: 0
   stackingDone: 0
   maxAmountOfCarriables: 0
+--- !u!114 &114000010591046724
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010439239242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cfc2b361a4a4b741a26cf1e2bd90b04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLifeCounter: 0
+  maxLifeCounter: 3
+  upForce: 300
+  playerPickUpController: {fileID: 0}
+  waitTimeDrop: 2
 --- !u!114 &114000010704870374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2065,6 +1995,8 @@ MonoBehaviour:
   currentLifeCounter: 0
   maxLifeCounter: 3
   upForce: 300
+  playerPickUpController: {fileID: 0}
+  waitTimeDrop: 2
 --- !u!114 &114000010739972068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2079,6 +2011,8 @@ MonoBehaviour:
   currentLifeCounter: 0
   maxLifeCounter: 3
   upForce: 300
+  playerPickUpController: {fileID: 0}
+  waitTimeDrop: 2
 --- !u!114 &114000010764079496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2093,6 +2027,8 @@ MonoBehaviour:
   currentLifeCounter: 0
   maxLifeCounter: 3
   upForce: 300
+  playerPickUpController: {fileID: 0}
+  waitTimeDrop: 2
 --- !u!114 &114000010779435068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2104,7 +2040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1650a96a6d213464e946d16557864e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MiddleofBike: {fileID: 4000011026262332}
+  MiddleofBike: {fileID: 0}
   LerpSpeed: 2
   translateSpeed: 0.1
   heightOfObject: 0.28
@@ -2119,7 +2055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1650a96a6d213464e946d16557864e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MiddleofBike: {fileID: 4000011026262332}
+  MiddleofBike: {fileID: 0}
   LerpSpeed: 2
   translateSpeed: 0.1
   heightOfObject: 0.28
@@ -2137,6 +2073,8 @@ MonoBehaviour:
   currentLifeCounter: 0
   maxLifeCounter: 3
   upForce: 300
+  playerPickUpController: {fileID: 0}
+  waitTimeDrop: 2
 --- !u!114 &114000010968487136
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2159,7 +2097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1650a96a6d213464e946d16557864e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MiddleofBike: {fileID: 4000011026262332}
+  MiddleofBike: {fileID: 0}
   LerpSpeed: 2
   translateSpeed: 0.1
   heightOfObject: 0.65
@@ -2174,7 +2112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1650a96a6d213464e946d16557864e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MiddleofBike: {fileID: 4000011026262332}
+  MiddleofBike: {fileID: 0}
   LerpSpeed: 2
   translateSpeed: 0.1
   heightOfObject: 0.17
@@ -2189,7 +2127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1650a96a6d213464e946d16557864e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MiddleofBike: {fileID: 4000011026262332}
+  MiddleofBike: {fileID: 0}
   LerpSpeed: 2
   translateSpeed: 0.1
   heightOfObject: 0.17
@@ -2207,6 +2145,24 @@ MonoBehaviour:
   currentLifeCounter: 0
   maxLifeCounter: 3
   upForce: 300
+  playerPickUpController: {fileID: 0}
+  waitTimeDrop: 2
+--- !u!114 &114000011654131270
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011076885434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cfc2b361a4a4b741a26cf1e2bd90b04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLifeCounter: 0
+  maxLifeCounter: 3
+  upForce: 300
+  playerPickUpController: {fileID: 0}
+  waitTimeDrop: 2
 --- !u!114 &114000011744967610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2218,7 +2174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1650a96a6d213464e946d16557864e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MiddleofBike: {fileID: 4000011026262332}
+  MiddleofBike: {fileID: 0}
   LerpSpeed: 2
   translateSpeed: 0.1
   heightOfObject: 0.48
@@ -2236,6 +2192,8 @@ MonoBehaviour:
   currentLifeCounter: 0
   maxLifeCounter: 3
   upForce: 300
+  playerPickUpController: {fileID: 0}
+  waitTimeDrop: 2
 --- !u!114 &114000012066991858
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2247,10 +2205,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1650a96a6d213464e946d16557864e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MiddleofBike: {fileID: 4000011026262332}
+  MiddleofBike: {fileID: 0}
   LerpSpeed: 2
   translateSpeed: 0.1
   heightOfObject: 1.08
+--- !u!114 &114000012071806056
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011186327902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cfc2b361a4a4b741a26cf1e2bd90b04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLifeCounter: 0
+  maxLifeCounter: 3
+  upForce: 300
+  playerPickUpController: {fileID: 0}
+  waitTimeDrop: 2
 --- !u!114 &114000012220161642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2265,6 +2239,8 @@ MonoBehaviour:
   currentLifeCounter: 0
   maxLifeCounter: 3
   upForce: 300
+  playerPickUpController: {fileID: 0}
+  waitTimeDrop: 2
 --- !u!114 &114000012223783076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2279,6 +2255,8 @@ MonoBehaviour:
   currentLifeCounter: 0
   maxLifeCounter: 3
   upForce: 300
+  playerPickUpController: {fileID: 0}
+  waitTimeDrop: 2
 --- !u!114 &114000012282309784
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2290,10 +2268,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1650a96a6d213464e946d16557864e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MiddleofBike: {fileID: 4000011026262332}
+  MiddleofBike: {fileID: 0}
   LerpSpeed: 2
   translateSpeed: 0.1
   heightOfObject: 0.65
+--- !u!114 &114000012386016048
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012484231074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cfc2b361a4a4b741a26cf1e2bd90b04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLifeCounter: 0
+  maxLifeCounter: 3
+  upForce: 300
+  playerPickUpController: {fileID: 0}
+  waitTimeDrop: 2
+--- !u!114 &114000012476598510
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012674981718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cfc2b361a4a4b741a26cf1e2bd90b04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLifeCounter: 0
+  maxLifeCounter: 3
+  upForce: 300
+  playerPickUpController: {fileID: 0}
+  waitTimeDrop: 2
 --- !u!114 &114000012524659224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2308,6 +2318,8 @@ MonoBehaviour:
   currentLifeCounter: 0
   maxLifeCounter: 3
   upForce: 300
+  playerPickUpController: {fileID: 0}
+  waitTimeDrop: 2
 --- !u!114 &114000012530303258
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2319,10 +2331,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1650a96a6d213464e946d16557864e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MiddleofBike: {fileID: 4000011026262332}
+  MiddleofBike: {fileID: 0}
   LerpSpeed: 2
   translateSpeed: 0.1
   heightOfObject: 0.28
+--- !u!114 &114000012531552016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010895151762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51c30d7b97725ab4b962f85f0805c2b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000012605975102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2334,7 +2357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1650a96a6d213464e946d16557864e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MiddleofBike: {fileID: 4000011026262332}
+  MiddleofBike: {fileID: 0}
   LerpSpeed: 2
   translateSpeed: 0.1
   heightOfObject: 0.48
@@ -2352,6 +2375,8 @@ MonoBehaviour:
   currentLifeCounter: 0
   maxLifeCounter: 3
   upForce: 300
+  playerPickUpController: {fileID: 0}
+  waitTimeDrop: 2
 --- !u!114 &114000012684507316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2366,6 +2391,8 @@ MonoBehaviour:
   currentLifeCounter: 0
   maxLifeCounter: 3
   upForce: 300
+  playerPickUpController: {fileID: 0}
+  waitTimeDrop: 2
 --- !u!114 &114000012779569394
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2380,6 +2407,24 @@ MonoBehaviour:
   currentLifeCounter: 0
   maxLifeCounter: 3
   upForce: 300
+  playerPickUpController: {fileID: 0}
+  waitTimeDrop: 2
+--- !u!114 &114000012940304118
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013560400000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cfc2b361a4a4b741a26cf1e2bd90b04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLifeCounter: 0
+  maxLifeCounter: 3
+  upForce: 300
+  playerPickUpController: {fileID: 0}
+  waitTimeDrop: 2
 --- !u!114 &114000012987784066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2394,6 +2439,8 @@ MonoBehaviour:
   currentLifeCounter: 0
   maxLifeCounter: 3
   upForce: 300
+  playerPickUpController: {fileID: 0}
+  waitTimeDrop: 2
 --- !u!114 &114000013025454924
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2405,7 +2452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1650a96a6d213464e946d16557864e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MiddleofBike: {fileID: 4000011026262332}
+  MiddleofBike: {fileID: 0}
   LerpSpeed: 2
   translateSpeed: 0.1
   heightOfObject: 0.28
@@ -2423,6 +2470,8 @@ MonoBehaviour:
   currentLifeCounter: 0
   maxLifeCounter: 3
   upForce: 300
+  playerPickUpController: {fileID: 0}
+  waitTimeDrop: 2
 --- !u!114 &114000013179661142
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2437,6 +2486,40 @@ MonoBehaviour:
   currentLifeCounter: 0
   maxLifeCounter: 3
   upForce: 300
+  playerPickUpController: {fileID: 0}
+  waitTimeDrop: 2
+--- !u!114 &114000013324369768
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010043920330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cfc2b361a4a4b741a26cf1e2bd90b04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLifeCounter: 0
+  maxLifeCounter: 3
+  upForce: 300
+  playerPickUpController: {fileID: 0}
+  waitTimeDrop: 2
+--- !u!114 &114000013574644926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010895151762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a143aa70e28bea4a8b26745e69ad8eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollectedCarriables: []
+  CurrentCarriable: {fileID: 0}
+  currentHeight: 0
+  stackingDone: 0
+  maxAmountOfCarriables: 0
 --- !u!114 &114000013584060382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2448,7 +2531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1650a96a6d213464e946d16557864e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MiddleofBike: {fileID: 4000011026262332}
+  MiddleofBike: {fileID: 0}
   LerpSpeed: 2
   translateSpeed: 0.1
   heightOfObject: 0.17
@@ -2463,7 +2546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1650a96a6d213464e946d16557864e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MiddleofBike: {fileID: 4000011026262332}
+  MiddleofBike: {fileID: 0}
   LerpSpeed: 2
   translateSpeed: 0.1
   heightOfObject: 0.444
@@ -2481,6 +2564,8 @@ MonoBehaviour:
   currentLifeCounter: 0
   maxLifeCounter: 3
   upForce: 300
+  playerPickUpController: {fileID: 0}
+  waitTimeDrop: 2
 --- !u!114 &114000014142676522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2501,6 +2586,8 @@ MonoBehaviour:
   carriableMass: 1
   CarriableMassModifierFactor: 1.2
   maxCarriableHeight: 3
+  runningHeight: 0
+  canBreak: 1
 --- !u!114 &114000014224070176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2512,7 +2599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1650a96a6d213464e946d16557864e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MiddleofBike: {fileID: 4000011026262332}
+  MiddleofBike: {fileID: 0}
   LerpSpeed: 2
   translateSpeed: 0.1
   heightOfObject: 0.444
