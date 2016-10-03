@@ -628,10 +628,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basePath: Audio\GeneratedSoundBanks
-  language: Danish
-  defaultPoolSize: 4096
-  lowerPoolSize: 2048
-  streamingPoolSize: 1024
+  language: English(US)
+  defaultPoolSize: 16384
+  lowerPoolSize: 16384
+  streamingPoolSize: 4096
   preparePoolSize: 0
   memoryCutoffThreshold: 0.95
   engineLogging: 1
@@ -1028,6 +1028,16 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114000010370273592, guid: 1720b57e29078c4419dd4d61545cda8e,
+        type: 2}
+      propertyPath: triggerList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010370273592, guid: 1720b57e29078c4419dd4d61545cda8e,
+        type: 2}
+      propertyPath: unloadTriggerList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4000010798234482, guid: 1720b57e29078c4419dd4d61545cda8e, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1059,6 +1069,16 @@ Prefab:
     - target: {fileID: 4000010798234482, guid: 1720b57e29078c4419dd4d61545cda8e, type: 2}
       propertyPath: m_RootOrder
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010370273592, guid: 1720b57e29078c4419dd4d61545cda8e,
+        type: 2}
+      propertyPath: triggerList.Array.data[0]
+      value: 1151176110
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010370273592, guid: 1720b57e29078c4419dd4d61545cda8e,
+        type: 2}
+      propertyPath: unloadTriggerList.Array.data[0]
+      value: -358577003
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1720b57e29078c4419dd4d61545cda8e, type: 2}
