@@ -329,7 +329,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
-  mass: 0.2
+  mass: 0.02
   defaultSpeed: 0.12
   accelerationRate: 0.075
   decelerationRate: 0.45
@@ -338,16 +338,19 @@ MonoBehaviour:
   rotateSpeed: 1.45
   steepAccelerationDegree: 5
   steepDecelerationDegree: 5
+  maxVerticalAngle: 145
+  reorientSpeed: 3
+  rayToGroundLength: 2
+  centeredRayToGroundLength: 0.4
   currentForwardSpeed: 0
   currentVerticalSpeed: 0
-  reorientSpeed: 4
+  steepAngle: 0
   playerModel: {fileID: 4000011641955830}
   respawnPoint: {fileID: 0}
   frontBikeLimit: {fileID: 4000012469699820}
   endBikeLimit: {fileID: 4000013803824284}
   leftBikeLimit: {fileID: 4000012216280090}
   rightBikeLimit: {fileID: 4000013742317096}
-  rayToGroundLength: 4
   speedFactor: 1
 --- !u!114 &114000011981348898
 MonoBehaviour:
@@ -388,4 +391,4 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Center: {x: 0, y: 0.58, z: 0}

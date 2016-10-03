@@ -61,7 +61,26 @@ GameObject:
   - 64: {fileID: 64000012951307852}
   m_Layer: 9
   m_Name: SebastianRamp
-  m_TagString: Untagged
+  m_TagString: RoadProp
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1000012442600230
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000014228865634}
+  - 33: {fileID: 33000013947132586}
+  - 64: {fileID: 64000011814501500}
+  - 23: {fileID: 23000011321947912}
+  - 114: {fileID: 114000014153560992}
+  m_Layer: 9
+  m_Name: SpawnGuidesPlate
+  m_TagString: RoadProp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,13 +149,27 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011575395066}
   m_LocalRotation: {x: -0, y: 0.9903144, z: -0, w: 0.13884301}
-  m_LocalPosition: {x: 17.11, y: 0.02, z: -33.57}
+  m_LocalPosition: {x: 14.34, y: 0.02, z: -23.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 164.34901, z: 0}
   m_Children:
   - {fileID: 4000011911416642}
+  - {fileID: 4000014228865634}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!4 &4000014228865634
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012442600230}
+  m_LocalRotation: {x: -0.24461351, y: 0, z: 0, w: 0.96962065}
+  m_LocalPosition: {x: 0, y: 0.945, z: 2.422}
+  m_LocalScale: {x: 0.178966, y: 0.1135257, z: 0.06570094}
+  m_LocalEulerAnglesHint: {x: -28.318, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000012822065270}
+  m_RootOrder: 1
 --- !u!23 &23000010968498808
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -157,6 +190,35 @@ MeshRenderer:
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedWireframeHidden: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!23 &23000011321947912
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012442600230}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_SelectedWireframeHidden: 0
@@ -245,6 +307,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010257592740}
   m_Mesh: {fileID: 4300002, guid: 3e62a89abaff9004d9c47be2ab5829ed, type: 3}
+--- !u!33 &33000013947132586
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012442600230}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!64 &64000010363415092
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -257,6 +326,18 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300002, guid: 3e62a89abaff9004d9c47be2ab5829ed, type: 3}
+--- !u!64 &64000011814501500
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012442600230}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!64 &64000012926236020
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -315,3 +396,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114000014153560992
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012442600230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1d0308a30557b24c92d1ae0f2416a15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guidelinesName: InvisibleAirGuidelines
+  guideSpawnSeconds: 3
+  reactivateRampAfterSeconds: 5

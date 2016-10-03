@@ -1,3 +1,4 @@
+﻿
 ﻿using UnityEngine;
 
 public class TakeDamageEvent : GameEvent
@@ -257,6 +258,15 @@ public class FeedbackCameraShakeEvent : GameEvent
     {
         this.amount = amount;
         this.duration = duration;
+    }
+}
+
+public class PlayerHitRoadProp : GameEvent
+{
+    public GameObject roadProp;
+    public PlayerHitRoadProp(GameObject roadProp)
+    {
+        this.roadProp = roadProp;
     }
 }
 
