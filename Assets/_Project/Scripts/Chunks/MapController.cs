@@ -112,7 +112,6 @@ public class MapController : MonoBehaviour
 		chunk.transform.rotation = Quaternion.Euler (currentRotation);
 
 		currentPosition = script.EndPoint.transform.position;
-        print(currentRotation);
 		currentRotation += script.EndPoint.transform.localRotation.eulerAngles;
 
 		ArrangeChunkList (chunk);

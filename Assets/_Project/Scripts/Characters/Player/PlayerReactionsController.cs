@@ -118,7 +118,6 @@ public class PlayerReactionsController : MonoBehaviour
     /// </summary>
 	public void DamageObstacle(DamageCarriableEvent e)
     {
-        Debug.Log("numberOfLostCarriables :" + numberOfLostCarriables);
         if (numberOfLostCarriables != stackedList.CollectedCarriables.Count)
         {
             GetCarriableFallingOff();
@@ -129,7 +128,7 @@ public class PlayerReactionsController : MonoBehaviour
 
     public void PushBikeBack(ObstacleHitEvent e)
     {
-        Debug.Log(e.upForce);
+        
     }
 
     public void GetCarriableFallingOff()
