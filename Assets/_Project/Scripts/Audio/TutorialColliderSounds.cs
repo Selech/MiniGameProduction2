@@ -7,17 +7,7 @@ public class TutorialColliderSounds : MonoBehaviour
     [Tooltip("Number corresponds to case which triggers an event")]
     public int TriggerID = 1;
 
-    // Use this for initialization
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     void OnTriggerEnter(Collider c)
     {
@@ -78,6 +68,15 @@ public class TutorialColliderSounds : MonoBehaviour
                     break;
                 case 18:
                     EventManager.Instance.TriggerEvent(new YouHaveToAvoidEvent());
+                    break;
+                case 19:
+                    EventManager.Instance.TriggerEvent(new NearEnd01Event());
+                    break;
+                case 20:
+                    EventManager.Instance.TriggerEvent(new NearEnd02Event());
+                    break;
+                case 21:
+                    EventManager.Instance.TriggerEvent(new NearEnd03Event());
                     break;
                 default:
                     Debug.Log("Invalid TriggerID");

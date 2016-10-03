@@ -278,6 +278,44 @@ public class FeedbackCameraShakeEvent : GameEvent
     }
 }
 
+public class NearEnd01Event : GameEvent
+{
+    public NearEnd01Event()
+    {
+
+    }
+}
+public class NearEnd02Event : GameEvent
+{
+    public NearEnd02Event()
+    {
+
+    }
+}
+public class NearEnd03Event : GameEvent
+{
+    public NearEnd03Event()
+    {
+
+    }
+}
+
+public class AtEnd01Event : GameEvent
+{
+    public AtEnd01Event()
+    {
+
+    }
+}
+
+public class AtEnd02Event : GameEvent
+{
+    public AtEnd02Event()
+    {
+
+    }
+}
+
 #region Tutorial level sound events
 // Tutorial level sound events below:
 
