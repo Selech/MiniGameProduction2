@@ -124,7 +124,142 @@
 							<ChildrenList>
 								<MusicSegment Name="BaseLayer" ID="{CAFFB3F6-62B2-45C4-9197-3319419333DE}" ShortID="523840532">
 									<PropertyList>
+										<Property Name="BypassEffect0" Type="bool">
+											<RTPCList>
+												<RTPC Name="" ID="{F3D0E148-61CE-4F2A-9397-2C5EE00FB808}" ShortID="784616897">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="Fly" ID="{7AE0638E-59B3-4ECC-94F1-4A796D9F80E0}" WorkUnitID="{BF7C0DD8-E293-457A-844E-EF2FD3D1B823}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{5F44B05D-1C8C-4862-B60B-DF7B6244200F}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="65537"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>1</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>0.001</XPos>
+																<YPos>1</YPos>
+																<Flags>0</Flags>
+															</Point>
+															<Point>
+																<XPos>0.6986706</XPos>
+																<YPos>0</YPos>
+																<Flags>0</Flags>
+															</Point>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>0</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+										<Property Name="BypassEffect1" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+											<RTPCList>
+												<RTPC Name="" ID="{6D2953DA-9549-4D66-8D9B-2A60439BDD37}" ShortID="578120913">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="Fly" ID="{7AE0638E-59B3-4ECC-94F1-4A796D9F80E0}" WorkUnitID="{BF7C0DD8-E293-457A-844E-EF2FD3D1B823}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{74BED884-6190-4BE1-A830-4AB0C2D93D3F}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="65537"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>1</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>0.001</XPos>
+																<YPos>1</YPos>
+																<Flags>0</Flags>
+															</Point>
+															<Point>
+																<XPos>0.6971935</XPos>
+																<YPos>0</YPos>
+																<Flags>0</Flags>
+															</Point>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>0</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
 										<Property Name="EndPosition" Type="Real64" Value="16551.7233560091"/>
+										<Property Name="Highpass" Type="int16">
+											<RTPCList>
+												<RTPC Name="" ID="{FE87D0FB-2461-43C6-AD95-F2D9945F8015}" ShortID="343019504">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="Fly" ID="{7AE0638E-59B3-4ECC-94F1-4A796D9F80E0}" WorkUnitID="{BF7C0DD8-E293-457A-844E-EF2FD3D1B823}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{33ADF814-74B0-40B4-A6EA-7E229258CFB8}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="65537"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>0</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>40</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+										<Property Name="Lowpass" Type="int16">
+											<RTPCList>
+												<RTPC Name="" ID="{42B10952-CAEA-4B7B-B01C-0A50E170B7C1}" ShortID="546338319">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="Fly" ID="{7AE0638E-59B3-4ECC-94F1-4A796D9F80E0}" WorkUnitID="{BF7C0DD8-E293-457A-844E-EF2FD3D1B823}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{478839E7-5E77-46E9-B092-DEE0EA35A074}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="65537"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>0</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>29</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
 										<Property Name="OverrideClockSettings" Type="bool" Value="True"/>
 										<Property Name="OverrideEffect" Type="bool" Value="True"/>
 										<Property Name="OverrideMaxSoundInstance" Type="bool" Value="True"/>
@@ -167,10 +302,73 @@
 											</RTPCList>
 										</Property>
 										<Property Name="Tempo" Type="Real64" Value="116"/>
+										<Property Name="Volume" Type="Real64">
+											<RTPCList>
+												<RTPC Name="" ID="{28C1474C-170F-4997-99FC-8C5387D4A997}" ShortID="367762413">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="Progress" ID="{9D65D76C-30CD-485B-A925-9CB6799E35B7}" WorkUnitID="{BF7C0DD8-E293-457A-844E-EF2FD3D1B823}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{D1A75564-C479-46AF-ADF9-EDCB6E122940}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="3"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>1.8</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>0.50517</XPos>
+																<YPos>1.3</YPos>
+																<Flags>0</Flags>
+															</Point>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>0</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+												<RTPC Name="" ID="{6AE0CC52-8B84-48E5-95EC-85F9C3027669}" ShortID="1875188">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="Fly" ID="{7AE0638E-59B3-4ECC-94F1-4A796D9F80E0}" WorkUnitID="{BF7C0DD8-E293-457A-844E-EF2FD3D1B823}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{FBAF96D2-17BB-4F94-BD7F-376D17857FDD}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="3"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>0</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>2.5</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
+										</Reference>
+										<Reference Name="Effect0" PluginName="Wwise Delay" CompanyID="0" PluginID="106" PluginType="3">
+											<ObjectRef Name="Delay" ID="{4E70B991-B5DC-4EC9-887B-E8ED02B69414}" WorkUnitID="{0A3694B7-4BEB-47ED-A5EE-527994BD2602}"/>
+										</Reference>
+										<Reference Name="Effect1" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="Hall_Medium_Dark" ID="{626B6E38-739B-4689-819F-F81AD3788BDE}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
 										</Reference>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
@@ -748,6 +946,128 @@
 						</Entry>
 					</EntryList>
 				</MusicSwitchContainer>
+				<MusicPlaylistContainer Name="BuildMusic" ID="{05F08D1F-422C-406D-83CE-BE04DE1FE420}" ShortID="314723383">
+					<PropertyList>
+						<Property Name="OutputBusHighpass" Type="int16">
+							<ValueList>
+								<Value>17</Value>
+							</ValueList>
+						</Property>
+						<Property Name="OutputBusLowpass" Type="int16">
+							<ValueList>
+								<Value>18</Value>
+							</ValueList>
+						</Property>
+						<Property Name="UserAuxSendVolume1" Type="Real64">
+							<ValueList>
+								<Value>-31</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-1</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<MusicSegment Name="BuildingMusic1" ID="{50434487-94DF-4768-8267-25D9D37C04AD}" ShortID="29050635">
+							<PropertyList>
+								<Property Name="EndPosition" Type="Real64" Value="17943.9229024943"/>
+								<Property Name="Tempo" Type="Real64" Value="107"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<MusicTrack Name="BuildingMusic1" ID="{BDB1F0AA-4AE3-4930-873F-DF6F4F45CA5E}" ShortID="976578717">
+									<ReferenceList>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="BuildingMusic1" ID="{C9DD1A8A-355B-4681-A11F-221289DCB0C6}" ShortID="988736426">
+											<Language>SFX</Language>
+											<AudioFile>BuildingMusic1.wav</AudioFile>
+										</AudioFileSource>
+									</ChildrenList>
+									<TransitionList>
+										<MusicTransition Name="Root" ID="{3B717936-D0C6-4055-9520-1F8538DFFCE0}">
+											<PropertyList>
+												<Property Name="IsFolder" Type="bool" Value="True"/>
+											</PropertyList>
+											<TransitionInfo/>
+										</MusicTransition>
+									</TransitionList>
+									<SequenceList>
+										<MusicTrackSequence Name="" ID="{80A20ABB-B455-4727-801B-E46868C38722}">
+											<ClipList>
+												<MusicClip Name="BuildingMusic1" ID="{F473C5A3-2D9D-4EB9-9A11-B356F1BC2AA3}">
+													<PropertyList>
+														<Property Name="EndTrimOffset" Type="Real64" Value="17943.9229024943"/>
+														<Property Name="FadeInMode" Type="int16" Value="0"/>
+														<Property Name="FadeOutMode" Type="int16" Value="0"/>
+													</PropertyList>
+													<AudioSourceRef Name="BuildingMusic1" ID="{C9DD1A8A-355B-4681-A11F-221289DCB0C6}"/>
+												</MusicClip>
+											</ClipList>
+										</MusicTrackSequence>
+									</SequenceList>
+								</MusicTrack>
+							</ChildrenList>
+							<CueList>
+								<MusicCue Name="Entry Cue" ID="{A37A3E93-7AE5-4FFB-BFBF-A7479A70AC03}"/>
+								<MusicCue Name="Exit Cue" ID="{48F560BB-8A4F-4FCD-A9EC-45A87B3AD0DD}">
+									<PropertyList>
+										<Property Name="CueType" Type="int16" Value="1"/>
+										<Property Name="TimeMs" Type="Real64" Value="17943.9229024943"/>
+									</PropertyList>
+								</MusicCue>
+							</CueList>
+						</MusicSegment>
+					</ChildrenList>
+					<TransitionList>
+						<MusicTransition Name="Root" ID="{86604376-06F8-46BA-A0C5-9F15634E3132}">
+							<PropertyList>
+								<Property Name="IsFolder" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<MusicTransition Name="Transition" ID="{711FB14F-CF31-4D93-A9B6-E3272627A6BA}">
+									<TransitionInfo/>
+								</MusicTransition>
+							</ChildrenList>
+							<TransitionInfo/>
+						</MusicTransition>
+					</TransitionList>
+					<Playlist>
+						<MusicPlaylistItem Name="" ID="{D91D96E2-03D1-47E2-9FDF-0AC780E6855B}" ShortID="443278651">
+							<PropertyList>
+								<Property Name="LoopCount" Type="int16" Value="0"/>
+							</PropertyList>
+							<ChildrenList>
+								<MusicPlaylistItem Name="" ID="{54CFA69A-C84F-4968-A55F-02FA54960209}" ShortID="273339053">
+									<PropertyList>
+										<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+									</PropertyList>
+									<SegmentRef Name="BuildingMusic1" ID="{50434487-94DF-4768-8267-25D9D37C04AD}"/>
+								</MusicPlaylistItem>
+							</ChildrenList>
+						</MusicPlaylistItem>
+					</Playlist>
+				</MusicPlaylistContainer>
 			</ChildrenList>
 		</WorkUnit>
 	</InteractiveMusic>
