@@ -25,7 +25,7 @@ public class PlayerReactionsController : MonoBehaviour
     {
         movementController = GetComponent<PlayerMovementController>();
         bikePlate = GetComponentInChildren<Rigidbody>();
-        indexOfCarriable = 0;
+        numberOfLostCarriables = 0;
         playerPickupController = GetComponent<PlayerPickupController>();
         carriableManager = GameObject.FindGameObjectWithTag("CarriableManager");
         stackedList = carriableManager.GetComponent<StackingList>();
@@ -150,7 +150,6 @@ public class PlayerReactionsController : MonoBehaviour
 
     void ChangeParent(ChangeParentToPlayer e)
     {
-        stackingList.Add(e.gameobject);
         e.gameobject.transform.SetParent(this.transform);
         if (e.attachToPlayer)
             e.gameobject.GetComponent<SpringJoint>().connectedBody = bikePlate;
