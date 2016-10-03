@@ -25,11 +25,18 @@ public class AlignmentTool : EditorWindow
 	}
 
     // Add a new menu item with hotkey CTRL-SHIFT-A
-    [MenuItem("Tools/Align entire road %#X")]
+    [MenuItem("Tools/Align entire road %#Z")]
     private static void AlignRoad()
     {
         AlignFullRoad();
     }
+
+	// Add a new menu item with hotkey CTRL-SHIFT-A
+	[MenuItem("Tools/Align existing road %#A")]
+	private static void AlignExistingRoad()
+	{
+		AlignFullExistingRoad();
+	}
 
     // Add a new menu item with hotkey CTRL-
     [MenuItem("Tools/Use Chunk Alignment %#C")]
@@ -112,4 +119,32 @@ public class AlignmentTool : EditorWindow
             e.gameObject.SetActive(false);
         }
     }
+
+	static void AlignFullExistingRoad()
+	{
+		var selection = Selection.activeGameObject;
+		var pieces = selection.GetComponentsInChildren<Transform>().Where(t => t.gameObject.tag == "Pieces").ToList();
+
+		var overallPos = new Vector3();
+
+		// Final alignment
+		GameObject startPoint = (GameObject) Instantiate(pieces.FirstOrDefault().GetComponentsInChildren<Transform>().Where(t => t.gameObject.name == "StartPoint").FirstOrDefault().gameObject);
+		GameObject globalEnd = pieces.LastOrDefault().GetComponentsInChildren<Transform>().Where(t => t.gameObject.name == "EndPoint").LastOrDefault().gameObject;
+		GameObject endPoint = (GameObject)Instantiate(globalEnd);
+
+		overallPos = selection.transform.TransformPoint(globalEnd.transform.position);
+
+		startPoint.transform.SetParent(selection.transform);
+		endPoint.transform.SetParent(selection.transform);
+		endPoint.transform.position = overallPos;
+		endPoint.transform.rotation = globalEnd.transform.rotation;
+
+		var script = selection.GetComponent<ChunkScript>();
+
+		if(script == null)
+			script = selection.AddComponent<ChunkScript>();
+
+		script.StartPoint = startPoint;
+		script.EndPoint = endPoint;
+	}
 }
