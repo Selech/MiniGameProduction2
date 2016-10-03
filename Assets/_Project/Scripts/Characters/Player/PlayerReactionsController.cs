@@ -15,6 +15,8 @@ public class PlayerReactionsController : MonoBehaviour {
 	GameObject carriableManager;
 	CarriableManager carriableManagerScript;
 
+	bool isBoosted = false;
+
 	void Awake () {
 		movementController = GetComponent<PlayerMovementController> ();
 		bikePlate = GetComponentInChildren<Rigidbody> ();
@@ -27,9 +29,9 @@ public class PlayerReactionsController : MonoBehaviour {
 
 	void OnEnable() {
 		EventManager.Instance.StartListening <MovementInput>(RetrieveInput);
-		EventManager.Instance.StartListening <ChangeSchemeEvent>(ChangeScheme);
 		EventManager.Instance.StartListening <BoostPickupHitEvent>(BoostSpeed);
 		EventManager.Instance.StartListening <GetBackCarriableHitEvent>(GetBackCarriable);
+		EventManager.Instance.StartListening <ChangeSchemeEvent>(ChangeScheme);
         EventManager.Instance.StartListening <StartGame>(EnableMovement);
 		EventManager.Instance.StartListening <WinChunkEnteredEvent> (StopMovement);
 		EventManager.Instance.StartListening <ChangeParentToPlayer>(ChangeParent);
@@ -37,6 +39,8 @@ public class PlayerReactionsController : MonoBehaviour {
 		EventManager.Instance.StartListening <DamageCarriableEvent>(DamageObstacle);
 		EventManager.Instance.StartListening <ObstacleHitEvent>(PushBikeBack);
 		EventManager.Instance.StartListening <LoseCarriableEvent>(LostCarriable);
+		EventManager.Instance.StartListening <StartWindEvent>(StartWind);
+		EventManager.Instance.StartListening <StopWindEvent>(StopWind);
 	}
 
 	void OnDisable(){
@@ -51,11 +55,12 @@ public class PlayerReactionsController : MonoBehaviour {
 		EventManager.Instance.StopListening <DamageCarriableEvent>(DamageObstacle);
 		EventManager.Instance.StopListening <ObstacleHitEvent>(PushBikeBack);
 		EventManager.Instance.StopListening <LoseCarriableEvent>(LostCarriable);
+		EventManager.Instance.StartListening <StartWindEvent>(StartWind);
+		EventManager.Instance.StartListening <StopWindEvent>(StopWind);
 	}
 
 	void LostCarriable(LoseCarriableEvent e){ 
 		Debug.Log ("CURRENTCARIABLE : " + currentCarriable);
-
 		if (carriableManagerScript.runningHeight > 0f) {
 			indexOfCarriable++;
 			Debug.Log ("HEIGHT : " + carriableManagerScript.runningHeight);
@@ -88,7 +93,32 @@ public class PlayerReactionsController : MonoBehaviour {
 		GameManager.Instance.ChangeScheme (e.isGyro);
 	}
 
-	void BoostSpeed(BoostPickupHitEvent e){
+void BoostSpeed(BoostPickupHitEvent e)
+	{
+		if(isBoosted == false)
+		{
+			isBoosted = true;
+			StartCoroutine (BoostPickUp(e.boost,e.time));
+		}
+	}
+
+	IEnumerator BoostPickUp(float speed,float time)
+	{
+		movementController.speedFactor = speed;
+		yield return new WaitForSeconds(time);
+		movementController.speedFactor = 1;
+		isBoosted = false;
+	}
+	
+	public void StartWind(StartWindEvent e){
+		movementController.wind = true;
+		movementController.windPosition = e.windPosition;
+		movementController.windForce = e.windForce;
+	}
+
+	public void StopWind(StopWindEvent e){
+		movementController.wind = false;
+		movementController.windForce = 0;
 	}
 
 	public void DamageObstacle(DamageCarriableEvent e){
