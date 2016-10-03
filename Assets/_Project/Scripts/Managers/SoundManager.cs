@@ -39,6 +39,8 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+
+
     #region Listeners
 
     void OnEnable()
@@ -62,6 +64,7 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StartListening<BoostPickupHitEvent>(BoostPickUp);
         EventManager.Instance.StartListening<StartStackingSceneEvent>(StackingSceneSound);
         EventManager.Instance.StartListening<MapProgressionForSoundEvent>(MapProgression);
+        EventManager.Instance.StartListening<StartStackingSceneEvent>(StackingSceneSound);
 
 
         // tutorial sounds below
@@ -107,6 +110,7 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StopListening<BoostPickupHitEvent>(BoostPickUp);
         EventManager.Instance.StopListening<StartStackingSceneEvent>(StackingSceneSound);
         EventManager.Instance.StopListening<MapProgressionForSoundEvent>(MapProgression);
+        EventManager.Instance.StopListening<StartStackingSceneEvent>(StackingSceneSound);
 
         // tutorial sounds below
         EventManager.Instance.StopListening<ChangeSchemeEvent>(ChangeScheme);
@@ -139,7 +143,6 @@ public class SoundManager : MonoBehaviour
         if (musicMuted)
         {
 
-       
             PlaySound("Stop_MusicDrive");
             if (stackingSceneActive)
             {
@@ -166,6 +169,7 @@ public class SoundManager : MonoBehaviour
         if (!musicMuted)
         {
             PlaySound("Play_MusicDrive");
+            PlaySound("Stop_MenuMusic");
         }
         PlaySound("Play_Pedal");
     }
@@ -278,6 +282,11 @@ public class SoundManager : MonoBehaviour
     private void StackingSceneSound(StartStackingSceneEvent e)
     {
         PlaySound("Play_MenuMusic");
+    }
+
+    private void MapProgression(MapProgressionForSoundEvent e)
+    {
+        AkSoundEngine.SetRTPCValue("Progress", e.percentage);
     }
     #endregion
 
@@ -433,10 +442,6 @@ public class SoundManager : MonoBehaviour
     }
     #endregion
 
-    private void MapProgression(MapProgressionForSoundEvent e)
-    {
-        AkSoundEngine.SetRTPCValue("Progress", e.percentage);
-    }
 
     #region 
     private static SoundManager _instance;

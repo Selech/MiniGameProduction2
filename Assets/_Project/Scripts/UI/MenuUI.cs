@@ -36,6 +36,11 @@ public class MenuUI : MonoBehaviour
         EventManager.Instance.StopListening<RestartGameEvent>(KeepControlScheme);
     }
 
+    void Start()
+    {
+        EventManager.Instance.TriggerEvent(new StartStackingSceneEvent());
+    }
+
     public void ChangeMovementOptionToGyro()
     {
         gyroButtonEnabled = GameManager.Instance.isGyro;
@@ -95,6 +100,7 @@ public class MenuUI : MonoBehaviour
         GameManager.Instance.isPaused = false;
         EventManager.Instance.TriggerEvent(new RestartGameEvent());
         GameManager.Instance.RestartGame();
+        EventManager.Instance.TriggerEvent(new StartStackingSceneEvent());
     }
 
     public void ToggleMenu()
