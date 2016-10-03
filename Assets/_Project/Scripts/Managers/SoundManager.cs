@@ -3,6 +3,10 @@ using System.Collections;
 
 public class SoundManager : MonoBehaviour
 {
+
+    #region Booleans for game states
+
+   
     [HideInInspector]
     public bool musicMuted = false;
 
@@ -17,6 +21,8 @@ public class SoundManager : MonoBehaviour
 
     bool drivingStarted = false;
     bool stackingSceneActive = false;
+
+    #endregion
 
     #region Booleans for sounds being played only once
 
@@ -53,6 +59,7 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StartListening<IntroVO2event>(IntroVoice2);
         EventManager.Instance.StartListening<IntroVO3event>(IntroVoice3);
         EventManager.Instance.StartListening<BoostPickupHitEvent>(BoostPickUp);
+        EventManager.Instance.StartListening<StartStackingSceneEvent>(StackingSceneSound);
 
 
         // tutorial sounds below
@@ -96,6 +103,7 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StopListening<IntroVO2event>(IntroVoice2);
         EventManager.Instance.StopListening<IntroVO3event>(IntroVoice3);
         EventManager.Instance.StopListening<BoostPickupHitEvent>(BoostPickUp);
+        EventManager.Instance.StopListening<StartStackingSceneEvent>(StackingSceneSound);
 
         // tutorial sounds below
         EventManager.Instance.StopListening<ChangeSchemeEvent>(ChangeScheme);
@@ -128,11 +136,22 @@ public class SoundManager : MonoBehaviour
         if (musicMuted)
         {
             PlaySound("Stop_MusicDrive");
+            if (stackingSceneActive)
+            {
+                PlaySound("Stop_MenuMusic");
+            }
         }
         else if (!musicMuted && drivingStarted)
         {
 
             PlaySound("Play_MusicDrive");
+
+        } else if (!musicMuted && !drivingStarted)
+        {
+            if (stackingSceneActive)
+            {
+                PlaySound("Play_MenuMusic");
+            }
         }
     }
 
@@ -200,11 +219,12 @@ public class SoundManager : MonoBehaviour
         PlaySound("Play_UITap");
     }
 
-    // place all stops in here
+    // place all stops in here, happens only at end of game
     private void StopAllSounds(RestartGameEvent e)
     {
         drivingStarted = false;
         PlaySound("Stop_MusicDrive");
+        PlaySound("Stop_MenuMusic");
         PlaySound("Stop_Pedal");
     }
 
@@ -251,7 +271,10 @@ public class SoundManager : MonoBehaviour
         PlaySound("Play_SpeedUp");
     }
 
-
+    private void StackingSceneSound(StartStackingSceneEvent e)
+    {
+        PlaySound("Play_MenuMusic");
+    }
     #endregion
 
     #region Tutorial sounds:
