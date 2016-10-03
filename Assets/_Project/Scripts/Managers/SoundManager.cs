@@ -17,6 +17,11 @@ public class SoundManager : MonoBehaviour
 
     bool drivingStarted = false;
 
+    #region Booleans for sounds being played only once
+
+    bool ohNoSoundPlayed = false;
+
+    #endregion
 
     void Start()
     {
@@ -42,6 +47,7 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StartListening<MenuActiveEvent>(MenuActive);
         EventManager.Instance.StartListening<LoseCarriableEvent>(LoseCarriable);
         EventManager.Instance.StartListening<GetBackCarriableHitEvent>(GainCarriable);
+
 
         // tutorial sounds below
         EventManager.Instance.StartListening<ChangeSchemeEvent>(ChangeScheme);
@@ -79,7 +85,7 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StopListening<MenuActiveEvent>(MenuActive);
         EventManager.Instance.StopListening<LoseCarriableEvent>(LoseCarriable);
         EventManager.Instance.StopListening<GetBackCarriableHitEvent>(GainCarriable);
-        
+
 
 
         // tutorial sounds below
@@ -137,7 +143,7 @@ public class SoundManager : MonoBehaviour
         isDanish = e.isDanish;
         if (isDanish)
         {
-          
+
 
             AkSoundEngine.SetCurrentLanguage("Danish");
             AkBankManager.LoadBank("nysb", false, false);
@@ -146,21 +152,13 @@ public class SoundManager : MonoBehaviour
         }
         else
         {
-            
+
             AkSoundEngine.SetCurrentLanguage("English(US)");
             AkBankManager.LoadBank("nysb", false, false);
 
 
         }
-        //PlaySound("Play_IntroVO1");
 
-    }
-
-    IEnumerator Test()
-    {
-        print(Time.time);
-        yield return new WaitForSeconds(1);
-        print(Time.time);
     }
 
     private void WonGame(WinChunkEnteredEvent e)
@@ -174,8 +172,11 @@ public class SoundManager : MonoBehaviour
     private void HitObstacle(DamageCarriableEvent e)
     {
         PlaySound("Play_LoseItem");
-        PlaySound("Play_MusVO16");
-
+        if (ohNoSoundPlayed == false)
+        {
+            PlaySound("Play_MusVO16");
+            ohNoSoundPlayed = true;
+        }
     }
 
     private void StrafeBike(MovementInput e)
@@ -239,7 +240,25 @@ public class SoundManager : MonoBehaviour
     }
 
     #endregion
+
+
+
     #region Tutorial sounds:
+
+    private void IntroVoice1(IntroVO1event e) 
+    {
+        PlaySound("Play_IntroVO1");
+    }
+
+    private void IntroVoice2(IntroVO2event e)
+    {
+        PlaySound("Play_IntroVO1");
+    }
+
+    private void IntroVoice3(IntroVO3event e)
+    {
+        PlaySound("Play_IntroVO1");
+    }
 
     private void ChangeScheme(ChangeSchemeEvent e)
     {
@@ -383,6 +402,6 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-   
+
     #endregion
 }

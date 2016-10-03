@@ -1,4 +1,3 @@
-﻿
 ﻿using UnityEngine;
 
 public class TakeDamageEvent : GameEvent
@@ -279,15 +278,6 @@ public class FeedbackCameraShakeEvent : GameEvent
     }
 }
 
-public class PlayerHitRoadProp : GameEvent
-{
-    public GameObject roadProp;
-    public PlayerHitRoadProp(GameObject roadProp)
-    {
-        this.roadProp = roadProp;
-    }
-}
-
 #region Tutorial level sound events
 // Tutorial level sound events below:
 
@@ -429,30 +419,6 @@ public class WatchOutEvent : GameEvent
 public class YouHaveToAvoidEvent : GameEvent
 {
     public YouHaveToAvoidEvent()
-    {
-
-    }
-}
-
-public class IntroVO1event : GameEvent
-{
-    public IntroVO1event()
-    {
-
-    }
-}
-
-public class IntroVO2event : GameEvent
-{
-    public IntroVO2event()
-    {
-
-    }
-}
-
-public class IntroVO3event : GameEvent
-{
-    public IntroVO3event()
     {
 
     }
