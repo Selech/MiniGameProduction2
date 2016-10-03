@@ -28,7 +28,7 @@ public class SebastianRampManager : MonoBehaviour
             {
                 //spawn guides for tot seconds
                 StartCoroutine(spawnGuidesForSeconds(guideSpawnSeconds, reactivateRampAfterSeconds));
-                print("Player hit on " + this.gameObject.name);
+                //print("Player hit on " + this.gameObject.name);
                 isHittable = false;
             }
         }

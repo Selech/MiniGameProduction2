@@ -113,10 +113,17 @@ public class GameManager : MonoBehaviour
 
 	void ReactToWin (WinChunkEnteredEvent e)
 	{
-		SceneManager.LoadScene (2);
-		WinGame ();
-		PauseGame ();
+        StartCoroutine(WinReaction());
+        WinGame ();
+		//PauseGame ();
 	}
+
+    IEnumerator WinReaction()
+    {
+        yield return new WaitForSeconds(7f);
+
+        SceneManager.LoadScene(2);
+    }
 
     void ResetWin(RestartGameEvent e)
     {
@@ -152,7 +159,7 @@ public class GameManager : MonoBehaviour
 	private void WinGame () 
 	{
 		_GameState = GameState.Won;
-		Time.timeScale = Mathf.Epsilon;
+		//Time.timeScale = Mathf.Epsilon;
 		hasWon = true;
 	}
 

@@ -631,7 +631,7 @@ MonoBehaviour:
   language: English(US)
   defaultPoolSize: 16384
   lowerPoolSize: 16384
-  streamingPoolSize: 4096
+  streamingPoolSize: 8192
   preparePoolSize: 0
   memoryCutoffThreshold: 0.95
   engineLogging: 1
@@ -1031,7 +1031,7 @@ Prefab:
     - target: {fileID: 114000010370273592, guid: 1720b57e29078c4419dd4d61545cda8e,
         type: 2}
       propertyPath: triggerList.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114000010370273592, guid: 1720b57e29078c4419dd4d61545cda8e,
         type: 2}
@@ -1963,6 +1963,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2101000220}
   - 212: {fileID: 2101000221}
+  - 111: {fileID: 2101000222}
   m_Layer: 0
   m_Name: Hill
   m_TagString: Untagged
@@ -2016,3 +2017,17 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!111 &2101000222
+Animation:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2101000219}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: fa3efbd3ee4c3774e868721e5b480ee2, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0

@@ -45,6 +45,11 @@ public class SwipeBike : MonoBehaviour {
         tapCount--;
     }
 
+    public void StartGame()
+    {
+        EventManager.Instance.TriggerEvent(new StartGame());
+    }
+
 	void ControlSwipe() {
         if (Input.touchCount != 0) {
             foreach (Touch touch in Input.touches) {

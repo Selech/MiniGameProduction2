@@ -134,7 +134,7 @@ public class PlayerMovementController : MonoBehaviour
             else
             {
                 Debug.DrawRay(transform.position, updatedPlayerForward * currentForwardSpeed + Vector3.down * currentVerticalSpeed, Color.green);
-                print(Vector3.Angle(Vector3.up, Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(updatedPlayerForward * currentForwardSpeed + Vector3.down * currentVerticalSpeed), Time.deltaTime * reorientSpeed).eulerAngles));
+                //print(Vector3.Angle(Vector3.up, Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(updatedPlayerForward * currentForwardSpeed + Vector3.down * currentVerticalSpeed), Time.deltaTime * reorientSpeed).eulerAngles));
                 /**/
                 if (
                 Vector3.Angle(Vector3.up,
