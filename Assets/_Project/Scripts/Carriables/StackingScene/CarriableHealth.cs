@@ -9,7 +9,7 @@ public class CarriableHealth : MonoBehaviour {
 	public PlayerPickupController playerPickUpController;
 	GameObject player;
 
-	private bool canBreak = false;
+	private bool canBreak = true;
 	public int waitTimeDrop = 2;
 
 	// Use this for initialization
@@ -26,8 +26,10 @@ public class CarriableHealth : MonoBehaviour {
 	public void LoseHealth(){
 		currentLifeCounter--;
 		if (currentLifeCounter <= 0) {
-            if(canBreak) { 
-			    BreakJoint (GetComponent<SpringJoint> ());
+            if(canBreak)
+            {
+                canBreak = false;
+                BreakJoint (GetComponent<SpringJoint> ());
 			    EventManager.Instance.TriggerEvent (new LoseCarriableEvent ());
             }
         }
@@ -47,7 +49,8 @@ public class CarriableHealth : MonoBehaviour {
 			playerPickUpController.SetLastLostCarriable(joint.gameObject);
 			joint.gameObject.transform.parent = null;	
 			Destroy (joint);
-			yield return new WaitForSeconds (waitTimeDrop);
-		}
+            yield return new WaitForSeconds (waitTimeDrop);
+            canBreak = true;
+        }
 	}
 }
