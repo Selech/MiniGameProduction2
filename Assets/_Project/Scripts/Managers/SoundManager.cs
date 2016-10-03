@@ -16,6 +16,7 @@ public class SoundManager : MonoBehaviour
     public bool isTutorial = true;
 
     bool drivingStarted = false;
+    bool stackingSceneActive = false;
 
     #region Booleans for sounds being played only once
 
@@ -47,6 +48,11 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StartListening<MenuActiveEvent>(MenuActive);
         EventManager.Instance.StartListening<LoseCarriableEvent>(LoseCarriable);
         EventManager.Instance.StartListening<GetBackCarriableHitEvent>(GainCarriable);
+        EventManager.Instance.StartListening<StartWindEvent>(HitByWind);
+        EventManager.Instance.StartListening<IntroVO1event>(IntroVoice1);
+        EventManager.Instance.StartListening<IntroVO2event>(IntroVoice2);
+        EventManager.Instance.StartListening<IntroVO3event>(IntroVoice3);
+        EventManager.Instance.StartListening<BoostPickupHitEvent>(BoostPickUp);
 
 
         // tutorial sounds below
@@ -85,8 +91,11 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StopListening<MenuActiveEvent>(MenuActive);
         EventManager.Instance.StopListening<LoseCarriableEvent>(LoseCarriable);
         EventManager.Instance.StopListening<GetBackCarriableHitEvent>(GainCarriable);
-
-
+        EventManager.Instance.StopListening<StartWindEvent>(HitByWind);
+        EventManager.Instance.StopListening<IntroVO1event>(IntroVoice1);
+        EventManager.Instance.StopListening<IntroVO2event>(IntroVoice2);
+        EventManager.Instance.StopListening<IntroVO3event>(IntroVoice3);
+        EventManager.Instance.StopListening<BoostPickupHitEvent>(BoostPickUp);
 
         // tutorial sounds below
         EventManager.Instance.StopListening<ChangeSchemeEvent>(ChangeScheme);
@@ -139,34 +148,29 @@ public class SoundManager : MonoBehaviour
 
     private void LanguageSelection(LanguageSelect e)
     {
-        PlaySound("Play_UITap");
+
         isDanish = e.isDanish;
         if (isDanish)
         {
-
-
             AkSoundEngine.SetCurrentLanguage("Danish");
-            AkBankManager.LoadBank("nysb", false, false);
-
-
+            AkBankManager.LoadBank("nysb", false, true);
+            PlaySound("Play_UITap");
         }
         else
         {
-
             AkSoundEngine.SetCurrentLanguage("English(US)");
-            AkBankManager.LoadBank("nysb", false, false);
-
-
+            AkBankManager.LoadBank("nysb", false, true);
+            PlaySound("Play_UITap");
         }
 
     }
 
     private void WonGame(WinChunkEnteredEvent e)
     {
-        PlaySound("Play_MusicWin");
+        drivingStarted = false;
         PlaySound("Stop_MusicDrive");
         PlaySound("Stop_Pedal");
-        drivingStarted = false;
+        PlaySound("Play_MusicWin");
     }
 
     private void HitObstacle(DamageCarriableEvent e)
@@ -231,21 +235,28 @@ public class SoundManager : MonoBehaviour
     private void GainCarriable(GetBackCarriableHitEvent e)
     {
         PlaySound("Play_MisVO10");
+        PlaySound("Play_Pickup");
     }
 
-    // TODO:
-    private void HitByWind()
+    private void HitByWind(StartWindEvent e)
     {
-        PlaySound("Play_MusVO5");
+        if (isTutorial)
+        {
+            PlaySound("Play_MusVO5");
+        }
     }
+
+    private void BoostPickUp(BoostPickupHitEvent e)
+    {
+        PlaySound("Play_SpeedUp");
+    }
+
 
     #endregion
 
-
-
     #region Tutorial sounds:
 
-    private void IntroVoice1(IntroVO1event e) 
+    private void IntroVoice1(IntroVO1event e)
     {
         PlaySound("Play_IntroVO1");
     }
@@ -346,17 +357,17 @@ public class SoundManager : MonoBehaviour
     }
     private void NowItsEasy(NowItsEasyEvent e)
     {
-        PlaySound("Play_MusVO9");
+        PlaySound("Play_MusVO21");
     }
 
     private void NowItsHarder(NowItsHarderEvent e)
     {
-        PlaySound("Play_MusVO9");
+        PlaySound("Play_MusVO22");
     }
 
     private void NowItsHard(NowItsHardEvent e)
     {
-        PlaySound("Play_MusVO9");
+        PlaySound("Play_MusVO23");
     }
 
     private void WatchOut(WatchOutEvent e)
@@ -367,6 +378,31 @@ public class SoundManager : MonoBehaviour
     private void YouHaveToAvoid(YouHaveToAvoidEvent e)
     {
         PlaySound("Play_MisVO16");
+    }
+
+    private void NearEnd01(NearEnd01Event e)
+    {
+        PlaySound("Play_MusVO11");
+    }
+
+    private void NearEnd02(NearEnd02Event e)
+    {
+        PlaySound("Play_MisVO11");
+    }
+
+    private void NearEnd03(NearEnd03Event e)
+    {
+        PlaySound("Play_MusVO12");
+    }
+
+    private void AtEnd01(AtEnd01Event e)
+    {
+        PlaySound("Play_MisVO12");
+    } 
+
+    private void AtEnd02(AtEnd02Event e)
+    {
+        PlaySound("Play_MisVO13");
     }
     #endregion
 
