@@ -22,14 +22,6 @@ public class ObstacleController : MonoBehaviour
 		isTriggered = false;
 	}
 
-	void Update()
-	{
-		if(Input.GetButtonDown("Fire1"))
-		{
-			SpawnDynamicObstacle ();
-		}
-	}
-
 	/// <summary>
 	/// spawns obstacle when player enters big collider if obstacle is dynamic(car or throwable)
 	/// </summary>
