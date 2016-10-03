@@ -15,6 +15,10 @@ public class PlayerReactionsController : MonoBehaviour {
 	GameObject carriableManager;
 	CarriableManager carriableManagerScript;
 
+	//new 
+	int indexMaxCarriable; // bottom carriable has index 0
+	int indexTopCurrentCarriable;
+	//
 	bool isBoosted = false;
 
 	void Awake () {
@@ -25,6 +29,10 @@ public class PlayerReactionsController : MonoBehaviour {
 		carriableManager = GameObject.FindGameObjectWithTag ("CarriableManager");
 		stackedList = carriableManager.GetComponent<StackingList>();
 		carriableManagerScript = carriableManager.GetComponent<CarriableManager>();
+		//new
+		indexMaxCarriable = stackedList.CollectedCarriables.Count - 1;
+		//
+		Debug.Log(indexMaxCarriable);
 	}
 
 	void OnEnable() {
@@ -139,9 +147,10 @@ void BoostSpeed(BoostPickupHitEvent e)
 			Debug.Log (" IDX : " + i + " OBJ : " + stackedList.CollectedCarriables [i]);
 		}
 
-		Debug.Log (indexOfCarriable);
+		Debug.Log ("indexOfCarriable: " + indexOfCarriable);
 
 		int trueIndex = (stackedList.CollectedCarriables.Count - 1) - indexOfCarriable;
+		Debug.Log ("trueIndex: " + trueIndex);
 
 		if (stackedList.CollectedCarriables.Count > trueIndex) {
 			currentCarriable = stackedList.CollectedCarriables[trueIndex];
