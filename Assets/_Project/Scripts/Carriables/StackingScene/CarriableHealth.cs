@@ -8,15 +8,17 @@ public class CarriableHealth : MonoBehaviour {
 	public float upForce = 300.0f;
 	public PlayerPickupController playerPickUpController;
 	GameObject player;
+    CarriableManager carriableManager;
 
-	private bool canBreak = true;
 	public int waitTimeDrop = 2;
 
 	// Use this for initialization
 	void Start () {
 		ResetCurrentLifeCounter ();
 		player = GameObject.FindGameObjectWithTag ("Player");
-	}
+        carriableManager = GameObject.FindGameObjectWithTag("CarriableManager").GetComponent<CarriableManager>();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -24,11 +26,11 @@ public class CarriableHealth : MonoBehaviour {
 	}
 
 	public void LoseHealth(){
-		currentLifeCounter--;
-		if (currentLifeCounter <= 0) {
-            if(canBreak)
+        if (carriableManager.canBreak) {
+            currentLifeCounter--;
+		if (currentLifeCounter <= 0)
             {
-                canBreak = false;
+                carriableManager.canBreak = false;
                 BreakJoint (GetComponent<SpringJoint> ());
 			    EventManager.Instance.TriggerEvent (new LoseCarriableEvent ());
             }
@@ -50,7 +52,7 @@ public class CarriableHealth : MonoBehaviour {
 			joint.gameObject.transform.parent = null;	
 			Destroy (joint);
             yield return new WaitForSeconds (waitTimeDrop);
-            canBreak = true;
+            carriableManager.canBreak = true;
         }
 	}
 }
