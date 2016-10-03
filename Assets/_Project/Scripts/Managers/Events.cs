@@ -405,4 +405,16 @@ public class YouHaveToAvoidEvent : GameEvent
 
     }
 }
+
+public class SetAberrationEvent : GameEvent
+{
+	public float strenght;
+	public float duration;
+
+	public SetAberrationEvent(float strenght, float duration)
+	{
+		this.strenght = strenght;
+		this.duration = duration;
+	}
+}
 #endregion
