@@ -28,18 +28,31 @@ public class GameManager : MonoBehaviour
 	public bool hasGameStarted = false;
 	[HideInInspector]
 	public bool hasWon = false;
+    [HideInInspector]
+    public bool isGyro = false;
+    [HideInInspector]
+    public bool tutorialCompleted = false;
 
 	void Start ()
 	{
-		gyroInput = GetComponent<GyroInput> ();
+        if (_instance != null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        _instance = this;
+        gyroInput = GetComponent<GyroInput> ();
 		swipeController = GetComponent<SwipeController> ();
+        DontDestroyOnLoad(gameObject);
 	}
 
 	void Awake ()
 	{
-		Time.timeScale = 1;
+        
+        
+        Time.timeScale = 1;
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
-		_instance = this;
+		
 	}
 
 	void Update ()
@@ -80,20 +93,36 @@ public class GameManager : MonoBehaviour
 	void OnEnable ()
 	{
 		EventManager.Instance.StartListening<WinChunkEnteredEvent> (ReactToWin);
+        EventManager.Instance.StartListening<ChangeSchemeEvent>(ReactToControlSchemeChange);
         EventManager.Instance.StartListening<StartGame>(StartGame);
-	}
+        EventManager.Instance.StartListening<RestartGameEvent>(ResetWin);
+    }
 
 	void OnDisable ()
 	{
         EventManager.Instance.StopListening<WinChunkEnteredEvent> (ReactToWin);
+        EventManager.Instance.StopListening<ChangeSchemeEvent>(ReactToControlSchemeChange);
         EventManager.Instance.StopListening<StartGame>(StartGame);
-	}
+        EventManager.Instance.StopListening<RestartGameEvent>(ResetWin);
+    }
 
 	void ReactToWin (WinChunkEnteredEvent e)
 	{
 		WinGame ();
 		PauseGame ();
 	}
+
+    void ResetWin(RestartGameEvent e)
+    {
+        hasWon = false;
+        _GameState = GameState.Playing;
+        isPaused = false;
+    }
+
+    void ReactToControlSchemeChange(ChangeSchemeEvent e)
+    {
+        isGyro = e.isGyro;
+    }
 
     private void StartGame (StartGame e)
 	{
@@ -148,7 +177,7 @@ public class GameManager : MonoBehaviour
 			if (_instance == null) {
 				GameObject go = new GameObject ("GameManager");
 				go.AddComponent<GameManager> ();
-			}
+			} 
 			return _instance;
 		}
 	}

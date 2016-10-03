@@ -5,85 +5,135 @@ using UnityEngine.UI;
 public class MenuUI : MonoBehaviour
 {
 
-	public Sprite spriteSwipeImgDeactive;
-	public Sprite spriteSwipeImgActive;
+    public Sprite spriteSwipeImgDeactive;
+    public Sprite spriteSwipeImgActive;
 
-	public Sprite spriteGyroImgDeactive;
-	public Sprite spriteGyroImgActive;
+    public Sprite spriteGyroImgDeactive;
+    public Sprite spriteGyroImgActive;
 
-	public Sprite spriteMuted;
-	public Sprite spriteUnmuted;
+    public Sprite spriteMuted;
+    public Sprite spriteUnmuted;
 
-	public GameObject gyroButton;
-	public GameObject swipeButton;
-	public GameObject muteButton;
+    public Image menuButton;
+    public GameObject gyroButton;
+    public GameObject swipeButton;
+    public GameObject muteButton;
 
-	bool toggleMenuOn = false;
-	bool swipeButtonEnabled = true;
-	bool gyroButtonEnabled = false;
+    public Sprite playSprite;
+    public Sprite pauseSprite;
 
-	public GameObject menuUI;
+    bool toggleMenuOn = false;
+    bool gyroButtonEnabled = false;
 
-	// Use this for initialization
-	void Start ()
-	{
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-	
-	}
+    public GameObject menuUI;
 
-	public void ChangeMovementOptionToGyro ()
-	{
-		if (!gyroButtonEnabled) {
-			EventManager.Instance.TriggerEvent (new ChangeSchemeEvent (true));
-			gyroButtonEnabled = true;
-			swipeButtonEnabled = false;
-			swipeButton.GetComponent<Image> ().sprite = spriteSwipeImgDeactive;
-			gyroButton.GetComponent<Image> ().sprite = spriteGyroImgActive;
-		}
-	}
+    void OnEnable()
+    {
+        EventManager.Instance.StartListening<RestartGameEvent>(KeepControlScheme);
+    }
+    void OnDisable()
+    {
+        EventManager.Instance.StopListening<RestartGameEvent>(KeepControlScheme);
+    }
 
-	public void ChangeMovementOptionToSwipe ()
-	{
-		if (!swipeButtonEnabled) {
-			EventManager.Instance.TriggerEvent (new ChangeSchemeEvent (false));
-			gyroButtonEnabled = false;
-			swipeButtonEnabled = true;
-			swipeButton.GetComponent<Image> ().sprite = spriteSwipeImgActive;
-			gyroButton.GetComponent<Image> ().sprite = spriteGyroImgDeactive;
-		}
-	}
+    public void ChangeMovementOptionToGyro()
+    {
+        gyroButtonEnabled = GameManager.Instance.isGyro;
+        EventManager.Instance.TriggerEvent(new UISoundEvent());
+        if (!gyroButtonEnabled)
+        {
+            EventManager.Instance.TriggerEvent(new ChangeSchemeEvent(true));
+            gyroButtonEnabled = true;
+            swipeButton.GetComponent<Image>().sprite = spriteSwipeImgDeactive;
+            gyroButton.GetComponent<Image>().sprite = spriteGyroImgActive;
+        }
+    }
 
-	public void MuteMusicButton() 
-	{
-		
-		EventManager.Instance.TriggerEvent (new MuteMusicEvent (!SoundManager.Instance.musicMuted));
-		if (SoundManager.Instance.musicMuted == true) {
-			muteButton.GetComponent<Image> ().sprite = spriteMuted;
-		} else {
-			muteButton.GetComponent<Image> ().sprite = spriteUnmuted;
+    public void KeepControlScheme(RestartGameEvent e)
+    {
+        if (gyroButtonEnabled)
+        {
+            EventManager.Instance.TriggerEvent(new ChangeSchemeEvent(true));
+        }
+        else
+        {
+            EventManager.Instance.TriggerEvent(new ChangeSchemeEvent(false));
+        }
+    }
 
-		}
-	}
+    public void ChangeMovementOptionToSwipe()
+    {
+        gyroButtonEnabled = GameManager.Instance.isGyro;
+        EventManager.Instance.TriggerEvent(new UISoundEvent());
+        if (gyroButtonEnabled)
+        {
+            EventManager.Instance.TriggerEvent(new ChangeSchemeEvent(false));
 
-	public void ReturnToStackingButton()
-	{
-		GameManager.Instance.RestartGame ();
-	}
+            gyroButtonEnabled = false;
+            swipeButton.GetComponent<Image>().sprite = spriteSwipeImgActive;
+            gyroButton.GetComponent<Image>().sprite = spriteGyroImgDeactive;
+        }
+    }
 
-	public void ToggleMenu ()
-	{
-		if (GameManager.Instance.hasWon == false) {
-			GameManager.Instance.TogglePause ();
-			menuUI.SetActive (GameManager.Instance.isPaused);
-		} else {
-			toggleMenuOn = !toggleMenuOn;
-			menuUI.SetActive (toggleMenuOn);
-		}
-	}
+    public void MuteMusicButton()
+    {
+        EventManager.Instance.TriggerEvent(new UISoundEvent());
+        EventManager.Instance.TriggerEvent(new MuteMusicEvent(!SoundManager.Instance.musicMuted));
+        if (SoundManager.Instance.musicMuted == true)
+        {
+            muteButton.GetComponent<Image>().sprite = spriteMuted;
+        }
+        else
+        {
+            muteButton.GetComponent<Image>().sprite = spriteUnmuted;
+
+        }
+    }
+
+    public void ReturnToStackingButton()
+    {
+        GameManager.Instance.isPaused = false;
+        EventManager.Instance.TriggerEvent(new RestartGameEvent());
+        GameManager.Instance.RestartGame();
+    }
+
+    public void ToggleMenu()
+    {
+        EventManager.Instance.TriggerEvent(new UISoundEvent());
+        if (GameManager.Instance.hasWon == false)
+        {
+            GameManager.Instance.TogglePause();
+            menuUI.SetActive(GameManager.Instance.isPaused);
+            menuButton.sprite = GameManager.Instance.isPaused ? playSprite : pauseSprite;
+        }
+        else
+        {
+            toggleMenuOn = !toggleMenuOn;
+            menuUI.SetActive(toggleMenuOn);
+        }
+        // Ensures correct sprite is showing in menu
+        if (GameManager.Instance.isGyro)
+        {
+            swipeButton.GetComponent<Image>().sprite = spriteSwipeImgDeactive;
+            gyroButton.GetComponent<Image>().sprite = spriteGyroImgActive;
+        }
+        else
+        {
+            swipeButton.GetComponent<Image>().sprite = spriteSwipeImgActive;
+            gyroButton.GetComponent<Image>().sprite = spriteGyroImgDeactive;
+        }
+        if (SoundManager.Instance.musicMuted)
+        {
+            muteButton.GetComponent<Image>().sprite = spriteMuted;
+        }
+        else
+        {
+            muteButton.GetComponent<Image>().sprite = spriteUnmuted;
+        }
+
+        EventManager.Instance.TriggerEvent(new MenuActiveEvent(menuUI));
+
+    }
+
 
 }
