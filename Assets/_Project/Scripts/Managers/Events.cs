@@ -1,3 +1,4 @@
+﻿
 ﻿using UnityEngine;
 
 public class TakeDamageEvent : GameEvent
@@ -278,6 +279,15 @@ public class FeedbackCameraShakeEvent : GameEvent
     }
 }
 
+public class PlayerHitRoadProp : GameEvent
+{
+    public GameObject roadProp;
+    public PlayerHitRoadProp(GameObject roadProp)
+    {
+        this.roadProp = roadProp;
+    }
+}
+
 public class NearEnd01Event : GameEvent
 {
     public NearEnd01Event()
@@ -312,7 +322,6 @@ public class AtEnd02Event : GameEvent
 {
     public AtEnd02Event()
     {
-
     }
 }
 
