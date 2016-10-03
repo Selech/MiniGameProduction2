@@ -178,6 +178,15 @@ public class SoundManager : MonoBehaviour
     {
 
         isDanish = e.isDanish;
+        if (isDanish)
+        {
+            AkSoundEngine.SetCurrentLanguage("Danish");
+        }
+        else
+        {
+            AkSoundEngine.SetCurrentLanguage("English(US)");
+        }
+        AkBankManager.LoadBank("nysb", false, true);
         PlaySound("Play_UITap");
         
     }
