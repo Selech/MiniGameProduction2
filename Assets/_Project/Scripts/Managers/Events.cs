@@ -107,8 +107,10 @@ public class ObstacleHitEvent : GameEvent
 
 public class DamageCarriableEvent : GameEvent
 {
-    public DamageCarriableEvent()
+    public ObstacleKind obstacleType;
+    public DamageCarriableEvent(ObstacleKind obstacleType)
     {
+        this.obstacleType = obstacleType;
     }
 }
 
@@ -557,3 +559,4 @@ public class LandingEvent : GameEvent
 
     }
 }
+
