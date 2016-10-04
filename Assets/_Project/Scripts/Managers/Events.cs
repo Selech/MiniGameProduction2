@@ -11,6 +11,14 @@ public class TakeDamageEvent : GameEvent
     }
 }
 
+
+public class PlayerHitsTheFirstRoadChunk : GameEvent
+{
+    public PlayerHitsTheFirstRoadChunk()
+    {
+    }
+}
+
 public class SkipSwipeTutorial : GameEvent
 {
     public SkipSwipeTutorial()
@@ -524,4 +532,28 @@ public class SetAberrationEvent : GameEvent
 		this.strenght = strenght;
 		this.duration = duration;
 	}
+}
+
+public class EnterRampEvent : GameEvent
+{
+    public EnterRampEvent()
+    {
+
+    }
+}
+
+public class FlyingEvent : GameEvent
+{
+    public FlyingEvent()
+    {
+
+    }
+}
+
+public class LandingEvent : GameEvent
+{
+    public LandingEvent()
+    {
+
+    }
 }
