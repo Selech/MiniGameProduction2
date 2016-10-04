@@ -155,6 +155,7 @@ GameObject:
   - 54: {fileID: 54000011319011056}
   - 65: {fileID: 65000013589310704}
   - 65: {fileID: 65000013842526100}
+  - 114: {fileID: 114000012653064554}
   m_Layer: 11
   m_Name: bikePlate
   m_TagString: BikePlate
@@ -928,6 +929,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   mass: 0.02
+  initialAccelerationRate: 0.04
+  finalDecelerationRate: 0.08
   defaultSpeed: 0.09
   accelerationRate: 0.02
   decelerationRate: 0.04
@@ -951,7 +954,7 @@ MonoBehaviour:
   rightBikeLimit: {fileID: 4000013742317096}
   speedFactor: 1
   wind: 0
-  windPosition: {x: 0, y: 0, z: 0}
+  windDir: {x: 0, y: 0, z: 0}
   windForce: 0
 --- !u!114 &114000011981348898
 MonoBehaviour:
@@ -968,6 +971,18 @@ MonoBehaviour:
   lastLostCarriable: {fileID: 0}
   lastUsedJoint: {fileID: 0}
   carriablesDrag: {fileID: 0}
+--- !u!114 &114000012653064554
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012142068196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd86da2a0b577644498e9f23f87150fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenerId: 0
 --- !u!114 &114000014270303438
 MonoBehaviour:
   m_ObjectHideFlags: 1

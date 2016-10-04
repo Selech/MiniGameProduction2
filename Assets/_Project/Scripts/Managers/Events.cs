@@ -248,12 +248,12 @@ public class SnapSoundEvent : GameEvent
 
 public class StartWindEvent : GameEvent
 {
-    public Vector3 windDir;
+    public Vector3 windPosition;
     public float windForce;
 
-    public StartWindEvent(Vector3 windDir, float windForce)
+    public StartWindEvent(Vector3 windPosition, float windForce)
     {
-        this.windDir = windDir;
+        this.windPosition = windPosition;
         this.windForce = windForce;
     }
 }
@@ -555,6 +555,14 @@ public class FlyingEvent : GameEvent
 public class LandingEvent : GameEvent
 {
     public LandingEvent()
+    {
+
+    }
+}
+
+public class HappyFunTimeEndsEvent : GameEvent
+{
+    public HappyFunTimeEndsEvent()
     {
 
     }
