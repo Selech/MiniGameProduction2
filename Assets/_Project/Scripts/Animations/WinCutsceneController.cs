@@ -8,11 +8,12 @@ public class WinCutsceneController : MonoBehaviour {
     public GameObject hill;
     public GameObject hillHouse;
 
-    public List<GameObject> houseObjectsReward1;
-    public List<GameObject> houseObjectsReward2;
-    public List<GameObject> houseObjectsReward3;
+    public List<GameObject> houseObjectsReward;
 
     public GameObject RestackButton;
+    public int test;
+    private int counter;
+    private int amount;
 
     private bool Building;
 
@@ -25,6 +26,10 @@ public class WinCutsceneController : MonoBehaviour {
         Time.timeScale = 1f;
         StartCoroutine(GetReward1());
         Building = true;
+
+        counter = 0;
+        test = PlayerPrefs.GetInt("Amount of Carriables");
+        amount = Mathf.FloorToInt((houseObjectsReward.Count*(test/6f)));
     }
 
     void Update()
@@ -56,21 +61,29 @@ public class WinCutsceneController : MonoBehaviour {
         hillHouse.SetActive(false);
         hill.SetActive(true);
 
-        foreach (var obj in houseObjectsReward1)
+        foreach (var obj in houseObjectsReward)
         {
-            obj.SetActive(true);
-            AkSoundEngine.PostEvent("Play_CloudPuff", this.gameObject);
-            yield return new WaitForSeconds(1f);
+            counter++;
+
+            if (counter > amount)
+                yield return new WaitForSeconds(0f);
+            else
+            {
+                obj.SetActive(true);
+                AkSoundEngine.PostEvent("Play_CloudPuff", this.gameObject);
+
+                yield return new WaitForSeconds(1f);
+            }
         }
 
-        StartCoroutine(GetReward2());
+        HouseBuilt();
     }
 
     IEnumerator GetReward2()
     {
         //yield return new WaitForSeconds(1f);
 
-        foreach (var obj in houseObjectsReward2)
+        foreach (var obj in houseObjectsReward)
         {
             obj.SetActive(true);
             AkSoundEngine.PostEvent("Play_CloudPuff", this.gameObject);
@@ -84,7 +97,7 @@ public class WinCutsceneController : MonoBehaviour {
     {
         //yield return new WaitForSeconds(1f);
 
-        foreach (var obj in houseObjectsReward3)
+        foreach (var obj in houseObjectsReward)
         {
             obj.SetActive(true);
             AkSoundEngine.PostEvent("Play_CloudPuff", this.gameObject);
