@@ -34,7 +34,7 @@ public class StaticObstacle : MonoBehaviour {
 	{
 		if(col.gameObject.CompareTag("BikePlate"))
 		{
-			EventManager.Instance.TriggerEvent(new DamageCarriableEvent());
+			EventManager.Instance.TriggerEvent(new DamageCarriableEvent(_obstacleType));
 			EventManager.Instance.TriggerEvent (new FeedbackCameraShakeEvent (shakeAmount,shakeDuration));
 		}
 	}

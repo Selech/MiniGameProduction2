@@ -13,9 +13,11 @@ public class CarObstacle : MonoBehaviour {
 	public Collider carMeshCollider;
 
 
-	void Start () 
+
+    void Start () 
 	{
-		playerPickupController = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerPickupController> ();
+       
+        playerPickupController = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerPickupController> ();
 		carRigidBody = GetComponent<Rigidbody> ();
 	}
 
@@ -61,7 +63,7 @@ public class CarObstacle : MonoBehaviour {
 			carMeshCollider.enabled = true;
 		}
 
-		EventManager.Instance.TriggerEvent (new DamageCarriableEvent ());
+		EventManager.Instance.TriggerEvent (new DamageCarriableEvent (ObstacleKind.car));
 		EventManager.Instance.TriggerEvent (new ObstacleHitEvent (pushPlayerBackForce));
 	}
 }
