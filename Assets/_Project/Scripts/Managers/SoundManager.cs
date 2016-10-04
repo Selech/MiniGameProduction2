@@ -414,12 +414,15 @@ public class SoundManager : MonoBehaviour
 
     private void Landing(LandingEvent e)
     {
-        if (isLanded)
+        if (!isLanded && isFlying)
         {
             PlaySound("Stop_Flying");
             PlaySound("Play_Bump");
+            Debug.Log("Landed");
+            isLanded = true;
+            isFlying = false;
         }
-        isFlying = true;
+        
     }
 
     private void Flying(FlyingEvent e)
@@ -428,6 +431,7 @@ public class SoundManager : MonoBehaviour
         {
             isFlying = true;
             PlaySound("Play_Flying");
+            Debug.Log("Flying");
         }
 
     }
@@ -474,13 +478,13 @@ public class SoundManager : MonoBehaviour
     }
 
     private void ChangeScheme(ChangeSchemeEvent e)
-    {/*
+    {
 
         if (GameManager.Instance.isGyro && !isDialogue)
         {
             isDialogue = true;
             AkSoundEngine.PostEvent("Play_MisVO20", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
-        }*/
+        }
         else if (!GameManager.Instance.isGyro && !isDialogue)
         {
             isDialogue = true;

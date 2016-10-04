@@ -5,9 +5,9 @@ public enum WindDirection { Left, Right }
 
 public class WindObstacle : MonoBehaviour {
 
-	[Tooltip("Push when Player is blown away by wind")]
-	[Range(0, 20)]
-	public float windForce = 8.0f;
+	//[Tooltip("Push when Player is blown away by wind")]
+	//[Range(0, 20)]
+	private float windForce = 3.5f;
     
 	Vector3 windDir;
     private Vector3 ventilatorPosition;
