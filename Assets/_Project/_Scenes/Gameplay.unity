@@ -866,6 +866,16 @@ Prefab:
       propertyPath: mass
       value: 0.02
       objectReference: {fileID: 0}
+    - target: {fileID: 114000011861470604, guid: 766dcc133c68a5247b53cb287a15c808,
+        type: 2}
+      propertyPath: rayToGroundLength
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011861470604, guid: 766dcc133c68a5247b53cb287a15c808,
+        type: 2}
+      propertyPath: centeredRayToGroundLength
+      value: 0.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 766dcc133c68a5247b53cb287a15c808, type: 2}
   m_IsPrefabParent: 0
@@ -1447,24 +1457,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 23000011381575568, guid: 3829712daf606f14e9e151e8a35b65f1,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 40b96ab82f9076543a3ec4722f5b4f2d, type: 2}
     - target: {fileID: 23000010595704458, guid: 3829712daf606f14e9e151e8a35b65f1,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 40b96ab82f9076543a3ec4722f5b4f2d, type: 2}
-    - target: {fileID: 23000010018521768, guid: 3829712daf606f14e9e151e8a35b65f1,
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 40b96ab82f9076543a3ec4722f5b4f2d, type: 2}
     - target: {fileID: 114000011789091888, guid: 3829712daf606f14e9e151e8a35b65f1,
         type: 2}
-      propertyPath: winAmountOfChunks
+      propertyPath: maxAmountOfChunks
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
