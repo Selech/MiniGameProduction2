@@ -26,8 +26,20 @@ public class MapController : MonoBehaviour
     private bool moveRoundAbout;
     private int counter;
 
-	// Use this for initialization
-	void Start ()
+    void OnEnable()
+    {
+        EventManager.Instance.StartListening<PlayerHitsTheFirstRoadChunk>(spawnRoundAbout);
+        EventManager.Instance.StartListening<ChunkEnteredEvent>(GenerateChunk);
+    }
+
+    void OnDisable()
+    {
+        EventManager.Instance.StopListening<PlayerHitsTheFirstRoadChunk>(spawnRoundAbout);
+        EventManager.Instance.StopListening<ChunkEnteredEvent>(GenerateChunk);
+    }
+
+    // Use this for initialization
+    void Start ()
 	{
         counter = 30;
         // puts the roundabout below the ground 
@@ -51,6 +63,17 @@ public class MapController : MonoBehaviour
 
 	}
 
+    void spawnRoundAbout(PlayerHitsTheFirstRoadChunk e)
+    {
+        StartCoroutine(updateFirstChunk());
+    }
+
+    IEnumerator updateFirstChunk()
+    {
+        yield return new WaitForSeconds(1);
+        UpdateRoundabout();
+    }
+
     void FixedUpdate()
     {
         if (moveRoundAbout)
@@ -62,16 +85,6 @@ public class MapController : MonoBehaviour
             counter--;
         }
     }
-
-	void OnEnable ()
-	{
-		EventManager.Instance.StartListening<ChunkEnteredEvent> (GenerateChunk);
-	}
-
-	void OnDisable ()
-	{
-		EventManager.Instance.StopListening<ChunkEnteredEvent> (GenerateChunk);
-	}
 
 	private void GenerateChunk (ChunkEnteredEvent e)
 	{
