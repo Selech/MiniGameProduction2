@@ -233,10 +233,9 @@ public class PlayerMovementController : MonoBehaviour
 
     public void MoveAside(Vector3 windDir, float windForce)
     {
-        //transform.Translate(((updatedPlayerForward * Mathf.Clamp(currentForwardSpeed, minimumSpeed, maximumSpeed)) + (windDir * windForce)) * Time.deltaTime);
-        //charController.SimpleMove(((updatedPlayerForward * Mathf.Clamp(currentForwardSpeed, minimumSpeed, maximumSpeed)) + (windDir * windForce)) * Time.deltaTime);
-        Debug.DrawRay(transform.position, -Vector3.ProjectOnPlane(charController.center - windDir, Vector3.up), Color.blue);
-        charController.SimpleMove(-Vector3.ProjectOnPlane(charController.center- windDir,Vector3.up));
+        Debug.DrawRay(transform.position, -Vector3.ProjectOnPlane((charController.center - windDir), Vector3.up), Color.blue);
+
+        charController.SimpleMove(-Vector3.ProjectOnPlane(Vector3.Normalize(charController.center- windDir)*windForce,Vector3.up)); 
     }
 
     //called when the stacking is finished (start button)

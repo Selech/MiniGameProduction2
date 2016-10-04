@@ -887,7 +887,7 @@
 						</Action>
 					</ChildrenList>
 				</Event>
-				<Event Name="Play_Blow" ID="{AF4B0386-0BB4-47C3-B906-CD8EF80FDF3D}">
+				<Event Name="Play_Fan" ID="{AF4B0386-0BB4-47C3-B906-CD8EF80FDF3D}">
 					<ChildrenList>
 						<Action Name="Play" ID="{F7E3C080-5390-4F06-A1E5-5DD3AE628D90}" ShortID="285961251" Type="Play" Scope="One" Global="false">
 							<ElementList>
@@ -987,9 +987,6 @@
 						<Event Name="Stop_MusicDrive" ID="{D39AE9B2-8746-4B33-91B2-E46511E3E9A9}">
 							<ChildrenList>
 								<Action Name="Stop" ID="{647716B2-3FFF-42EC-867D-71B4AE951590}" ShortID="528416700" Type="Stop" Scope="One" Global="false">
-									<PropertyList>
-										<Property Name="FadeTime" Type="Real64" Value="1.5"/>
-									</PropertyList>
 									<ElementList>
 										<Element ID="{51902DF4-6ABE-4C81-8C48-39021C694640}" Global="false">
 											<ObjectRef Name="Music" ID="{A60B9CFA-D7C6-4660-B1E7-1E1C4B96F6C6}" WorkUnitID="{9BE5B37D-4814-42B5-AD97-431DE2BC86C4}"/>
@@ -1193,6 +1190,35 @@
 							<ElementList>
 								<Element ID="{01A6D7DE-A4D1-45EE-A1B8-28811933AFA0}" Global="false">
 									<ObjectRef Name="MisVO18" ID="{86F9F2F9-1065-4E6A-9EC8-6D0F9373B9FB}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Ambience" ID="{47FF627A-B1C4-4702-A783-318D03C002A3}">
+					<ChildrenList>
+						<Action Name="Stop" ID="{1887AB67-9F23-4A65-B2EC-7E045B90AAB9}" ShortID="646658230" Type="Stop" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{7E4885D3-9BA5-4C31-A450-30D2035E64FC}" Global="false">
+									<ObjectRef Name="Ambience" ID="{A0654289-1B0A-4B8C-8B9D-3BE922D1CFD2}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
+								</Element>
+							</ElementList>
+						</Action>
+						<Action Name="Play" ID="{A42CA7F2-2B44-42F9-AC62-E3776FBF4318}" ShortID="932128650" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{33DDFF57-875A-48F1-A943-2157DA9ACCBA}" Global="false">
+									<ObjectRef Name="Ambience" ID="{A0654289-1B0A-4B8C-8B9D-3BE922D1CFD2}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_Ambience" ID="{9AF55D5D-1815-4EBF-93C5-A95623D3C05D}">
+					<ChildrenList>
+						<Action Name="Stop" ID="{421D955B-D21C-4168-9AA9-8354F367A0EA}" ShortID="264427637" Type="Stop" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{7F54F91B-6F78-4FAA-9486-4CF529C76DFE}" Global="false">
+									<ObjectRef Name="Ambience" ID="{A0654289-1B0A-4B8C-8B9D-3BE922D1CFD2}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
 								</Element>
 							</ElementList>
 						</Action>
