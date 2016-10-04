@@ -380,7 +380,7 @@ public class SoundManager : MonoBehaviour
 
     private void StackingSceneSound(StartStackingSceneEvent e)
     {
-        EventManager.Instance.TriggerEvent(new RestartGameEvent());
+        
         if (PlayerPrefs.GetInt("Tutorial") == 1)
         {
             isTutorial = true;
@@ -405,6 +405,7 @@ public class SoundManager : MonoBehaviour
             PlaySound("Play_IntroVO1");
 
         }
+        EventManager.Instance.TriggerEvent(new RestartGameEvent());
 
     }
 
