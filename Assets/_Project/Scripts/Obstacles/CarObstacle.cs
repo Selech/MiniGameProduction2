@@ -20,6 +20,7 @@ public class CarObstacle : MonoBehaviour
 	void OnEnable () 
 	{
 		
+		playerPickupController = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerPickupController> ();
 		carRigidBody = GetComponent<Rigidbody> ();
 
 		//move car if it aint static
@@ -90,7 +91,7 @@ public class CarObstacle : MonoBehaviour
 
 	void HurtPlayerCarriables()
 	{
-		EventManager.Instance.TriggerEvent (new DamageCarriableEvent ());
+		EventManager.Instance.TriggerEvent (new DamageCarriableEvent (ObstacleKind.car));
 		EventManager.Instance.TriggerEvent (new ObstacleHitEvent (pushPlayerBackForce));
 
 		if(isCarStatic)
@@ -103,6 +104,7 @@ public class CarObstacle : MonoBehaviour
 			carMeshCollider.enabled = true;
 		}
 
-
+		EventManager.Instance.TriggerEvent (new DamageCarriableEvent (ObstacleKind.car));
+		EventManager.Instance.TriggerEvent (new ObstacleHitEvent (pushPlayerBackForce));
 	}
 }
