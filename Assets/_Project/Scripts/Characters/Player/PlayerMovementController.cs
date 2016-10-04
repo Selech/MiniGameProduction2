@@ -114,10 +114,12 @@ public class PlayerMovementController : MonoBehaviour
         StabilizeOrientation();
         if (!GameManager.Instance.isPaused)
         {
+            SendPlayerStatusUpdate();
             MoveForward();
             if (wind)
                 MoveAside(windDir, windForce);
         }
+
     }
 
     void StabilizeOrientation()
@@ -269,6 +271,14 @@ public class PlayerMovementController : MonoBehaviour
             var targetRotation = Quaternion.LookRotation(targetPoint - transform.position, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 2.0f);
             yield return new WaitForSeconds(0.01f);
+        }
+    }
+
+    public void SendPlayerStatusUpdate()
+    {
+        if (charController.isGrounded)
+        {
+            EventManager.Instance.TriggerEvent(new LandingEvent());
         }
     }
 }
