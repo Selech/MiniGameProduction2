@@ -21,7 +21,6 @@ GameObject:
   - 4: {fileID: 4000013307099654}
   - 33: {fileID: 33000011407783396}
   - 23: {fileID: 23000010345616154}
-  - 64: {fileID: 64000013786080778}
   m_Layer: 11
   m_Name: geo_bicycle
   m_TagString: Untagged
@@ -39,7 +38,6 @@ GameObject:
   - 4: {fileID: 4000014074990180}
   - 33: {fileID: 33000012859284222}
   - 23: {fileID: 23000014264502788}
-  - 64: {fileID: 64000010553179412}
   m_Layer: 11
   m_Name: geo_frontWheel
   m_TagString: Untagged
@@ -57,7 +55,6 @@ GameObject:
   - 4: {fileID: 4000010666078594}
   - 33: {fileID: 33000010351709758}
   - 23: {fileID: 23000013582219712}
-  - 64: {fileID: 64000011673610898}
   m_Layer: 11
   m_Name: geo_right_Wheel_Back
   m_TagString: Untagged
@@ -95,7 +92,7 @@ GameObject:
   - 114: {fileID: 114000011981348898}
   m_Layer: 2
   m_Name: PlayerPrefab
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,7 +122,6 @@ GameObject:
   - 4: {fileID: 4000013989417614}
   - 33: {fileID: 33000011067876166}
   - 23: {fileID: 23000013743504218}
-  - 64: {fileID: 64000014132391332}
   m_Layer: 11
   m_Name: geo_left_Wheel_Back
   m_TagString: Untagged
@@ -252,7 +248,6 @@ GameObject:
   - 4: {fileID: 4000010755801510}
   - 33: {fileID: 33000011533467978}
   - 23: {fileID: 23000011015031662}
-  - 64: {fileID: 64000011431619450}
   m_Layer: 11
   m_Name: geo_handle
   m_TagString: Untagged
@@ -270,7 +265,6 @@ GameObject:
   - 4: {fileID: 4000012786297668}
   - 33: {fileID: 33000010440719056}
   - 23: {fileID: 23000011278482452}
-  - 64: {fileID: 64000010766344614}
   m_Layer: 11
   m_Name: geo_r_pedal
   m_TagString: Untagged
@@ -288,7 +282,6 @@ GameObject:
   - 4: {fileID: 4000010128751858}
   - 33: {fileID: 33000010881277118}
   - 23: {fileID: 23000012090801570}
-  - 64: {fileID: 64000013151171170}
   m_Layer: 11
   m_Name: geo_r_pedal1
   m_TagString: Untagged
@@ -306,7 +299,6 @@ GameObject:
   - 4: {fileID: 4000010483099856}
   - 33: {fileID: 33000011335568898}
   - 23: {fileID: 23000012567549106}
-  - 64: {fileID: 64000011157215916}
   m_Layer: 11
   m_Name: geo_pedalbar1
   m_TagString: Untagged
@@ -868,102 +860,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &64000010553179412
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010937365974}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300004, guid: 0c5744991cb8e7648b2a4c736a4109f2, type: 3}
---- !u!64 &64000010766344614
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013209289688}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300010, guid: 0c5744991cb8e7648b2a4c736a4109f2, type: 3}
---- !u!64 &64000011157215916
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013951744354}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300014, guid: 0c5744991cb8e7648b2a4c736a4109f2, type: 3}
---- !u!64 &64000011431619450
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013109402028}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300002, guid: 0c5744991cb8e7648b2a4c736a4109f2, type: 3}
---- !u!64 &64000011673610898
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011192086872}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300008, guid: 0c5744991cb8e7648b2a4c736a4109f2, type: 3}
---- !u!64 &64000013151171170
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013286281604}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300012, guid: 0c5744991cb8e7648b2a4c736a4109f2, type: 3}
---- !u!64 &64000013786080778
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010269340148}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 1
-  m_Mesh: {fileID: 4300000, guid: 0c5744991cb8e7648b2a4c736a4109f2, type: 3}
---- !u!64 &64000014132391332
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012074813250}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 4300006, guid: 0c5744991cb8e7648b2a4c736a4109f2, type: 3}
 --- !u!65 &65000010153041366
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -999,7 +895,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 71.04, y: 1, z: 110.7}
-  m_Center: {x: 25.01, y: 0, z: 4.83}
+  m_Center: {x: 0, y: 38, z: 40.13}
 --- !u!95 &95000011639643890
 Animator:
   serializedVersion: 3
@@ -1031,7 +927,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
-  mass: 0.2
+  mass: 0.02
   defaultSpeed: 0.1
   accelerationRate: 0.075
   decelerationRate: 0.45
@@ -1041,13 +937,13 @@ MonoBehaviour:
   steepAccelerationDegree: 5
   steepDecelerationDegree: 5
   maxVerticalAngle: 145
-  reorientSpeed: 3
+  reorientSpeed: 4
   rayToGroundLength: 2
-  centeredRayToGroundLength: 0.4
+  centeredRayToGroundLength: 0.6
   currentForwardSpeed: 0
   currentVerticalSpeed: 0
   steepAngle: 0
-  playerModel: {fileID: 0}
+  playerModel: {fileID: 4000011044734434}
   respawnPoint: {fileID: 0}
   frontBikeLimit: {fileID: 4000012469699820}
   endBikeLimit: {fileID: 4000013803824284}
