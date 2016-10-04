@@ -78,8 +78,8 @@ public class CarriableManager : MonoBehaviour
 				setParentEvent.attachToPlayer = true;
 			}
 
-			//setting joint parameters
-			joint.breakForce = Mathf.Infinity;
+            //setting joint parameters
+            joint.breakForce = Mathf.Infinity;
 			joint.breakTorque = Mathf.Infinity;
 			joint.spring = springForce;
 			joint.damper = springDampener;
@@ -88,17 +88,19 @@ public class CarriableManager : MonoBehaviour
 
 
 			//moving the joint anchor
-			joint.anchor = new Vector3(0, collectedObjects[i].GetComponent<Renderer>().bounds.min.y,0);
+			joint.anchor = new Vector3(0, collectedObjects[i].GetComponentInChildren<Renderer>().bounds.min.y,0);
 			joint.maxDistance = 0f;
 
 			Rigidbody carriableRigidbody = joint.gameObject.GetComponent<Rigidbody>();
+           // carriableRigidbody.isKinematic = true;
+            //carriableRigidbody.isKinematic = true;
 			//carriableRigidbody.mass = carriableMass-CarriableMassModifierFactor*(i/size)*(2*collectedObjects [i].GetComponent<Renderer>().bounds.extents.y/maxCarriableHeight);
 
 			carriableRigidbody.mass = size * carriableMass - carriableMass * i;//* (2 * collectedObjects [i].GetComponent<Renderer> ().bounds.extents.y / maxCarriableHeight);
 			//end setting rigidbody parameters
 			setParentEvent.gameobject = collectedObjects[i];
 			EventManager.Instance.TriggerEvent(setParentEvent);
-		}
+        }
 
 	}
 
@@ -138,7 +140,7 @@ public class CarriableManager : MonoBehaviour
 		joint.tolerance = lengthTolerance;
 
 		//moving the joint anchor
-		joint.anchor = new Vector3(0, carriable.GetComponent<Renderer>().bounds.min.y + runningHeight,0);
+		joint.anchor = new Vector3(0, carriable.GetComponentInChildren<Renderer>().bounds.min.y + runningHeight,0);
 		joint.maxDistance = 0f;
 
 		carriableRigidbody.mass = numberOfLostCarriables;
