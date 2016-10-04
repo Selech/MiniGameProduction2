@@ -176,6 +176,10 @@ public class PlayerReactionsController : MonoBehaviour
 
         switch (hittedObject.tag)
         {
+            case "AirGuide": //like the floating "get back carriable"
+                EventManager.Instance.TriggerEvent(new FlyingEvent());
+                Debug.Log("flying");
+                break;
             case "RoadProp": //like ground speed boosts or sebastian ramps
                 EventManager.Instance.TriggerEvent(new PlayerHitRoadProp(hittedObject));
                 break;
