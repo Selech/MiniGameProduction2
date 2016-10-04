@@ -102,12 +102,19 @@ public class PlayerReactionsController : MonoBehaviour
 
     IEnumerator BoostPickUp(float speed, float time)
     {
-        movementController.speedFactor = speed;
-        yield return new WaitForSeconds(time);
-        movementController.speedFactor = 1;
-        isBoosted = false;
-        EventManager.Instance.TriggerEvent(new HappyFunTimeEndsEvent());
+        movementController.defaultSpeed += speed;
+        movementController.maximumSpeed += speed;
+        movementController.accelerationRate *= speed;
 
+        yield return new WaitForSeconds(time);
+
+        movementController.defaultSpeed -= speed;
+        movementController.maximumSpeed -= speed;
+        movementController.accelerationRate /= speed;
+
+        isBoosted = false;
+        playerPickupController.isLastPickupBoost = false;
+        EventManager.Instance.TriggerEvent(new HappyFunTimeEndsEvent());
     }
 
     void GetBackCarriable(GetBackCarriableHitEvent e)
@@ -176,6 +183,10 @@ public class PlayerReactionsController : MonoBehaviour
 
         switch (hittedObject.tag)
         {
+            case "AirGuide": //like the floating "get back carriable"
+                EventManager.Instance.TriggerEvent(new FlyingEvent());
+                Debug.Log("flying");
+                break;
             case "RoadProp": //like ground speed boosts or sebastian ramps
                 EventManager.Instance.TriggerEvent(new PlayerHitRoadProp(hittedObject));
                 break;

@@ -50,13 +50,13 @@ public class TutorialController : MonoBehaviour {
 
 	IEnumerator StartBikeTutorial(){
 		yield return new WaitForSeconds(1f);
-
-		for (int i = 0; i < 3; i++) {
+        
+        for (int i = 0; i < 3; i++) {
 			animations [1].Play ("CircleAnimation");
 			animations [2].Play ("TapAnimation");
 			yield return new WaitForSeconds(2f);
 		}
-
+        EventManager.Instance.TriggerEvent(new StartStackTutorialEvent());
         yield return new WaitForSeconds(5f);
         StartCoroutine(StartBikeTutorial());
     }
