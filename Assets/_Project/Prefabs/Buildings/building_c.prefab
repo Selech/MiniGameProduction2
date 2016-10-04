@@ -21,6 +21,7 @@ GameObject:
   - 4: {fileID: 4000012789609424}
   - 33: {fileID: 33000013815813108}
   - 23: {fileID: 23000010226543642}
+  - 114: {fileID: 114000013261682274}
   m_Layer: 0
   m_Name: building_c
   m_TagString: Untagged
@@ -66,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012495157582}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.5623026, z: 0}
+  m_LocalPosition: {x: 5.0441523, y: 7.1384397, z: 20.284794}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -157,3 +158,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114000013261682274
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012495157582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99e0b90eb47103f409931fd2a2d516af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buildingType: 2
+  materialA:
+  - {fileID: 2100000, guid: 4fc10c93d3ef8d44a8c89006516a1ec3, type: 2}
+  - {fileID: 2100000, guid: c8308e17b152f2d4e95ff0447acebf5c, type: 2}
+  - {fileID: 2100000, guid: a67b9e40f6f61374082f0ea336e69a9b, type: 2}
+  materialC:
+  - {fileID: 2100000, guid: 24d8e13083288e147bad708e1f8ccbf0, type: 2}
+  - {fileID: 2100000, guid: 93331751d04990d4c98aeef85919a75f, type: 2}
+  - {fileID: 2100000, guid: f077e4db4cb906942bcedc5e39544cce, type: 2}
+  materialB:
+  - {fileID: 2100000, guid: 17b2c06d6ed0fdb4bb35a622c91ae192, type: 2}
+  - {fileID: 2100000, guid: 17337e514e32e614793a845da586f8f2, type: 2}
+  - {fileID: 2100000, guid: ad056cdc0b95719438571df361f4daf0, type: 2}
