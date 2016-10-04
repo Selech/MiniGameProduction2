@@ -40,7 +40,7 @@ public class SoundManager : MonoBehaviour
     bool isLanded = false;
 
     [HideInInspector]
-    public bool isDialogue = false;
+    public bool isDialogue = true;
 
     #endregion
 
@@ -193,6 +193,7 @@ public class SoundManager : MonoBehaviour
 
     private void StartRaceMusic(StartGame e)
     {
+        isDialogue = false;
         drivingStarted = true;
         stackingSceneActive = false;
         PlayerPrefs.SetInt("Tutorial", 0);
@@ -396,7 +397,9 @@ public class SoundManager : MonoBehaviour
         if (isTutorial)
         {
             PlaySound("Play_IntroVO1");
+            
         }
+        
     }
 
     private void MapProgression(MapProgressionForSoundEvent e)
