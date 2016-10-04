@@ -12,23 +12,27 @@ public class WindObstacle : MonoBehaviour {
 	[Tooltip("Direction from which the wind blows")]
 	public WindDirection windDirection;
 
-	Vector3 windPosition;
+	Vector3 windDir;
+    private Vector3 ventilatorPosition;
+    private Vector3 windTriggerPosition;
 
-	// Use this for initialization
-	void Start () {
-		windPosition = transform.position;
+    // Use this for initialization
+    void Start () {
 	}
 
 	void OnTriggerEnter(Collider col)
 	{
 		if(col.gameObject.CompareTag("BikePlate") || col.gameObject.CompareTag("Player"))
 		{
-			
-			if (windDirection == WindDirection.Right)
-				windPosition = windPosition - transform.GetChild (0).position;
+		    ventilatorPosition = transform.GetChild(0).position;
+		    windTriggerPosition = transform.position;
+
+            if (windDirection == WindDirection.Right)
+				windDir = windTriggerPosition - ventilatorPosition;
 			else
-				windPosition = transform.GetChild (0).position - windPosition;
-			EventManager.Instance.TriggerEvent (new StartWindEvent (windPosition, windForce));
+				windDir = ventilatorPosition - windTriggerPosition;
+
+			EventManager.Instance.TriggerEvent (new StartWindEvent (windDir, windForce));
 		}
 	}
 

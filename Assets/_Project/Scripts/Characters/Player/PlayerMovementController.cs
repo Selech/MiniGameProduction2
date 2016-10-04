@@ -86,7 +86,7 @@ public class PlayerMovementController : MonoBehaviour
     public float speedFactor = 1f;
 
     public bool wind = false;
-    public Vector3 windPosition;
+    public Vector3 windDir;
     public float windForce = 0;
     private float oldMinimumSpeed;
     private float oldAccelerationRate;
@@ -116,7 +116,7 @@ public class PlayerMovementController : MonoBehaviour
         {
             MoveForward();
             if (wind)
-                MoveAside(windPosition, windForce);
+                MoveAside(windDir, windForce);
         }
     }
 
@@ -231,10 +231,12 @@ public class PlayerMovementController : MonoBehaviour
         }
     }
 
-    public void MoveAside(Vector3 windPosition, float windForce)
+    public void MoveAside(Vector3 windDir, float windForce)
     {
-        Vector3 windDir = windPosition;
-        transform.Translate(((updatedPlayerForward * Mathf.Clamp(currentForwardSpeed, minimumSpeed, maximumSpeed)) + (windDir * windForce)) * Time.deltaTime);
+        //transform.Translate(((updatedPlayerForward * Mathf.Clamp(currentForwardSpeed, minimumSpeed, maximumSpeed)) + (windDir * windForce)) * Time.deltaTime);
+        //charController.SimpleMove(((updatedPlayerForward * Mathf.Clamp(currentForwardSpeed, minimumSpeed, maximumSpeed)) + (windDir * windForce)) * Time.deltaTime);
+        Debug.DrawRay(transform.position, -Vector3.ProjectOnPlane(charController.center - windDir, Vector3.up), Color.blue);
+        charController.SimpleMove(-Vector3.ProjectOnPlane(charController.center- windDir,Vector3.up));
     }
 
     //called when the stacking is finished (start button)
