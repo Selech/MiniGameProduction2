@@ -22,7 +22,6 @@ GameObject:
   - 114: {fileID: 114000011193669436}
   - 114: {fileID: 114000011959656728}
   - 114: {fileID: 114000012708579844}
-  - 114: {fileID: 114000012927689182}
   - 114: {fileID: 114000013083891626}
   - 114: {fileID: 114000013657784008}
   - 114: {fileID: 114000010370273592}
@@ -64,7 +63,7 @@ MonoBehaviour:
   loadAsynchronous: 0
   decodeBank: 0
   saveDecodedBank: 0
-  unloadTriggerList: 958ca0ea
+  unloadTriggerList: 
 --- !u!114 &114000011193669436
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -84,6 +83,8 @@ MonoBehaviour:
   hasWon: 0
   isGyro: 0
   tutorialCompleted: 0
+  isStackingScene: 0
+  isDanish: 1
 --- !u!114 &114000011959656728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,17 +110,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   centerWidth: 200
---- !u!114 &114000012927689182
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010544614884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de709c5970de5dc44ace1c3a5a9816ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114000013083891626
 MonoBehaviour:
   m_ObjectHideFlags: 1
