@@ -219,6 +219,13 @@ public class SoundManager : MonoBehaviour
         drivingStarted = false;
         PlaySound("Stop_Pedal");
         PlaySound("Play_MusicWin");
+
+        if (!isDialogue)
+        {
+            isDialogue = true;
+            AkSoundEngine.PostEvent("Play_MusVO11", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
+        }
+
     }
 
     private void HitObstacle(DamageCarriableEvent e)
