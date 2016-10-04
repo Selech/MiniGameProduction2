@@ -25,7 +25,6 @@ GameObject:
   - 65: {fileID: 65000012417918232}
   - 65: {fileID: 65000010165437388}
   - 114: {fileID: 114000012672770632}
-  - 114: {fileID: 114000013324369768}
   m_Layer: 8
   m_Name: BoatPlaceholder (1)
   m_TagString: Carriable
@@ -68,7 +67,6 @@ GameObject:
   - 65: {fileID: 65000013254150738}
   - 65: {fileID: 65000011697426544}
   - 114: {fileID: 114000010926032470}
-  - 114: {fileID: 114000010591046724}
   m_Layer: 8
   m_Name: PuffSofaPlaceholder (1)
   m_TagString: Carriable
@@ -108,7 +106,6 @@ GameObject:
   - 65: {fileID: 65000013166176356}
   - 65: {fileID: 65000010540903688}
   - 114: {fileID: 114000012684507316}
-  - 114: {fileID: 114000011654131270}
   m_Layer: 8
   m_Name: StovePlaceholder (2)
   m_TagString: Carriable
@@ -130,7 +127,6 @@ GameObject:
   - 65: {fileID: 65000011647511002}
   - 65: {fileID: 65000011677193836}
   - 114: {fileID: 114000012524659224}
-  - 114: {fileID: 114000012071806056}
   m_Layer: 8
   m_Name: SpeakersPlaceholder (2)
   m_TagString: Carriable
@@ -248,7 +244,6 @@ GameObject:
   - 65: {fileID: 65000013161614748}
   - 65: {fileID: 65000012459069972}
   - 114: {fileID: 114000012987784066}
-  - 114: {fileID: 114000012386016048}
   m_Layer: 8
   m_Name: PaintPlaceholder (3)
   m_TagString: Carriable
@@ -291,7 +286,6 @@ GameObject:
   - 65: {fileID: 65000010537413740}
   - 65: {fileID: 65000013166002704}
   - 114: {fileID: 114000014066607354}
-  - 114: {fileID: 114000012476598510}
   m_Layer: 8
   m_Name: PillarPlaceholder (2)
   m_TagString: Carriable
@@ -386,7 +380,6 @@ GameObject:
   - 65: {fileID: 65000013389744022}
   - 65: {fileID: 65000014023868610}
   - 114: {fileID: 114000010319198592}
-  - 114: {fileID: 114000012940304118}
   m_Layer: 8
   m_Name: FridgePlaceholder
   m_TagString: Carriable
@@ -1097,7 +1090,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: dd77a7d810d9a3b478657022cf442a09, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -1464,7 +1457,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 50, y: 75.67876, z: 50}
+  m_Size: {x: 80, y: 75.67876, z: 80}
   m_Center: {x: -0.031180382, y: 34.577583, z: 2.9038993e-11}
 --- !u!65 &65000010165437388
 BoxCollider:
@@ -1476,7 +1469,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 50, y: 110.05596, z: 50}
+  m_Size: {x: 80, y: 110.05596, z: 80}
   m_Center: {x: 3.0802765, y: 53.876995, z: -0.000000002868731}
 --- !u!65 &65000010241477242
 BoxCollider:
@@ -1488,7 +1481,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 50, y: 27.722591, z: 50}
+  m_Size: {x: 80, y: 27.722591, z: 80}
   m_Center: {x: 0.0000019073486, y: 13.696541, z: -0.0000038146973}
 --- !u!65 &65000010537413740
 BoxCollider:
@@ -1512,7 +1505,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 50, y: 80.58985, z: 50}
+  m_Size: {x: 80, y: 80.58985, z: 80}
   m_Center: {x: -0.0000038146973, y: 40.788395, z: 3.5527137e-15}
 --- !u!65 &65000011488445256
 BoxCollider:
@@ -1524,7 +1517,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 50, y: 48.367867, z: 50}
+  m_Size: {x: 80, y: 48.367867, z: 80}
   m_Center: {x: 0.45173454, y: 24.173843, z: 0.8612766}
 --- !u!65 &65000011576397534
 BoxCollider:
@@ -1572,7 +1565,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 50, y: 48.367867, z: 50}
+  m_Size: {x: 80, y: 48.367867, z: 80}
   m_Center: {x: 0.45173454, y: 24.173843, z: 0.8612766}
 --- !u!65 &65000011697426544
 BoxCollider:
@@ -1584,7 +1577,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 50, y: 46.964203, z: 50}
+  m_Size: {x: 80, y: 46.964203, z: 80}
   m_Center: {x: -1.5149193, y: 24.084255, z: 0.0000000014108785}
 --- !u!65 &65000011888443634
 BoxCollider:
@@ -1608,7 +1601,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 50, y: 110.05596, z: 50}
+  m_Size: {x: 80, y: 110.05596, z: 80}
   m_Center: {x: 3.0802765, y: 53.876995, z: -0.000000002868731}
 --- !u!65 &65000011957130706
 BoxCollider:
@@ -1620,7 +1613,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 50, y: 48.367867, z: 50}
+  m_Size: {x: 80, y: 48.367867, z: 80}
   m_Center: {x: 0.45173454, y: 24.173843, z: 0.8612766}
 --- !u!65 &65000012156379958
 BoxCollider:
@@ -1668,7 +1661,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 50, y: 27.722591, z: 50}
+  m_Size: {x: 80, y: 27.722591, z: 80}
   m_Center: {x: 0.0000019073486, y: 13.696541, z: -0.0000038146973}
 --- !u!65 &65000012632466478
 BoxCollider:
@@ -1680,7 +1673,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 50, y: 75.67876, z: 50}
+  m_Size: {x: 80, y: 75.67876, z: 80}
   m_Center: {x: -0.031180382, y: 34.577583, z: 2.9038993e-11}
 --- !u!65 &65000012640555590
 BoxCollider:
@@ -1692,7 +1685,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 50, y: 80.58985, z: 50}
+  m_Size: {x: 80, y: 80.58985, z: 80}
   m_Center: {x: -0.0000038146973, y: 40.788395, z: 3.5527137e-15}
 --- !u!65 &65000012694033320
 BoxCollider:
@@ -1704,7 +1697,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 50, y: 27.722591, z: 50}
+  m_Size: {x: 80, y: 27.722591, z: 80}
   m_Center: {x: 0.0000019073486, y: 13.696541, z: -0.0000038146973}
 --- !u!65 &65000012770452932
 BoxCollider:
@@ -1716,7 +1709,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 50, y: 27.722591, z: 50}
+  m_Size: {x: 80, y: 27.722591, z: 80}
   m_Center: {x: 0.0000019073486, y: 13.696541, z: -0.0000038146973}
 --- !u!65 &65000012793769358
 BoxCollider:
@@ -1740,7 +1733,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 50, y: 41.5, z: 50}
+  m_Size: {x: 80, y: 41.5, z: 80}
   m_Center: {x: -1.5149193, y: 27.1, z: 0.0000000014108785}
 --- !u!65 &65000013161614748
 BoxCollider:
@@ -1764,7 +1757,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 50, y: 75.67876, z: 50}
+  m_Size: {x: 80, y: 75.67876, z: 80}
   m_Center: {x: -0.031180382, y: 34.577583, z: 2.9038993e-11}
 --- !u!65 &65000013166176356
 BoxCollider:
@@ -1884,7 +1877,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 50, y: 179.42937, z: 50}
+  m_Size: {x: 80, y: 179.42937, z: 80}
   m_Center: {x: 0.00000381622, y: 90.567085, z: 1.6351299}
 --- !u!114 &114000010174881638
 MonoBehaviour:
@@ -1963,22 +1956,6 @@ MonoBehaviour:
   currentHeight: 0
   stackingDone: 0
   maxAmountOfCarriables: 0
---- !u!114 &114000010591046724
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010439239242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cfc2b361a4a4b741a26cf1e2bd90b04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentLifeCounter: 0
-  maxLifeCounter: 3
-  upForce: 300
-  playerPickUpController: {fileID: 0}
-  waitTimeDrop: 2
 --- !u!114 &114000010704870374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2145,22 +2122,6 @@ MonoBehaviour:
   upForce: 300
   playerPickUpController: {fileID: 0}
   waitTimeDrop: 2
---- !u!114 &114000011654131270
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011076885434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cfc2b361a4a4b741a26cf1e2bd90b04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentLifeCounter: 0
-  maxLifeCounter: 3
-  upForce: 300
-  playerPickUpController: {fileID: 0}
-  waitTimeDrop: 2
 --- !u!114 &114000011744967610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2207,22 +2168,6 @@ MonoBehaviour:
   LerpSpeed: 2
   translateSpeed: 0.1
   heightOfObject: 1.08
---- !u!114 &114000012071806056
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011186327902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cfc2b361a4a4b741a26cf1e2bd90b04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentLifeCounter: 0
-  maxLifeCounter: 3
-  upForce: 300
-  playerPickUpController: {fileID: 0}
-  waitTimeDrop: 2
 --- !u!114 &114000012220161642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2270,38 +2215,6 @@ MonoBehaviour:
   LerpSpeed: 2
   translateSpeed: 0.1
   heightOfObject: 0.65
---- !u!114 &114000012386016048
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012484231074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cfc2b361a4a4b741a26cf1e2bd90b04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentLifeCounter: 0
-  maxLifeCounter: 3
-  upForce: 300
-  playerPickUpController: {fileID: 0}
-  waitTimeDrop: 2
---- !u!114 &114000012476598510
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012674981718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cfc2b361a4a4b741a26cf1e2bd90b04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentLifeCounter: 0
-  maxLifeCounter: 3
-  upForce: 300
-  playerPickUpController: {fileID: 0}
-  waitTimeDrop: 2
 --- !u!114 &114000012524659224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2396,22 +2309,6 @@ MonoBehaviour:
   upForce: 300
   playerPickUpController: {fileID: 0}
   waitTimeDrop: 2
---- !u!114 &114000012940304118
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013560400000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cfc2b361a4a4b741a26cf1e2bd90b04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentLifeCounter: 0
-  maxLifeCounter: 3
-  upForce: 300
-  playerPickUpController: {fileID: 0}
-  waitTimeDrop: 2
 --- !u!114 &114000012987784066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2465,22 +2362,6 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013317010406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cfc2b361a4a4b741a26cf1e2bd90b04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentLifeCounter: 0
-  maxLifeCounter: 3
-  upForce: 300
-  playerPickUpController: {fileID: 0}
-  waitTimeDrop: 2
---- !u!114 &114000013324369768
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010043920330}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4cfc2b361a4a4b741a26cf1e2bd90b04, type: 3}
@@ -2551,8 +2432,8 @@ MonoBehaviour:
   maxStackCarriables: 6
   startPlaying: 0
   springForce: 20000000
-  maxSpringDistance: 0.01
-  springDampener: 1
+  maxSpringDistance: 0
+  springDampener: 0
   lengthTolerance: 0
   carriableMass: 1
   CarriableMassModifierFactor: 1.2
