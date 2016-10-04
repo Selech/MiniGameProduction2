@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class SoundManager : MonoBehaviour
 {
@@ -79,7 +80,9 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StartListening<BoostPickupHitEvent>(BoostPickUp);
         EventManager.Instance.StartListening<StartStackingSceneEvent>(StackingSceneSound);
         EventManager.Instance.StartListening<MapProgressionForSoundEvent>(MapProgression);
-
+        EventManager.Instance.StartListening<EnterRampEvent>(EnterRamp);
+        EventManager.Instance.StartListening<FlyingEvent>(Flying);
+        EventManager.Instance.StartListening<LandingEvent>(Landing);
 
 
         // tutorial sounds below
@@ -125,6 +128,9 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StopListening<BoostPickupHitEvent>(BoostPickUp);
         EventManager.Instance.StopListening<StartStackingSceneEvent>(StackingSceneSound);
         EventManager.Instance.StopListening<MapProgressionForSoundEvent>(MapProgression);
+        EventManager.Instance.StopListening<EnterRampEvent>(EnterRamp);
+        EventManager.Instance.StopListening<FlyingEvent>(Flying);
+        EventManager.Instance.StopListening<LandingEvent>(Landing);
 
 
         // tutorial sounds below
@@ -148,6 +154,8 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StopListening<WatchOutEvent>(WatchOut);
         EventManager.Instance.StopListening<YouHaveToAvoidEvent>(YouHaveToAvoid);
     }
+
+   
 
     #endregion
 
@@ -182,6 +190,7 @@ public class SoundManager : MonoBehaviour
     private void StartRaceMusic(StartGame e)
     {
         drivingStarted = true;
+        stackingSceneActive = false;
         if (!musicMuted)
         {
             PlaySound("Play_MusicDrive");
@@ -226,7 +235,7 @@ public class SoundManager : MonoBehaviour
             PlaySound("Play_Collision");
         } else if (e.obstacleType == ObstacleKind.dumpster)
         {
-            PlaySound("Play.ColContainer");
+            PlaySound("Play_ColContainer");
         } else if (e.obstacleType == ObstacleKind.roadblock || e.obstacleType == ObstacleKind.roadblockBig)
         {
             PlaySound("Play_ColRoadBlock");
@@ -267,9 +276,7 @@ public class SoundManager : MonoBehaviour
     private void StopAllSounds(RestartGameEvent e)
     {
         drivingStarted = false;
-        PlaySound("Stop_MusicDrive");
-        PlaySound("Stop_MenuMusic");
-        PlaySound("Stop_Pedal");
+        PlaySound("Stop_All");
     }
 
     private void SnapSound(SnapSoundEvent e)
@@ -331,10 +338,12 @@ public class SoundManager : MonoBehaviour
     private void BoostPickUp(BoostPickupHitEvent e)
     {
         PlaySound("Play_SpeedUp");
+        AkSoundEngine.SetRTPCValue("PowerUp", 1);
     }
 
     private void StackingSceneSound(StartStackingSceneEvent e)
     {
+        stackingSceneActive = true;
         if (isDanish)
         {
             AkSoundEngine.SetCurrentLanguage("Danish");
@@ -351,6 +360,28 @@ public class SoundManager : MonoBehaviour
     {
         AkSoundEngine.SetRTPCValue("Progress", e.percentage);
     }
+
+    private void Landing(LandingEvent e)
+    {
+        PlaySound("Play_Bump");
+        PlaySound("Stop_Flying");
+    }
+
+    private void Flying(FlyingEvent e)
+    {
+        PlaySound("Play_Flying");
+    }
+
+    private void EnterRamp(EnterRampEvent e)
+    {
+        PlaySound("Play_Ramp");
+        if (!isDialogue && isTutorial)
+        {
+            isDialogue = true;
+            AkSoundEngine.PostEvent("Play_MusVO5", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
+        }
+    }
+
     #endregion
 
     #region Tutorial sounds:
@@ -506,7 +537,6 @@ public class SoundManager : MonoBehaviour
         PlaySound("Play_MisVO13");
     }
     #endregion
-
 
     #region 
     private static SoundManager _instance;
