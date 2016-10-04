@@ -7,7 +7,7 @@
 					<PropertyList>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-4</Value>
+								<Value>-2</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -16,7 +16,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
+							<ObjectRef Name="Music" ID="{BC346018-207D-49EE-81CE-61031AAE4D6C}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -370,6 +370,9 @@
 										<Reference Name="Effect1" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
 											<ObjectRef Name="Hall_Medium_Dark" ID="{626B6E38-739B-4689-819F-F81AD3788BDE}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
 										</Reference>
+										<Reference Name="Effect2" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+											<ObjectRef Name="New_Wwise_Parametric_EQ_01" ID="{7010DC24-00B0-4D72-94A2-018D3941F6DA}" WorkUnitID="{0A3694B7-4BEB-47ED-A5EE-527994BD2602}"/>
+										</Reference>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
 										</Reference>
@@ -397,13 +400,13 @@
 																		<SegmentShape>Constant</SegmentShape>
 																	</Point>
 																	<Point>
-																		<XPos>0.25796178343949</XPos>
+																		<XPos>0.22547</XPos>
 																		<YPos>-200</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
 																		<XPos>0.32006</XPos>
-																		<YPos>0.14314</YPos>
+																		<YPos>-0.34744</YPos>
 																		<Flags>0</Flags>
 																		<SegmentShape>Constant</SegmentShape>
 																	</Point>
@@ -520,13 +523,13 @@
 																		<SegmentShape>Constant</SegmentShape>
 																	</Point>
 																	<Point>
-																		<XPos>0.49204</XPos>
+																		<XPos>0.4492</XPos>
 																		<YPos>-200</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
 																		<XPos>0.56151</XPos>
-																		<YPos>-1.94592</YPos>
+																		<YPos>-1.1761</YPos>
 																		<Flags>0</Flags>
 																		<SegmentShape>Constant</SegmentShape>
 																	</Point>
@@ -599,18 +602,18 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>0.68472</XPos>
-																		<YPos>-200</YPos>
+																		<XPos>0.61825</XPos>
+																		<YPos>-34.64788</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>0.75956</XPos>
-																		<YPos>-0.34527</YPos>
+																		<XPos>0.67536</XPos>
+																		<YPos>0.65035</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
 																		<XPos>1</XPos>
-																		<YPos>0</YPos>
+																		<YPos>0.49647</YPos>
 																		<Flags>37</Flags>
 																	</Point>
 																</PointList>
@@ -677,13 +680,13 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>0.13377</XPos>
+																		<XPos>0.05844</XPos>
 																		<YPos>-200</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>0.17935</XPos>
-																		<YPos>-0.4846</YPos>
+																		<XPos>0.11584</XPos>
+																		<YPos>-0.15093</YPos>
 																		<Flags>0</Flags>
 																		<SegmentShape>Constant</SegmentShape>
 																	</Point>
@@ -755,22 +758,56 @@
 																<PointList>
 																	<Point>
 																		<XPos>0</XPos>
-																		<YPos>-200</YPos>
+																		<YPos>-1.24296</YPos>
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>0.70064</XPos>
-																		<YPos>-200</YPos>
+																		<XPos>0.67302</XPos>
+																		<YPos>-0.72425</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>0.963375796178344</XPos>
-																		<YPos>-1.13349046634289</YPos>
+																		<XPos>0.81367</XPos>
+																		<YPos>-0.49757</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
 																		<XPos>1</XPos>
 																		<YPos>0.8</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</RTPC>
+														<RTPC Name="" ID="{E145BA4D-5F09-4ACD-A67D-240C8402C014}" ShortID="991570210">
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="Progress" ID="{9D65D76C-30CD-485B-A925-9CB6799E35B7}" WorkUnitID="{BF7C0DD8-E293-457A-844E-EF2FD3D1B823}"/>
+																</Reference>
+															</ReferenceList>
+															<Curve Name="" ID="{C2066581-C43A-4CFD-BF32-AC2757469092}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-200</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>0.65116</XPos>
+																		<YPos>-200</YPos>
+																		<Flags>0</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>0.80233</XPos>
+																		<YPos>0.72424</YPos>
+																		<Flags>0</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>1</XPos>
+																		<YPos>0.72424</YPos>
 																		<Flags>37</Flags>
 																	</Point>
 																</PointList>
@@ -993,7 +1030,7 @@
 						</Property>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-1</Value>
+								<Value>-7</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>

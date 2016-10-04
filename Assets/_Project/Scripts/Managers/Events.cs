@@ -11,6 +11,14 @@ public class TakeDamageEvent : GameEvent
     }
 }
 
+
+public class PlayerHitsTheFirstRoadChunk : GameEvent
+{
+    public PlayerHitsTheFirstRoadChunk()
+    {
+    }
+}
+
 public class SkipSwipeTutorial : GameEvent
 {
     public SkipSwipeTutorial()

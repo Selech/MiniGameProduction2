@@ -35,13 +35,6 @@ public class ObstacleController : MonoBehaviour
 		}
 	}
 
-	void OnCollisionEnter(Collision col)
-	{
-		if(col.gameObject.CompareTag("BikePlate"))
-		{
-			//EventManager.Instance.TriggerEvent(new ObstacleHitEvent(obstacleInfluenceHit));
-		}
-	}
 
 	/// <summary>
 	/// Used onEnable when the type of the obstacle is static
@@ -104,46 +97,47 @@ public class ObstacleController : MonoBehaviour
 
 			obstacle.transform.parent = this.transform;
 
-			StartCoroutine (MoveCar(obstacle.gameObject,obstacleCollection_Cars._ObstacleStatCollection[rand].obstacleLife,obstacleCollection_Cars._ObstacleStatCollection[rand].obstacleSpeed,obstacleCollection_Cars._ObstacleStatCollection[rand].obstacleForceMode));
+			//StartCoroutine (MoveCar(obstacle.gameObject,obstacleCollection_Cars._ObstacleStatCollection[rand].obstacleLife,obstacleCollection_Cars._ObstacleStatCollection[rand].obstacleSpeed,obstacleCollection_Cars._ObstacleStatCollection[rand].obstacleForceMode));
 
 		} else {
 			Rigidbody obstacle = Instantiate (currentObstacle.obstaclePrefab,transform.position,obstacleDirectionIndicator.rotation) as Rigidbody;
 
 			obstacle.transform.parent = this.transform;
 
-			StartCoroutine (MoveCar(obstacle.gameObject,currentObstacle.obstacleLife,currentObstacle.obstacleSpeed,currentObstacle.obstacleForceMode));
+			//StartCoroutine (MoveCar(obstacle.gameObject,currentObstacle.obstacleLife,currentObstacle.obstacleSpeed,currentObstacle.obstacleForceMode));
 		}
 
 
 	}
-	/// <summary>
-	/// Moves the car and destroys it after some time
-	/// </summary>
-	/// <returns>The car.</returns>
-	/// <param name="carObject">Car object.</param>
-	/// <param name="duration">Duration.</param>
-	/// <param name="speed">Speed.</param>
-	/// <param name="forceModeCar">Force mode car.</param>
-	public IEnumerator MoveCar(GameObject carObject,float duration,float speed,ForceMode forceModeCar)
-	{
-		Rigidbody r = carObject.GetComponent<Rigidbody> ();
-		if(carObject)
-		{
-			yield return new WaitForSeconds (delay);
-			float curTime = duration;
-			while(curTime > 0)
-			{
-				
-				curTime -= Time.deltaTime;
-				if(r)
-				{
-					r.AddForce (obstacleDirectionIndicator.forward*speed*Time.deltaTime,forceModeCar);
-				}
-				yield return null;
-			}
-			//destroy car when finishes going FWD
-			Destroy (carObject);
-		}
-
-	}
+//	/// <summary>
+//	/// Moves the car and destroys it after some time
+//	/// </summary>
+//	/// <returns>The car.</returns>
+//	/// <param name="carObject">Car object.</param>
+//	/// <param name="duration">Duration.</param>
+//	/// <param name="speed">Speed.</param>
+//	/// <param name="forceModeCar">Force mode car.</param>
+//	public IEnumerator MoveCar(GameObject carObject,float duration,float speed,ForceMode forceModeCar)
+//	{
+//		
+//		Rigidbody r = carObject.GetComponent<Rigidbody> ();
+//		if(carObject)
+//		{
+//			yield return new WaitForSeconds (delay);
+//			float curTime = duration;
+//			while(curTime > 0)
+//			{
+//				curTime -= Time.deltaTime;
+//				print ("spawn car " + curTime);
+//				if(r)
+//				{
+//					r.AddForce (obstacleDirectionIndicator.forward*speed*Time.deltaTime,forceModeCar);
+//				}
+//				yield return null;
+//			}
+//			//destroy car when finishes going FWD
+//			Destroy (carObject);
+//		}
+//
+//	}
 }

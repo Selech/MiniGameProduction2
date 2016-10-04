@@ -118,14 +118,14 @@ public class CarriableManager : MonoBehaviour
 
         carriableRigidbody.isKinematic = true;
 
+        Vector3 middleOfBike = carriable.GetComponent<CarriablesDrag>().MiddleofBike.transform.position;
+        carriable.transform.position = new Vector3(middleOfBike.x, middleOfBike.y + runningHeight, middleOfBike.z);
+
         if (numberOfLostCarriables != stacking.CollectedCarriables.Count) {
 			joint.connectedBody = stacking.CollectedCarriables[indexToCarriableSetBack - 1].GetComponent<Rigidbody> ();
 		} else {
 			setParentEvent.attachToPlayer = true;
 		}
-
-		Vector3 middleOfBike = carriable.GetComponent<CarriablesDrag> ().MiddleofBike.transform.position;
-		carriable.transform.position = new Vector3(middleOfBike.x, middleOfBike.y + runningHeight, middleOfBike.z);
 
         carriableRigidbody.isKinematic = false;
 

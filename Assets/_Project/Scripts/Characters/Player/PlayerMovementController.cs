@@ -11,6 +11,10 @@ public class PlayerMovementController : MonoBehaviour
     public float mass = 0.02f;
     //SPEED
     [Header("Player Speed")]
+    [Tooltip("Acceleration just after stacking scene.")]
+    public float initialAccelerationRate = 0.040f;
+    [Tooltip("Deceleration when the player arrives to the end chunk.")]
+    public float finalDecelerationRate = 0.08f;
     [Tooltip("Player speed when out of slopes. Slopes are defined by SteepAcceleration/Deceleration angles.")]
     public float defaultSpeed = 0.12f;
     [Tooltip("Acceleration taken by the player in downhills and also the opposite of deceleration to climb.")]
@@ -84,11 +88,25 @@ public class PlayerMovementController : MonoBehaviour
     public bool wind = false;
     public Vector3 windPosition;
     public float windForce = 0;
+    private float oldMinimumSpeed;
+    private float oldAccelerationRate;
+    
+
+    private bool isOnChunkRoad = false;
 
     void OnEnable()
     {
-        charController = GetComponent<CharacterController>();
+        EventManager.Instance.StartListening<PlayerHitsTheFirstRoadChunk>(EnteredFirstChunk);
+    }
 
+    void OnDisable()
+    {
+        EventManager.Instance.StopListening<PlayerHitsTheFirstRoadChunk>(EnteredFirstChunk);
+    }
+
+    void Start()
+    {
+        charController = GetComponent<CharacterController>();
     }
 
     void Update()
@@ -198,18 +216,59 @@ public class PlayerMovementController : MonoBehaviour
 
     }
 
+    void EnteredFirstChunk(PlayerHitsTheFirstRoadChunk e)
+    {
+        isOnChunkRoad = true;
+    }
+
     public void Turn(float horizontalInputValue)
     {
-        if (!GameManager.Instance.isPaused)
-        {
-            transform.Rotate(0, horizontalInputValue * rotateSpeed, 0);
+        if (isOnChunkRoad) {
+            if (!GameManager.Instance.isPaused)
+            {
+                transform.Rotate(0, horizontalInputValue * rotateSpeed, 0);
+            }
         }
-
     }
 
     public void MoveAside(Vector3 windPosition, float windForce)
     {
         Vector3 windDir = windPosition;
         transform.Translate(((updatedPlayerForward * Mathf.Clamp(currentForwardSpeed, minimumSpeed, maximumSpeed)) + (windDir * windForce)) * Time.deltaTime);
+    }
+
+    //called when the stacking is finished (start button)
+    public void StartAccelerating()
+    {
+        oldMinimumSpeed = minimumSpeed;
+        minimumSpeed = 0f;
+        oldAccelerationRate = accelerationRate;
+        accelerationRate = initialAccelerationRate;
+    }
+    //called when the player enters the first chunk
+    public void StartTrack()
+    {
+        minimumSpeed = oldMinimumSpeed;
+        accelerationRate = oldAccelerationRate;
+    }
+    //called when you enter the last chunk
+    public void StartDecelerating()
+    {
+        Transform endPoint = GameObject.FindGameObjectWithTag("Hill").transform;
+        minimumSpeed = 0f;
+        defaultSpeed = 0f;
+        decelerationRate = finalDecelerationRate;
+        StartCoroutine(moveToHill(endPoint));
+    }
+        
+    IEnumerator moveToHill(Transform hill)
+    {
+        while (currentForwardSpeed > 0.01f)
+        {
+            var targetPoint = hill.position;
+            var targetRotation = Quaternion.LookRotation(targetPoint - transform.position, Vector3.up);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 2.0f);
+            yield return new WaitForSeconds(0.01f);
+        }
     }
 }

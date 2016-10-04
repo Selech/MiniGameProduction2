@@ -80,13 +80,18 @@ public class ProgressBar : MonoBehaviour
     /// <param name="e">E.</param>
     public void PlayerProgression(ChunkEnteredEvent e)
     {
-        gameStarted = true;
+        if (numberOfPreviousChunks == -1)
+        {
+            EventManager.Instance.TriggerEvent(new PlayerHitsTheFirstRoadChunk());
+            gameStarted = true;
+            ProgBar.SetActive(true);
+        }
+       
         ChunkScript script = e.chunk.GetComponent<ChunkScript>();
         startPoint = script.StartPoint.transform.position;
         endPoint = script.EndPoint.transform.position;
         chunkLength = Vector3.Distance(startPoint, endPoint);
         numberOfPreviousChunks++;
-        ProgBar.SetActive(true);
     }
 
     /// <summary>
