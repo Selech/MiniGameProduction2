@@ -399,7 +399,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012142068196}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.202, z: 0}
   m_LocalScale: {x: 0.0100000035, y: 0.01, z: 0.0100000035}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -479,8 +479,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011293856656}
-  m_LocalRotation: {x: 0, y: 0.9396927, z: 0, w: 0.34202018}
-  m_LocalPosition: {x: 5.02, y: 0, z: 3.85}
+  m_LocalRotation: {x: -0, y: 0.9355724, z: -0, w: 0.35313508}
+  m_LocalPosition: {x: 5.19, y: 0, z: 5.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 140, z: 0}
   m_Children:
@@ -894,8 +894,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 71.04, y: 1, z: 110.7}
-  m_Center: {x: 0, y: 38, z: 40.13}
+  m_Size: {x: 68.82338, y: 1, z: 107.19534}
+  m_Center: {x: 0.6583406, y: 20.49, z: 42.69191}
 --- !u!95 &95000011639643890
 Animator:
   serializedVersion: 3
@@ -928,11 +928,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   mass: 0.02
-  defaultSpeed: 0.1
-  accelerationRate: 0.075
-  decelerationRate: 0.45
-  maximumSpeed: 0.165
-  minimumSpeed: 0.08
+  defaultSpeed: 0.09
+  accelerationRate: 0.02
+  decelerationRate: 0.04
+  maximumSpeed: 0.135
+  minimumSpeed: 0.06
   rotateSpeed: 2
   steepAccelerationDegree: 5
   steepDecelerationDegree: 5
