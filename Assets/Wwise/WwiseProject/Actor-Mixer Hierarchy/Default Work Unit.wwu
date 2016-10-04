@@ -3505,39 +3505,6 @@
 						<ActiveSource Name="FlyingWind" ID="{59BF1441-3591-493F-B6E4-EE8B59A2C9B0}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
-				<Sound Name="Blow" ID="{DE7BDB8C-8104-4000-BEC8-7D496AA3905B}" ShortID="132764594" Type="SoundFX">
-					<PropertyList>
-						<Property Name="PositioningType" Type="int16" Value="1"/>
-						<Property Name="Volume" Type="Real64">
-							<ValueList>
-								<Value>-2</Value>
-							</ValueList>
-						</Property>
-					</PropertyList>
-					<ReferenceList>
-						<Reference Name="Attenuation">
-							<ObjectRef Name="New Attenuation" ID="{7F728F98-34A1-45F3-B21F-AFFCDB2C58F4}" WorkUnitID="{1FE05531-D85F-4D58-9FAD-E1634F5DBCD3}"/>
-						</Reference>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
-						</Reference>
-					</ReferenceList>
-					<ChildrenList>
-						<AudioFileSource Name="Blow" ID="{DAE9807E-F568-4517-8E00-C2FD2B1B8D63}" ShortID="76448816">
-							<Language>SFX</Language>
-							<AudioFile>Blow.wav</AudioFile>
-						</AudioFileSource>
-					</ChildrenList>
-					<PositioningInfo>
-						<Position Name="" ID="{0AA3DC81-463C-4F0F-96FB-C1ACEC006633}"/>
-					</PositioningInfo>
-					<ActiveSourceList>
-						<ActiveSource Name="Blow" ID="{DAE9807E-F568-4517-8E00-C2FD2B1B8D63}" Platform="Linked"/>
-					</ActiveSourceList>
-				</Sound>
 				<RandomSequenceContainer Name="LoseItem" ID="{892C62B1-D8C2-47AA-B12E-A47DD4A89C2F}" ShortID="600083695">
 					<PropertyList>
 						<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
@@ -3774,6 +3741,65 @@
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
+				</RandomSequenceContainer>
+				<RandomSequenceContainer Name="Fan" ID="{DCA3C833-33B7-43C0-A730-D260409ED86C}" ShortID="27268113">
+					<PropertyList>
+						<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+						<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+						<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="1.5"/>
+						<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+						<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="Blow" ID="{DE7BDB8C-8104-4000-BEC8-7D496AA3905B}" ShortID="132764594" Type="SoundFX">
+							<PropertyList>
+								<Property Name="PositioningType" Type="int16" Value="1"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-2</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Attenuation">
+									<ObjectRef Name="New Attenuation" ID="{7F728F98-34A1-45F3-B21F-AFFCDB2C58F4}" WorkUnitID="{1FE05531-D85F-4D58-9FAD-E1634F5DBCD3}"/>
+								</Reference>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Blow" ID="{DAE9807E-F568-4517-8E00-C2FD2B1B8D63}" ShortID="76448816">
+									<PropertyList>
+										<Property Name="TrimBegin" Type="Real64" Value="1.25249805246679"/>
+										<Property Name="TrimEnd" Type="Real64" Value="5.74316180155505"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>Blow.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<PositioningInfo>
+								<Position Name="" ID="{0AA3DC81-463C-4F0F-96FB-C1ACEC006633}"/>
+							</PositioningInfo>
+							<ActiveSourceList>
+								<ActiveSource Name="Blow" ID="{DAE9807E-F568-4517-8E00-C2FD2B1B8D63}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+					<Playlist>
+						<ItemRef Name="Blow" ID="{DE7BDB8C-8104-4000-BEC8-7D496AA3905B}"/>
+					</Playlist>
 				</RandomSequenceContainer>
 			</ChildrenList>
 		</WorkUnit>
