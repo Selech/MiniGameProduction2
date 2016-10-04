@@ -16,11 +16,11 @@
 			<ShortName>nysb</ShortName>
 			<Path>Danish/nysb.bnk</Path>
 			<IncludedEvents>
-				<Event Id="1710516031" Name="MixEvent" ObjectPath="\Events\Default Work Unit\MixEvent"/>
 				<Event Id="278617630" Name="Play_Ambience" ObjectPath="\Events\Default Work Unit\Play_Ambience"/>
 				<Event Id="3672906123" Name="Play_Brake" ObjectPath="\Events\Default Work Unit\Play_Brake"/>
 				<Event Id="2662543194" Name="Play_Build" ObjectPath="\Events\Default Work Unit\Play_Build"/>
 				<Event Id="2549958839" Name="Play_BuildMusic" ObjectPath="\Events\Default Work Unit\Music\Play_BuildMusic"/>
+				<Event Id="2690797144" Name="Play_Car" ObjectPath="\Events\Default Work Unit\Play_Car" MaxAttenuation="30.000000"/>
 				<Event Id="2777243728" Name="Play_CloudPuff" ObjectPath="\Events\Default Work Unit\Play_CloudPuff"/>
 				<Event Id="2925933811" Name="Play_ColBall" ObjectPath="\Events\Default Work Unit\Collisions\Play_ColBall"/>
 				<Event Id="2934282202" Name="Play_ColBricks" ObjectPath="\Events\Default Work Unit\Collisions\Play_ColBricks"/>
@@ -96,6 +96,7 @@
 				<Event Id="2477713992" Name="Stop_Ambience" ObjectPath="\Events\Default Work Unit\Stop_Ambience" MaxAttenuation="0.000000"/>
 				<Event Id="1342112360" Name="Stop_Build" ObjectPath="\Events\Default Work Unit\Stop_Build" MaxAttenuation="0.000000"/>
 				<Event Id="2007932489" Name="Stop_BuildMusic" ObjectPath="\Events\Default Work Unit\Music\Stop_BuildMusic" MaxAttenuation="0.000000"/>
+				<Event Id="704609314" Name="Stop_Car" ObjectPath="\Events\Default Work Unit\Stop_Car" MaxAttenuation="0.000000"/>
 				<Event Id="1647498997" Name="Stop_Flying" ObjectPath="\Events\Default Work Unit\Stop_Flying" MaxAttenuation="0.000000"/>
 				<Event Id="2753202630" Name="Stop_MenuMusic" ObjectPath="\Events\Default Work Unit\Music\Stop_MenuMusic" MaxAttenuation="0.000000"/>
 				<Event Id="972970413" Name="Stop_MusicCutScene" ObjectPath="\Events\Default Work Unit\IntroCutScene\Stop_MusicCutScene" MaxAttenuation="0.000000"/>
@@ -138,6 +139,10 @@
 				<File Id="38680491" Language="SFX">
 					<ShortName>Swipe.wav</ShortName>
 					<Path>SFX/Swipe_2A77C9DB.wem</Path>
+				</File>
+				<File Id="59777987" Language="SFX">
+					<ShortName>Car.wav</ShortName>
+					<Path>SFX/Car_2A77C9DB.wem</Path>
 				</File>
 				<File Id="65167509" Language="SFX">
 					<ShortName>Ambience3.wav</ShortName>
@@ -526,11 +531,11 @@
 			<ShortName>nysb</ShortName>
 			<Path>English(US)/nysb.bnk</Path>
 			<IncludedEvents>
-				<Event Id="1710516031" Name="MixEvent" ObjectPath="\Events\Default Work Unit\MixEvent"/>
 				<Event Id="278617630" Name="Play_Ambience" ObjectPath="\Events\Default Work Unit\Play_Ambience"/>
 				<Event Id="3672906123" Name="Play_Brake" ObjectPath="\Events\Default Work Unit\Play_Brake"/>
 				<Event Id="2662543194" Name="Play_Build" ObjectPath="\Events\Default Work Unit\Play_Build"/>
 				<Event Id="2549958839" Name="Play_BuildMusic" ObjectPath="\Events\Default Work Unit\Music\Play_BuildMusic"/>
+				<Event Id="2690797144" Name="Play_Car" ObjectPath="\Events\Default Work Unit\Play_Car" MaxAttenuation="30.000000"/>
 				<Event Id="2777243728" Name="Play_CloudPuff" ObjectPath="\Events\Default Work Unit\Play_CloudPuff"/>
 				<Event Id="2925933811" Name="Play_ColBall" ObjectPath="\Events\Default Work Unit\Collisions\Play_ColBall"/>
 				<Event Id="2934282202" Name="Play_ColBricks" ObjectPath="\Events\Default Work Unit\Collisions\Play_ColBricks"/>
@@ -606,6 +611,7 @@
 				<Event Id="2477713992" Name="Stop_Ambience" ObjectPath="\Events\Default Work Unit\Stop_Ambience" MaxAttenuation="0.000000"/>
 				<Event Id="1342112360" Name="Stop_Build" ObjectPath="\Events\Default Work Unit\Stop_Build" MaxAttenuation="0.000000"/>
 				<Event Id="2007932489" Name="Stop_BuildMusic" ObjectPath="\Events\Default Work Unit\Music\Stop_BuildMusic" MaxAttenuation="0.000000"/>
+				<Event Id="704609314" Name="Stop_Car" ObjectPath="\Events\Default Work Unit\Stop_Car" MaxAttenuation="0.000000"/>
 				<Event Id="1647498997" Name="Stop_Flying" ObjectPath="\Events\Default Work Unit\Stop_Flying" MaxAttenuation="0.000000"/>
 				<Event Id="2753202630" Name="Stop_MenuMusic" ObjectPath="\Events\Default Work Unit\Music\Stop_MenuMusic" MaxAttenuation="0.000000"/>
 				<Event Id="972970413" Name="Stop_MusicCutScene" ObjectPath="\Events\Default Work Unit\IntroCutScene\Stop_MusicCutScene" MaxAttenuation="0.000000"/>
@@ -636,6 +642,10 @@
 				<File Id="38680491" Language="SFX">
 					<ShortName>Swipe.wav</ShortName>
 					<Path>SFX/Swipe_2A77C9DB.wem</Path>
+				</File>
+				<File Id="59777987" Language="SFX">
+					<ShortName>Car.wav</ShortName>
+					<Path>SFX/Car_2A77C9DB.wem</Path>
 				</File>
 				<File Id="65167509" Language="SFX">
 					<ShortName>Ambience3.wav</ShortName>

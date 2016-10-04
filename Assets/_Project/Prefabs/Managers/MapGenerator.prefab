@@ -44,7 +44,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1000010836897376
 GameObject:
   m_ObjectHideFlags: 0
@@ -80,7 +80,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1000013301256312
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,8 +118,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010270176634}
   m_LocalRotation: {x: -0.70710677, y: 0.000000014901159, z: 0.0000000745058, w: 0.7071068}
-  m_LocalPosition: {x: 15, y: 5, z: -0}
-  m_LocalScale: {x: 2, y: 1.0000008, z: 1.000001}
+  m_LocalPosition: {x: 35, y: 5, z: -2}
+  m_LocalScale: {x: 5, y: 1, z: 5}
   m_LocalEulerAnglesHint: {x: -89.981, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000013930917128}
@@ -131,8 +131,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011830813772}
   m_LocalRotation: {x: -0.70710677, y: 0.000000014901159, z: 0.0000000745058, w: 0.7071068}
-  m_LocalPosition: {x: -15, y: 5, z: 0}
-  m_LocalScale: {x: 2, y: 1.0000004, z: 1.0000005}
+  m_LocalPosition: {x: -35, y: 5, z: -2}
+  m_LocalScale: {x: 5, y: 1, z: 5}
   m_LocalEulerAnglesHint: {x: -89.981, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000013930917128}
@@ -180,7 +180,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: ed1be496b3381644bb211e187f63b3f9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -238,7 +238,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: ed1be496b3381644bb211e187f63b3f9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -361,5 +361,5 @@ MonoBehaviour:
   winChunk: {fileID: 1000013797247150, guid: 298afde130cc2b548a0199b8bcbbdc32, type: 2}
   blockChunk: {fileID: 1000012193940382, guid: f97c943f8deb4bb479950a9b2a97cf07, type: 2}
   chunkList: []
-  winAmountOfChunks: 5
+  winAmountOfChunks: 15
   maxAmountOfChunks: 4
