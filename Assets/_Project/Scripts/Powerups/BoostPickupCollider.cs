@@ -3,13 +3,13 @@ using System.Collections;
 
 public class BoostPickupCollider : MonoBehaviour {
 
-	[Tooltip("Boost when Player collides with Pickup")]
-	[Range(0, 100)]
-	public float boost = 5;
+	//[Tooltip("Boost when Player collides with Pickup")]
+	//[Range(0, 100)]
+	private float boost = 1.5f;
 
-	[Tooltip("How many seconds should the boost last")]
-	[Range(0, 10)]
-	public float time = 5;
+	//[Tooltip("How many seconds should the boost last")]
+	//[Range(0, 10)]
+	private float time = 6;
 
 	void OnTriggerEnter(Collider other) 
 	{

@@ -122,7 +122,13 @@ public class CarriableManager : MonoBehaviour
         Vector3 middleOfBike = carriable.GetComponent<CarriablesDrag>().MiddleofBike.transform.position;
         //setting transform parameters
         carriable.transform.position = new Vector3(middleOfBike.x, middleOfBike.y + runningHeight, middleOfBike.z);
-        carriable.transform.rotation = stacking.CollectedCarriables[indexToCarriableSetBack - 1].transform.rotation;
+
+        if (indexToCarriableSetBack > 0) { 
+            carriable.transform.rotation = stacking.CollectedCarriables[indexToCarriableSetBack - 1].transform.rotation;
+        } else
+        {
+            carriable.transform.rotation = stacking.CollectedCarriables[indexToCarriableSetBack].transform.rotation;
+        }
 
         if (numberOfLostCarriables != stacking.CollectedCarriables.Count) {
 			joint.connectedBody = stacking.CollectedCarriables[indexToCarriableSetBack - 1].GetComponent<Rigidbody> ();
@@ -142,7 +148,14 @@ public class CarriableManager : MonoBehaviour
 
 		//moving the joint anchor
         joint.autoConfigureConnectedAnchor = false;
-		joint.connectedAnchor = new Vector3(0, stacking.CollectedCarriables[indexToCarriableSetBack - 1].GetComponent<CarriablesDrag>().heightOfObject, 0); //carriable.GetComponentInChildren<Renderer>().bounds.min.y
+        if (indexToCarriableSetBack > 0)
+        {
+            joint.connectedAnchor = new Vector3(0, stacking.CollectedCarriables[indexToCarriableSetBack - 1].GetComponent<CarriablesDrag>().heightOfObject, 0);
+        } else
+        {
+            joint.connectedAnchor = new Vector3(0, stacking.CollectedCarriables[indexToCarriableSetBack].GetComponent<CarriablesDrag>().heightOfObject, 0);
+        }
+
         joint.maxDistance = 0f;
         
 		carriableRigidbody.mass = numberOfLostCarriables;
