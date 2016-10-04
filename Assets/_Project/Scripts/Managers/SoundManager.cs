@@ -416,13 +416,15 @@ public class SoundManager : MonoBehaviour
 
     private void Landing(LandingEvent e)
     {
-        if (isLanded)
+        if (!isLanded && isFlying)
         {
             PlaySound("Stop_Flying");
             PlaySound("Play_Bump");
             Debug.Log("Landed");
+            isLanded = true;
+            isFlying = false;
         }
-        isLanded = false;
+        
     }
 
     private void Flying(FlyingEvent e)
