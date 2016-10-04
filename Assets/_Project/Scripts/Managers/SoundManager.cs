@@ -420,8 +420,9 @@ public class SoundManager : MonoBehaviour
         {
             PlaySound("Stop_Flying");
             PlaySound("Play_Bump");
+            Debug.Log("Landed");
         }
-        isFlying = true;
+        isLanded = false;
     }
 
     private void Flying(FlyingEvent e)
@@ -430,6 +431,7 @@ public class SoundManager : MonoBehaviour
         {
             isFlying = true;
             PlaySound("Play_Flying");
+            Debug.Log("Flying");
         }
 
     }
