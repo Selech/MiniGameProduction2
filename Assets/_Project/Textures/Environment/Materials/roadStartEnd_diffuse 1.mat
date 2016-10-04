@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: roadStartEnd_diffuse 1
-  m_Shader: {fileID: 4800000, guid: adea0c6e9ca00194f92ede5b41a70c31, type: 3}
+  m_Shader: {fileID: 4800000, guid: d84268709d11078d11005b9844295342, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -19,6 +19,12 @@ Material:
         name: _MainTex
       second:
         m_Texture: {fileID: 2800000, guid: c6bc80cc52f567d40a3dc0f63abe1742, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _ToonShade
+      second:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
