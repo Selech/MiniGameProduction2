@@ -83,6 +83,7 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StartListening<EnterRampEvent>(EnterRamp);
         EventManager.Instance.StartListening<FlyingEvent>(Flying);
         EventManager.Instance.StartListening<LandingEvent>(Landing);
+        EventManager.Instance.StartListening<HappyFunTimeEndsEvent>(HappyFunTimeEnds);
 
 
         // tutorial sounds below
@@ -131,7 +132,7 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StopListening<EnterRampEvent>(EnterRamp);
         EventManager.Instance.StopListening<FlyingEvent>(Flying);
         EventManager.Instance.StopListening<LandingEvent>(Landing);
-
+        EventManager.Instance.StartListening<HappyFunTimeEndsEvent>(HappyFunTimeEnds);
 
         // tutorial sounds below
         EventManager.Instance.StopListening<ChangeSchemeEvent>(ChangeScheme);
@@ -155,7 +156,8 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StopListening<YouHaveToAvoidEvent>(YouHaveToAvoid);
     }
 
-   
+
+
 
     #endregion
 
@@ -339,6 +341,12 @@ public class SoundManager : MonoBehaviour
     {
         PlaySound("Play_SpeedUp");
         AkSoundEngine.SetRTPCValue("PowerUp", 1);
+    }
+
+
+    private void HappyFunTimeEnds(HappyFunTimeEndsEvent e)
+    {
+        AkSoundEngine.SetRTPCValue("PowerUp", 0);
     }
 
     private void StackingSceneSound(StartStackingSceneEvent e)
