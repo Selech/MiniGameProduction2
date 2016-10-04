@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class SoundManager : MonoBehaviour
 {
@@ -32,6 +33,8 @@ public class SoundManager : MonoBehaviour
     bool hitPlayed = false;
     bool hitObjectSound = false;
     bool pickUpSound = false;
+    
+    public bool isDialogue = false;
 
     #endregion
 
@@ -45,12 +48,7 @@ public class SoundManager : MonoBehaviour
 
     void Update()
     {
-        // Debug
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            PlaySound("Stop_MusicDrive");
-            PlaySound("Stop_MenuMusic");
-        }
+
     }
 
 
@@ -77,7 +75,10 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StartListening<BoostPickupHitEvent>(BoostPickUp);
         EventManager.Instance.StartListening<StartStackingSceneEvent>(StackingSceneSound);
         EventManager.Instance.StartListening<MapProgressionForSoundEvent>(MapProgression);
-
+        EventManager.Instance.StartListening<EnterRampEvent>(EnterRamp);
+        EventManager.Instance.StartListening<FlyingEvent>(Flying);
+        EventManager.Instance.StartListening<LandingEvent>(Landing);
+        EventManager.Instance.StartListening<HappyFunTimeEndsEvent>(HappyFunTimeEnds);
 
 
         // tutorial sounds below
@@ -123,7 +124,10 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StopListening<BoostPickupHitEvent>(BoostPickUp);
         EventManager.Instance.StopListening<StartStackingSceneEvent>(StackingSceneSound);
         EventManager.Instance.StopListening<MapProgressionForSoundEvent>(MapProgression);
-
+        EventManager.Instance.StopListening<EnterRampEvent>(EnterRamp);
+        EventManager.Instance.StopListening<FlyingEvent>(Flying);
+        EventManager.Instance.StopListening<LandingEvent>(Landing);
+        EventManager.Instance.StartListening<HappyFunTimeEndsEvent>(HappyFunTimeEnds);
 
         // tutorial sounds below
         EventManager.Instance.StopListening<ChangeSchemeEvent>(ChangeScheme);
@@ -146,6 +150,9 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StopListening<WatchOutEvent>(WatchOut);
         EventManager.Instance.StopListening<YouHaveToAvoidEvent>(YouHaveToAvoid);
     }
+
+
+
 
     #endregion
 
@@ -180,6 +187,7 @@ public class SoundManager : MonoBehaviour
     private void StartRaceMusic(StartGame e)
     {
         drivingStarted = true;
+        stackingSceneActive = false;
         if (!musicMuted)
         {
             PlaySound("Play_MusicDrive");
@@ -215,10 +223,31 @@ public class SoundManager : MonoBehaviour
 
     private void HitObstacle(DamageCarriableEvent e)
     {
-        PlaySound("Play_LoseItem");
-        if (ohNoSoundPlayed == false)
+       
+        if (e.obstacleType == ObstacleKind.car)
         {
-            PlaySound("Play_MusVO16");
+            PlaySound("Play_ColCar");
+        } else if (e.obstacleType == ObstacleKind.general)
+        {
+            PlaySound("Play_Collision");
+        } else if (e.obstacleType == ObstacleKind.dumpster)
+        {
+            PlaySound("Play_ColContainer");
+        } else if (e.obstacleType == ObstacleKind.roadblock || e.obstacleType == ObstacleKind.roadblockBig)
+        {
+            PlaySound("Play_ColRoadBlock");
+        } else if (e.obstacleType == ObstacleKind.trashcan_Body || e.obstacleType == ObstacleKind.trashcan_Top)
+        {
+            PlaySound("Play_ColTrashCan");
+        }
+        else {
+            PlaySound("Play_Collision");
+        }
+        
+        if (ohNoSoundPlayed == false && !isDialogue)
+        {
+            isDialogue = true;
+            AkSoundEngine.PostEvent("Play_MusVO16", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
             ohNoSoundPlayed = true;
         }
     }
@@ -244,9 +273,7 @@ public class SoundManager : MonoBehaviour
     private void StopAllSounds(RestartGameEvent e)
     {
         drivingStarted = false;
-        PlaySound("Stop_MusicDrive");
-        PlaySound("Stop_MenuMusic");
-        PlaySound("Stop_Pedal");
+        PlaySound("Stop_All");
     }
 
     private void SnapSound(SnapSoundEvent e)
@@ -270,42 +297,59 @@ public class SoundManager : MonoBehaviour
     private void LoseCarriable(LoseCarriableEvent e)
     {
         PlaySound("Play_LoseItem");
-        if (!hitObjectSound)
+        if (!hitObjectSound && !isDialogue)
         {
-            PlaySound("Play_MusVO17");
+            isDialogue = true;
+            AkSoundEngine.PostEvent("Play_MusVO17", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
             hitObjectSound = true;
         }
     }
 
     private void GainCarriable(GetBackCarriableHitEvent e)
     {
-        if (pickUpSound)
+        if (pickUpSound && !isDialogue)
         {
+            isDialogue = true;
             PlaySound("Play_MisVO10");
+            AkSoundEngine.PostEvent("Play_MisVO10", gameObject, (uint) AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
         }
         PlaySound("Play_Pickup");
     }
 
     private void HitByWind(StartWindEvent e)
     {
-        if (isTutorial)
-        {
-            if (!windPlayed)
+        
+            if (!windPlayed && !isDialogue)
             {
-                PlaySound("Play_MusVO5");
+                isDialogue = true;
+                AkSoundEngine.PostEvent("Play_MusVO5", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
                 windPlayed = true;
             }
 
-        }
+
     }
 
     private void BoostPickUp(BoostPickupHitEvent e)
     {
         PlaySound("Play_SpeedUp");
+        AkSoundEngine.SetRTPCValue("PowerUp", 1);
+        if (!isDialogue && isTutorial)
+        {
+            isDialogue = true;
+            AkSoundEngine.PostEvent("Play_MisVO18", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
+        }
+
+    }
+
+
+    private void HappyFunTimeEnds(HappyFunTimeEndsEvent e)
+    {
+        AkSoundEngine.SetRTPCValue("PowerUp", 0);
     }
 
     private void StackingSceneSound(StartStackingSceneEvent e)
     {
+        stackingSceneActive = true;
         if (isDanish)
         {
             AkSoundEngine.SetCurrentLanguage("Danish");
@@ -322,6 +366,28 @@ public class SoundManager : MonoBehaviour
     {
         AkSoundEngine.SetRTPCValue("Progress", e.percentage);
     }
+
+    private void Landing(LandingEvent e)
+    {
+        PlaySound("Play_Bump");
+        PlaySound("Stop_Flying");
+    }
+
+    private void Flying(FlyingEvent e)
+    {
+        PlaySound("Play_Flying");
+    }
+
+    private void EnterRamp(EnterRampEvent e)
+    {
+        PlaySound("Play_Ramp");
+        if (!isDialogue && isTutorial)
+        {
+            isDialogue = true;
+            AkSoundEngine.PostEvent("Play_MusVO5", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
+        }
+    }
+
     #endregion
 
     #region Tutorial sounds:
@@ -345,13 +411,15 @@ public class SoundManager : MonoBehaviour
     {
         if (isTutorial)
         {
-            if (GameManager.Instance.isGyro)
-            {
-                PlaySound("Play_MisVO20");
+            if (GameManager.Instance.isGyro && !isDialogue)
+            {            
+                isDialogue = true;
+                AkSoundEngine.PostEvent("Play_MisVO20", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
             }
-            else
+            else if (!GameManager.Instance.isGyro && !isDialogue)
             {
-                PlaySound("Play_MisVO19");
+                isDialogue = true;
+                AkSoundEngine.PostEvent("Play_MisVO19", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
             }
         }
     }
@@ -476,9 +544,18 @@ public class SoundManager : MonoBehaviour
     }
     #endregion
 
-
     #region 
     private static SoundManager _instance;
+
+    void DialogueCallbackFunction(object in_cookie, AkCallbackType in_type, object in_info)
+    {
+        isDialogue = false;
+        if (in_type == AkCallbackType.AK_EndOfEvent)
+        {
+           
+        }
+
+    }
 
     public static SoundManager Instance
     {

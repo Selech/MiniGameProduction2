@@ -49,19 +49,22 @@ public class ProgressBar : MonoBehaviour
         if (gameStarted)
         {
 
-            if (GameManager.Instance.isPaused)
-            {
+			if (GameManager.Instance.isPaused || GameManager.Instance.hasWon) {
 
-            }
-            else
-            {
+			} else {
 
-                playerPositionInChunk = Vector3.Distance(playerTransform.position, startPoint);
-                positionPercentage = playerPositionInChunk / chunkLength;
-                ProgressionPlayerAlongBar.transform.position = new Vector3(startMarker.position.x + numberOfPreviousChunks * distanceToMove + positionPercentage * distanceToMove, startMarker.position.y, 0);
-                positionInPercentage = ProgressionPlayerAlongBar.transform.position.x/endMarker.transform.position.x;
-                EventManager.Instance.TriggerEvent(new MapProgressionForSoundEvent(positionInPercentage));
-            }
+				playerPositionInChunk = Vector3.Distance (playerTransform.position, startPoint);
+
+				if (Vector3.Distance (playerTransform.position, endPoint) > chunkLength) {
+					
+				} else {
+					positionPercentage = playerPositionInChunk / chunkLength;
+					ProgressionPlayerAlongBar.transform.position = new Vector3 (startMarker.position.x + numberOfPreviousChunks * distanceToMove + positionPercentage * distanceToMove, startMarker.position.y, 0);
+					positionInPercentage = ProgressionPlayerAlongBar.transform.position.x / endMarker.transform.position.x;
+					EventManager.Instance.TriggerEvent (new MapProgressionForSoundEvent (positionInPercentage));
+				}
+				
+			} 
         }
     }
 

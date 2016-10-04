@@ -928,6 +928,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   mass: 0.02
+  initialAccelerationRate: 0.04
+  finalDecelerationRate: 0.08
   defaultSpeed: 0.09
   accelerationRate: 0.02
   decelerationRate: 0.04
@@ -951,7 +953,7 @@ MonoBehaviour:
   rightBikeLimit: {fileID: 4000013742317096}
   speedFactor: 1
   wind: 0
-  windPosition: {x: 0, y: 0, z: 0}
+  windDir: {x: 0, y: 0, z: 0}
   windForce: 0
 --- !u!114 &114000011981348898
 MonoBehaviour:

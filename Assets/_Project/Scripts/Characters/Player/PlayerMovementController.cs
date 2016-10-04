@@ -255,8 +255,21 @@ public class PlayerMovementController : MonoBehaviour
     //called when you enter the last chunk
     public void StartDecelerating()
     {
+        Transform endPoint = GameObject.FindGameObjectWithTag("Hill").transform;
         minimumSpeed = 0f;
         defaultSpeed = 0f;
         decelerationRate = finalDecelerationRate;
+        StartCoroutine(moveToHill(endPoint));
+    }
+        
+    IEnumerator moveToHill(Transform hill)
+    {
+        while (currentForwardSpeed > 0.01f)
+        {
+            var targetPoint = hill.position;
+            var targetRotation = Quaternion.LookRotation(targetPoint - transform.position, Vector3.up);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 2.0f);
+            yield return new WaitForSeconds(0.01f);
+        }
     }
 }
