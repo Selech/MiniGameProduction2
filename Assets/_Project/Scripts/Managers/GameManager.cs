@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
         
         Time.timeScale = 1;
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
-		
+
 	}
 
 	void Update ()
@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
 	/// </summary>
 	public void RestartGame ()
 	{
+		StopAllCoroutines();
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
 		//  EventManager.TriggerEvent (_eventsContainer.resetGame);
 	}
