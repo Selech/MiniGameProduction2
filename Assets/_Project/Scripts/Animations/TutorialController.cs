@@ -14,7 +14,30 @@ public class TutorialController : MonoBehaviour {
 		
 	}
 
-	IEnumerator StartStackTutorial(){
+    void OnEnable()
+    {
+        EventManager.Instance.StartListening<StartGame>(DisableTutorial);
+        EventManager.Instance.StartListening<SkipSwipeTutorial>(DisableStackTutorial);
+    }
+
+    void OnDisable()
+    {
+        EventManager.Instance.StopListening<StartGame>(DisableTutorial);
+        EventManager.Instance.StopListening<SkipSwipeTutorial>(DisableStackTutorial);
+    }
+
+    void DisableStackTutorial(SkipSwipeTutorial e)
+    {
+        StopAllCoroutines();
+        StartCoroutine(StartBikeTutorial());
+    }
+
+    void DisableTutorial(StartGame e)
+    {
+        this.gameObject.SetActive(false);
+    }
+
+    IEnumerator StartStackTutorial(){
 		yield return new WaitForSeconds(1f);
 		for (int i = 0; i < 3; i++) {
 			animations [0].Play ("LineStackAnimation");
@@ -26,12 +49,15 @@ public class TutorialController : MonoBehaviour {
 	}
 
 	IEnumerator StartBikeTutorial(){
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(1f);
 
 		for (int i = 0; i < 3; i++) {
 			animations [1].Play ("CircleAnimation");
 			animations [2].Play ("TapAnimation");
 			yield return new WaitForSeconds(2f);
 		}
-	}
+
+        yield return new WaitForSeconds(5f);
+        StartCoroutine(StartBikeTutorial());
+    }
 }
