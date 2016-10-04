@@ -7,7 +7,6 @@ public class VentilatorSound : MonoBehaviour {
     void Awake()
     {
         AkSoundEngine.PostEvent("Play_Fan", this.gameObject);
-        Debug.Log("LOLOL");
     }
 
 
