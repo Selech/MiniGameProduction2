@@ -78,8 +78,8 @@ public class CarriableManager : MonoBehaviour
 				setParentEvent.attachToPlayer = true;
 			}
 
-            //setting joint parameters
-            joint.breakForce = Mathf.Infinity;
+			//setting joint parameters
+			joint.breakForce = Mathf.Infinity;
 			joint.breakTorque = Mathf.Infinity;
 			joint.spring = springForce;
 			joint.damper = springDampener;
@@ -88,19 +88,18 @@ public class CarriableManager : MonoBehaviour
 
 
 			//moving the joint anchor
-			joint.anchor = new Vector3(0, collectedObjects[i].GetComponentInChildren<Renderer>().bounds.min.y,0);
+			joint.connectedAnchor = new Vector3(0, collectedObjects[i].GetComponentInChildren<Renderer>().bounds.min.y,0);
+            print(collectedObjects[i].name+"  "+collectedObjects[i].GetComponentInChildren<Renderer>().bounds.min.y);
 			joint.maxDistance = 0f;
 
 			Rigidbody carriableRigidbody = joint.gameObject.GetComponent<Rigidbody>();
-           // carriableRigidbody.isKinematic = true;
-            //carriableRigidbody.isKinematic = true;
 			//carriableRigidbody.mass = carriableMass-CarriableMassModifierFactor*(i/size)*(2*collectedObjects [i].GetComponent<Renderer>().bounds.extents.y/maxCarriableHeight);
 
 			carriableRigidbody.mass = size * carriableMass - carriableMass * i;//* (2 * collectedObjects [i].GetComponent<Renderer> ().bounds.extents.y / maxCarriableHeight);
 			//end setting rigidbody parameters
 			setParentEvent.gameobject = collectedObjects[i];
 			EventManager.Instance.TriggerEvent(setParentEvent);
-        }
+		}
 
 	}
 
@@ -121,7 +120,9 @@ public class CarriableManager : MonoBehaviour
         carriableRigidbody.isKinematic = true;
 
         Vector3 middleOfBike = carriable.GetComponent<CarriablesDrag>().MiddleofBike.transform.position;
+        //setting transform parameters
         carriable.transform.position = new Vector3(middleOfBike.x, middleOfBike.y + runningHeight, middleOfBike.z);
+        carriable.transform.rotation = stacking.CollectedCarriables[indexToCarriableSetBack - 1].transform.rotation;
 
         if (numberOfLostCarriables != stacking.CollectedCarriables.Count) {
 			joint.connectedBody = stacking.CollectedCarriables[indexToCarriableSetBack - 1].GetComponent<Rigidbody> ();
@@ -140,9 +141,10 @@ public class CarriableManager : MonoBehaviour
 		joint.tolerance = lengthTolerance;
 
 		//moving the joint anchor
-		joint.anchor = new Vector3(0, carriable.GetComponentInChildren<Renderer>().bounds.min.y + runningHeight,0);
-		joint.maxDistance = 0f;
-
+        joint.autoConfigureConnectedAnchor = false;
+		joint.connectedAnchor = new Vector3(0, stacking.CollectedCarriables[indexToCarriableSetBack - 1].GetComponent<CarriablesDrag>().heightOfObject, 0); //carriable.GetComponentInChildren<Renderer>().bounds.min.y
+        joint.maxDistance = 0f;
+        
 		carriableRigidbody.mass = numberOfLostCarriables;
 		setParentEvent.gameobject = carriable;
 		EventManager.Instance.TriggerEvent(setParentEvent);
