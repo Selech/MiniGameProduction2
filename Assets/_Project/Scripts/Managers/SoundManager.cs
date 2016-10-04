@@ -348,6 +348,7 @@ public class SoundManager : MonoBehaviour
 
     private void StackingSceneSound(StartStackingSceneEvent e)
     {
+		EventManager.Instance.TriggerEvent(new RestartGameEvent());
         stackingSceneActive = true;
         if (isDanish)
         {
