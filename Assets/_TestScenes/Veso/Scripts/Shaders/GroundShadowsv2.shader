@@ -1,5 +1,5 @@
 ﻿Shader "UnlitShadows/UnlitShadowReceive" {
-Properties{ _Color("Main Color", Color) = (1,1,1,1) _MainTex("Base (RGB)", 2D) = "white" {}	_Cutoff("Cutout", Range(0,1)) = 0.5 }
+Properties{ _Color("Main Color", Color) = (1,1,1,0) _MainTex("Base (RGB)", 2D) = "white" {}	_Cutoff("Cutout", Range(0,1)) = 0.5 }
 SubShader{ Pass{ Alphatest Greater[_Cutoff] SetTexture[_MainTex] }	Pass{ Blend DstColor Zero Tags{ "LightMode" = "ForwardBase" }
 CGPROGRAM
 #pragma vertex vert
