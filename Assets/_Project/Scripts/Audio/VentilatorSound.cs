@@ -5,7 +5,7 @@ public class VentilatorSound : MonoBehaviour {
 
     void Start()
     {
-        AkSoundEngine.PostEvent("Play_Blow", this.gameObject);
+        AkSoundEngine.PostEvent("Play_Fan", this.gameObject);
     }
 
 }
