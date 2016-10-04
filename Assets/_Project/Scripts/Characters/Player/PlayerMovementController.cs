@@ -11,6 +11,10 @@ public class PlayerMovementController : MonoBehaviour
     public float mass = 0.02f;
     //SPEED
     [Header("Player Speed")]
+    [Tooltip("Acceleration just after stacking scene.")]
+    public float initialAccelerationRate = 0.040f;
+    [Tooltip("Deceleration when the player arrives to the end chunk.")]
+    public float finalDecelerationRate = 0.08f;
     [Tooltip("Player speed when out of slopes. Slopes are defined by SteepAcceleration/Deceleration angles.")]
     public float defaultSpeed = 0.12f;
     [Tooltip("Acceleration taken by the player in downhills and also the opposite of deceleration to climb.")]
@@ -84,6 +88,9 @@ public class PlayerMovementController : MonoBehaviour
     public bool wind = false;
     public Vector3 windPosition;
     public float windForce = 0;
+    private float oldMinimumSpeed;
+    private float oldAccelerationRate;
+    
 
     private bool isOnChunkRoad = false;
 
@@ -228,5 +235,27 @@ public class PlayerMovementController : MonoBehaviour
     {
         Vector3 windDir = windPosition;
         transform.Translate(((updatedPlayerForward * Mathf.Clamp(currentForwardSpeed, minimumSpeed, maximumSpeed)) + (windDir * windForce)) * Time.deltaTime);
+    }
+
+    //called when the stacking is finished (start button)
+    public void StartAccelerating()
+    {
+        oldMinimumSpeed = minimumSpeed;
+        minimumSpeed = 0f;
+        oldAccelerationRate = accelerationRate;
+        accelerationRate = initialAccelerationRate;
+    }
+    //called when the player enters the first chunk
+    public void StartTrack()
+    {
+        minimumSpeed = oldMinimumSpeed;
+        accelerationRate = oldAccelerationRate;
+    }
+    //called when you enter the last chunk
+    public void StartDecelerating()
+    {
+        minimumSpeed = 0f;
+        defaultSpeed = 0f;
+        decelerationRate = finalDecelerationRate;
     }
 }

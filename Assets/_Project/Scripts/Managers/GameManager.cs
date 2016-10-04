@@ -11,8 +11,7 @@ public enum GameState
 
 public class GameManager : MonoBehaviour
 {
-
-	public GameState _GameState;
+    public GameState _GameState;
 	GyroInput gyroInput;
 	SwipeController swipeController;
 
@@ -21,8 +20,9 @@ public class GameManager : MonoBehaviour
 
 	[Space (10)]
 	public float maxTimeCompletion = 10f;
-
-	[HideInInspector] 
+    [Tooltip("Seconds between when the player enters the win chunk and the winning scene start.")]
+    public int secondsUntilWinScene = 4;
+    [HideInInspector] 
 	public bool isPaused = false;
 	[HideInInspector] 
 	public bool hasGameStarted = false;
@@ -115,12 +115,11 @@ public class GameManager : MonoBehaviour
 	{
         StartCoroutine(WinReaction());
         WinGame ();
-		//PauseGame ();
 	}
 
     IEnumerator WinReaction()
     {
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(secondsUntilWinScene);
 
         SceneManager.LoadScene(2);
     }
@@ -190,7 +189,7 @@ public class GameManager : MonoBehaviour
 
 	private static GameManager _instance;
 
-	public static GameManager Instance {
+    public static GameManager Instance {
 		get { 
 			if (_instance == null) {
 				GameObject go = new GameObject ("GameManager");
