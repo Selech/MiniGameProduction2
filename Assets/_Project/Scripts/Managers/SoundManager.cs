@@ -478,13 +478,13 @@ public class SoundManager : MonoBehaviour
     }
 
     private void ChangeScheme(ChangeSchemeEvent e)
-    {/*
+    {
 
         if (GameManager.Instance.isGyro && !isDialogue)
         {
             isDialogue = true;
             AkSoundEngine.PostEvent("Play_MisVO20", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
-        }*/
+        }
         else if (!GameManager.Instance.isGyro && !isDialogue)
         {
             isDialogue = true;
