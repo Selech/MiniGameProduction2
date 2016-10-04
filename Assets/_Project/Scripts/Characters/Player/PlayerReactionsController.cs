@@ -188,11 +188,12 @@ public class PlayerReactionsController : MonoBehaviour
 
 	public void StartWind(StartWindEvent e){
 		movementController.wind = true;
-		movementController.windPosition = e.windPosition;
+		movementController.windDir = e.windDir;
 		movementController.windForce = e.windForce;
 	}
 
 	public void StopWind(StopWindEvent e){
+        Debug.Log("enough with the wind");
 		movementController.wind = false;
 		movementController.windForce = 0;
 	}
