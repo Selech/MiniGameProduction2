@@ -189,6 +189,7 @@ public class PlayerReactionsController : MonoBehaviour
 
 	public void StartWind(StartWindEvent e){
 		movementController.wind = true;
+	    movementController.windDir = e.windDir;
 		movementController.windForce = e.windForce;
 	}
 
