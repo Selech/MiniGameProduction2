@@ -393,9 +393,9 @@ public class SoundManager : MonoBehaviour
         }
         AkBankManager.LoadBank("nysb", false, true);
         PlaySound("Play_MenuMusic");
-        if (isTutorial)
+        if (true)
         {
-            PlaySound("Play_IntroSc1");
+            EventManager.Instance.TriggerEvent(new IntroVO1event());
         }
     }
 
@@ -466,7 +466,7 @@ public class SoundManager : MonoBehaviour
     }
 
     private void ChangeScheme(ChangeSchemeEvent e)
-    {
+    {/*
         if (isTutorial)
         {
             if (GameManager.Instance.isGyro && !isDialogue)
@@ -479,7 +479,7 @@ public class SoundManager : MonoBehaviour
                 isDialogue = true;
                 AkSoundEngine.PostEvent("Play_MisVO19", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
             }
-        }
+        }*/
     }
 
     private void FirstSound(FirstSoundEvent e)

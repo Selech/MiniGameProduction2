@@ -39,7 +39,7 @@ public class TutorialController : MonoBehaviour {
 
     IEnumerator StartStackTutorial(){
 		yield return new WaitForSeconds(12f);
-        EventManager.Instance.TriggerEvent(new IntroVO2event());
+        EventManager.Instance.TriggerEvent(new IntroAnimation2event());
 
         for (int i = 0; i < 3; i++) {
 			animations [0].Play ("LineStackAnimation");
@@ -52,7 +52,7 @@ public class TutorialController : MonoBehaviour {
 
 	IEnumerator StartBikeTutorial(){
 		yield return new WaitForSeconds(1f);
-        EventManager.Instance.TriggerEvent(new IntroVO3event());
+        EventManager.Instance.TriggerEvent(new IntroAnimation3event());
 
         for (int i = 0; i < 3; i++) {
 			animations [1].Play ("CircleAnimation");
