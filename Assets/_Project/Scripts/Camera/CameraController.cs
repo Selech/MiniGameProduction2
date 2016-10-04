@@ -26,15 +26,25 @@ Then we apply the smoothed values to the transform's position.
 	public float heightDamping = 2.0f;
 	public float rotationDamping = 3.0f;
 
+    private bool moveTowardsPlayer = false;
+
 	void OnEnable ()
 	{
 		EventManager.Instance.StartListening <ExposePlayerOnSwipe> (SetupTarget);
-	}
+        EventManager.Instance.StartListeningOnce<ChunkEnteredEvent>(MoveWithPlayer);
+    }
 
 	void OnDisable ()
 	{
 		EventManager.Instance.StopListening <ExposePlayerOnSwipe> (SetupTarget);
-	}
+        EventManager.Instance.StopListening<ChunkEnteredEvent>(MoveWithPlayer);
+    }
+
+    void MoveWithPlayer(ChunkEnteredEvent e)
+    {
+        moveTowardsPlayer = true;
+        rotationDamping = 3.0f;
+    }
 
 	void SetupTarget(ExposePlayerOnSwipe e){
 		target = e.playerTransform;
@@ -62,15 +72,17 @@ Then we apply the smoothed values to the transform's position.
 		// Convert the angle into a rotation
 		Quaternion currentRotation = Quaternion.Euler (0, currentRotationAngle, 0);
 
-		// Set the position of the camera on the x-z plane to:
-		// distance meters behind the target
-		transform.position = target.position;
-		transform.position -= currentRotation * Vector3.forward * distance;
+	        // Set the position of the camera on the x-z plane to:
+	        // distance meters behind the target
+	        var newPos = target.position;
+	        newPos -= currentRotation*Vector3.forward*distance;
 
-		// Set the height of the camera
-		transform.position = new Vector3 (transform.position.x, currentHeight, transform.position.z);
+	        newPos = new Vector3(newPos.x, currentHeight, newPos.z);
 
-		// Always look at the target
-		transform.LookAt (target.position + targetOffset);
+	        // Set the height of the camera
+	        transform.position = Vector3.MoveTowards(transform.position, newPos, 0.5f);
+
+        // Always look at the target
+        transform.LookAt (target.position + targetOffset);
 	}
 }
