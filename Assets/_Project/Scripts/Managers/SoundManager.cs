@@ -48,12 +48,7 @@ public class SoundManager : MonoBehaviour
 
     void Update()
     {
-        // Debug
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            PlaySound("Stop_MusicDrive");
-            PlaySound("Stop_MenuMusic");
-        }
+
     }
 
 
@@ -306,7 +301,6 @@ public class SoundManager : MonoBehaviour
         {
             isDialogue = true;
             AkSoundEngine.PostEvent("Play_MusVO17", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
-            //PlaySound("Play_MusVO17");
             hitObjectSound = true;
         }
     }
@@ -324,9 +318,7 @@ public class SoundManager : MonoBehaviour
 
     private void HitByWind(StartWindEvent e)
     {
-        PlaySound("Play_Blow");
-        if (isTutorial)
-        {
+        
             if (!windPlayed && !isDialogue)
             {
                 isDialogue = true;
@@ -334,13 +326,19 @@ public class SoundManager : MonoBehaviour
                 windPlayed = true;
             }
 
-        }
+
     }
 
     private void BoostPickUp(BoostPickupHitEvent e)
     {
         PlaySound("Play_SpeedUp");
         AkSoundEngine.SetRTPCValue("PowerUp", 1);
+        if (!isDialogue && isTutorial)
+        {
+            isDialogue = true;
+            AkSoundEngine.PostEvent("Play_MisVO18", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
+        }
+
     }
 
 
