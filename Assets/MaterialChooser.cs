@@ -11,8 +11,8 @@ public class MaterialChooser : MonoBehaviour {
 
 	public BuildingType _buildingType;
 	public Material[] materialA;
-	public Material[] materialC;
 	public Material[] materialB;
+	public Material[] materialC;
 
 	// Use this for initialization
 	void OnEnable () 
