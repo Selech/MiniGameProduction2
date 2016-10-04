@@ -1233,6 +1233,13 @@
 								</Element>
 							</ElementList>
 						</Action>
+						<Action Name="Play" ID="{3BA3A2C9-D2A3-4B71-B7E8-757009A931C2}" ShortID="700733101" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{3076A71E-FAA7-46AC-9D7B-A6524F2E525C}" Global="false">
+									<ObjectRef Name="Car" ID="{098DDAB1-5C61-4F7C-899E-DCAFCD32055C}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
+								</Element>
+							</ElementList>
+						</Action>
 					</ChildrenList>
 				</Event>
 				<Event Name="Play_Ambience" ID="{47FF627A-B1C4-4702-A783-318D03C002A3}">
@@ -1281,6 +1288,17 @@
 							<ElementList>
 								<Element ID="{12ACD07C-F62E-447B-8FBD-2F1CEA09BD3E}" Global="false">
 									<ObjectRef Name="Car" ID="{098DDAB1-5C61-4F7C-899E-DCAFCD32055C}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Bump" ID="{28B6DE45-D9F6-423C-ADE0-15A02BB7C1E0}">
+					<ChildrenList>
+						<Action Name="Play" ID="{E1A266F9-83E9-446A-866A-7B94CEF25A81}" ShortID="583793339" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{08E0E6C6-8F99-4C4A-8C0A-ADC3E2C20657}" Global="false">
+									<ObjectRef Name="Bump" ID="{D8378DBB-0E78-45BE-BAA5-4998A5178E96}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
 								</Element>
 							</ElementList>
 						</Action>

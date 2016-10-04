@@ -38,8 +38,10 @@ public class TutorialController : MonoBehaviour {
     }
 
     IEnumerator StartStackTutorial(){
-		yield return new WaitForSeconds(1f);
-		for (int i = 0; i < 3; i++) {
+		yield return new WaitForSeconds(12f);
+        EventManager.Instance.TriggerEvent(new IntroAnimation2event());
+
+        for (int i = 0; i < 3; i++) {
 			animations [0].Play ("LineStackAnimation");
 			animations [2].Play ("FingerStackAnimation");
 			yield return new WaitForSeconds(2f);
@@ -50,7 +52,8 @@ public class TutorialController : MonoBehaviour {
 
 	IEnumerator StartBikeTutorial(){
 		yield return new WaitForSeconds(1f);
-        
+        EventManager.Instance.TriggerEvent(new IntroAnimation3event());
+
         for (int i = 0; i < 3; i++) {
 			animations [1].Play ("CircleAnimation");
 			animations [2].Play ("TapAnimation");

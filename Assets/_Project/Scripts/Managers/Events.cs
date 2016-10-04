@@ -499,6 +499,22 @@ public class YouHaveToAvoidEvent : GameEvent
     }
 }
 
+public class IntroAnimation2event : GameEvent
+{
+    public IntroAnimation2event()
+    {
+
+    }
+}
+
+public class IntroAnimation3event : GameEvent
+{
+    public IntroAnimation3event()
+    {
+
+    }
+}
+
 public class IntroVO1event : GameEvent
 {
     public IntroVO1event()
