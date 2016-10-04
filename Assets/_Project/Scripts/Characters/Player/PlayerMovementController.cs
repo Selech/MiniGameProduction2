@@ -86,10 +86,21 @@ public class PlayerMovementController : MonoBehaviour
 	public Vector3 windPosition;		
 	public float windForce = 0;
 
+    private bool isOnChunkRoad = false;
+
     void OnEnable()
     {
-        charController = GetComponent<CharacterController>();
+        EventManager.Instance.StartListening<PlayerHitsTheFirstRoadChunk>(EnteredFirstChunk);
+    }
 
+    void OnDisable()
+    {
+        EventManager.Instance.StopListening<PlayerHitsTheFirstRoadChunk>(EnteredFirstChunk);
+    }
+
+    void Start()
+    {
+        charController = GetComponent<CharacterController>();
     }
 
     void Update()
@@ -218,13 +229,19 @@ public class PlayerMovementController : MonoBehaviour
 
     }
 
+    void EnteredFirstChunk(PlayerHitsTheFirstRoadChunk e)
+    {
+        isOnChunkRoad = true;
+    }
+
     public void Turn(float horizontalInputValue)
     {
-        if (!GameManager.Instance.isPaused)
-        {
-            transform.Rotate(0, horizontalInputValue * rotateSpeed, 0);
+        if (isOnChunkRoad) {
+            if (!GameManager.Instance.isPaused)
+            {
+                transform.Rotate(0, horizontalInputValue * rotateSpeed, 0);
+            }
         }
-
     }
 
 	public void MoveAside (Vector3 windPosition, float windForce){
