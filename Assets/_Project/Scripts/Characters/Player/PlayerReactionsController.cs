@@ -19,6 +19,7 @@ public class PlayerReactionsController : MonoBehaviour
     StackingList stackedList;
     GameObject carriableManager;
     CarriableManager carriableManagerScript;
+    Animator animator;
 
     private int indexOfCurrentTopCarriable = 0;
 
@@ -31,6 +32,7 @@ public class PlayerReactionsController : MonoBehaviour
         carriableManager = GameObject.FindGameObjectWithTag("CarriableManager");
         stackedList = carriableManager.GetComponent<StackingList>();
         carriableManagerScript = carriableManager.GetComponent<CarriableManager>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     void OnEnable()
@@ -45,10 +47,15 @@ public class PlayerReactionsController : MonoBehaviour
         EventManager.Instance.StartListening<TriggerPlayerExposure>(SetupCamera);
         EventManager.Instance.StartListening<DamageCarriableEvent>(DamageObstacle);
         EventManager.Instance.StartListening<ObstacleHitEvent>(PushBikeBack);
+        EventManager.Instance.StartListening<StartStackingSceneEvent>(StartIntroAnimation);
         EventManager.Instance.StartListening<LoseCarriableEvent>(LostCarriable);
 		EventManager.Instance.StartListening<StartWindEvent>(StartWind);
 		EventManager.Instance.StartListening<StopWindEvent>(StopWind);
         EventManager.Instance.StartListening<ChunkEnteredEvent>(StartTrack);
+
+
+        EventManager.Instance.StartListening<IntroVO2event>(IntroVoice2);
+        EventManager.Instance.StartListening<IntroVO3event>(IntroVoice3);
     }
 
    
@@ -60,6 +67,7 @@ public class PlayerReactionsController : MonoBehaviour
         EventManager.Instance.StopListening<GetBackCarriableHitEvent>(GetBackCarriable);
         EventManager.Instance.StopListening<ChangeSchemeEvent>(ChangeScheme);
         EventManager.Instance.StopListening<StartGame>(EnableMovement);
+        EventManager.Instance.StopListening<StartStackingSceneEvent>(StartIntroAnimation);
         EventManager.Instance.StopListening<WinChunkEnteredEvent>(StopMovement);
         EventManager.Instance.StopListening<ChangeParentToPlayer>(ChangeParent);
         EventManager.Instance.StopListening<TriggerPlayerExposure>(SetupCamera);
@@ -68,7 +76,11 @@ public class PlayerReactionsController : MonoBehaviour
         EventManager.Instance.StopListening<LoseCarriableEvent>(LostCarriable);
 		EventManager.Instance.StopListening<StartWindEvent>(StartWind);
 		EventManager.Instance.StopListening<StopWindEvent>(StopWind);
-        
+
+
+        EventManager.Instance.StopListening<IntroVO2event>(IntroVoice2);
+        EventManager.Instance.StopListening<IntroVO3event>(IntroVoice3);
+
     }
 
     /// <summary>
@@ -80,10 +92,29 @@ public class PlayerReactionsController : MonoBehaviour
         carriableManagerScript.runningHeight -= carriableFallingOff.GetComponent<CarriablesDrag>().heightOfObject;
     }
 
+    void StartIntroAnimation(StartStackingSceneEvent e)
+    {
+        animator.SetTrigger("StartIntro1");
+    }
+
+    private void IntroVoice2(IntroVO2event e)
+    {
+        animator.SetTrigger("StartIntro2");
+    }
+
+    private void IntroVoice3(IntroVO3event e)
+    {
+        animator.SetTrigger("StartIntro3");
+    }
+
     void RetrieveInput(MovementInput horizontalInput)
     {
         if (movementController.enabled)
+        {
             movementController.Turn(horizontalInput.touchPosition);
+            animator.SetFloat("TurnAmount",horizontalInput.touchPosition);
+        }
+            
     }
 
     void ChangeScheme(ChangeSchemeEvent e)
@@ -160,6 +191,8 @@ public class PlayerReactionsController : MonoBehaviour
 
     void EnableMovement(StartGame e)
     {
+        animator.SetTrigger("StartDriving");
+
         movementController.enabled = true;
         //start accelerating from zero speed
         movementController.StartAccelerating();
@@ -206,7 +239,6 @@ public class PlayerReactionsController : MonoBehaviour
 	}
 
 	public void StopWind(StopWindEvent e){
-        Debug.Log("enough with the wind");
 		movementController.wind = false;
 		movementController.windForce = 0;
 	}

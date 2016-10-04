@@ -395,7 +395,7 @@ public class SoundManager : MonoBehaviour
         PlaySound("Play_MenuMusic");
         if (isTutorial)
         {
-            PlaySound("Play_IntroVO1");
+            PlaySound("Play_IntroSc1");
         }
     }
 
@@ -457,12 +457,12 @@ public class SoundManager : MonoBehaviour
 
     private void IntroVoice2(IntroVO2event e)
     {
-        PlaySound("Play_IntroVO1");
+        PlaySound("Play_IntroVO2_3");
     }
 
     private void IntroVoice3(IntroVO3event e)
     {
-        PlaySound("Play_IntroVO1");
+        PlaySound("Play_MusVO3");
     }
 
     private void ChangeScheme(ChangeSchemeEvent e)
