@@ -17,7 +17,8 @@
 			<Path>Danish/nysb.bnk</Path>
 			<IncludedEvents>
 				<Event Id="1710516031" Name="MixEvent" ObjectPath="\Events\Default Work Unit\MixEvent"/>
-				<Event Id="1893962234" Name="Play_Blow" ObjectPath="\Events\Default Work Unit\Play_Blow"/>
+				<Event Id="278617630" Name="Play_Ambience" ObjectPath="\Events\Default Work Unit\Play_Ambience"/>
+				<Event Id="1893962234" Name="Play_Blow" ObjectPath="\Events\Default Work Unit\Play_Blow" MaxAttenuation="45.000000"/>
 				<Event Id="3672906123" Name="Play_Brake" ObjectPath="\Events\Default Work Unit\Play_Brake"/>
 				<Event Id="2662543194" Name="Play_Build" ObjectPath="\Events\Default Work Unit\Play_Build"/>
 				<Event Id="2549958839" Name="Play_BuildMusic" ObjectPath="\Events\Default Work Unit\Music\Play_BuildMusic"/>
@@ -91,6 +92,7 @@
 				<Event Id="3859473420" Name="Play_UISnap" ObjectPath="\Events\Default Work Unit\Play_UISnap"/>
 				<Event Id="4259013031" Name="Play_UITap" ObjectPath="\Events\Default Work Unit\Play_UITap"/>
 				<Event Id="452547817" Name="Stop_All" ObjectPath="\Events\Default Work Unit\Stop_All" MaxAttenuation="0.000000"/>
+				<Event Id="2477713992" Name="Stop_Ambience" ObjectPath="\Events\Default Work Unit\Stop_Ambience" MaxAttenuation="0.000000"/>
 				<Event Id="1342112360" Name="Stop_Build" ObjectPath="\Events\Default Work Unit\Stop_Build" MaxAttenuation="0.000000"/>
 				<Event Id="2007932489" Name="Stop_BuildMusic" ObjectPath="\Events\Default Work Unit\Music\Stop_BuildMusic" MaxAttenuation="0.000000"/>
 				<Event Id="1647498997" Name="Stop_Flying" ObjectPath="\Events\Default Work Unit\Stop_Flying" MaxAttenuation="0.000000"/>
@@ -135,6 +137,10 @@
 				<File Id="38680491" Language="SFX">
 					<ShortName>Swipe.wav</ShortName>
 					<Path>SFX/Swipe_2A77C9DB.wem</Path>
+				</File>
+				<File Id="65167509" Language="SFX">
+					<ShortName>Ambience3.wav</ShortName>
+					<Path>SFX/Ambience3_2A77C9DB.wem</Path>
 				</File>
 				<File Id="76448816" Language="SFX">
 					<ShortName>Blow.wav</ShortName>
@@ -303,6 +309,10 @@
 				<File Id="539749869" Language="SFX">
 					<ShortName>Brake.wav</ShortName>
 					<Path>SFX/Brake_2A77C9DB.wem</Path>
+				</File>
+				<File Id="571690728" Language="SFX">
+					<ShortName>Ambience2.wav</ShortName>
+					<Path>SFX/Ambience2_2A77C9DB.wem</Path>
 				</File>
 				<File Id="580247750" Language="SFX">
 					<ShortName>ColPan.wav</ShortName>
@@ -516,7 +526,8 @@
 			<Path>English(US)/nysb.bnk</Path>
 			<IncludedEvents>
 				<Event Id="1710516031" Name="MixEvent" ObjectPath="\Events\Default Work Unit\MixEvent"/>
-				<Event Id="1893962234" Name="Play_Blow" ObjectPath="\Events\Default Work Unit\Play_Blow"/>
+				<Event Id="278617630" Name="Play_Ambience" ObjectPath="\Events\Default Work Unit\Play_Ambience"/>
+				<Event Id="1893962234" Name="Play_Blow" ObjectPath="\Events\Default Work Unit\Play_Blow" MaxAttenuation="45.000000"/>
 				<Event Id="3672906123" Name="Play_Brake" ObjectPath="\Events\Default Work Unit\Play_Brake"/>
 				<Event Id="2662543194" Name="Play_Build" ObjectPath="\Events\Default Work Unit\Play_Build"/>
 				<Event Id="2549958839" Name="Play_BuildMusic" ObjectPath="\Events\Default Work Unit\Music\Play_BuildMusic"/>
@@ -590,6 +601,7 @@
 				<Event Id="3859473420" Name="Play_UISnap" ObjectPath="\Events\Default Work Unit\Play_UISnap"/>
 				<Event Id="4259013031" Name="Play_UITap" ObjectPath="\Events\Default Work Unit\Play_UITap"/>
 				<Event Id="452547817" Name="Stop_All" ObjectPath="\Events\Default Work Unit\Stop_All" MaxAttenuation="0.000000"/>
+				<Event Id="2477713992" Name="Stop_Ambience" ObjectPath="\Events\Default Work Unit\Stop_Ambience" MaxAttenuation="0.000000"/>
 				<Event Id="1342112360" Name="Stop_Build" ObjectPath="\Events\Default Work Unit\Stop_Build" MaxAttenuation="0.000000"/>
 				<Event Id="2007932489" Name="Stop_BuildMusic" ObjectPath="\Events\Default Work Unit\Music\Stop_BuildMusic" MaxAttenuation="0.000000"/>
 				<Event Id="1647498997" Name="Stop_Flying" ObjectPath="\Events\Default Work Unit\Stop_Flying" MaxAttenuation="0.000000"/>
@@ -622,6 +634,10 @@
 				<File Id="38680491" Language="SFX">
 					<ShortName>Swipe.wav</ShortName>
 					<Path>SFX/Swipe_2A77C9DB.wem</Path>
+				</File>
+				<File Id="65167509" Language="SFX">
+					<ShortName>Ambience3.wav</ShortName>
+					<Path>SFX/Ambience3_2A77C9DB.wem</Path>
 				</File>
 				<File Id="74548040" Language="English(US)">
 					<ShortName>IntroSc1.wav</ShortName>
@@ -790,6 +806,10 @@
 				<File Id="543335174" Language="English(US)">
 					<ShortName>MusVO7.wav</ShortName>
 					<Path>Voices/English(US)/MusVO7_2A77C9DB.wem</Path>
+				</File>
+				<File Id="571690728" Language="SFX">
+					<ShortName>Ambience2.wav</ShortName>
+					<Path>SFX/Ambience2_2A77C9DB.wem</Path>
 				</File>
 				<File Id="580247750" Language="SFX">
 					<ShortName>ColPan.wav</ShortName>

@@ -532,7 +532,7 @@
 								<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>2</Value>
+										<Value>1</Value>
 									</ValueList>
 									<RTPCList>
 										<RTPC Name="" ID="{CDEC001C-5047-4B01-BD80-25DFF0ABAE97}" ShortID="476721519">
@@ -2256,6 +2256,37 @@
 								<ActiveSource Name="IntroVO3" ID="{938A1F8F-2BE6-4BAB-AA53-36F3D107B42A}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+						<Sound Name="IntroVO2+3" ID="{D48B3DF4-A6B8-4C8C-9AB0-D404BBF2C896}" ShortID="358719968" Type="Voice">
+							<PropertyList>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>3</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="VoMus" ID="{0F218276-24C4-4DD0-8ECA-F55246597AA6}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="IntroVO2+3" ID="{A6218817-ABBA-4668-8B90-154627CDC2BA}" ShortID="139873101">
+									<Language>English(US)</Language>
+									<AudioFile>IntroVO2+3.wav</AudioFile>
+								</AudioFileSource>
+								<AudioFileSource Name="IntroVO2+3" ID="{CC9E52C6-02CB-4BA1-AEC5-34B5CE3F23C5}" ShortID="676208044">
+									<Language>Danish</Language>
+									<AudioFile>IntroVO2+3.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="IntroVO2+3" ID="{A6218817-ABBA-4668-8B90-154627CDC2BA}" Platform="Linked"/>
+								<ActiveSource Name="IntroVO2+3" ID="{CC9E52C6-02CB-4BA1-AEC5-34B5CE3F23C5}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Collision" ID="{A5507D36-3278-4FD3-A440-09B759A0F93F}" ShortID="157378091">
@@ -3452,7 +3483,7 @@
 						</Property>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-1</Value>
+								<Value>1</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -3476,13 +3507,17 @@
 				</Sound>
 				<Sound Name="Blow" ID="{DE7BDB8C-8104-4000-BEC8-7D496AA3905B}" ShortID="132764594" Type="SoundFX">
 					<PropertyList>
+						<Property Name="PositioningType" Type="int16" Value="1"/>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-3</Value>
+								<Value>-2</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
 					<ReferenceList>
+						<Reference Name="Attenuation">
+							<ObjectRef Name="New Attenuation" ID="{7F728F98-34A1-45F3-B21F-AFFCDB2C58F4}" WorkUnitID="{1FE05531-D85F-4D58-9FAD-E1634F5DBCD3}"/>
+						</Reference>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
 						</Reference>
@@ -3496,6 +3531,9 @@
 							<AudioFile>Blow.wav</AudioFile>
 						</AudioFileSource>
 					</ChildrenList>
+					<PositioningInfo>
+						<Position Name="" ID="{0AA3DC81-463C-4F0F-96FB-C1ACEC006633}"/>
+					</PositioningInfo>
 					<ActiveSourceList>
 						<ActiveSource Name="Blow" ID="{DAE9807E-F568-4517-8E00-C2FD2B1B8D63}" Platform="Linked"/>
 					</ActiveSourceList>
@@ -3656,6 +3694,87 @@
 						<ActiveSource Name="Ramp" ID="{4D58E95B-B297-4675-9D66-92872632961A}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<RandomSequenceContainer Name="Ambience" ID="{A0654289-1B0A-4B8C-8B9D-3BE922D1CFD2}" ShortID="947347692">
+					<PropertyList>
+						<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+						<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+						<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+						<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="2.5"/>
+						<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-9</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="Ambience2" ID="{12B6F37F-3F98-44C1-B9B5-7873C48D6668}" ShortID="370851516" Type="SoundFX">
+							<PropertyList>
+								<Property Name="Highpass" Type="int16">
+									<ValueList>
+										<Value>16</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-1</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Ambience2" ID="{AF41E54E-39AF-4EB3-BF23-261BD336E161}" ShortID="571690728">
+									<Language>SFX</Language>
+									<AudioFile>Ambience2.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Ambience2" ID="{AF41E54E-39AF-4EB3-BF23-261BD336E161}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="Ambience3" ID="{A374374E-B59B-4A8F-87A2-E637654C3DC7}" ShortID="32008444" Type="SoundFX">
+							<PropertyList>
+								<Property Name="Highpass" Type="int16">
+									<ValueList>
+										<Value>17</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="Ambience3" ID="{2686986D-FEBF-4422-A84D-2BABDF06E8A7}" ShortID="65167509">
+									<Language>SFX</Language>
+									<AudioFile>Ambience3.wav</AudioFile>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="Ambience3" ID="{2686986D-FEBF-4422-A84D-2BABDF06E8A7}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</RandomSequenceContainer>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>
