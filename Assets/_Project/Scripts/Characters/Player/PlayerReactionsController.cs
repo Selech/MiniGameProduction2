@@ -102,12 +102,19 @@ public class PlayerReactionsController : MonoBehaviour
 
     IEnumerator BoostPickUp(float speed, float time)
     {
-        movementController.speedFactor = speed;
-        yield return new WaitForSeconds(time);
-        movementController.speedFactor = 1;
-        isBoosted = false;
-        EventManager.Instance.TriggerEvent(new HappyFunTimeEndsEvent());
+        movementController.defaultSpeed += speed;
+        movementController.maximumSpeed += speed;
+        movementController.accelerationRate *= speed;
 
+        yield return new WaitForSeconds(time);
+
+        movementController.defaultSpeed -= speed;
+        movementController.maximumSpeed -= speed;
+        movementController.accelerationRate /= speed;
+
+        isBoosted = false;
+        playerPickupController.isLastPickupBoost = false;
+        EventManager.Instance.TriggerEvent(new HappyFunTimeEndsEvent());
     }
 
     void GetBackCarriable(GetBackCarriableHitEvent e)
