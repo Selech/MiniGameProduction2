@@ -90,6 +90,7 @@ GameObject:
   - 114: {fileID: 114000014270303438}
   - 65: {fileID: 65000010153041366}
   - 114: {fileID: 114000011981348898}
+  - 95: {fileID: 95000014202587954}
   m_Layer: 2
   m_Name: PlayerPrefab
   m_TagString: Player
@@ -599,7 +600,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ca7959b4408abfc448349f0a21d5419e, type: 2}
+  - {fileID: 2100000, guid: 87101ef6467516943a0253c6db99925d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -628,7 +629,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ca7959b4408abfc448349f0a21d5419e, type: 2}
+  - {fileID: 2100000, guid: 87101ef6467516943a0253c6db99925d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -657,7 +658,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ca7959b4408abfc448349f0a21d5419e, type: 2}
+  - {fileID: 2100000, guid: 87101ef6467516943a0253c6db99925d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -715,7 +716,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ca7959b4408abfc448349f0a21d5419e, type: 2}
+  - {fileID: 2100000, guid: 87101ef6467516943a0253c6db99925d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -744,7 +745,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ca7959b4408abfc448349f0a21d5419e, type: 2}
+  - {fileID: 2100000, guid: 87101ef6467516943a0253c6db99925d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -773,7 +774,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ca7959b4408abfc448349f0a21d5419e, type: 2}
+  - {fileID: 2100000, guid: 87101ef6467516943a0253c6db99925d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -913,6 +914,23 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!95 &95000014202587954
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011293856656}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114000011861470604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -940,8 +958,8 @@ MonoBehaviour:
   steepDecelerationDegree: 5
   maxVerticalAngle: 145
   reorientSpeed: 4
-  rayToGroundLength: 2
-  centeredRayToGroundLength: 0.6
+  rayToGroundLength: 4
+  centeredRayToGroundLength: 0.7
   currentForwardSpeed: 0
   currentVerticalSpeed: 0
   steepAngle: 0
