@@ -144,7 +144,8 @@ public class PlayerReactionsController : MonoBehaviour
 
     void StopMovement(WinChunkEnteredEvent e)
     {
-        //movementController.enabled = false;
+        int amountOfCarriablesOnBike = stackedList.CollectedCarriables.Count - numberOfLostCarriables;
+        PlayerPrefs.SetInt("Amount of Carriables", amountOfCarriablesOnBike);
         movementController.StartDecelerating();
         EventManager.Instance.StopListening<MovementInput>(RetrieveInput);
     }
