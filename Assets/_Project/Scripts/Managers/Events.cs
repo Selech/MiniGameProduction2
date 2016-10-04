@@ -568,3 +568,11 @@ public class HappyFunTimeEndsEvent : GameEvent
     }
 }
 
+public class StartStackTutorialEvent : GameEvent
+{
+    public StartStackTutorialEvent()
+    {
+
+    }
+}
+
