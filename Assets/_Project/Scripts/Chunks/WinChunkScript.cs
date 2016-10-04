@@ -7,6 +7,9 @@ public class WinChunkScript : MonoBehaviour {
 	public GameObject EndPoint;
 
 	void OnTriggerEnter(Collider col){
-		EventManager.Instance.TriggerEvent(new WinChunkEnteredEvent());
+	    if (col.gameObject.tag == "Player")
+	    {
+	        EventManager.Instance.TriggerEvent(new WinChunkEnteredEvent());
+	    }
 	}
 }
