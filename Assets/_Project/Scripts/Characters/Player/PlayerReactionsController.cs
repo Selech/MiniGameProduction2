@@ -102,9 +102,16 @@ public class PlayerReactionsController : MonoBehaviour
 
     IEnumerator BoostPickUp(float speed, float time)
     {
-        movementController.speedFactor = speed;
+        movementController.defaultSpeed += speed;
+        movementController.maximumSpeed += speed;
+        movementController.accelerationRate *= speed;
+
         yield return new WaitForSeconds(time);
-        movementController.speedFactor = 1;
+
+        movementController.defaultSpeed -= speed;
+        movementController.maximumSpeed -= speed;
+        movementController.accelerationRate /= speed;
+
         isBoosted = false;
         playerPickupController.isLastPickupBoost = false;
         EventManager.Instance.TriggerEvent(new HappyFunTimeEndsEvent());
