@@ -1,7 +1,8 @@
 ﻿
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 [RequireComponent(typeof(PlayerMovementController))]
 public class PlayerReactionsController : MonoBehaviour
@@ -47,7 +48,10 @@ public class PlayerReactionsController : MonoBehaviour
         EventManager.Instance.StartListening<LoseCarriableEvent>(LostCarriable);
 		EventManager.Instance.StartListening<StartWindEvent>(StartWind);
 		EventManager.Instance.StartListening<StopWindEvent>(StopWind);
+        EventManager.Instance.StartListening<ChunkEnteredEvent>(StartTrack);
     }
+
+   
 
     void OnDisable()
     {
@@ -64,6 +68,7 @@ public class PlayerReactionsController : MonoBehaviour
         EventManager.Instance.StopListening<LoseCarriableEvent>(LostCarriable);
 		EventManager.Instance.StopListening<StartWindEvent>(StartWind);
 		EventManager.Instance.StopListening<StopWindEvent>(StopWind);
+        
     }
 
     /// <summary>
@@ -139,13 +144,16 @@ public class PlayerReactionsController : MonoBehaviour
 
     void StopMovement(WinChunkEnteredEvent e)
     {
-        movementController.enabled = false;
+        //movementController.enabled = false;
+        movementController.StartDecelerating();
         EventManager.Instance.StopListening<MovementInput>(RetrieveInput);
     }
 
     void EnableMovement(StartGame e)
     {
         movementController.enabled = true;
+        //start accelerating from zero speed
+        movementController.StartAccelerating();
     }
 
     void ChangeParent(ChangeParentToPlayer e)
@@ -188,5 +196,11 @@ public class PlayerReactionsController : MonoBehaviour
 		movementController.wind = false;
 		movementController.windForce = 0;
 	}
+
+    private void StartTrack(ChunkEnteredEvent e)
+    {
+        movementController.StartTrack();
+        EventManager.Instance.StopListening<ChunkEnteredEvent>(StartTrack);
+    }
 
 }
