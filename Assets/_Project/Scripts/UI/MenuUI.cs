@@ -105,19 +105,15 @@ public class MenuUI : MonoBehaviour
 
     public void ToggleMenu()
     {
-        EventManager.Instance.TriggerEvent(new UISoundEvent());
-        if (GameManager.Instance.hasWon == false)
-        {
-            GameManager.Instance.TogglePause();
-            menuUI.SetActive(GameManager.Instance.isPaused);
-            menuButton.sprite = GameManager.Instance.isPaused ? playSprite : pauseSprite;
-        }
-        else
-        {
-            toggleMenuOn = !toggleMenuOn;
-            menuUI.SetActive(toggleMenuOn);
-        }
-        // Ensures correct sprite is showing in menu
+		EventManager.Instance.TriggerEvent(new UISoundEvent());
+
+        toggleMenuOn = !toggleMenuOn;
+        menuUI.SetActive(toggleMenuOn);
+		GameManager.Instance.TogglePause();
+		menuUI.SetActive(GameManager.Instance.isPaused);
+		menuButton.sprite = GameManager.Instance.isPaused ? playSprite : pauseSprite;
+        
+		// Ensures correct sprite is showing in menu
         if (GameManager.Instance.isGyro)
         {
             swipeButton.GetComponent<Image>().sprite = spriteSwipeImgDeactive;
