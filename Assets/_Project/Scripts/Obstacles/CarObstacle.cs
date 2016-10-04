@@ -40,7 +40,7 @@ public class CarObstacle : MonoBehaviour
 			while(curTime > 0)
 			{
 				curTime -= Time.deltaTime;
-				print ("spawn car " + curTime);
+				//print ("spawn car " + curTime);
 				if(r)
 				{
 					r.AddForce (-transform.right*speed*Time.deltaTime,forceModeCar);
