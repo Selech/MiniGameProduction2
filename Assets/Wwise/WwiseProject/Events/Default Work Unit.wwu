@@ -1264,6 +1264,28 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_Car" ID="{27BF97A6-62E7-46B4-B087-FE764909B48D}">
+					<ChildrenList>
+						<Action Name="Play" ID="{B3B95FEF-EC44-41AD-8BAA-300BD9DBC3AC}" ShortID="220642536" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{62540BFA-9C93-4E9B-B0BF-7632B3720ECD}" Global="false">
+									<ObjectRef Name="Car" ID="{098DDAB1-5C61-4F7C-899E-DCAFCD32055C}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Stop_Car" ID="{C7455DBC-5D8A-4119-8FF9-A390A477B72A}">
+					<ChildrenList>
+						<Action Name="Stop" ID="{5416CEEB-B307-4D44-8A9A-D271430046FE}" ShortID="782436274" Type="Stop" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{12ACD07C-F62E-447B-8FBD-2F1CEA09BD3E}" Global="false">
+									<ObjectRef Name="Car" ID="{098DDAB1-5C61-4F7C-899E-DCAFCD32055C}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>
