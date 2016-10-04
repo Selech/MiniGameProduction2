@@ -227,7 +227,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &159563976
 RectTransform:
   m_ObjectHideFlags: 0
@@ -567,6 +567,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114000010789878154, guid: fde21ff9b5c7ff64497469e9cf4938d3,
+        type: 2}
+      propertyPath: positionShakeRange.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010789878154, guid: fde21ff9b5c7ff64497469e9cf4938d3,
+        type: 2}
+      propertyPath: positionShakeRange.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010789878154, guid: fde21ff9b5c7ff64497469e9cf4938d3,
+        type: 2}
+      propertyPath: positionShakeRange.z
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fde21ff9b5c7ff64497469e9cf4938d3, type: 2}
   m_IsPrefabParent: 0
@@ -792,6 +807,11 @@ Prefab:
         type: 2}
       propertyPath: initialAccelerationRate
       value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011861470604, guid: 766dcc133c68a5247b53cb287a15c808,
+        type: 2}
+      propertyPath: minimumSpeed
+      value: 0.065
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 766dcc133c68a5247b53cb287a15c808, type: 2}
@@ -1063,77 +1083,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114000010174881638, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
-        type: 2}
-      propertyPath: MiddleofBike
-      value: 
-      objectReference: {fileID: 1852416928}
-    - target: {fileID: 114000010234085196, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
-        type: 2}
-      propertyPath: MiddleofBike
-      value: 
-      objectReference: {fileID: 1852416928}
-    - target: {fileID: 114000010511944514, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
-        type: 2}
-      propertyPath: MiddleofBike
-      value: 
-      objectReference: {fileID: 1852416928}
-    - target: {fileID: 114000010779435068, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
-        type: 2}
-      propertyPath: MiddleofBike
-      value: 
-      objectReference: {fileID: 1852416928}
-    - target: {fileID: 114000010799524398, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
-        type: 2}
-      propertyPath: MiddleofBike
-      value: 
-      objectReference: {fileID: 1852416928}
-    - target: {fileID: 114000010988901076, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
-        type: 2}
-      propertyPath: MiddleofBike
-      value: 
-      objectReference: {fileID: 1852416928}
-    - target: {fileID: 114000011398792828, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
-        type: 2}
-      propertyPath: MiddleofBike
-      value: 
-      objectReference: {fileID: 1852416928}
-    - target: {fileID: 114000011401043554, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
-        type: 2}
-      propertyPath: MiddleofBike
-      value: 
-      objectReference: {fileID: 1852416928}
-    - target: {fileID: 114000011744967610, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
-        type: 2}
-      propertyPath: MiddleofBike
-      value: 
-      objectReference: {fileID: 1852416928}
-    - target: {fileID: 114000012066991858, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
-        type: 2}
-      propertyPath: MiddleofBike
-      value: 
-      objectReference: {fileID: 1852416928}
-    - target: {fileID: 114000012282309784, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
-        type: 2}
-      propertyPath: MiddleofBike
-      value: 
-      objectReference: {fileID: 1852416928}
-    - target: {fileID: 114000012530303258, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
-        type: 2}
-      propertyPath: MiddleofBike
-      value: 
-      objectReference: {fileID: 1852416928}
-    - target: {fileID: 114000012605975102, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
-        type: 2}
-      propertyPath: MiddleofBike
-      value: 
-      objectReference: {fileID: 1852416928}
-    - target: {fileID: 114000013025454924, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
-        type: 2}
-      propertyPath: MiddleofBike
-      value: 
-      objectReference: {fileID: 1852416928}
-    - target: {fileID: 114000013584060382, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
+    - target: {fileID: 114000014224070176, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
         type: 2}
       propertyPath: MiddleofBike
       value: 
@@ -1143,19 +1093,82 @@ Prefab:
       propertyPath: MiddleofBike
       value: 
       objectReference: {fileID: 1852416928}
-    - target: {fileID: 114000014224070176, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
+    - target: {fileID: 114000013584060382, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
         type: 2}
       propertyPath: MiddleofBike
       value: 
       objectReference: {fileID: 1852416928}
-    - target: {fileID: 23000012238668612, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
+    - target: {fileID: 114000013025454924, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
         type: 2}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: MiddleofBike
       value: 
-      objectReference: {fileID: 2100000, guid: dd77a7d810d9a3b478657022cf442a09, type: 2}
-    m_RemovedComponents:
-    - {fileID: 114000013574644926, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9, type: 2}
-    - {fileID: 114000012531552016, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9, type: 2}
+      objectReference: {fileID: 1852416928}
+    - target: {fileID: 114000012605975102, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
+        type: 2}
+      propertyPath: MiddleofBike
+      value: 
+      objectReference: {fileID: 1852416928}
+    - target: {fileID: 114000012530303258, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
+        type: 2}
+      propertyPath: MiddleofBike
+      value: 
+      objectReference: {fileID: 1852416928}
+    - target: {fileID: 114000012282309784, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
+        type: 2}
+      propertyPath: MiddleofBike
+      value: 
+      objectReference: {fileID: 1852416928}
+    - target: {fileID: 114000012066991858, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
+        type: 2}
+      propertyPath: MiddleofBike
+      value: 
+      objectReference: {fileID: 1852416928}
+    - target: {fileID: 114000011744967610, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
+        type: 2}
+      propertyPath: MiddleofBike
+      value: 
+      objectReference: {fileID: 1852416928}
+    - target: {fileID: 114000011401043554, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
+        type: 2}
+      propertyPath: MiddleofBike
+      value: 
+      objectReference: {fileID: 1852416928}
+    - target: {fileID: 114000011398792828, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
+        type: 2}
+      propertyPath: MiddleofBike
+      value: 
+      objectReference: {fileID: 1852416928}
+    - target: {fileID: 114000010988901076, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
+        type: 2}
+      propertyPath: MiddleofBike
+      value: 
+      objectReference: {fileID: 1852416928}
+    - target: {fileID: 114000010799524398, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
+        type: 2}
+      propertyPath: MiddleofBike
+      value: 
+      objectReference: {fileID: 1852416928}
+    - target: {fileID: 114000010779435068, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
+        type: 2}
+      propertyPath: MiddleofBike
+      value: 
+      objectReference: {fileID: 1852416928}
+    - target: {fileID: 114000010511944514, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
+        type: 2}
+      propertyPath: MiddleofBike
+      value: 
+      objectReference: {fileID: 1852416928}
+    - target: {fileID: 114000010234085196, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
+        type: 2}
+      propertyPath: MiddleofBike
+      value: 
+      objectReference: {fileID: 1852416928}
+    - target: {fileID: 114000010174881638, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
+        type: 2}
+      propertyPath: MiddleofBike
+      value: 
+      objectReference: {fileID: 1852416928}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1503810086
