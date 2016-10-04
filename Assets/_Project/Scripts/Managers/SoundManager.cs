@@ -172,9 +172,13 @@ public class SoundManager : MonoBehaviour
         {
 
             PlaySound("Stop_MusicDrive");
-            PlaySound("Play_Ambience");
+            if (drivingStarted)
+            {
+                PlaySound("Play_Ambience");
+            }
             if (stackingSceneActive)
             {
+                PlaySound("Stop_Ambience");
                 PlaySound("Stop_MenuMusic");
             }
         }
@@ -193,7 +197,6 @@ public class SoundManager : MonoBehaviour
 
     private void StartRaceMusic(StartGame e)
     {
-        isDialogue = false;
         drivingStarted = true;
         stackingSceneActive = false;
         PlayerPrefs.SetInt("Tutorial", 0);
@@ -292,8 +295,11 @@ public class SoundManager : MonoBehaviour
     // place all stops in here, happens only at end of game
     private void StopAllSounds(RestartGameEvent e)
     {
+        isDialogue = true;
         drivingStarted = false;
-        PlaySound("Stop_All");
+        PlaySound("Stop_MusicDrive");
+        PlaySound("Stop_Ambience");
+        PlaySound("Stop_Pedal");
     }
 
     private void SnapSound(SnapSoundEvent e)
@@ -303,7 +309,7 @@ public class SoundManager : MonoBehaviour
 
     private void MenuActive(MenuActiveEvent e)
     {
-
+        isDialogue = false;
         if (GameManager.Instance.isPaused)
         {
             PlaySound("Stop_Pedal");
@@ -374,8 +380,8 @@ public class SoundManager : MonoBehaviour
 
     private void StackingSceneSound(StartStackingSceneEvent e)
     {
-	EventManager.Instance.TriggerEvent(new RestartGameEvent());
-	if (PlayerPrefs.GetInt("Tutorial") == 1)
+        EventManager.Instance.TriggerEvent(new RestartGameEvent());
+        if (PlayerPrefs.GetInt("Tutorial") == 1)
         {
             isTutorial = true;
         }
@@ -397,9 +403,9 @@ public class SoundManager : MonoBehaviour
         if (isTutorial)
         {
             PlaySound("Play_IntroVO1");
-            
+
         }
-        
+
     }
 
     private void MapProgression(MapProgressionForSoundEvent e)
@@ -424,7 +430,7 @@ public class SoundManager : MonoBehaviour
             isFlying = true;
             PlaySound("Play_Flying");
         }
-        
+
     }
 
     private void EnterRamp(EnterRampEvent e)
@@ -470,19 +476,18 @@ public class SoundManager : MonoBehaviour
 
     private void ChangeScheme(ChangeSchemeEvent e)
     {
-        if (isTutorial)
+
+        if (GameManager.Instance.isGyro && !isDialogue)
         {
-            if (GameManager.Instance.isGyro && !isDialogue)
-            {
-                isDialogue = true;
-                AkSoundEngine.PostEvent("Play_MisVO20", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
-            }
-            else if (!GameManager.Instance.isGyro && !isDialogue)
-            {
-                isDialogue = true;
-                AkSoundEngine.PostEvent("Play_MisVO19", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
-            }
+            isDialogue = true;
+            AkSoundEngine.PostEvent("Play_MisVO20", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
         }
+        else if (!GameManager.Instance.isGyro && !isDialogue)
+        {
+            isDialogue = true;
+            AkSoundEngine.PostEvent("Play_MisVO19", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
+        }
+
     }
 
     private void FirstSound(FirstSoundEvent e)
