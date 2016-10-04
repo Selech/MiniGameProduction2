@@ -82,7 +82,12 @@
 						</Bus>
 						<Bus Name="VoMis" ID="{59F254C9-56BF-4481-B1B0-30BEF982A768}">
 							<PropertyList>
-								<Property Name="MaxDuckVolume" Type="Real64" Value="-18"/>
+								<Property Name="BusVolume" Type="Real64">
+									<ValueList>
+										<Value>-2</Value>
+									</ValueList>
+								</Property>
+								<Property Name="MaxDuckVolume" Type="Real64" Value="-9"/>
 								<Property Name="RecoveryTime" Type="Real64" Value="0.5"/>
 							</PropertyList>
 							<ReferenceList>
@@ -116,8 +121,8 @@
 						</Bus>
 						<Bus Name="Music" ID="{BC346018-207D-49EE-81CE-61031AAE4D6C}">
 							<PropertyList>
-								<Property Name="MaxDuckVolume" Type="Real64" Value="-12"/>
-								<Property Name="RecoveryTime" Type="Real64" Value="0.5"/>
+								<Property Name="MaxDuckVolume" Type="Real64" Value="-5.5"/>
+								<Property Name="RecoveryTime" Type="Real64" Value="0.1"/>
 							</PropertyList>
 						</Bus>
 					</ChildrenList>
