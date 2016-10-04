@@ -33,7 +33,8 @@ public class SoundManager : MonoBehaviour
     bool hitPlayed = false;
     bool hitObjectSound = false;
     bool pickUpSound = false;
-    
+    bool powerUpTutSound = false;
+
     public bool isDialogue = false;
 
     #endregion
@@ -218,6 +219,13 @@ public class SoundManager : MonoBehaviour
         drivingStarted = false;
         PlaySound("Stop_Pedal");
         PlaySound("Play_MusicWin");
+
+        if (!isDialogue)
+        {
+            isDialogue = true;
+            AkSoundEngine.PostEvent("Play_MusVO11", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
+        }
+
     }
 
     private void HitObstacle(DamageCarriableEvent e)
@@ -332,10 +340,16 @@ public class SoundManager : MonoBehaviour
     {
         PlaySound("Play_SpeedUp");
         AkSoundEngine.SetRTPCValue("PowerUp", 1);
+        
         if (!isDialogue && isTutorial)
         {
-            isDialogue = true;
-            AkSoundEngine.PostEvent("Play_MisVO18", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
+            if (!powerUpTutSound)
+            {
+                powerUpTutSound = true;
+                isDialogue = true;
+                AkSoundEngine.PostEvent("Play_MisVO18", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
+            }
+            
         }
 
     }

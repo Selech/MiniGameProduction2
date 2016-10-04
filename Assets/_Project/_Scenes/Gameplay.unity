@@ -869,6 +869,28 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 766dcc133c68a5247b53cb287a15c808, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &792555711 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000011293856656, guid: 766dcc133c68a5247b53cb287a15c808,
+    type: 2}
+  m_PrefabInternal: {fileID: 792555710}
+--- !u!95 &792555712
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 792555711}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &824389976
 GameObject:
   m_ObjectHideFlags: 0
@@ -898,7 +920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basePath: Audio\GeneratedSoundBanks
-  language: English(US)
+  language: Danish
   defaultPoolSize: 4096
   lowerPoolSize: 2048
   streamingPoolSize: 1024
@@ -1221,6 +1243,11 @@ Prefab:
       propertyPath: MiddleofBike
       value: 
       objectReference: {fileID: 1852416928}
+    - target: {fileID: 23000012238668612, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9,
+        type: 2}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f3b941f6715f2e4bb6f3b8e35a7b6e9, type: 2}
   m_IsPrefabParent: 0
@@ -1425,16 +1452,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 1000010068644824, guid: 3829712daf606f14e9e151e8a35b65f1, type: 2}
-      propertyPath: m_Name
-      value: MapGenerator
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000011789091888, guid: 3829712daf606f14e9e151e8a35b65f1,
-        type: 2}
-      propertyPath: blockChunk
-      value: 
-      objectReference: {fileID: 1000012193940382, guid: f97c943f8deb4bb479950a9b2a97cf07,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3829712daf606f14e9e151e8a35b65f1, type: 2}
   m_IsPrefabParent: 0
