@@ -29,8 +29,8 @@ public class TutorialController : MonoBehaviour {
 		yield return new WaitForSeconds(2);
 
 		for (int i = 0; i < 3; i++) {
-			animations [1].Play ("LineStackAnimation");
-			animations [2].Play ("FingerSwipeAnimation");
+			animations [1].Play ("CircleAnimation");
+			animations [2].Play ("TapAnimation");
 			yield return new WaitForSeconds(2f);
 		}
 	}
