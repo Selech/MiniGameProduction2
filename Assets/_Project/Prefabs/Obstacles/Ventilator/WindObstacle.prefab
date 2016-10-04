@@ -956,9 +956,12 @@ GameObject:
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 4000013168349010}
+  - 224: {fileID: 224000011330347232}
   - 65: {fileID: 65000010946541246}
   - 114: {fileID: 114000010690605878}
+  - 114: {fileID: 114000012964369810}
+  - 54: {fileID: 54000010227556888}
+  - 114: {fileID: 114000010084074614}
   m_Layer: 9
   m_Name: WindObstacle
   m_TagString: WindSource
@@ -1090,7 +1093,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_Children:
   - {fileID: 4000011642065624}
-  m_Father: {fileID: 4000013168349010}
+  m_Father: {fileID: 224000011330347232}
   m_RootOrder: 0
 --- !u!4 &4000010371323630
 Transform:
@@ -1570,20 +1573,6 @@ Transform:
   - {fileID: 4000013538101448}
   m_Father: {fileID: 4000013515731872}
   m_RootOrder: 0
---- !u!4 &4000013168349010
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000014191008610}
-  m_LocalRotation: {x: -0, y: 0.95987463, z: -0, w: 0.2804295}
-  m_LocalPosition: {x: 56.45, y: 2.28, z: -51.31}
-  m_LocalScale: {x: 1.2105793, y: 1.2105799, z: 1.2105799}
-  m_LocalEulerAnglesHint: {x: 0, y: 147.306, z: 0}
-  m_Children:
-  - {fileID: 4000010328657070}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
 --- !u!4 &4000013196519074
 Transform:
   m_ObjectHideFlags: 1
@@ -1977,6 +1966,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010467783030}
   m_Mesh: {fileID: 4300008, guid: dc0515808c8df8241b96c78796834111, type: 3}
+--- !u!54 &54000010227556888
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014191008610}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &65000010946541246
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -2006,6 +2010,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114000010084074614
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014191008610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42d4dbefbe327eb44b12ad6d390ae90a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000010690605878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2018,6 +2033,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   windForce: 8
+--- !u!114 &114000012964369810
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014191008610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76e2dbe2443cca043b20aec052d43cdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_positionOffsetData:
+    positionOffset: {x: 0, y: 0, z: 0}
+    KeepMe: 0
+  isEnvironmentAware: 1
+  listenerMask: 1
+  isStaticObject: 0
 --- !u!137 &137000010859344232
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2162,3 +2194,22 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.31140926, y: -0.026649712, z: -0.00046850368}
     m_Extent: {x: 0.31140926, y: 0.051916324, z: 0.030208975}
   m_DirtyAABB: 0
+--- !u!224 &224000011330347232
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014191008610}
+  m_LocalRotation: {x: -0, y: 0.95987463, z: -0, w: 0.2804295}
+  m_LocalPosition: {x: 0, y: 0, z: 2.78}
+  m_LocalScale: {x: 1.2105793, y: 1.2105799, z: 1.2105799}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 4000010328657070}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 9.14, y: 0.5604985}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
