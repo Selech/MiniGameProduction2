@@ -1226,53 +1226,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 766dcc133c68a5247b53cb287a15c808, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &799115832
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100006, guid: 84913d32366e3d3489c60f00184477b5, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 799115834}
-  - 95: {fileID: 799115833}
-  m_Layer: 0
-  m_Name: buildings 1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!95 &799115833
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 9500000, guid: 84913d32366e3d3489c60f00184477b5,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 799115832}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 84913d32366e3d3489c60f00184477b5, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!4 &799115834
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400006, guid: 84913d32366e3d3489c60f00184477b5, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 799115832}
-  m_LocalRotation: {x: -0, y: 0.22465563, z: -0, w: 0.97443825}
-  m_LocalPosition: {x: -12.07, y: 0, z: 13.38}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 25.827002, z: 0}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
 --- !u!1 &824389976
 GameObject:
   m_ObjectHideFlags: 0
@@ -1406,10 +1359,10 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 0.188
+    m_Strength: 0.235
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
