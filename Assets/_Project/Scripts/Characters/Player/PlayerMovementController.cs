@@ -1,4 +1,3 @@
-﻿
 ﻿using UnityEngine;
 using System.Collections;
 using JetBrains.Annotations;
@@ -37,9 +36,9 @@ public class PlayerMovementController : MonoBehaviour
     //GROUND DETECTION
     [Header("Ground Detection")]
     [Tooltip("Side rays to reorient the player with the ground shape.")]
-    public float rayToGroundLength = 2f;
+    public float rayToGroundLength = 2.0f;
     [Tooltip("Central ray length to detect if the player is grounded.")]
-    public float centeredRayToGroundLength = 0.4f;
+    public float centeredRayToGroundLength = 0.6f;
     //DEBUG VALUES
     [Header("Debug Values")]
     [Tooltip("For debugging purposes, the current forward speed of the player.")]
@@ -82,9 +81,9 @@ public class PlayerMovementController : MonoBehaviour
     private bool isCenterGroundHit;
     public float speedFactor = 1f;
 
-	public bool wind = false;		
-	public Vector3 windPosition;		
-	public float windForce = 0;
+    public bool wind = false;
+    public Vector3 windPosition;
+    public float windForce = 0;
 
     void OnEnable()
     {
@@ -98,18 +97,14 @@ public class PlayerMovementController : MonoBehaviour
         if (!GameManager.Instance.isPaused)
         {
             MoveForward();
-			if (wind)		
-				MoveAside(windPosition, windForce);
+            if (wind)
+                MoveAside(windPosition, windForce);
         }
     }
 
     void StabilizeOrientation()
     {
-
-        //RaycastHit groundHit;
-        float step = 10 * Time.deltaTime;
-
-
+        //cast ground rays
         isFrontPointHit = Physics.Raycast(frontBikeLimit.position, -transform.up, out frontHit, rayToGroundLength, groundLayer);
         frontGroundpoint = frontHit.point;
         isBackPointHit = Physics.Raycast(endBikeLimit.position, -transform.up, out backHit, rayToGroundLength, groundLayer);
@@ -119,51 +114,39 @@ public class PlayerMovementController : MonoBehaviour
         isRightPointHit = Physics.Raycast(rightBikeLimit.position, -transform.up, out rightHit, rayToGroundLength, groundLayer);
         rightGroundPoint = rightHit.point;
 
-        isCenterGroundHit = Physics.Raycast(transform.position + new Vector3(0, 0.3f, 0), Vector3.down, out centerGroundHit, centeredRayToGroundLength);
-        Debug.DrawRay(transform.position, -transform.up, Color.red);
+        isCenterGroundHit = Physics.Raycast(transform.TransformPoint(charController.center), -transform.up, out centerGroundHit, centeredRayToGroundLength, groundLayer);
+        Debug.DrawRay(transform.TransformPoint(charController.center), -transform.up, Color.red);
         if (!isCenterGroundHit) //if is flying
         {
-            if (isFrontPointHit) //TRY
+            if (isFrontPointHit) //landing with the front wheel
             {
-                //if not all rays are hitting, 
-                // updatedPlayerForward = Vector3.Project(updatedPlayerNormal, Vector3.up);
                 updatedPlayerNormal = frontHit.normal;
                 transform.rotation = Quaternion.Slerp(transform.rotation,
                     Quaternion.LookRotation(updatedPlayerForward, updatedPlayerNormal), Time.deltaTime * reorientSpeed);
-            }/**/
+            }
             else
             {
-                Debug.DrawRay(transform.position, updatedPlayerForward * currentForwardSpeed + Vector3.down * currentVerticalSpeed, Color.green);
-                //print(Vector3.Angle(Vector3.up, Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(updatedPlayerForward * currentForwardSpeed + Vector3.down * currentVerticalSpeed), Time.deltaTime * reorientSpeed).eulerAngles));
-                /**/
                 if (
                 Vector3.Angle(Vector3.up,
                     updatedPlayerForward * currentForwardSpeed +
                                                     Vector3.down * currentVerticalSpeed) < maxVerticalAngle)
-                    // updatedPlayerForward = updatedPlayerForward*currentForwardSpeed + Vector3.down*currentVerticalSpeed;
                     transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(updatedPlayerForward * currentForwardSpeed + Vector3.down * currentVerticalSpeed), Time.deltaTime * reorientSpeed);
             }
         }
-        else if (isBackPointHit & isFrontPointHit & isLeftPointHit & isRightPointHit)
+        else if (isBackPointHit & isFrontPointHit & isLeftPointHit & isRightPointHit) //if all rays are hitting ground
         {
-
             Debug.DrawRay(rightBikeLimit.position, -transform.up);
 
             updatedPlayerForward = frontGroundpoint - backGroundPoint;
             updatedPlayerRight = rightGroundPoint - leftGroundPoint;
             updatedPlayerNormal = Vector3.Cross(updatedPlayerForward, updatedPlayerRight);
-            /*
-            if (Vector3.Dot(updatedPlayerNormal, Vector3.up) <= 0)
-                updatedPlayerNormal = Vector3.up;
-                */
+
             Quaternion rot = Quaternion.Euler(updatedPlayerNormal);
             transform.rotation = Quaternion.Slerp(transform.rotation,
                 Quaternion.LookRotation(updatedPlayerForward, updatedPlayerNormal), Time.deltaTime * reorientSpeed);
 
-
         }
-        // else 
-
+        //else hitting the center ground but not all the other rays
 
 
     }
@@ -211,10 +194,7 @@ public class PlayerMovementController : MonoBehaviour
 
         //ACCELERATION CALCULUS ENDS
 
-        //if (charController.enabled == true)  Debug.Log("Grounded!!");
-        charController.Move((updatedPlayerForward * currentForwardSpeed * speedFactor + Vector3.down * currentVerticalSpeed));
-
-
+        charController.Move(updatedPlayerForward * currentForwardSpeed * speedFactor + Vector3.down * currentVerticalSpeed);
 
     }
 
@@ -227,8 +207,9 @@ public class PlayerMovementController : MonoBehaviour
 
     }
 
-	public void MoveAside (Vector3 windPosition, float windForce){
-		Vector3 windDir = windPosition;		
-		transform.Translate(((updatedPlayerForward * Mathf.Clamp (currentForwardSpeed, minimumSpeed, maximumSpeed)) + (windDir * windForce)) * Time.deltaTime);		
-	}
+    public void MoveAside(Vector3 windPosition, float windForce)
+    {
+        Vector3 windDir = windPosition;
+        transform.Translate(((updatedPlayerForward * Mathf.Clamp(currentForwardSpeed, minimumSpeed, maximumSpeed)) + (windDir * windForce)) * Time.deltaTime);
+    }
 }
