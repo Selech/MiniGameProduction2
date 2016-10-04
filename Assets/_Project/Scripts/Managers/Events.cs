@@ -525,3 +525,27 @@ public class SetAberrationEvent : GameEvent
 		this.duration = duration;
 	}
 }
+
+public class EnterRampEvent : GameEvent
+{
+    public EnterRampEvent()
+    {
+
+    }
+}
+
+public class FlyingEvent : GameEvent
+{
+    public FlyingEvent()
+    {
+
+    }
+}
+
+public class LandingEvent : GameEvent
+{
+    public LandingEvent()
+    {
+
+    }
+}

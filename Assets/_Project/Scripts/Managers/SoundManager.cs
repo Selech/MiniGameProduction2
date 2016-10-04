@@ -6,7 +6,7 @@ public class SoundManager : MonoBehaviour
 
     #region Booleans for game states
 
-   
+
     [HideInInspector]
     public bool musicMuted = false;
 
@@ -28,6 +28,10 @@ public class SoundManager : MonoBehaviour
     #region Booleans for sounds being played only once
 
     bool ohNoSoundPlayed = false;
+    bool windPlayed = false;
+    bool hitPlayed = false;
+    bool hitObjectSound = false;
+    bool pickUpSound = false;
 
     #endregion
 
@@ -39,6 +43,15 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        // Debug
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            PlaySound("Stop_MusicDrive");
+            PlaySound("Stop_MenuMusic");
+        }
+    }
 
 
     #region Listeners
@@ -64,7 +77,7 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StartListening<BoostPickupHitEvent>(BoostPickUp);
         EventManager.Instance.StartListening<StartStackingSceneEvent>(StackingSceneSound);
         EventManager.Instance.StartListening<MapProgressionForSoundEvent>(MapProgression);
-        EventManager.Instance.StartListening<StartStackingSceneEvent>(StackingSceneSound);
+
 
 
         // tutorial sounds below
@@ -110,7 +123,7 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StopListening<BoostPickupHitEvent>(BoostPickUp);
         EventManager.Instance.StopListening<StartStackingSceneEvent>(StackingSceneSound);
         EventManager.Instance.StopListening<MapProgressionForSoundEvent>(MapProgression);
-        EventManager.Instance.StopListening<StartStackingSceneEvent>(StackingSceneSound);
+
 
         // tutorial sounds below
         EventManager.Instance.StopListening<ChangeSchemeEvent>(ChangeScheme);
@@ -154,7 +167,8 @@ public class SoundManager : MonoBehaviour
 
             PlaySound("Play_MusicDrive");
 
-        } else if (!musicMuted && !drivingStarted)
+        }
+        else if (!musicMuted && !drivingStarted)
         {
             if (stackingSceneActive)
             {
@@ -188,7 +202,7 @@ public class SoundManager : MonoBehaviour
         }
         AkBankManager.LoadBank("nysb", false, true);
         PlaySound("Play_UITap");
-        
+
     }
 
     private void WonGame(WinChunkEnteredEvent e)
@@ -256,12 +270,19 @@ public class SoundManager : MonoBehaviour
     private void LoseCarriable(LoseCarriableEvent e)
     {
         PlaySound("Play_LoseItem");
-        PlaySound("Play_MusVO17");
+        if (!hitObjectSound)
+        {
+            PlaySound("Play_MusVO17");
+            hitObjectSound = true;
+        }
     }
 
     private void GainCarriable(GetBackCarriableHitEvent e)
     {
-        PlaySound("Play_MisVO10");
+        if (pickUpSound)
+        {
+            PlaySound("Play_MisVO10");
+        }
         PlaySound("Play_Pickup");
     }
 
@@ -269,7 +290,12 @@ public class SoundManager : MonoBehaviour
     {
         if (isTutorial)
         {
-            PlaySound("Play_MusVO5");
+            if (!windPlayed)
+            {
+                PlaySound("Play_MusVO5");
+                windPlayed = true;
+            }
+
         }
     }
 
@@ -280,9 +306,11 @@ public class SoundManager : MonoBehaviour
 
     private void StackingSceneSound(StartStackingSceneEvent e)
     {
-        if (isDanish) {
+        if (isDanish)
+        {
             AkSoundEngine.SetCurrentLanguage("Danish");
-        } else
+        }
+        else
         {
             AkSoundEngine.SetCurrentLanguage("English(US)");
         }
@@ -319,11 +347,11 @@ public class SoundManager : MonoBehaviour
         {
             if (GameManager.Instance.isGyro)
             {
-                PlaySound("Play_MisVO19");
+                PlaySound("Play_MisVO20");
             }
             else
             {
-                PlaySound("Play_MisVO20");
+                PlaySound("Play_MisVO19");
             }
         }
     }
@@ -440,7 +468,7 @@ public class SoundManager : MonoBehaviour
     private void AtEnd01(AtEnd01Event e)
     {
         PlaySound("Play_MisVO12");
-    } 
+    }
 
     private void AtEnd02(AtEnd02Event e)
     {
