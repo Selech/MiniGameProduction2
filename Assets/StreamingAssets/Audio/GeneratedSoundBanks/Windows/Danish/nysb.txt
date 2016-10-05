@@ -9,6 +9,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	1089845932	Play_Swipe			\Default Work Unit\Play_Swipe	
 	1131747068	Play_ColTrashCan			\Default Work Unit\Collisions\Play_ColTrashCan	
 	1342112360	Stop_Build			\Default Work Unit\Stop_Build	
+	1389500738	Play_Bump			\Default Work Unit\Play_Bump	
 	1496570115	Play_IntroVO2_3			\Default Work Unit\VO\Play_IntroVO2_3	
 	1553219250	Play_Collision			\Default Work Unit\Collisions\Play_Collision	
 	1647498997	Stop_Flying			\Default Work Unit\Stop_Flying	
@@ -121,8 +122,9 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	38680491	Swipe	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\Swipe_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Swipe		10098
 	59777987	Car	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\Car_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Car\Car		246487
 	65167509	Ambience3	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\Ambience3_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience3		677765
-	76448816	Blow	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\Blow_213AAD69.wem		\Actor-Mixer Hierarchy\Default Work Unit\Fan\Blow		39021
+	76448816	Blow	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\Blow_E91A9E47.wem		\Actor-Mixer Hierarchy\Default Work Unit\Fan\Blow		39021
 	78431307	MisVO19	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\Voices\Danish\MisVO19_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\VO\Mis\MisVO19		15486
+	81153140	ColCan3	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\ColCan3_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Collision\ColTrashCan\ColCan3		16701
 	89202516	EvilCat	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\EvilCat_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\CutScene\EvilCat		24498
 	94943697	MusVO20	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\Voices\Danish\MusVO20_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\VO\Mus\MusVO20		13590
 	101756548	MusVO16	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\Voices\Danish\MusVO16_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\VO\Mus\MusVO16		19205
@@ -137,6 +139,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	223398968	MusVO7	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\Voices\Danish\MusVO7_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\VO\Mus\MusVO7		21621
 	240881839	TwigSnap	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\TwigSnap_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\CutScene\TwigSnap		6335
 	243722184	MusVO10	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\Voices\Danish\MusVO10_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\VO\Mus\MusVO10		15237
+	281531093	ColBlock2	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\ColBlock2_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Collision\ColRoadBlock\ColBlock2		18436
 	296002508	MisVO16	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\Voices\Danish\MisVO16_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\VO\Mis\MisVO16		26430
 	311213854	MisVO10	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\Voices\Danish\MisVO10_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\VO\Mis\MisVO10		24015
 	315619341	Build6	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\Build6_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\BuildScene\Build\Build\Build6		17556
@@ -158,17 +161,20 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	437092154	IntroSc2	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\Voices\Danish\IntroSc2_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\CutScene\IntroSc2		38325
 	442451733	WinMusic	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\WinMusic_CE760089.wem		\Interactive Music Hierarchy\Default Work Unit\Music\WinMusic\WinMusic		97434
 	452193525	Drums	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\Drums_CE760089.wem		\Interactive Music Hierarchy\Default Work Unit\Music\DriveMusic\BaseLayer\Drums		205102
-	491471594	ColContainer	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\ColContainer_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Collision\ColContainer		21297
+	491471594	ColContainer	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\ColContainer_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Collision\ColContainer\ColContainer		21297
 	496813111	Build7	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\Build7_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\BuildScene\Build\Build\Build7		18665
+	524652138	ColContainer3	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\ColContainer3_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Collision\ColContainer\ColContainer3		15388
 	539749869	Brake	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\Brake_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Brake		8375
 	557365708	MusVO3	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\Voices\Danish\MusVO3_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\VO\Mus\MusVO3		18229
 	571690728	Ambience2	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\Ambience2_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Ambience\Ambience2		700544
 	580247750	ColPan	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\ColPan_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Collision\ColPan		12744
-	589427419	ColTrashCan	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\ColTrashCan_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Collision\ColTrashCan		29822
+	584934364	Bump	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\Bump_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Bump		4406
+	589427419	ColTrashCan	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\ColTrashCan_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Collision\ColTrashCan\ColTrashCan		29822
 	592288002	Build9	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\Build9_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\BuildScene\Build\Build\Build9		19828
 	592831378	MisVO15	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\Voices\Danish\MisVO15_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\VO\Mis\MisVO15		12815
 	614033501	MusVO22	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\Voices\Danish\MusVO22_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\VO\Mus\MusVO22		8511
 	624140532	MusVO14	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\Voices\Danish\MusVO14_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\VO\Mus\MusVO14		19127
+	648945175	ColCan2	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\ColCan2_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Collision\ColTrashCan\ColCan2		12198
 	661648573	ColShoes	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\ColShoes_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Collision\ColShoes		7210
 	676208044	IntroVO2+3	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\Voices\Danish\IntroVO2+3_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\VO\IntroVO2+3		63943
 	680817381	SpeedUp	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\SpeedUp_395A613C.wem		\Actor-Mixer Hierarchy\Default Work Unit\SpeedUp		25727
@@ -190,24 +196,26 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	816925908	Pedal5	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\Pedal5_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Pedals\Pedals\Pedal5		6673
 	828162615	MisVO14	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\Voices\Danish\MisVO14_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\VO\Mis\MisVO14		17472
 	828435634	TextCue	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\TextCue_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\CutScene\TextCue		61002
+	830517139	ColContainer2	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\ColContainer2_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Collision\ColContainer\ColContainer2		16159
 	834418003	Pedal5_Strafe	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\Pedal5_Strafe_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Pedals\StrafePedal\Pedal5_Strafe		9707
 	838122153	LoseItems3	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\LoseItems3_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\LoseItem\LoseItems3		14493
 	848568799	MusVO6	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\Voices\Danish\MusVO6_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\VO\Mus\MusVO6		32640
+	854797962	ColCar2	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\ColCar2_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Collision\ColCar\ColCar2		24609
 	858818023	Throw	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\Throw_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Window Items\Throw		11638
 	860480126	Collision1	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\Collision1_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\PlaceHolders\Collision1		7394
 	864704460	LoseItems1	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\LoseItems1_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\LoseItem\LoseItems1		14790
-	890012657	CloudPuff	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\CloudPuff_B036B97C.wem		\Actor-Mixer Hierarchy\Default Work Unit\BuildScene\CloudPuff		6112
+	890012657	CloudPuff	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\CloudPuff_3F7C2E53.wem		\Actor-Mixer Hierarchy\Default Work Unit\BuildScene\CloudPuff		6112
 	892835495	Pedal1_Strafe	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\Pedal1_Strafe_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Pedals\StrafePedal\Pedal1_Strafe		8266
 	903372874	MusVO13	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\Voices\Danish\MusVO13_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\VO\Mus\MusVO13		11919
 	917023365	Sax	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\Sax_CE760089.wem		\Interactive Music Hierarchy\Default Work Unit\Music\DriveMusic\BaseLayer\Sax		300014
 	920086610	MisVO11	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\Voices\Danish\MisVO11_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\VO\Mis\MisVO11		12859
-	928755797	ColCar	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\ColCar_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Collision\ColCar		39050
+	928755797	ColCar	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\ColCar_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Collision\ColCar\ColCar		39050
 	935445354	MisVO13	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\Voices\Danish\MisVO13_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\VO\Mis\MisVO13		15368
 	946231287	IntroSc1	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\Voices\Danish\IntroSc1_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\CutScene\IntroSc1		206749
 	962258917	MusicCutScene	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\Music_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\CutScene\MusicCutScene		463396
 	968795671	MusVO19	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\Voices\Danish\MusVO19_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\VO\Mus\MusVO19		10267
 	972096785	MisVO20	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\Voices\Danish\MisVO20_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\VO\Mis\MisVO20		15282
-	980963983	ColRoadBlock	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\ColRoadBlock_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Collision\ColRoadBlock		23499
+	980963983	ColRoadBlock	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\ColRoadBlock_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Collision\ColRoadBlock\ColRoadBlock		23499
 	985741405	Build5	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\Build5_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\BuildScene\Build\Build\Build5		20069
 	987547789	Pedal2_Strafe	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\Pedal2_Strafe_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Pedals\StrafePedal\Pedal2_Strafe		8946
 	988736426	BuildingMusic1	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\BuildingMusic1_CE760089.wem		\Interactive Music Hierarchy\Default Work Unit\BuildMusic\BuildingMusic1\BuildingMusic1		227290
@@ -215,4 +223,5 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	999354876	ColBall	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\ColBall_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Collision\ColBall		11024
 	1008435396	Pedal2	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\Pedal2_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Pedals\Pedals\Pedal2		6874
 	1050908816	MusVO8	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\Voices\Danish\MusVO8_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\VO\Mus\MusVO8		4235
+	1060332689	ColCar3	Z:\Volumes\Macintosh HD\DADIU\GIT\MiniGame2\Assets\Wwise\WwiseProject\.cache\Windows\SFX\ColCar3_2A77C9DB.wem		\Actor-Mixer Hierarchy\Default Work Unit\Collision\ColCar\ColCar3		23719
 

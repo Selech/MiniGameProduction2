@@ -20,6 +20,7 @@
 				<Event Id="3672906123" Name="Play_Brake" ObjectPath="\Events\Default Work Unit\Play_Brake"/>
 				<Event Id="2662543194" Name="Play_Build" ObjectPath="\Events\Default Work Unit\Play_Build"/>
 				<Event Id="2549958839" Name="Play_BuildMusic" ObjectPath="\Events\Default Work Unit\Music\Play_BuildMusic"/>
+				<Event Id="1389500738" Name="Play_Bump" ObjectPath="\Events\Default Work Unit\Play_Bump"/>
 				<Event Id="2690797144" Name="Play_Car" ObjectPath="\Events\Default Work Unit\Play_Car" MaxAttenuation="30.000000"/>
 				<Event Id="2777243728" Name="Play_CloudPuff" ObjectPath="\Events\Default Work Unit\Play_CloudPuff"/>
 				<Event Id="2925933811" Name="Play_ColBall" ObjectPath="\Events\Default Work Unit\Collisions\Play_ColBall"/>
@@ -150,11 +151,15 @@
 				</File>
 				<File Id="76448816" Language="SFX">
 					<ShortName>Blow.wav</ShortName>
-					<Path>SFX/Blow_213AAD69.wem</Path>
+					<Path>SFX/Blow_E91A9E47.wem</Path>
 				</File>
 				<File Id="78431307" Language="Danish">
 					<ShortName>MisVO19.wav</ShortName>
 					<Path>Voices/Danish/MisVO19_2A77C9DB.wem</Path>
+				</File>
+				<File Id="81153140" Language="SFX">
+					<ShortName>ColCan3.wav</ShortName>
+					<Path>SFX/ColCan3_2A77C9DB.wem</Path>
 				</File>
 				<File Id="89202516" Language="SFX">
 					<ShortName>EvilCat.wav</ShortName>
@@ -211,6 +216,10 @@
 				<File Id="243722184" Language="Danish">
 					<ShortName>MusVO10.wav</ShortName>
 					<Path>Voices/Danish/MusVO10_2A77C9DB.wem</Path>
+				</File>
+				<File Id="281531093" Language="SFX">
+					<ShortName>ColBlock2.wav</ShortName>
+					<Path>SFX/ColBlock2_2A77C9DB.wem</Path>
 				</File>
 				<File Id="296002508" Language="Danish">
 					<ShortName>MisVO16.wav</ShortName>
@@ -304,6 +313,10 @@
 					<ShortName>Build7.wav</ShortName>
 					<Path>SFX/Build7_2A77C9DB.wem</Path>
 				</File>
+				<File Id="524652138" Language="SFX">
+					<ShortName>ColContainer3.wav</ShortName>
+					<Path>SFX/ColContainer3_2A77C9DB.wem</Path>
+				</File>
 				<File Id="539749869" Language="SFX">
 					<ShortName>Brake.wav</ShortName>
 					<Path>SFX/Brake_2A77C9DB.wem</Path>
@@ -319,6 +332,10 @@
 				<File Id="580247750" Language="SFX">
 					<ShortName>ColPan.wav</ShortName>
 					<Path>SFX/ColPan_2A77C9DB.wem</Path>
+				</File>
+				<File Id="584934364" Language="SFX">
+					<ShortName>Bump.wav</ShortName>
+					<Path>SFX/Bump_2A77C9DB.wem</Path>
 				</File>
 				<File Id="589427419" Language="SFX">
 					<ShortName>ColTrashCan.wav</ShortName>
@@ -339,6 +356,10 @@
 				<File Id="624140532" Language="Danish">
 					<ShortName>MusVO14.wav</ShortName>
 					<Path>Voices/Danish/MusVO14_2A77C9DB.wem</Path>
+				</File>
+				<File Id="648945175" Language="SFX">
+					<ShortName>ColCan2.wav</ShortName>
+					<Path>SFX/ColCan2_2A77C9DB.wem</Path>
 				</File>
 				<File Id="661648573" Language="SFX">
 					<ShortName>ColShoes.wav</ShortName>
@@ -424,6 +445,10 @@
 					<ShortName>TextCue.wav</ShortName>
 					<Path>SFX/TextCue_2A77C9DB.wem</Path>
 				</File>
+				<File Id="830517139" Language="SFX">
+					<ShortName>ColContainer2.wav</ShortName>
+					<Path>SFX/ColContainer2_2A77C9DB.wem</Path>
+				</File>
 				<File Id="834418003" Language="SFX">
 					<ShortName>Pedal5_Strafe.wav</ShortName>
 					<Path>SFX/Pedal5_Strafe_2A77C9DB.wem</Path>
@@ -435,6 +460,10 @@
 				<File Id="848568799" Language="Danish">
 					<ShortName>MusVO6.wav</ShortName>
 					<Path>Voices/Danish/MusVO6_2A77C9DB.wem</Path>
+				</File>
+				<File Id="854797962" Language="SFX">
+					<ShortName>ColCar2.wav</ShortName>
+					<Path>SFX/ColCar2_2A77C9DB.wem</Path>
 				</File>
 				<File Id="858818023" Language="SFX">
 					<ShortName>Throw.wav</ShortName>
@@ -450,7 +479,7 @@
 				</File>
 				<File Id="890012657" Language="SFX">
 					<ShortName>CloudPuff.wav</ShortName>
-					<Path>SFX/CloudPuff_B036B97C.wem</Path>
+					<Path>SFX/CloudPuff_3F7C2E53.wem</Path>
 				</File>
 				<File Id="892835495" Language="SFX">
 					<ShortName>Pedal1_Strafe.wav</ShortName>
@@ -524,6 +553,10 @@
 					<ShortName>MusVO8.wav</ShortName>
 					<Path>Voices/Danish/MusVO8_2A77C9DB.wem</Path>
 				</File>
+				<File Id="1060332689" Language="SFX">
+					<ShortName>ColCar3.wav</ShortName>
+					<Path>SFX/ColCar3_2A77C9DB.wem</Path>
+				</File>
 			</IncludedMemoryFiles>
 		</SoundBank>
 		<SoundBank Id="1237711813" Language="English(US)">
@@ -535,6 +568,7 @@
 				<Event Id="3672906123" Name="Play_Brake" ObjectPath="\Events\Default Work Unit\Play_Brake"/>
 				<Event Id="2662543194" Name="Play_Build" ObjectPath="\Events\Default Work Unit\Play_Build"/>
 				<Event Id="2549958839" Name="Play_BuildMusic" ObjectPath="\Events\Default Work Unit\Music\Play_BuildMusic"/>
+				<Event Id="1389500738" Name="Play_Bump" ObjectPath="\Events\Default Work Unit\Play_Bump"/>
 				<Event Id="2690797144" Name="Play_Car" ObjectPath="\Events\Default Work Unit\Play_Car" MaxAttenuation="30.000000"/>
 				<Event Id="2777243728" Name="Play_CloudPuff" ObjectPath="\Events\Default Work Unit\Play_CloudPuff"/>
 				<Event Id="2925933811" Name="Play_ColBall" ObjectPath="\Events\Default Work Unit\Collisions\Play_ColBall"/>
@@ -661,7 +695,11 @@
 				</File>
 				<File Id="76448816" Language="SFX">
 					<ShortName>Blow.wav</ShortName>
-					<Path>SFX/Blow_213AAD69.wem</Path>
+					<Path>SFX/Blow_E91A9E47.wem</Path>
+				</File>
+				<File Id="81153140" Language="SFX">
+					<ShortName>ColCan3.wav</ShortName>
+					<Path>SFX/ColCan3_2A77C9DB.wem</Path>
 				</File>
 				<File Id="89202516" Language="SFX">
 					<ShortName>EvilCat.wav</ShortName>
@@ -722,6 +760,10 @@
 				<File Id="268939865" Language="English(US)">
 					<ShortName>MusVO19.wav</ShortName>
 					<Path>Voices/English(US)/MusVO19_2A77C9DB.wem</Path>
+				</File>
+				<File Id="281531093" Language="SFX">
+					<ShortName>ColBlock2.wav</ShortName>
+					<Path>SFX/ColBlock2_2A77C9DB.wem</Path>
 				</File>
 				<File Id="315619341" Language="SFX">
 					<ShortName>Build6.wav</ShortName>
@@ -811,6 +853,10 @@
 					<ShortName>Build7.wav</ShortName>
 					<Path>SFX/Build7_2A77C9DB.wem</Path>
 				</File>
+				<File Id="524652138" Language="SFX">
+					<ShortName>ColContainer3.wav</ShortName>
+					<Path>SFX/ColContainer3_2A77C9DB.wem</Path>
+				</File>
 				<File Id="539749869" Language="SFX">
 					<ShortName>Brake.wav</ShortName>
 					<Path>SFX/Brake_2A77C9DB.wem</Path>
@@ -827,6 +873,10 @@
 					<ShortName>ColPan.wav</ShortName>
 					<Path>SFX/ColPan_2A77C9DB.wem</Path>
 				</File>
+				<File Id="584934364" Language="SFX">
+					<ShortName>Bump.wav</ShortName>
+					<Path>SFX/Bump_2A77C9DB.wem</Path>
+				</File>
 				<File Id="589427419" Language="SFX">
 					<ShortName>ColTrashCan.wav</ShortName>
 					<Path>SFX/ColTrashCan_2A77C9DB.wem</Path>
@@ -834,6 +884,10 @@
 				<File Id="592288002" Language="SFX">
 					<ShortName>Build9.wav</ShortName>
 					<Path>SFX/Build9_2A77C9DB.wem</Path>
+				</File>
+				<File Id="648945175" Language="SFX">
+					<ShortName>ColCan2.wav</ShortName>
+					<Path>SFX/ColCan2_2A77C9DB.wem</Path>
 				</File>
 				<File Id="652760533" Language="English(US)">
 					<ShortName>MisVO11.wav</ShortName>
@@ -911,6 +965,10 @@
 					<ShortName>TextCue.wav</ShortName>
 					<Path>SFX/TextCue_2A77C9DB.wem</Path>
 				</File>
+				<File Id="830517139" Language="SFX">
+					<ShortName>ColContainer2.wav</ShortName>
+					<Path>SFX/ColContainer2_2A77C9DB.wem</Path>
+				</File>
 				<File Id="834418003" Language="SFX">
 					<ShortName>Pedal5_Strafe.wav</ShortName>
 					<Path>SFX/Pedal5_Strafe_2A77C9DB.wem</Path>
@@ -922,6 +980,10 @@
 				<File Id="838122153" Language="SFX">
 					<ShortName>LoseItems3.wav</ShortName>
 					<Path>SFX/LoseItems3_2A77C9DB.wem</Path>
+				</File>
+				<File Id="854797962" Language="SFX">
+					<ShortName>ColCar2.wav</ShortName>
+					<Path>SFX/ColCar2_2A77C9DB.wem</Path>
 				</File>
 				<File Id="858818023" Language="SFX">
 					<ShortName>Throw.wav</ShortName>
@@ -941,7 +1003,7 @@
 				</File>
 				<File Id="890012657" Language="SFX">
 					<ShortName>CloudPuff.wav</ShortName>
-					<Path>SFX/CloudPuff_B036B97C.wem</Path>
+					<Path>SFX/CloudPuff_3F7C2E53.wem</Path>
 				</File>
 				<File Id="892835495" Language="SFX">
 					<ShortName>Pedal1_Strafe.wav</ShortName>
@@ -1030,6 +1092,10 @@
 				<File Id="1008435396" Language="SFX">
 					<ShortName>Pedal2.wav</ShortName>
 					<Path>SFX/Pedal2_2A77C9DB.wem</Path>
+				</File>
+				<File Id="1060332689" Language="SFX">
+					<ShortName>ColCar3.wav</ShortName>
+					<Path>SFX/ColCar3_2A77C9DB.wem</Path>
 				</File>
 				<File Id="1066262384" Language="English(US)">
 					<ShortName>MisVO19.wav</ShortName>
