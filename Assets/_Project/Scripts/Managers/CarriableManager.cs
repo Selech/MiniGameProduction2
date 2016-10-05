@@ -34,8 +34,10 @@ public class CarriableManager : MonoBehaviour
 		stacking = GetComponent<StackingList>();
 	}
 
-	public void BeginGame ()    {
+	public void BeginGame ()  
+	{
 		EventManager.Instance.TriggerEvent(new StartGame());
+		EventManager.Instance.TriggerEvent(new FeedbackCameraShakeEvent(1,5f));
 	}
 
 	public void BeginGame (StartGame e)    {
