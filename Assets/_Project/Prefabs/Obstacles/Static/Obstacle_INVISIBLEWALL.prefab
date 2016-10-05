@@ -21,7 +21,8 @@ GameObject:
   - 4: {fileID: 4000011955350936}
   - 33: {fileID: 33000010451411424}
   - 64: {fileID: 64000014068274984}
-  m_Layer: 8
+  - 65: {fileID: 65000010112063278}
+  m_Layer: 12
   m_Name: Obstacle_INVISIBLEWALL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012088429222}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 0.7545916, y: 0.85853845, z: 0.6684696}
   m_LocalEulerAnglesHint: {x: 270, y: 0, z: 0}
   m_Children: []
@@ -60,3 +61,15 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65000010112063278
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012088429222}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.9889345, y: 0.8559312, z: 9.90465}
+  m_Center: {x: -0.029498706, y: 0.41, z: -0.15027621}
