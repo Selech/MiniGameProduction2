@@ -5746,7 +5746,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010528878478}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -1.15}
+  m_LocalPosition: {x: 0, y: 1, z: -1.068}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -7554,7 +7554,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013584393700}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 1.15}
+  m_LocalPosition: {x: 0, y: 1, z: 0.785}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -9086,7 +9086,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011357657524}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.816, y: 1, z: 0}
+  m_LocalPosition: {x: 0.489, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -9168,7 +9168,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013574007248}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.783, y: 1, z: 0}
+  m_LocalPosition: {x: -0.429, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -10164,8 +10164,8 @@ MonoBehaviour:
   steepDecelerationDegree: 5
   maxVerticalAngle: 145
   reorientSpeed: 4
-  rayToGroundLength: 2
-  centeredRayToGroundLength: 0.6
+  rayToGroundLength: 4
+  centeredRayToGroundLength: 1
   currentForwardSpeed: 0
   currentVerticalSpeed: 0
   steepAngle: 0
@@ -10749,9 +10749,9 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 1
-  m_Radius: 0.5
-  m_SlopeLimit: 180
+  m_Radius: 0.8
+  m_SlopeLimit: 80
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.58, z: 0}
+  m_Center: {x: 0, y: 0.85, z: 0.33}
