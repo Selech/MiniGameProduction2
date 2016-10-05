@@ -25,6 +25,7 @@ public class PlayerReactionsController : MonoBehaviour
     private float tiltFloat; 
 
     private int indexOfCurrentTopCarriable = 0;
+    private bool inAir;
 
     void Awake()
     {
@@ -38,6 +39,7 @@ public class PlayerReactionsController : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         animationFloat = 0.0f;
         tiltFloat = 0.0f;
+        inAir = false;
     }
 
     void OnEnable()
@@ -274,20 +276,21 @@ public class PlayerReactionsController : MonoBehaviour
     {
         GameObject hittedObject = hit.gameObject;
 
-        if (hittedObject.layer == LayerMask.NameToLayer("Environment"))
-        {
-            animator.SetTrigger("Landed");
-            return;
-        }
+        //if (hittedObject.layer == LayerMask.NameToLayer("Environment") && inAir)
+        //{
+        //    animator.SetTrigger("Landed");
+        //    inAir = false;
+        //}
 
         switch (hittedObject.tag)
         {
             case "AirGuide": //like the floating "get back carriable"
                 EventManager.Instance.TriggerEvent(new FlyingEvent());
-                animator.SetTrigger("DownRamp");
+                //inAir = true;
+                //animator.SetTrigger("DownRamp");
                 break;
             case "RoadProp": //like ground speed boosts or sebastian ramps
-                animator.SetTrigger("UpRamp");
+                //animator.SetTrigger("UpRamp");
                 EventManager.Instance.TriggerEvent(new PlayerHitRoadProp(hittedObject));
                 break;
             case "Pickable": //like the floating "get back carriable"
