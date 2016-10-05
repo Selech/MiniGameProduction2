@@ -3458,6 +3458,23 @@
 							</ActiveSourceList>
 						</Sound>
 						<Sound Name="TwigSnap" ID="{A05E2688-A4A7-460F-9039-A6AB829548DA}" ShortID="743480722" Type="SoundFX">
+							<PropertyList>
+								<Property Name="OutputBusLowpass" Type="int16">
+									<ValueList>
+										<Value>28</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-80</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>3</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
@@ -3480,7 +3497,7 @@
 							<PropertyList>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-1</Value>
+										<Value>1</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
