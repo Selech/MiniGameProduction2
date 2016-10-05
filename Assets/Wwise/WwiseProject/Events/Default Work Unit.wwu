@@ -829,6 +829,13 @@
 						</Event>
 						<Event Name="Play_TwigSnap" ID="{03DA032A-05B5-4491-851E-68F4350E0AA6}">
 							<ChildrenList>
+								<Action Name="Play" ID="{63ADF4EF-5242-4414-BC47-85338B9B9054}" ShortID="1065237386" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{758DA2F1-7AFE-4684-84C1-F04687E11649}" Global="false">
+											<ObjectRef Name="TwigSnap" ID="{A05E2688-A4A7-460F-9039-A6AB829548DA}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
+										</Element>
+									</ElementList>
+								</Action>
 								<Action Name="Stop" ID="{5C48344C-B66C-4E54-A67A-7B659C845438}" ShortID="673170621" Type="Stop" Scope="One" Global="false">
 									<ElementList>
 										<Element ID="{3297CC5F-DAB4-48E0-8C05-2C2788C3FA2C}" Global="false">
@@ -836,10 +843,20 @@
 										</Element>
 									</ElementList>
 								</Action>
-								<Action Name="Play" ID="{63ADF4EF-5242-4414-BC47-85338B9B9054}" ShortID="1065237386" Type="Play" Scope="One" Global="false">
+								<Action Name="Stop" ID="{32BBCC89-12C7-406F-8A7D-9B56F8F4871A}" ShortID="21232441" Type="Stop" Scope="One" Global="false">
 									<ElementList>
-										<Element ID="{758DA2F1-7AFE-4684-84C1-F04687E11649}" Global="false">
-											<ObjectRef Name="TwigSnap" ID="{A05E2688-A4A7-460F-9039-A6AB829548DA}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
+										<Element ID="{0B79C64D-C1AB-4955-83E1-83834568D7FE}" Global="false">
+											<ObjectRef Name="MusicCutScene" ID="{F152F482-5B7C-49ED-8978-BF75363EF1F9}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
+										</Element>
+									</ElementList>
+								</Action>
+								<Action Name="Play" ID="{648FD669-8CA6-4F09-807E-F3EC5D7964A6}" ShortID="748522199" Type="Play" Scope="One" Global="false">
+									<PropertyList>
+										<Property Name="Delay" Type="Real64" Value="0.29"/>
+									</PropertyList>
+									<ElementList>
+										<Element ID="{477F1257-483A-4465-B55A-11A6864D08F6}" Global="false">
+											<ObjectRef Name="EvilCatCue" ID="{9D0F3780-F2B5-4F8F-A069-8D9EF7CDA43F}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
 										</Element>
 									</ElementList>
 								</Action>
@@ -848,6 +865,9 @@
 						<Event Name="Play_EvilCatCue" ID="{78DA98A6-E02A-44CD-87AE-5EB75F4153A0}">
 							<ChildrenList>
 								<Action Name="Play" ID="{D185755F-8F9D-41A0-8764-047C78D6784D}" ShortID="10461114" Type="Play" Scope="One" Global="false">
+									<PropertyList>
+										<Property Name="Delay" Type="Real64" Value="0.8"/>
+									</PropertyList>
 									<ElementList>
 										<Element ID="{6A766169-0C5E-48C5-8EA7-8AF07C7C10CC}" Global="false">
 											<ObjectRef Name="EvilCatCue" ID="{9D0F3780-F2B5-4F8F-A069-8D9EF7CDA43F}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
@@ -954,6 +974,20 @@
 					<ChildrenList>
 						<Event Name="Play_BuildMusic" ID="{04095198-07D2-47F5-A997-5DE0FE1052D5}">
 							<ChildrenList>
+								<Action Name="Set Game Parameter" ID="{8E103850-726B-4608-A7B0-622EAF8CEBA8}" ShortID="497351484" Type="SetGameParameter" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{9F95E540-04B9-4C05-8DEB-716CB17B2787}" Global="false">
+											<ObjectRef Name="SkipScene" ID="{5D265A66-B65C-4FDE-BA6E-22457454AA3D}" WorkUnitID="{BF7C0DD8-E293-457A-844E-EF2FD3D1B823}"/>
+										</Element>
+									</ElementList>
+								</Action>
+								<Action Name="Stop" ID="{2BD86342-758E-4F23-B5BD-A5797C705D84}" ShortID="280631171" Type="Stop" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{F731F2B3-2073-40FE-8C4C-BD13249C5D6F}" Global="false">
+											<ObjectRef Name="MenuMusic2_0" ID="{6AAC1069-D6CD-4760-80B9-A3029DBCD242}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
+										</Element>
+									</ElementList>
+								</Action>
 								<Action Name="Play" ID="{276790CE-FEBC-4446-8D7C-CAAF3417054B}" ShortID="369059655" Type="Play" Scope="One" Global="false">
 									<ElementList>
 										<Element ID="{4B88A5AC-D9F6-4F7A-96F7-99003DE0CF9A}" Global="false">
@@ -976,6 +1010,16 @@
 						</Event>
 						<Event Name="Play_MusicDrive" ID="{6A9FF214-13EE-4A46-8E25-1AA332AB68AE}">
 							<ChildrenList>
+								<Action Name="Stop" ID="{C87A1350-FFE6-4EC0-B0AD-FEC797B74A98}" ShortID="574967901" Type="Stop" Scope="One" Global="true">
+									<PropertyList>
+										<Property Name="FadeTime" Type="Real64" Value="1"/>
+									</PropertyList>
+									<ElementList>
+										<Element ID="{686442E8-D42D-48C1-B56B-A1A134F094AC}" Global="true">
+											<ObjectRef Name="MenuMusic2_0" ID="{6AAC1069-D6CD-4760-80B9-A3029DBCD242}" WorkUnitID="{F97DC177-8C73-410D-9E52-256B80C35CB9}"/>
+										</Element>
+									</ElementList>
+								</Action>
 								<Action Name="Stop" ID="{1C594677-8144-4597-821B-0A5AEC3841AC}" ShortID="741997490" Type="Stop" Scope="One" Global="true">
 									<ElementList>
 										<Element ID="{07962DB2-D66B-46B8-8A39-41C419AE6F48}" Global="true">
