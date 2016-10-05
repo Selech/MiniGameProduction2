@@ -52,8 +52,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011992902810}
-  - 135: {fileID: 135000011106218934}
   - 114: {fileID: 114000010622536996}
+  - 65: {fileID: 65000010774462278}
   m_Layer: 0
   m_Name: GetBackCarriablePickup
   m_TagString: GetBackCarriablePickup
@@ -82,7 +82,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012190116090}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2170.9734, y: -553.4138, z: 2590.6165}
+  m_LocalPosition: {x: 0, y: 1.38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -138,6 +138,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011784185788}
   m_Mesh: {fileID: 4300000, guid: 28791dd9aaeba4347b5fbb75aeb2f90b, type: 3}
+--- !u!65 &65000010774462278
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012190116090}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.8, y: 2.59, z: 1.8}
+  m_Center: {x: 0, y: -0.51, z: 0}
 --- !u!95 &95000011055538120
 Animator:
   serializedVersion: 3
@@ -166,15 +178,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a07918c28e56e74d9361960d3163169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &135000011106218934
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012190116090}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}

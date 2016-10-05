@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Scene4_Hill
+  m_Name: FadeIn
   serializedVersion: 6
   m_Legacy: 1
   m_Compressed: 0
@@ -19,15 +19,15 @@ AnimationClip:
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: 5.5
-        value: 1
-        inSlope: -1
-        outSlope: -1
-        tangentMode: 10
-      - time: 6.5
+      - time: 0
         value: 0
-        inSlope: -1
-        outSlope: -1
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 10
+      - time: 0.5
+        value: 1
+        inSlope: 2
+        outSlope: 2
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -50,7 +50,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 6.5
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -69,15 +69,15 @@ AnimationClip:
   - curve:
       serializedVersion: 2
       m_Curve:
-      - time: 5.5
-        value: 1
-        inSlope: -1
-        outSlope: -1
-        tangentMode: 10
-      - time: 6.5
+      - time: 0
         value: 0
-        inSlope: -1
-        outSlope: -1
+        inSlope: 2
+        outSlope: 2
+        tangentMode: 10
+      - time: 0.5
+        value: 1
+        inSlope: 2
+        outSlope: 2
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
