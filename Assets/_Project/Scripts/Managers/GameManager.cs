@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using System;
 
 public enum GameState
 {
@@ -21,7 +22,7 @@ public class GameManager : MonoBehaviour
 	[Space (10)]
 	public float maxTimeCompletion = 10f;
     [Tooltip("Seconds between when the player enters the win chunk and the winning scene start.")]
-    public int secondsUntilWinScene = 4;
+    public float secondsUntilWinScene = 10;
     [HideInInspector] 
 	public bool isPaused = false;
 	[HideInInspector] 
@@ -37,6 +38,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public bool isDanish = true;
 
+ 
+
 	void Start ()
 	{
         if (_instance != null)
@@ -48,6 +51,7 @@ public class GameManager : MonoBehaviour
         gyroInput = GetComponent<GyroInput> ();
 		swipeController = GetComponent<SwipeController> ();
         DontDestroyOnLoad(gameObject);
+
 	}
 
 	void Awake ()
@@ -60,7 +64,10 @@ public class GameManager : MonoBehaviour
 
 	void Update ()
 	{
-		if (hasGameStarted) {
+
+           
+
+        if (hasGameStarted) {
 			if (!isPaused) {
 				UpdateTime ();
 			}
@@ -114,7 +121,9 @@ public class GameManager : MonoBehaviour
 
 	void ReactToWin (WinChunkEnteredEvent e)
 	{
+	    AkSoundEngine.PostEvent("Play_MusVO11", gameObject);
         StartCoroutine(WinReaction());
+        StartCoroutine(PlayWinSound());
         WinGame ();
 	}
 
@@ -123,6 +132,11 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(secondsUntilWinScene);
 
         SceneManager.LoadScene(2);
+    }
+
+    private IEnumerator PlayWinSound() {
+        yield return new WaitForSeconds(3.2f);
+        AkSoundEngine.PostEvent("Play_WinVo", gameObject);
     }
 
     void ResetWin(RestartGameEvent e)
