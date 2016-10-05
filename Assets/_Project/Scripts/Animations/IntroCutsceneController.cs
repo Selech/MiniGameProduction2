@@ -142,7 +142,9 @@ public class IntroCutsceneController : MonoBehaviour {
 
     void PlayScene4()
     {
-        AkSoundEngine.PostEvent("Stop_MusicCutScene", this.gameObject);
+        //AkSoundEngine.PostEvent("Stop_MusicCutScene", this.gameObject);
+        AkSoundEngine.PostEvent("Play_TwigSnap", this.gameObject);
+        //AkSoundEngine.PostEvent("Play_EvilCatCue", this.gameObject);
 
         scene1.SetActive(false);
         scene2.SetActive(false);
