@@ -400,6 +400,7 @@ public class SoundManager : MonoBehaviour
         }
         AkBankManager.LoadBank("nysb", false, true);
         PlaySound("Play_MenuMusic");
+        if (isTutorial)
         {
             EventManager.Instance.TriggerEvent(new IntroVO1event());
 
