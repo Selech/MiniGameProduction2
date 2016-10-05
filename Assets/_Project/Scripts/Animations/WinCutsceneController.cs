@@ -1,47 +1,52 @@
-﻿using System.Collections;
+﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class WinCutsceneController : MonoBehaviour
-{
-    private bool _building;
+public class WinCutsceneController : MonoBehaviour {
 
-    public GameObject Hill;
-    public GameObject HillHouse;
+    public GameObject hill;
+    public GameObject hillHouse;
 
-    public List<GameObject> HouseObjectsReward1;
-    public List<GameObject> HouseObjectsReward2;
-    public List<GameObject> HouseObjectsReward3;
+    public List<GameObject> houseObjectsReward;
 
     public GameObject RestackButton;
+    public int test;
+    private int counter;
+    private int amount;
+
+    private bool Building;
 
     // Use this for initialization
-    private void Start()
-    {
-        AkSoundEngine.PostEvent("Play_MisVO13", gameObject);
-        AkSoundEngine.PostEvent("Play_Build", gameObject);
-        AkSoundEngine.PostEvent("Play_BuildMusic", gameObject);
+    void Start () {
+        AkSoundEngine.PostEvent("Play_MisVO13", this.gameObject);
+       // AkSoundEngine.PostEvent("Play_Build", this.gameObject);
+        AkSoundEngine.PostEvent("Play_BuildMusic", this.gameObject);
 
         Time.timeScale = 1f;
         StartCoroutine(GetReward1());
-        _building = true;
+        Building = true;
+
+        counter = 0;
+        test = PlayerPrefs.GetInt("Amount of Carriables");
+        amount = Mathf.FloorToInt((houseObjectsReward.Count*(test/6f)));
     }
 
-    private void Update()
+    void Update()
     {
-        if (!_building)
+        if (!Building)
         {
+            
         }
         else
         {
-            if (Input.GetMouseButtonDown(0) && _building)
+            if (Input.GetMouseButtonDown(0) && Building)
             {
                 AkSoundEngine.SetRTPCValue("SkipScene", 1f);
                 Time.timeScale = 10f;
             }
 
-            if (Input.GetMouseButtonUp(0) && _building)
+            if (Input.GetMouseButtonUp(0) && Building)
             {
                 AkSoundEngine.SetRTPCValue("SkipScene", 0f);
                 Time.timeScale = 1f;
@@ -49,75 +54,83 @@ public class WinCutsceneController : MonoBehaviour
         }
     }
 
-    private IEnumerator GetReward1()
+    IEnumerator GetReward1()
     {
         yield return new WaitForSeconds(1f);
 
-        HillHouse.SetActive(false);
-        Hill.SetActive(true);
+        hillHouse.SetActive(false);
+        hill.SetActive(true);
 
-        foreach (var obj in HouseObjectsReward1)
+        foreach (var obj in houseObjectsReward)
         {
-            obj.SetActive(true);
-            AkSoundEngine.PostEvent("Play_CloudPuff", gameObject);
-            yield return new WaitForSeconds(1f);
+            counter++;
+
+            if (counter > amount)
+                yield return new WaitForSeconds(0f);
+            else
+            {
+                obj.SetActive(true);
+                AkSoundEngine.PostEvent("Play_CloudPuff", this.gameObject);
+
+                yield return new WaitForSeconds(1f);
+            }
         }
 
-        StartCoroutine(GetReward2());
+        HouseBuilt();
     }
 
-    private IEnumerator GetReward2()
+    IEnumerator GetReward2()
     {
         //yield return new WaitForSeconds(1f);
 
-        foreach (var obj in HouseObjectsReward2)
+        foreach (var obj in houseObjectsReward)
         {
             obj.SetActive(true);
-            AkSoundEngine.PostEvent("Play_CloudPuff", gameObject);
+            AkSoundEngine.PostEvent("Play_CloudPuff", this.gameObject);
             yield return new WaitForSeconds(1f);
         }
 
         StartCoroutine(GetReward3());
     }
 
-    private IEnumerator GetReward3()
+    IEnumerator GetReward3()
     {
         //yield return new WaitForSeconds(1f);
 
-        foreach (var obj in HouseObjectsReward3)
+        foreach (var obj in houseObjectsReward)
         {
             obj.SetActive(true);
-            AkSoundEngine.PostEvent("Play_CloudPuff", gameObject);
+            AkSoundEngine.PostEvent("Play_CloudPuff", this.gameObject);
             yield return new WaitForSeconds(1f);
         }
 
         HouseBuilt();
     }
 
-    private void HouseBuilt()
+    void HouseBuilt()
     {
-        _building = false;
+        Building = false;
 
         AkSoundEngine.SetRTPCValue("SkipScene", 0f);
         Time.timeScale = 1f;
 
-        AkSoundEngine.PostEvent("Stop_Build", gameObject);
-        AkSoundEngine.PostEvent("Play_MisVO14", gameObject);
+        AkSoundEngine.PostEvent("Stop_Build", this.gameObject);
+        AkSoundEngine.PostEvent("Play_MisVO14",this.gameObject);
 
         StartCoroutine(ShowButton());
     }
 
-    private IEnumerator ShowButton()
+    IEnumerator ShowButton()
     {
         yield return new WaitForSeconds(5f);
 
-        AkSoundEngine.PostEvent("Play_MusVO13", gameObject);
+        AkSoundEngine.PostEvent("Play_MusVO13", this.gameObject);
         RestackButton.SetActive(true);
     }
 
     public void BackToRestack()
     {
-        AkSoundEngine.PostEvent("Stop_BuildMusic", gameObject);
+        AkSoundEngine.PostEvent("Stop_BuildMusic", this.gameObject);
         SceneManager.LoadScene(1);
     }
 }

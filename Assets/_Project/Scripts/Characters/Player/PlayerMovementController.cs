@@ -1,4 +1,3 @@
-﻿
 ﻿using UnityEngine;
 using System.Collections;
 using JetBrains.Annotations;
@@ -12,6 +11,10 @@ public class PlayerMovementController : MonoBehaviour
     public float mass = 0.02f;
     //SPEED
     [Header("Player Speed")]
+    [Tooltip("Acceleration just after stacking scene.")]
+    public float initialAccelerationRate = 0.040f;
+    [Tooltip("Deceleration when the player arrives to the end chunk.")]
+    public float finalDecelerationRate = 0.08f;
     [Tooltip("Player speed when out of slopes. Slopes are defined by SteepAcceleration/Deceleration angles.")]
     public float defaultSpeed = 0.12f;
     [Tooltip("Acceleration taken by the player in downhills and also the opposite of deceleration to climb.")]
@@ -37,9 +40,9 @@ public class PlayerMovementController : MonoBehaviour
     //GROUND DETECTION
     [Header("Ground Detection")]
     [Tooltip("Side rays to reorient the player with the ground shape.")]
-    public float rayToGroundLength = 2f;
+    public float rayToGroundLength = 2.0f;
     [Tooltip("Central ray length to detect if the player is grounded.")]
-    public float centeredRayToGroundLength = 0.4f;
+    public float centeredRayToGroundLength = 0.6f;
     //DEBUG VALUES
     [Header("Debug Values")]
     [Tooltip("For debugging purposes, the current forward speed of the player.")]
@@ -82,14 +85,28 @@ public class PlayerMovementController : MonoBehaviour
     private bool isCenterGroundHit;
     public float speedFactor = 1f;
 
-	public bool wind = false;		
-	public Vector3 windPosition;		
-	public float windForce = 0;
+    public bool wind = false;
+    public Vector3 windDir;
+    public float windForce = 0;
+    private float oldMinimumSpeed;
+    private float oldAccelerationRate;
+    
+
+    private bool isOnChunkRoad = false;
 
     void OnEnable()
     {
-        charController = GetComponent<CharacterController>();
+        EventManager.Instance.StartListening<PlayerHitsTheFirstRoadChunk>(EnteredFirstChunk);
+    }
 
+    void OnDisable()
+    {
+        EventManager.Instance.StopListening<PlayerHitsTheFirstRoadChunk>(EnteredFirstChunk);
+    }
+
+    void Start()
+    {
+        charController = GetComponent<CharacterController>();
     }
 
     void Update()
@@ -97,19 +114,17 @@ public class PlayerMovementController : MonoBehaviour
         StabilizeOrientation();
         if (!GameManager.Instance.isPaused)
         {
+            SendPlayerStatusUpdate();
             MoveForward();
-			if (wind)		
-				MoveAside(windPosition, windForce);
+            if (wind)
+                MoveAside(windDir, windForce);
         }
+
     }
 
     void StabilizeOrientation()
     {
-
-        //RaycastHit groundHit;
-        float step = 10 * Time.deltaTime;
-
-
+        //cast ground rays
         isFrontPointHit = Physics.Raycast(frontBikeLimit.position, -transform.up, out frontHit, rayToGroundLength, groundLayer);
         frontGroundpoint = frontHit.point;
         isBackPointHit = Physics.Raycast(endBikeLimit.position, -transform.up, out backHit, rayToGroundLength, groundLayer);
@@ -119,51 +134,39 @@ public class PlayerMovementController : MonoBehaviour
         isRightPointHit = Physics.Raycast(rightBikeLimit.position, -transform.up, out rightHit, rayToGroundLength, groundLayer);
         rightGroundPoint = rightHit.point;
 
-        isCenterGroundHit = Physics.Raycast(transform.position + new Vector3(0, 0.3f, 0), Vector3.down, out centerGroundHit, centeredRayToGroundLength);
-        Debug.DrawRay(transform.position, -transform.up, Color.red);
+        isCenterGroundHit = Physics.Raycast(transform.TransformPoint(charController.center), -transform.up, out centerGroundHit, centeredRayToGroundLength, groundLayer);
+        Debug.DrawRay(transform.TransformPoint(charController.center), -transform.up, Color.red);
         if (!isCenterGroundHit) //if is flying
         {
-            if (isFrontPointHit) //TRY
+            if (isFrontPointHit) //landing with the front wheel
             {
-                //if not all rays are hitting, 
-                // updatedPlayerForward = Vector3.Project(updatedPlayerNormal, Vector3.up);
                 updatedPlayerNormal = frontHit.normal;
                 transform.rotation = Quaternion.Slerp(transform.rotation,
                     Quaternion.LookRotation(updatedPlayerForward, updatedPlayerNormal), Time.deltaTime * reorientSpeed);
-            }/**/
+            }
             else
             {
-                Debug.DrawRay(transform.position, updatedPlayerForward * currentForwardSpeed + Vector3.down * currentVerticalSpeed, Color.green);
-                print(Vector3.Angle(Vector3.up, Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(updatedPlayerForward * currentForwardSpeed + Vector3.down * currentVerticalSpeed), Time.deltaTime * reorientSpeed).eulerAngles));
-                /**/
                 if (
                 Vector3.Angle(Vector3.up,
                     updatedPlayerForward * currentForwardSpeed +
                                                     Vector3.down * currentVerticalSpeed) < maxVerticalAngle)
-                    // updatedPlayerForward = updatedPlayerForward*currentForwardSpeed + Vector3.down*currentVerticalSpeed;
                     transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(updatedPlayerForward * currentForwardSpeed + Vector3.down * currentVerticalSpeed), Time.deltaTime * reorientSpeed);
             }
         }
-        else if (isBackPointHit & isFrontPointHit & isLeftPointHit & isRightPointHit)
+        else if (isBackPointHit & isFrontPointHit & isLeftPointHit & isRightPointHit) //if all rays are hitting ground
         {
-
             Debug.DrawRay(rightBikeLimit.position, -transform.up);
 
             updatedPlayerForward = frontGroundpoint - backGroundPoint;
             updatedPlayerRight = rightGroundPoint - leftGroundPoint;
             updatedPlayerNormal = Vector3.Cross(updatedPlayerForward, updatedPlayerRight);
-            /*
-            if (Vector3.Dot(updatedPlayerNormal, Vector3.up) <= 0)
-                updatedPlayerNormal = Vector3.up;
-                */
+
             Quaternion rot = Quaternion.Euler(updatedPlayerNormal);
             transform.rotation = Quaternion.Slerp(transform.rotation,
                 Quaternion.LookRotation(updatedPlayerForward, updatedPlayerNormal), Time.deltaTime * reorientSpeed);
 
-
         }
-        // else 
-
+        //else hitting the center ground but not all the other rays
 
 
     }
@@ -211,25 +214,71 @@ public class PlayerMovementController : MonoBehaviour
 
         //ACCELERATION CALCULUS ENDS
 
-        //if (charController.enabled == true)  Debug.Log("Grounded!!");
-        charController.Move((updatedPlayerForward * currentForwardSpeed * speedFactor + Vector3.down * currentVerticalSpeed));
+        charController.Move(updatedPlayerForward * currentForwardSpeed * speedFactor + Vector3.down * currentVerticalSpeed);
 
+    }
 
-
+    void EnteredFirstChunk(PlayerHitsTheFirstRoadChunk e)
+    {
+        isOnChunkRoad = true;
     }
 
     public void Turn(float horizontalInputValue)
     {
-        if (!GameManager.Instance.isPaused)
-        {
-            transform.Rotate(0, horizontalInputValue * rotateSpeed, 0);
+        if (isOnChunkRoad) {
+            if (!GameManager.Instance.isPaused)
+            {
+                transform.Rotate(0, horizontalInputValue * rotateSpeed, 0);
+            }
         }
-
     }
 
-	public void MoveAside (Vector3 windPosition, float windForce){
-		Debug.Log ("moving");
-		Vector3 windDir = windPosition;		
-		transform.Translate(((updatedPlayerForward * Mathf.Clamp (currentForwardSpeed, minimumSpeed, maximumSpeed)) + (windDir * windForce)) * Time.deltaTime);		
-	}
+    public void MoveAside(Vector3 windDir, float windForce)
+    {
+        charController.SimpleMove(
+            -Vector3.ProjectOnPlane(Vector3.Normalize(charController.center - windDir)*windForce, Vector3.up));
+    }
+
+    //called when the stacking is finished (start button)
+    public void StartAccelerating()
+    {
+        oldMinimumSpeed = minimumSpeed;
+        minimumSpeed = 0f;
+        oldAccelerationRate = accelerationRate;
+        accelerationRate = initialAccelerationRate;
+    }
+    //called when the player enters the first chunk
+    public void StartTrack()
+    {
+        minimumSpeed = oldMinimumSpeed;
+        accelerationRate = oldAccelerationRate;
+    }
+    //called when you enter the last chunk
+    public void StartDecelerating()
+    {
+        Transform endPoint = GameObject.FindGameObjectWithTag("Hill").transform;
+        minimumSpeed = 0f;
+        defaultSpeed = 0f;
+        decelerationRate = finalDecelerationRate;
+        StartCoroutine(moveToHill(endPoint));
+    }
+        
+    IEnumerator moveToHill(Transform hill)
+    {
+        while (currentForwardSpeed > 0.01f)
+        {
+            var targetPoint = hill.position;
+            var targetRotation = Quaternion.LookRotation(targetPoint - transform.position, Vector3.up);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 2.0f);
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
+
+    public void SendPlayerStatusUpdate()
+    {
+        if (charController.isGrounded)
+        {
+            EventManager.Instance.TriggerEvent(new LandingEvent());
+        }
+    }
 }

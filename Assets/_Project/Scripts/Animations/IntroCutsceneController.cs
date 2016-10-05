@@ -39,6 +39,11 @@ public class IntroCutsceneController : MonoBehaviour {
     {
         EventManager.Instance.StopListening<LanguageSelect>(PlayCutscene);
     }
+    
+    void Start()
+    {
+        PlayerPrefs.SetInt("Tutorial", 1);
+    }
 
     // Use this for initialization
     public void PlayCutscene(LanguageSelect e) {

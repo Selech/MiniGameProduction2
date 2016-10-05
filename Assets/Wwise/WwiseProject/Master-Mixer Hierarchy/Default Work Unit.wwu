@@ -5,12 +5,125 @@
 			<ChildrenList>
 				<Bus Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}">
 					<ChildrenList>
-						<Bus Name="VOBus" ID="{0F218276-24C4-4DD0-8ECA-F55246597AA6}">
+						<Bus Name="VoMus" ID="{0F218276-24C4-4DD0-8ECA-F55246597AA6}">
+							<PropertyList>
+								<Property Name="BusVolume" Type="Real64">
+									<ValueList>
+										<Value>-2</Value>
+									</ValueList>
+								</Property>
+								<Property Name="MaxDuckVolume" Type="Real64" Value="-20.5"/>
+								<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+								<Property Name="RecoveryTime" Type="Real64" Value="0.2"/>
+								<Property Name="UseMaxSoundPerInstance" Type="bool">
+									<ValueList>
+										<Value>True</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Effect0" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
 									<ObjectRef Name="Cut_3dB_100Hz" ID="{67423B74-4F0A-4719-92FE-343347C717C7}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
 								</Reference>
+								<Reference Name="Effect1" PluginName="Wwise Compressor" CompanyID="0" PluginID="108" PluginType="3">
+									<ObjectRef Name="Dialog_level" ID="{6C2D287F-F10D-4D2F-9541-930A815570EE}" WorkUnitID="{0A3694B7-4BEB-47ED-A5EE-527994BD2602}"/>
+								</Reference>
 							</ReferenceList>
+							<DuckingList>
+								<DuckItem>
+									<BusRef Name="Music" ID="{BC346018-207D-49EE-81CE-61031AAE4D6C}"/>
+									<DuckingParam>
+										<Volume>-3</Volume>
+										<FadeInTime>0.300000011920929</FadeInTime>
+										<FadeOutTime>0.300000011920929</FadeOutTime>
+										<FadeCurve>FadeLinear</FadeCurve>
+									</DuckingParam>
+								</DuckItem>
+								<DuckItem>
+									<BusRef Name="Collisions" ID="{3E220476-9025-454C-85A6-D115FD6AC94A}"/>
+									<DuckingParam>
+										<Volume>-3</Volume>
+										<FadeInTime>0.300000011920929</FadeInTime>
+										<FadeOutTime>0.300000011920929</FadeOutTime>
+										<FadeCurve>FadeLinear</FadeCurve>
+									</DuckingParam>
+								</DuckItem>
+							</DuckingList>
+						</Bus>
+						<Bus Name="Collisions" ID="{3E220476-9025-454C-85A6-D115FD6AC94A}">
+							<PropertyList>
+								<Property Name="BusVolume" Type="Real64">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
+								<Property Name="RecoveryTime" Type="Real64" Value="0.3"/>
+							</PropertyList>
+							<DuckingList>
+								<DuckItem>
+									<BusRef Name="Music" ID="{BC346018-207D-49EE-81CE-61031AAE4D6C}"/>
+									<DuckingParam>
+										<Volume>-2</Volume>
+										<FadeInTime>0.100000001490116</FadeInTime>
+										<FadeOutTime>0.100000001490116</FadeOutTime>
+										<FadeCurve>FadeLinear</FadeCurve>
+									</DuckingParam>
+								</DuckItem>
+							</DuckingList>
+						</Bus>
+						<Bus Name="Bike" ID="{9278BC57-1692-4210-A104-281CFA067F81}">
+							<PropertyList>
+								<Property Name="BusVolume" Type="Real64">
+									<ValueList>
+										<Value>3</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+						</Bus>
+						<Bus Name="VoMis" ID="{59F254C9-56BF-4481-B1B0-30BEF982A768}">
+							<PropertyList>
+								<Property Name="BusVolume" Type="Real64">
+									<ValueList>
+										<Value>-2</Value>
+									</ValueList>
+								</Property>
+								<Property Name="MaxDuckVolume" Type="Real64" Value="-9"/>
+								<Property Name="RecoveryTime" Type="Real64" Value="0.5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Effect0" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+									<ObjectRef Name="New_Wwise_Parametric_EQ_02" ID="{1E6555E6-00F4-4E26-B815-E6DE88388EEA}" WorkUnitID="{0A3694B7-4BEB-47ED-A5EE-527994BD2602}"/>
+								</Reference>
+								<Reference Name="Effect1" PluginName="Wwise Compressor" CompanyID="0" PluginID="108" PluginType="3">
+									<ObjectRef Name="Dialog_level" ID="{6C2D287F-F10D-4D2F-9541-930A815570EE}" WorkUnitID="{0A3694B7-4BEB-47ED-A5EE-527994BD2602}"/>
+								</Reference>
+							</ReferenceList>
+							<DuckingList>
+								<DuckItem>
+									<BusRef Name="Music" ID="{BC346018-207D-49EE-81CE-61031AAE4D6C}"/>
+									<DuckingParam>
+										<Volume>-3</Volume>
+										<FadeInTime>0.300000011920929</FadeInTime>
+										<FadeOutTime>0.300000011920929</FadeOutTime>
+										<FadeCurve>FadeLinear</FadeCurve>
+									</DuckingParam>
+								</DuckItem>
+								<DuckItem>
+									<BusRef Name="Collisions" ID="{3E220476-9025-454C-85A6-D115FD6AC94A}"/>
+									<DuckingParam>
+										<Volume>-3</Volume>
+										<FadeInTime>0.300000011920929</FadeInTime>
+										<FadeOutTime>0.300000011920929</FadeOutTime>
+										<FadeCurve>FadeLinear</FadeCurve>
+									</DuckingParam>
+								</DuckItem>
+							</DuckingList>
+						</Bus>
+						<Bus Name="Music" ID="{BC346018-207D-49EE-81CE-61031AAE4D6C}">
+							<PropertyList>
+								<Property Name="MaxDuckVolume" Type="Real64" Value="-5.5"/>
+								<Property Name="RecoveryTime" Type="Real64" Value="0.1"/>
+							</PropertyList>
 						</Bus>
 					</ChildrenList>
 				</Bus>

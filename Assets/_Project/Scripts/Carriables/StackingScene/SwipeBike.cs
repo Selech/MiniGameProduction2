@@ -15,7 +15,9 @@ public class SwipeBike : MonoBehaviour {
     }
 
 	void Update() {
-        ControlTap();
+        if (stackingList.CollectedCarriables.Count > 0) { 
+            ControlTap();
+        }
     }
 
     void ControlTap()
@@ -25,7 +27,7 @@ public class SwipeBike : MonoBehaviour {
             var ray = Camera.main.ScreenPointToRay(touch.position);
             RaycastHit hit;
 
-            if (touch.phase == TouchPhase.Ended && stackingList.CollectedCarriables.Count > 0 && Physics.Raycast(ray, out hit)) {
+            if (touch.phase == TouchPhase.Ended && Physics.Raycast(ray, out hit)) {
                 if (hit.collider.gameObject.tag == "StartSwipe") {
                     tapped = true;
 
@@ -43,6 +45,11 @@ public class SwipeBike : MonoBehaviour {
             tapped = false;
         }
         tapCount--;
+    }
+
+    public void StartGame()
+    {
+        EventManager.Instance.TriggerEvent(new StartGame());
     }
 
 	void ControlSwipe() {

@@ -1,7 +1,8 @@
 ﻿
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 [RequireComponent(typeof(PlayerMovementController))]
 public class PlayerReactionsController : MonoBehaviour
@@ -18,6 +19,10 @@ public class PlayerReactionsController : MonoBehaviour
     StackingList stackedList;
     GameObject carriableManager;
     CarriableManager carriableManagerScript;
+    Animator animator;
+
+    private float animationFloat;
+    private float tiltFloat; 
 
     private int indexOfCurrentTopCarriable = 0;
 
@@ -30,6 +35,9 @@ public class PlayerReactionsController : MonoBehaviour
         carriableManager = GameObject.FindGameObjectWithTag("CarriableManager");
         stackedList = carriableManager.GetComponent<StackingList>();
         carriableManagerScript = carriableManager.GetComponent<CarriableManager>();
+        animator = GetComponentInChildren<Animator>();
+        animationFloat = 0.0f;
+        tiltFloat = 0.0f;
     }
 
     void OnEnable()
@@ -44,10 +52,18 @@ public class PlayerReactionsController : MonoBehaviour
         EventManager.Instance.StartListening<TriggerPlayerExposure>(SetupCamera);
         EventManager.Instance.StartListening<DamageCarriableEvent>(DamageObstacle);
         EventManager.Instance.StartListening<ObstacleHitEvent>(PushBikeBack);
+        EventManager.Instance.StartListening<IntroVO1event>(StartIntroAnimation);
         EventManager.Instance.StartListening<LoseCarriableEvent>(LostCarriable);
 		EventManager.Instance.StartListening<StartWindEvent>(StartWind);
 		EventManager.Instance.StartListening<StopWindEvent>(StopWind);
+        EventManager.Instance.StartListening<ChunkEnteredEvent>(StartTrack);
+
+
+        EventManager.Instance.StartListening<IntroAnimation2event>(IntroVoice2);
+        EventManager.Instance.StartListening<IntroAnimation3event>(IntroVoice3);
     }
+
+   
 
     void OnDisable()
     {
@@ -56,6 +72,7 @@ public class PlayerReactionsController : MonoBehaviour
         EventManager.Instance.StopListening<GetBackCarriableHitEvent>(GetBackCarriable);
         EventManager.Instance.StopListening<ChangeSchemeEvent>(ChangeScheme);
         EventManager.Instance.StopListening<StartGame>(EnableMovement);
+        EventManager.Instance.StopListening<IntroVO1event>(StartIntroAnimation);
         EventManager.Instance.StopListening<WinChunkEnteredEvent>(StopMovement);
         EventManager.Instance.StopListening<ChangeParentToPlayer>(ChangeParent);
         EventManager.Instance.StopListening<TriggerPlayerExposure>(SetupCamera);
@@ -64,6 +81,37 @@ public class PlayerReactionsController : MonoBehaviour
         EventManager.Instance.StopListening<LoseCarriableEvent>(LostCarriable);
 		EventManager.Instance.StopListening<StartWindEvent>(StartWind);
 		EventManager.Instance.StopListening<StopWindEvent>(StopWind);
+
+
+        EventManager.Instance.StopListening<IntroAnimation2event>(IntroVoice2);
+        EventManager.Instance.StopListening<IntroAnimation3event>(IntroVoice3);
+
+    }
+
+    void Update()
+    {
+        var angle = movementController.steepAngle - 90;
+        if (angle > -10f && angle < 10f)
+        {
+            if (tiltFloat < 0.0f)
+            {
+                tiltFloat += 0.05f;
+            }
+            else if (tiltFloat > 0.0f)
+            {
+                tiltFloat -= 0.05f;
+            }
+        }
+        else if (angle > 0 && tiltFloat < 1f)
+        {
+            tiltFloat += 0.05f;
+        }
+        else if (angle < 0 && tiltFloat > -1f)
+        {
+            tiltFloat -= 0.05f;
+        }
+
+        animator.SetFloat("TiltAmount", tiltFloat);
     }
 
     /// <summary>
@@ -75,10 +123,49 @@ public class PlayerReactionsController : MonoBehaviour
         carriableManagerScript.runningHeight -= carriableFallingOff.GetComponent<CarriablesDrag>().heightOfObject;
     }
 
+    void StartIntroAnimation(IntroVO1event e)
+    {
+        animator.SetTrigger("StartIntro1");
+    }
+
+    private void IntroVoice2(IntroAnimation2event e)
+    {
+        animator.SetTrigger("StartIntro2");
+    }
+
+    private void IntroVoice3(IntroAnimation3event e)
+    {
+        animator.SetTrigger("StartIntro3");
+    }
+
     void RetrieveInput(MovementInput horizontalInput)
     {
         if (movementController.enabled)
+        {
+            if (horizontalInput.touchPosition == 0.0f)
+            {
+                if(animationFloat < 0.0f)
+                {
+                    animationFloat += 0.05f;
+                }
+                else if (animationFloat > 0.0f)
+                {
+                    animationFloat -= 0.05f;
+                }
+            }
+            else if (horizontalInput.touchPosition > 0 && animationFloat < 1f)
+            {
+                animationFloat += 0.05f;
+            }
+            else if (horizontalInput.touchPosition < 0 && animationFloat > -1f)
+            {
+                animationFloat -= 0.05f;
+            }
+
             movementController.Turn(horizontalInput.touchPosition);
+            animator.SetFloat("TurnAmount", animationFloat);
+        }
+            
     }
 
     void ChangeScheme(ChangeSchemeEvent e)
@@ -97,11 +184,22 @@ public class PlayerReactionsController : MonoBehaviour
 
     IEnumerator BoostPickUp(float speed, float time)
     {
-        movementController.speedFactor = speed;
-        yield return new WaitForSeconds(time);
-        movementController.speedFactor = 1;
-        isBoosted = false;
+        movementController.defaultSpeed += speed;
+        movementController.maximumSpeed += speed;
+        movementController.accelerationRate *= speed;
 
+        animator.SetTrigger("SuperHappyTime");
+
+        yield return new WaitForSeconds(time);
+
+        movementController.defaultSpeed -= speed;
+        movementController.maximumSpeed -= speed;
+        movementController.accelerationRate /= speed;
+
+        isBoosted = false;
+        playerPickupController.isLastPickupBoost = false;
+        EventManager.Instance.TriggerEvent(new HappyFunTimeEndsEvent());
+        animator.SetTrigger("SuperHappyTimeStop");
     }
 
     void GetBackCarriable(GetBackCarriableHitEvent e)
@@ -118,7 +216,8 @@ public class PlayerReactionsController : MonoBehaviour
     /// </summary>
 	public void DamageObstacle(DamageCarriableEvent e)
     {
-        Debug.Log("numberOfLostCarriables :" + numberOfLostCarriables);
+        animator.SetTrigger("Bump");
+
         if (numberOfLostCarriables != stackedList.CollectedCarriables.Count)
         {
             GetCarriableFallingOff();
@@ -129,7 +228,7 @@ public class PlayerReactionsController : MonoBehaviour
 
     public void PushBikeBack(ObstacleHitEvent e)
     {
-        Debug.Log(e.upForce);
+        
     }
 
     public void GetCarriableFallingOff()
@@ -140,13 +239,23 @@ public class PlayerReactionsController : MonoBehaviour
 
     void StopMovement(WinChunkEnteredEvent e)
     {
-        movementController.enabled = false;
+        int amountOfCarriablesOnBike = stackedList.CollectedCarriables.Count - numberOfLostCarriables;
+        amountOfCarriablesOnBike = amountOfCarriablesOnBike == 0 ? 1 : amountOfCarriablesOnBike;
+        PlayerPrefs.SetInt("Amount of Carriables", amountOfCarriablesOnBike);
+        movementController.StartDecelerating();
+
+        animator.SetTrigger("StopBike");
+
         EventManager.Instance.StopListening<MovementInput>(RetrieveInput);
     }
 
     void EnableMovement(StartGame e)
     {
+        animator.SetTrigger("StartDriving");
+
         movementController.enabled = true;
+        //start accelerating from zero speed
+        movementController.StartAccelerating();
     }
 
     void ChangeParent(ChangeParentToPlayer e)
@@ -165,9 +274,20 @@ public class PlayerReactionsController : MonoBehaviour
     {
         GameObject hittedObject = hit.gameObject;
 
+        if (hittedObject.layer == LayerMask.NameToLayer("Environment"))
+        {
+            animator.SetTrigger("Landed");
+            return;
+        }
+
         switch (hittedObject.tag)
         {
+            case "AirGuide": //like the floating "get back carriable"
+                EventManager.Instance.TriggerEvent(new FlyingEvent());
+                animator.SetTrigger("DownRamp");
+                break;
             case "RoadProp": //like ground speed boosts or sebastian ramps
+                animator.SetTrigger("UpRamp");
                 EventManager.Instance.TriggerEvent(new PlayerHitRoadProp(hittedObject));
                 break;
             case "Pickable": //like the floating "get back carriable"
@@ -181,7 +301,7 @@ public class PlayerReactionsController : MonoBehaviour
 
 	public void StartWind(StartWindEvent e){
 		movementController.wind = true;
-		movementController.windPosition = e.windPosition;
+	    movementController.windDir = e.windDir;
 		movementController.windForce = e.windForce;
 	}
 
@@ -189,5 +309,11 @@ public class PlayerReactionsController : MonoBehaviour
 		movementController.wind = false;
 		movementController.windForce = 0;
 	}
+
+    private void StartTrack(ChunkEnteredEvent e)
+    {
+        movementController.StartTrack();
+        EventManager.Instance.StopListening<ChunkEnteredEvent>(StartTrack);
+    }
 
 }

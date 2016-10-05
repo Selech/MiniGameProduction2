@@ -14,9 +14,34 @@ public class TutorialController : MonoBehaviour {
 		
 	}
 
-	IEnumerator StartStackTutorial(){
-		yield return new WaitForSeconds(1f);
-		for (int i = 0; i < 3; i++) {
+    void OnEnable()
+    {
+        EventManager.Instance.StartListening<StartGame>(DisableTutorial);
+        EventManager.Instance.StartListening<SkipSwipeTutorial>(DisableStackTutorial);
+    }
+
+    void OnDisable()
+    {
+        EventManager.Instance.StopListening<StartGame>(DisableTutorial);
+        EventManager.Instance.StopListening<SkipSwipeTutorial>(DisableStackTutorial);
+    }
+
+    void DisableStackTutorial(SkipSwipeTutorial e)
+    {
+        StopAllCoroutines();
+        StartCoroutine(StartBikeTutorial());
+    }
+
+    void DisableTutorial(StartGame e)
+    {
+        this.gameObject.SetActive(false);
+    }
+
+    IEnumerator StartStackTutorial(){
+		yield return new WaitForSeconds(12f);
+        EventManager.Instance.TriggerEvent(new IntroAnimation2event());
+
+        for (int i = 0; i < 3; i++) {
 			animations [0].Play ("LineStackAnimation");
 			animations [2].Play ("FingerStackAnimation");
 			yield return new WaitForSeconds(2f);
@@ -26,12 +51,16 @@ public class TutorialController : MonoBehaviour {
 	}
 
 	IEnumerator StartBikeTutorial(){
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(1f);
+        EventManager.Instance.TriggerEvent(new IntroAnimation3event());
 
-		for (int i = 0; i < 3; i++) {
-			animations [1].Play ("LineStackAnimation");
-			animations [2].Play ("FingerSwipeAnimation");
+        for (int i = 0; i < 3; i++) {
+			animations [1].Play ("CircleAnimation");
+			animations [2].Play ("TapAnimation");
 			yield return new WaitForSeconds(2f);
 		}
-	}
+        EventManager.Instance.TriggerEvent(new StartStackTutorialEvent());
+        yield return new WaitForSeconds(5f);
+        StartCoroutine(StartBikeTutorial());
+    }
 }

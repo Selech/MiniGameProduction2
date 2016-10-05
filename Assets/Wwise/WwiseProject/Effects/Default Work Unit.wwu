@@ -11,6 +11,57 @@
 						<Property Name="WetDryMix" Type="Real32" Value="18"/>
 					</PropertyList>
 				</Effect>
+				<Effect Name="New_Wwise_Parametric_EQ" ID="{9104F752-85AB-4DDD-91D5-0FEAB6199D56}" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+					<PropertyList>
+						<Property Name="FrequencyBand2" Type="Real32" Value="11228"/>
+						<Property Name="GainBand2" Type="Real32" Value="13"/>
+					</PropertyList>
+				</Effect>
+				<Effect Name="New_Wwise_Parametric_EQ_01" ID="{7010DC24-00B0-4D72-94A2-018D3941F6DA}" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+					<PropertyList>
+						<Property Name="FrequencyBand1" Type="Real32" Value="232"/>
+						<Property Name="FrequencyBand2" Type="Real32" Value="5234"/>
+						<Property Name="GainBand1" Type="Real32" Value="-2"/>
+						<Property Name="GainBand2" Type="Real32" Value="-2"/>
+						<Property Name="GainBand3" Type="Real32" Value="-0.5"/>
+					</PropertyList>
+				</Effect>
+				<Effect Name="New_Wwise_Parametric_EQ_02" ID="{1E6555E6-00F4-4E26-B815-E6DE88388EEA}" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+					<PropertyList>
+						<Property Name="FilterTypeBand2" Type="int32" Value="5"/>
+						<Property Name="FrequencyBand1" Type="Real32" Value="246"/>
+						<Property Name="FrequencyBand2" Type="Real32" Value="1933"/>
+						<Property Name="GainBand1" Type="Real32" Value="-1.5"/>
+						<Property Name="GainBand2" Type="Real32" Value="2.5"/>
+						<Property Name="OnOffBand3" Type="bool" Value="False"/>
+						<Property Name="OutputLevel" Type="Real32" Value="2"/>
+					</PropertyList>
+				</Effect>
+				<Effect Name="New_Wwise_Parametric_EQ_03" ID="{816C09DF-CC02-4A36-B277-C1509770E9F7}" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+					<PropertyList>
+						<Property Name="FilterTypeBand3" Type="int32" Value="6"/>
+						<Property Name="FrequencyBand1" Type="Real32" Value="103"/>
+						<Property Name="FrequencyBand2" Type="Real32" Value="691"/>
+						<Property Name="FrequencyBand3" Type="Real32" Value="835"/>
+						<Property Name="GainBand1" Type="Real32" Value="-3.5"/>
+						<Property Name="GainBand2" Type="Real32" Value="-3"/>
+						<Property Name="GainBand3" Type="Real32" Value="-2"/>
+						<Property Name="QFactorBand3" Type="Real32" Value="7.8"/>
+					</PropertyList>
+				</Effect>
+				<Effect Name="Dialog_level" ID="{6C2D287F-F10D-4D2F-9541-930A815570EE}" PluginName="Wwise Compressor" CompanyID="0" PluginID="108" PluginType="3">
+					<PropertyList>
+						<Property Name="OutputGain" Type="Real32" Value="1.4"/>
+						<Property Name="Ratio" Type="Real32" Value="4.9"/>
+						<Property Name="ReleaseTime" Type="Real32" Value="0.46"/>
+						<Property Name="Threshold" Type="Real32" Value="-17.7"/>
+					</PropertyList>
+				</Effect>
+				<Effect Name="New_Wwise_Gain" ID="{8FB95A6F-9A1E-4116-8BF9-71184736170B}" PluginName="Wwise Gain" CompanyID="0" PluginID="139" PluginType="3">
+					<PropertyList>
+						<Property Name="FullBandGain" Type="Real32" Value="7"/>
+					</PropertyList>
+				</Effect>
 			</ChildrenList>
 		</WorkUnit>
 	</Effects>

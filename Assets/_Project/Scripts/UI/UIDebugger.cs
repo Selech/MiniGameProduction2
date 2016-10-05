@@ -7,10 +7,15 @@ public class UIDebugger : MonoBehaviour {
 	private string timeDisplayText;
 	private bool toggle = false;
 
+    public GameObject button;
+
 	void OnGUI () {
 
+#if UNITY_EDITOR
+        button.SetActive(true);
+#endif
 
-		if (GUI.Button (new Rect (Screen.width - 200, 0, 200, 200), "", GUIStyle.none)) {
+        if (GUI.Button (new Rect (Screen.width - 200, 0, 200, 200), "", GUIStyle.none)) {
 
 			toggle = !toggle;
 		}

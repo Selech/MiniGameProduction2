@@ -11,6 +11,14 @@ public class TakeDamageEvent : GameEvent
     }
 }
 
+
+public class PlayerHitsTheFirstRoadChunk : GameEvent
+{
+    public PlayerHitsTheFirstRoadChunk()
+    {
+    }
+}
+
 public class SkipSwipeTutorial : GameEvent
 {
     public SkipSwipeTutorial()
@@ -99,8 +107,10 @@ public class ObstacleHitEvent : GameEvent
 
 public class DamageCarriableEvent : GameEvent
 {
-    public DamageCarriableEvent()
+    public ObstacleKind obstacleType;
+    public DamageCarriableEvent(ObstacleKind obstacleType)
     {
+        this.obstacleType = obstacleType;
     }
 }
 
@@ -238,12 +248,12 @@ public class SnapSoundEvent : GameEvent
 
 public class StartWindEvent : GameEvent
 {
-    public Vector3 windPosition;
+    public Vector3 windDir;
     public float windForce;
 
-    public StartWindEvent(Vector3 windPosition, float windForce)
+    public StartWindEvent(Vector3 windDir, float windForce)
     {
-        this.windPosition = windPosition;
+        this.windDir = windDir;
         this.windForce = windForce;
     }
 }
@@ -489,6 +499,22 @@ public class YouHaveToAvoidEvent : GameEvent
     }
 }
 
+public class IntroAnimation2event : GameEvent
+{
+    public IntroAnimation2event()
+    {
+
+    }
+}
+
+public class IntroAnimation3event : GameEvent
+{
+    public IntroAnimation3event()
+    {
+
+    }
+}
+
 public class IntroVO1event : GameEvent
 {
     public IntroVO1event()
@@ -525,3 +551,44 @@ public class SetAberrationEvent : GameEvent
 		this.duration = duration;
 	}
 }
+
+public class EnterRampEvent : GameEvent
+{
+    public EnterRampEvent()
+    {
+
+    }
+}
+
+public class FlyingEvent : GameEvent
+{
+    public FlyingEvent()
+    {
+
+    }
+}
+
+public class LandingEvent : GameEvent
+{
+    public LandingEvent()
+    {
+
+    }
+}
+
+public class HappyFunTimeEndsEvent : GameEvent
+{
+    public HappyFunTimeEndsEvent()
+    {
+
+    }
+}
+
+public class StartStackTutorialEvent : GameEvent
+{
+    public StartStackTutorialEvent()
+    {
+
+    }
+}
+

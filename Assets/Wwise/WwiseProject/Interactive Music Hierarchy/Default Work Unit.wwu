@@ -5,9 +5,11 @@
 			<ChildrenList>
 				<MusicSwitchContainer Name="Music" ID="{A60B9CFA-D7C6-4660-B1E7-1E1C4B96F6C6}" ShortID="401840916">
 					<PropertyList>
+						<Property Name="GridFrequencyPreset" Type="int16" Value="52"/>
+						<Property Name="Tempo" Type="Real64" Value="116"/>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-4</Value>
+								<Value>-3</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -16,13 +18,14 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C99DD9E8-EBB2-44A3-8C39-504F17684D44}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
+							<ObjectRef Name="Music" ID="{BC346018-207D-49EE-81CE-61031AAE4D6C}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
 						<MusicSegment Name="WinMusic" ID="{EC0146D7-44ED-48AC-917D-E89FF65B7CC5}" ShortID="918283527">
 							<PropertyList>
 								<Property Name="EndPosition" Type="Real64" Value="8275.87301587302"/>
+								<Property Name="GridFrequencyPreset" Type="int16" Value="53"/>
 								<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
@@ -33,7 +36,7 @@
 								<Property Name="Tempo" Type="Real64" Value="116"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-5</Value>
+										<Value>-6</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -101,12 +104,14 @@
 						</MusicSegment>
 						<MusicPlaylistContainer Name="DriveMusic" ID="{C8F7F11F-2351-498A-8CED-50AE71171088}" ShortID="572348074">
 							<PropertyList>
+								<Property Name="GridFrequencyPreset" Type="int16" Value="53"/>
 								<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>5</Value>
 									</ValueList>
 								</Property>
+								<Property Name="Tempo" Type="Real64" Value="116"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
 										<Value>-4</Value>
@@ -204,6 +209,7 @@
 											</RTPCList>
 										</Property>
 										<Property Name="EndPosition" Type="Real64" Value="16551.7233560091"/>
+										<Property Name="GridFrequencyPreset" Type="int16" Value="53"/>
 										<Property Name="Highpass" Type="int16">
 											<RTPCList>
 												<RTPC Name="" ID="{FE87D0FB-2461-43C6-AD95-F2D9945F8015}" ShortID="343019504">
@@ -224,7 +230,7 @@
 															</Point>
 															<Point>
 																<XPos>1</XPos>
-																<YPos>40</YPos>
+																<YPos>27</YPos>
 																<Flags>37</Flags>
 															</Point>
 														</PointList>
@@ -260,7 +266,6 @@
 												</RTPC>
 											</RTPCList>
 										</Property>
-										<Property Name="OverrideClockSettings" Type="bool" Value="True"/>
 										<Property Name="OverrideEffect" Type="bool" Value="True"/>
 										<Property Name="OverrideMaxSoundInstance" Type="bool" Value="True"/>
 										<Property Name="PlaybackSpeed" Type="Real64">
@@ -287,8 +292,8 @@
 																<Flags>0</Flags>
 															</Point>
 															<Point>
-																<XPos>0.8</XPos>
-																<YPos>0.7</YPos>
+																<XPos>0.6</XPos>
+																<YPos>0.85</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
@@ -317,17 +322,17 @@
 														<PointList>
 															<Point>
 																<XPos>0</XPos>
-																<YPos>1.8</YPos>
+																<YPos>0.97835</YPos>
 																<Flags>5</Flags>
 															</Point>
 															<Point>
 																<XPos>0.50517</XPos>
-																<YPos>1.3</YPos>
+																<YPos>0.37479</YPos>
 																<Flags>0</Flags>
 															</Point>
 															<Point>
 																<XPos>1</XPos>
-																<YPos>0</YPos>
+																<YPos>-1.33894</YPos>
 																<Flags>37</Flags>
 															</Point>
 														</PointList>
@@ -357,6 +362,35 @@
 														</PointList>
 													</Curve>
 												</RTPC>
+												<RTPC Name="" ID="{4F535273-CAA9-46CF-B18D-4C9156CA0089}" ShortID="1046005870">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="PowerUp" ID="{E2103E37-1D51-47EC-BD69-4F7FE23003B4}" WorkUnitID="{BF7C0DD8-E293-457A-844E-EF2FD3D1B823}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{E3EB97D9-4801-491F-ABB0-6628555B1B3D}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="3"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>0</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>0.73401</XPos>
+																<YPos>0</YPos>
+																<Flags>0</Flags>
+															</Point>
+															<Point>
+																<XPos>1</XPos>
+																<YPos>-2</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
 											</RTPCList>
 										</Property>
 									</PropertyList>
@@ -369,6 +403,9 @@
 										</Reference>
 										<Reference Name="Effect1" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
 											<ObjectRef Name="Hall_Medium_Dark" ID="{626B6E38-739B-4689-819F-F81AD3788BDE}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+										</Reference>
+										<Reference Name="Effect2" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+											<ObjectRef Name="New_Wwise_Parametric_EQ_01" ID="{7010DC24-00B0-4D72-94A2-018D3941F6DA}" WorkUnitID="{0A3694B7-4BEB-47ED-A5EE-527994BD2602}"/>
 										</Reference>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
@@ -397,13 +434,13 @@
 																		<SegmentShape>Constant</SegmentShape>
 																	</Point>
 																	<Point>
-																		<XPos>0.25796178343949</XPos>
+																		<XPos>0.22547</XPos>
 																		<YPos>-200</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
 																		<XPos>0.32006</XPos>
-																		<YPos>0.14314</YPos>
+																		<YPos>-0.34744</YPos>
 																		<Flags>0</Flags>
 																		<SegmentShape>Constant</SegmentShape>
 																	</Point>
@@ -520,13 +557,13 @@
 																		<SegmentShape>Constant</SegmentShape>
 																	</Point>
 																	<Point>
-																		<XPos>0.49204</XPos>
+																		<XPos>0.4492</XPos>
 																		<YPos>-200</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
 																		<XPos>0.56151</XPos>
-																		<YPos>-1.94592</YPos>
+																		<YPos>-1.1761</YPos>
 																		<Flags>0</Flags>
 																		<SegmentShape>Constant</SegmentShape>
 																	</Point>
@@ -599,18 +636,18 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>0.68472</XPos>
-																		<YPos>-200</YPos>
+																		<XPos>0.58482</XPos>
+																		<YPos>-34.64788</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>0.75956</XPos>
-																		<YPos>-0.34527</YPos>
+																		<XPos>0.671</XPos>
+																		<YPos>0.65035</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
 																		<XPos>1</XPos>
-																		<YPos>0</YPos>
+																		<YPos>0.49647</YPos>
 																		<Flags>37</Flags>
 																	</Point>
 																</PointList>
@@ -677,13 +714,13 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>0.13377</XPos>
+																		<XPos>0.05844</XPos>
 																		<YPos>-200</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>0.17935</XPos>
-																		<YPos>-0.4846</YPos>
+																		<XPos>0.11584</XPos>
+																		<YPos>-0.15093</YPos>
 																		<Flags>0</Flags>
 																		<SegmentShape>Constant</SegmentShape>
 																	</Point>
@@ -742,13 +779,13 @@
 														<Value>-3</Value>
 													</ValueList>
 													<RTPCList>
-														<RTPC Name="" ID="{92386529-58C7-4907-9A53-8CBDE35F51F1}" ShortID="1012628912">
+														<RTPC Name="" ID="{E145BA4D-5F09-4ACD-A67D-240C8402C014}" ShortID="991570210">
 															<ReferenceList>
 																<Reference Name="ControlInput">
-																	<ObjectRef Name="PowerUp" ID="{E2103E37-1D51-47EC-BD69-4F7FE23003B4}" WorkUnitID="{BF7C0DD8-E293-457A-844E-EF2FD3D1B823}"/>
+																	<ObjectRef Name="Progress" ID="{9D65D76C-30CD-485B-A925-9CB6799E35B7}" WorkUnitID="{BF7C0DD8-E293-457A-844E-EF2FD3D1B823}"/>
 																</Reference>
 															</ReferenceList>
-															<Curve Name="" ID="{51F0874B-6130-4473-879D-DDD3F7045673}">
+															<Curve Name="" ID="{C2066581-C43A-4CFD-BF32-AC2757469092}">
 																<PropertyList>
 																	<Property Name="Flags" Type="int32" Value="3"/>
 																</PropertyList>
@@ -759,18 +796,18 @@
 																		<Flags>5</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>0.70064</XPos>
-																		<YPos>-200</YPos>
+																		<XPos>0.76162</XPos>
+																		<YPos>-28.94316</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
-																		<XPos>0.963375796178344</XPos>
-																		<YPos>-1.13349046634289</YPos>
+																		<XPos>0.88809</XPos>
+																		<YPos>-1.25251</YPos>
 																		<Flags>0</Flags>
 																	</Point>
 																	<Point>
 																		<XPos>1</XPos>
-																		<YPos>0.8</YPos>
+																		<YPos>-0.56389</YPos>
 																		<Flags>37</Flags>
 																	</Point>
 																</PointList>
@@ -808,6 +845,87 @@
 																<Property Name="FadeOutMode" Type="int16" Value="0"/>
 															</PropertyList>
 															<AudioSourceRef Name="Melody" ID="{83396BD3-0E4F-47A6-90A5-A111583F6BA7}"/>
+														</MusicClip>
+													</ClipList>
+												</MusicTrackSequence>
+											</SequenceList>
+										</MusicTrack>
+										<MusicTrack Name="Melody_power" ID="{2EB611C0-E325-4BEC-B665-C3819158B731}" ShortID="1056669754">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>-3</Value>
+													</ValueList>
+													<RTPCList>
+														<RTPC Name="" ID="{341A86C2-0DA3-4D19-90EE-8F869804BF02}" ShortID="277634176">
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="PowerUp" ID="{E2103E37-1D51-47EC-BD69-4F7FE23003B4}" WorkUnitID="{BF7C0DD8-E293-457A-844E-EF2FD3D1B823}"/>
+																</Reference>
+															</ReferenceList>
+															<Curve Name="" ID="{F4922164-5C26-4486-A610-726A995D493C}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-200</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>0.67302</XPos>
+																		<YPos>-200</YPos>
+																		<Flags>0</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>0.81512</XPos>
+																		<YPos>-3.16874</YPos>
+																		<Flags>0</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>1</XPos>
+																		<YPos>-1.92514</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</RTPC>
+													</RTPCList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{F259F4D1-4081-4519-8E36-F02C7DE14E39}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Melody" ID="{D8E2709C-B5C0-4661-8B51-3003730DA8F6}" ShortID="18193144">
+													<Language>SFX</Language>
+													<AudioFile>Melody.wav</AudioFile>
+													<ConvertedFileIDList>
+														<File ID="387470969"/>
+													</ConvertedFileIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<TransitionList>
+												<MusicTransition Name="Root" ID="{D16E9AC9-87F8-40A5-BED8-8C7A66150F25}">
+													<PropertyList>
+														<Property Name="IsFolder" Type="bool" Value="True"/>
+													</PropertyList>
+													<TransitionInfo/>
+												</MusicTransition>
+											</TransitionList>
+											<SequenceList>
+												<MusicTrackSequence Name="" ID="{BCEB2119-5F92-4E2B-A459-911106BFEED8}">
+													<ClipList>
+														<MusicClip Name="Melody" ID="{BCD8519E-38D5-4032-B445-1272B3C70114}">
+															<PropertyList>
+																<Property Name="EndTrimOffset" Type="Real64" Value="16551.7233560091"/>
+																<Property Name="FadeInMode" Type="int16" Value="0"/>
+																<Property Name="FadeOutMode" Type="int16" Value="0"/>
+															</PropertyList>
+															<AudioSourceRef Name="Melody" ID="{D8E2709C-B5C0-4661-8B51-3003730DA8F6}"/>
 														</MusicClip>
 													</ClipList>
 												</MusicTrackSequence>
@@ -902,8 +1020,9 @@
 								<MusicTransition Name="Transition" ID="{A1CDFE60-4752-4728-B6EB-DA149D5C02E2}">
 									<PropertyList>
 										<Property Name="DestinationContextType" Type="int16" Value="2"/>
-										<Property Name="ExitSourceAt" Type="int16" Value="2"/>
+										<Property Name="ExitSourceAt" Type="int16" Value="1"/>
 										<Property Name="PlayDestinationPreEntry" Type="bool" Value="False"/>
+										<Property Name="PlaySourcePostExit" Type="bool" Value="False"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="DestinationContextObject">
@@ -993,7 +1112,7 @@
 						</Property>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-1</Value>
+								<Value>-7</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>

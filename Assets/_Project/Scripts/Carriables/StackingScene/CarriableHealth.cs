@@ -6,7 +6,8 @@ public class CarriableHealth : MonoBehaviour {
 	public int currentLifeCounter = 0;
 	public int maxLifeCounter = 1;
 	public float upForce = 300.0f;
-	public PlayerPickupController playerPickUpController;
+
+    PlayerPickupController playerPickUpController;
 	GameObject player;
     CarriableManager carriableManager;
 
@@ -17,7 +18,7 @@ public class CarriableHealth : MonoBehaviour {
 		ResetCurrentLifeCounter ();
 		player = GameObject.FindGameObjectWithTag ("Player");
         carriableManager = GameObject.FindGameObjectWithTag("CarriableManager").GetComponent<CarriableManager>();
-
+        playerPickUpController = player.GetComponent<PlayerPickupController>();
     }
 	
 	// Update is called once per frame
@@ -28,7 +29,7 @@ public class CarriableHealth : MonoBehaviour {
 	public void LoseHealth(){
         if (carriableManager.canBreak) {
             currentLifeCounter--;
-		if (currentLifeCounter <= 0)
+			if (currentLifeCounter <= 0)
             {
                 carriableManager.canBreak = false;
                 BreakJoint (GetComponent<SpringJoint> ());

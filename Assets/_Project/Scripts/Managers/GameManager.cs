@@ -11,8 +11,7 @@ public enum GameState
 
 public class GameManager : MonoBehaviour
 {
-
-	public GameState _GameState;
+    public GameState _GameState;
 	GyroInput gyroInput;
 	SwipeController swipeController;
 
@@ -21,8 +20,9 @@ public class GameManager : MonoBehaviour
 
 	[Space (10)]
 	public float maxTimeCompletion = 10f;
-
-	[HideInInspector] 
+    [Tooltip("Seconds between when the player enters the win chunk and the winning scene start.")]
+    public int secondsUntilWinScene = 4;
+    [HideInInspector] 
 	public bool isPaused = false;
 	[HideInInspector] 
 	public bool hasGameStarted = false;
@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
         
         Time.timeScale = 1;
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
-		
+
 	}
 
 	void Update ()
@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
 	/// </summary>
 	public void RestartGame ()
 	{
+		StopAllCoroutines();
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
 		//  EventManager.TriggerEvent (_eventsContainer.resetGame);
 	}
@@ -113,9 +114,16 @@ public class GameManager : MonoBehaviour
 
 	void ReactToWin (WinChunkEnteredEvent e)
 	{
-		WinGame ();
-		PauseGame ();
+        StartCoroutine(WinReaction());
+        WinGame ();
 	}
+
+    IEnumerator WinReaction()
+    {
+        yield return new WaitForSeconds(secondsUntilWinScene);
+
+        SceneManager.LoadScene(2);
+    }
 
     void ResetWin(RestartGameEvent e)
     {
@@ -151,7 +159,7 @@ public class GameManager : MonoBehaviour
 	private void WinGame () 
 	{
 		_GameState = GameState.Won;
-		Time.timeScale = Mathf.Epsilon;
+		//Time.timeScale = Mathf.Epsilon;
 		hasWon = true;
 	}
 
@@ -182,7 +190,7 @@ public class GameManager : MonoBehaviour
 
 	private static GameManager _instance;
 
-	public static GameManager Instance {
+    public static GameManager Instance {
 		get { 
 			if (_instance == null) {
 				GameObject go = new GameObject ("GameManager");

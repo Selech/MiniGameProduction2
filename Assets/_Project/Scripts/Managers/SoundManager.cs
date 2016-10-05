@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class SoundManager : MonoBehaviour
 {
 
     #region Booleans for game states
 
-   
+
     [HideInInspector]
     public bool musicMuted = false;
 
@@ -16,7 +17,7 @@ public class SoundManager : MonoBehaviour
     [HideInInspector]
     public bool isStrafing = false;
 
-    [HideInInspector]
+
     public bool isTutorial = true;
 
     bool drivingStarted = false;
@@ -28,18 +29,35 @@ public class SoundManager : MonoBehaviour
     #region Booleans for sounds being played only once
 
     bool ohNoSoundPlayed = false;
+    bool windPlayed = false;
+    bool hitPlayed = false;
+    bool hitObjectSound = false;
+    bool pickUpSound = false;
+    bool powerUpTutSound = false;
+    bool stackTut = false;
+    bool haveToAvoid = false;
+    bool isFlying = false;
+    bool isLanded = false;
+
+    [HideInInspector]
+    public bool isDialogue = true;
 
     #endregion
 
     void Start()
     {
+
+
         if (_instance == null)
         {
             _instance = this;
         }
     }
 
+    void Update()
+    {
 
+    }
 
     #region Listeners
 
@@ -64,7 +82,11 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StartListening<BoostPickupHitEvent>(BoostPickUp);
         EventManager.Instance.StartListening<StartStackingSceneEvent>(StackingSceneSound);
         EventManager.Instance.StartListening<MapProgressionForSoundEvent>(MapProgression);
-        EventManager.Instance.StartListening<StartStackingSceneEvent>(StackingSceneSound);
+        EventManager.Instance.StartListening<EnterRampEvent>(EnterRamp);
+        EventManager.Instance.StartListening<FlyingEvent>(Flying);
+        EventManager.Instance.StartListening<LandingEvent>(Landing);
+        EventManager.Instance.StartListening<HappyFunTimeEndsEvent>(HappyFunTimeEnds);
+        EventManager.Instance.StartListening<StartStackTutorialEvent>(StartStackTutorial);
 
 
         // tutorial sounds below
@@ -76,7 +98,6 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StartListening<PeopleAreDirtyEvent>(PeopleAreDirty);
         EventManager.Instance.StartListening<ThatWasCoolEvent>(ThatWasCool);
         EventManager.Instance.StartListening<ThatWentFastEvent>(ThatWentFast);
-        EventManager.Instance.StartListening<SuperEvent>(Superr);
         EventManager.Instance.StartListening<WatchOutOrHeMightHitUsEvent>(WatchOutCar);
         EventManager.Instance.StartListening<SpeedPowerUpAheadEvent>(SpeedPowerUpAhead);
         EventManager.Instance.StartListening<AfterSpeedPowerUpEvent>(AfterSpeedPowerUp);
@@ -86,7 +107,7 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StartListening<NowItsHarderEvent>(NowItsHarder);
         EventManager.Instance.StartListening<NowItsHardEvent>(NowItsHard);
         EventManager.Instance.StartListening<WatchOutEvent>(WatchOut);
-        EventManager.Instance.StartListening<YouHaveToAvoidEvent>(YouHaveToAvoid);
+        EventManager.Instance.StartListening<ChunkEnteredEvent>(YouHaveToAvoid);
     }
 
     void OnDisable()
@@ -110,7 +131,11 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StopListening<BoostPickupHitEvent>(BoostPickUp);
         EventManager.Instance.StopListening<StartStackingSceneEvent>(StackingSceneSound);
         EventManager.Instance.StopListening<MapProgressionForSoundEvent>(MapProgression);
-        EventManager.Instance.StopListening<StartStackingSceneEvent>(StackingSceneSound);
+        EventManager.Instance.StopListening<EnterRampEvent>(EnterRamp);
+        EventManager.Instance.StopListening<FlyingEvent>(Flying);
+        EventManager.Instance.StopListening<LandingEvent>(Landing);
+        EventManager.Instance.StartListening<HappyFunTimeEndsEvent>(HappyFunTimeEnds);
+        EventManager.Instance.StopListening<StartStackTutorialEvent>(StartStackTutorial);
 
         // tutorial sounds below
         EventManager.Instance.StopListening<ChangeSchemeEvent>(ChangeScheme);
@@ -121,7 +146,6 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StopListening<PeopleAreDirtyEvent>(PeopleAreDirty);
         EventManager.Instance.StopListening<ThatWasCoolEvent>(ThatWasCool);
         EventManager.Instance.StopListening<ThatWentFastEvent>(ThatWentFast);
-        EventManager.Instance.StopListening<SuperEvent>(Superr);
         EventManager.Instance.StopListening<WatchOutOrHeMightHitUsEvent>(WatchOutCar);
         EventManager.Instance.StopListening<SpeedPowerUpAheadEvent>(SpeedPowerUpAhead);
         EventManager.Instance.StopListening<AfterSpeedPowerUpEvent>(AfterSpeedPowerUp);
@@ -131,30 +155,38 @@ public class SoundManager : MonoBehaviour
         EventManager.Instance.StopListening<NowItsHarderEvent>(NowItsHarder);
         EventManager.Instance.StopListening<NowItsHardEvent>(NowItsHard);
         EventManager.Instance.StopListening<WatchOutEvent>(WatchOut);
-        EventManager.Instance.StopListening<YouHaveToAvoidEvent>(YouHaveToAvoid);
+        EventManager.Instance.StopListening<ChunkEnteredEvent>(YouHaveToAvoid);
     }
+
+
+
 
     #endregion
 
     #region Event Methods
     private void MuteMusic(MuteMusicEvent e)
     {
+
         musicMuted = e.musicMuted;
         if (musicMuted)
         {
 
             PlaySound("Stop_MusicDrive");
+            if (drivingStarted)
+            {
+                PlaySound("Play_Ambience");
+            }
             if (stackingSceneActive)
             {
+                PlaySound("Stop_Ambience");
                 PlaySound("Stop_MenuMusic");
             }
         }
         else if (!musicMuted && drivingStarted)
         {
-
             PlaySound("Play_MusicDrive");
-
-        } else if (!musicMuted && !drivingStarted)
+        }
+        else if (!musicMuted && !drivingStarted)
         {
             if (stackingSceneActive)
             {
@@ -166,6 +198,8 @@ public class SoundManager : MonoBehaviour
     private void StartRaceMusic(StartGame e)
     {
         drivingStarted = true;
+        stackingSceneActive = false;
+        PlayerPrefs.SetInt("Tutorial", 0);
         if (!musicMuted)
         {
             PlaySound("Play_MusicDrive");
@@ -188,7 +222,7 @@ public class SoundManager : MonoBehaviour
         }
         AkBankManager.LoadBank("nysb", false, true);
         PlaySound("Play_UITap");
-        
+
     }
 
     private void WonGame(WinChunkEnteredEvent e)
@@ -196,14 +230,47 @@ public class SoundManager : MonoBehaviour
         drivingStarted = false;
         PlaySound("Stop_Pedal");
         PlaySound("Play_MusicWin");
+
+        if (!isDialogue)
+        {
+            isDialogue = true;
+            AkSoundEngine.PostEvent("Play_MusVO11", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
+        }
+
     }
 
     private void HitObstacle(DamageCarriableEvent e)
     {
-        PlaySound("Play_LoseItem");
-        if (ohNoSoundPlayed == false)
+
+        if (e.obstacleType == ObstacleKind.car)
         {
-            PlaySound("Play_MusVO16");
+            PlaySound("Play_ColCar");
+        }
+        else if (e.obstacleType == ObstacleKind.general)
+        {
+            PlaySound("Play_Collision");
+        }
+        else if (e.obstacleType == ObstacleKind.dumpster)
+        {
+            PlaySound("Play_ColContainer");
+        }
+        else if (e.obstacleType == ObstacleKind.roadblock || e.obstacleType == ObstacleKind.roadblockBig)
+        {
+            PlaySound("Play_ColRoadBlock");
+        }
+        else if (e.obstacleType == ObstacleKind.trashcan_Body || e.obstacleType == ObstacleKind.trashcan_Top)
+        {
+            PlaySound("Play_ColTrashCan");
+        }
+        else
+        {
+            PlaySound("Play_Collision");
+        }
+
+        if (ohNoSoundPlayed == false && !isDialogue)
+        {
+            isDialogue = true;
+            AkSoundEngine.PostEvent("Play_MusVO16", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
             ohNoSoundPlayed = true;
         }
     }
@@ -228,9 +295,10 @@ public class SoundManager : MonoBehaviour
     // place all stops in here, happens only at end of game
     private void StopAllSounds(RestartGameEvent e)
     {
+        isDialogue = true;
         drivingStarted = false;
         PlaySound("Stop_MusicDrive");
-        PlaySound("Stop_MenuMusic");
+        PlaySound("Stop_Ambience");
         PlaySound("Stop_Pedal");
     }
 
@@ -241,7 +309,7 @@ public class SoundManager : MonoBehaviour
 
     private void MenuActive(MenuActiveEvent e)
     {
-
+        isDialogue = false;
         if (GameManager.Instance.isPaused)
         {
             PlaySound("Stop_Pedal");
@@ -255,44 +323,141 @@ public class SoundManager : MonoBehaviour
     private void LoseCarriable(LoseCarriableEvent e)
     {
         PlaySound("Play_LoseItem");
-        PlaySound("Play_MusVO17");
+        if (!hitObjectSound && !isDialogue)
+        {
+            isDialogue = true;
+            AkSoundEngine.PostEvent("Play_MusVO17", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
+            hitObjectSound = true;
+        }
     }
 
     private void GainCarriable(GetBackCarriableHitEvent e)
     {
-        PlaySound("Play_MisVO10");
+        if (!pickUpSound && !isDialogue)
+        {
+            isDialogue = true;
+            pickUpSound = true;
+            PlaySound("Play_MisVO10");
+            AkSoundEngine.PostEvent("Play_MisVO10", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
+        }
         PlaySound("Play_Pickup");
     }
 
     private void HitByWind(StartWindEvent e)
     {
-        if (isTutorial)
+
+        if (!windPlayed && !isDialogue)
         {
-            PlaySound("Play_MusVO5");
+            isDialogue = true;
+            AkSoundEngine.PostEvent("Play_MusVO5", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
+            windPlayed = true;
         }
     }
 
     private void BoostPickUp(BoostPickupHitEvent e)
     {
         PlaySound("Play_SpeedUp");
+        AkSoundEngine.SetRTPCValue("PowerUp", 1);
+
+        if (!isDialogue && isTutorial)
+        {
+            if (!powerUpTutSound)
+            {
+                powerUpTutSound = true;
+                isDialogue = true;
+                AkSoundEngine.PostEvent("Play_MisVO18", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
+            }
+
+        }
+
+    }
+
+
+    private void HappyFunTimeEnds(HappyFunTimeEndsEvent e)
+    {
+        AkSoundEngine.SetRTPCValue("PowerUp", 0);
     }
 
     private void StackingSceneSound(StartStackingSceneEvent e)
     {
-        if (isDanish) {
+        
+        if (PlayerPrefs.GetInt("Tutorial") == 1)
+        {
+            isTutorial = true;
+        }
+        else
+        {
+            isTutorial = false;
+        }
+        stackingSceneActive = true;
+        if (isDanish)
+        {
             AkSoundEngine.SetCurrentLanguage("Danish");
-        } else
+        }
+        else
         {
             AkSoundEngine.SetCurrentLanguage("English(US)");
         }
         AkBankManager.LoadBank("nysb", false, true);
         PlaySound("Play_MenuMusic");
+        {
+            EventManager.Instance.TriggerEvent(new IntroVO1event());
+
+        }
+
     }
 
     private void MapProgression(MapProgressionForSoundEvent e)
     {
         AkSoundEngine.SetRTPCValue("Progress", e.percentage);
     }
+
+    private void Landing(LandingEvent e)
+    {
+        if (!isLanded && isFlying)
+        {
+            PlaySound("Stop_Flying");
+            PlaySound("Play_Bump");
+            Debug.Log("Landed");
+            isLanded = true;
+            isFlying = false;
+        }
+        
+    }
+
+    private void Flying(FlyingEvent e)
+    {
+        if (!isFlying)
+        {
+            isFlying = true;
+            PlaySound("Play_Flying");
+            Debug.Log("Flying");
+        }
+
+    }
+
+    private void EnterRamp(EnterRampEvent e)
+    {
+        PlaySound("Play_Ramp");
+        if (!isDialogue && isTutorial)
+        {
+            isDialogue = true;
+            AkSoundEngine.PostEvent("Play_MusVO5", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
+        }
+    }
+
+    private void StartStackTutorial(StartStackTutorialEvent e)
+    {
+        if (isTutorial)
+        {
+            if (!stackTut)
+            {
+                stackTut = true;
+                AkSoundEngine.PostEvent("Play_IntroVO2", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
+            }
+        }
+    }
+
     #endregion
 
     #region Tutorial sounds:
@@ -304,27 +469,28 @@ public class SoundManager : MonoBehaviour
 
     private void IntroVoice2(IntroVO2event e)
     {
-        PlaySound("Play_IntroVO1");
+        PlaySound("Play_IntroVO2_3");
     }
 
     private void IntroVoice3(IntroVO3event e)
     {
-        PlaySound("Play_IntroVO1");
+        PlaySound("Play_MusVO3");
     }
 
     private void ChangeScheme(ChangeSchemeEvent e)
     {
-        if (isTutorial)
+
+        if (GameManager.Instance.isGyro && !isDialogue)
         {
-            if (GameManager.Instance.isGyro)
-            {
-                PlaySound("Play_MisVO19");
-            }
-            else
-            {
-                PlaySound("Play_MisVO20");
-            }
+            isDialogue = true;
+            AkSoundEngine.PostEvent("Play_MisVO20", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
         }
+        else if (!GameManager.Instance.isGyro && !isDialogue)
+        {
+            isDialogue = true;
+            AkSoundEngine.PostEvent("Play_MisVO19", gameObject, (uint)AkCallbackType.AK_EndOfEvent, DialogueCallbackFunction, gameObject);
+        }
+
     }
 
     private void FirstSound(FirstSoundEvent e)
@@ -365,11 +531,6 @@ public class SoundManager : MonoBehaviour
     private void ThatWentFast(ThatWentFastEvent e)
     {
         PlaySound("Play_MusVO7");
-    }
-
-    private void Superr(SuperEvent e)
-    {
-        PlaySound("Play_MusVO8");
     }
 
     private void WatchOutCar(WatchOutOrHeMightHitUsEvent e)
@@ -416,9 +577,13 @@ public class SoundManager : MonoBehaviour
         PlaySound("Play_MusVO14");
     }
 
-    private void YouHaveToAvoid(YouHaveToAvoidEvent e)
+    private void YouHaveToAvoid(ChunkEnteredEvent e)
     {
-        PlaySound("Play_MisVO16");
+        if (isTutorial && !haveToAvoid)
+        {
+            haveToAvoid = true;
+            PlaySound("Play_MisVO16");
+        }
     }
 
     private void NearEnd01(NearEnd01Event e)
@@ -439,7 +604,7 @@ public class SoundManager : MonoBehaviour
     private void AtEnd01(AtEnd01Event e)
     {
         PlaySound("Play_MisVO12");
-    } 
+    }
 
     private void AtEnd02(AtEnd02Event e)
     {
@@ -447,9 +612,18 @@ public class SoundManager : MonoBehaviour
     }
     #endregion
 
-
     #region 
     private static SoundManager _instance;
+
+    void DialogueCallbackFunction(object in_cookie, AkCallbackType in_type, object in_info)
+    {
+        isDialogue = false;
+        if (in_type == AkCallbackType.AK_EndOfEvent)
+        {
+
+        }
+
+    }
 
     public static SoundManager Instance
     {

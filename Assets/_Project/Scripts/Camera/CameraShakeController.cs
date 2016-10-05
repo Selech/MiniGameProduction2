@@ -24,7 +24,7 @@ public class CameraShakeController : MonoBehaviour
 	{
 		if(!isShaking)
 		{
-			print ("camera is shaking");
+			//print ("camera is shaking");
 			isShaking = true;
 			StartCoroutine (ShakeCameraMoreCo(e.amount,e.duration));
 		}

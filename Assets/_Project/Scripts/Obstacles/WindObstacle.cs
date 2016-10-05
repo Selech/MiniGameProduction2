@@ -5,38 +5,36 @@ public enum WindDirection { Left, Right }
 
 public class WindObstacle : MonoBehaviour {
 
-	[Tooltip("Push when Player is blown away by wind")]
-	[Range(0, 1)]
-	public float windForce = 0.05f;
+	//[Tooltip("Push when Player is blown away by wind")]
+	//[Range(0, 20)]
+	private float windForce = 3.5f;
+    
+	Vector3 windDir;
+    private Vector3 ventilatorPosition;
+    private Vector3 windTriggerPosition;
 
-	[Tooltip("Direction from which the wind blows")]
-	public WindDirection windDirection;
-
-	Vector3 windPosition;
-
-	// Use this for initialization
-	void Start () {
-		windPosition = transform.position;
+    // Use this for initialization
+    void Start () {
 	}
 
-	void OnTriggerEnter(Collider col)
-	{
-		if(col.gameObject.CompareTag("BikePlate") || col.gameObject.CompareTag("Player"))
-		{
-			Debug.Log ("hit by wind");
-			if (windDirection == WindDirection.Right)
-				windPosition = windPosition - transform.GetChild (0).position;
-			else
-				windPosition = transform.GetChild (0).position - windPosition;
-			EventManager.Instance.TriggerEvent (new StartWindEvent (windPosition, windForce));
-		}
-	}
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.CompareTag("BikePlate") || col.gameObject.CompareTag("Player"))
+        {
+            ventilatorPosition = transform.GetChild(0).position;
+            windTriggerPosition = transform.position;
+
+            windDir = windTriggerPosition - ventilatorPosition;
+
+            EventManager.Instance.TriggerEvent(new StartWindEvent(windDir, windForce));
+        }
+    }
 
 	void OnTriggerExit(Collider col)
 	{
 		if(col.gameObject.CompareTag("BikePlate") || col.gameObject.CompareTag("Player"))
 		{
-			Debug.Log ("stop wind");
+			
 			EventManager.Instance.TriggerEvent (new StopWindEvent ());
 		}
 	}

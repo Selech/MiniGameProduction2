@@ -108,7 +108,6 @@ public class EventManager : MonoBehaviour
 
     public void TriggerEvent(GameEvent e)
     {
-        Debug.Log(e);
         EventDelegate del;
         if (delegates.TryGetValue(e.GetType(), out del))
         {
