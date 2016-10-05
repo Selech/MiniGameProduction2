@@ -729,9 +729,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basePath: Audio\GeneratedSoundBanks
   language: Danish
-  defaultPoolSize: 16384
-  lowerPoolSize: 16384
-  streamingPoolSize: 4096
+  defaultPoolSize: 131072
+  lowerPoolSize: 65536
+  streamingPoolSize: 32768
   preparePoolSize: 0
   memoryCutoffThreshold: 0.95
   engineLogging: 1
@@ -1409,14 +1409,14 @@ Animation:
   m_GameObject: {fileID: 1818992092}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 0}
+  m_Animation: {fileID: 7400000, guid: 6f6e2562274cf44428aa3c5478d84754, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 6f6e2562274cf44428aa3c5478d84754, type: 2}
   - {fileID: 7400000, guid: 4503a3d00ddeebf4faf1bee3ec3d4cbf, type: 2}
   - {fileID: 7400000, guid: e29284f0fc2d3c14ba9a950d1e59dca9, type: 2}
   - {fileID: 7400000, guid: 9188516792e005146b51be0cfb5c7f62, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 0
+  m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!114 &1818992099
@@ -1510,7 +1510,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1868983417
 Transform:
   m_ObjectHideFlags: 0
@@ -2152,8 +2152,9 @@ Animation:
   m_GameObject: {fileID: 2101000219}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: fa3efbd3ee4c3774e868721e5b480ee2, type: 2}
-  m_Animations: []
+  m_Animation: {fileID: 7400000, guid: a04c58afe870ec843a6e22bc5d680034, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: a04c58afe870ec843a6e22bc5d680034, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0

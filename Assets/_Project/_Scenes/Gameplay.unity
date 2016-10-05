@@ -97,6 +97,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114000012993028928, guid: 5eed0a98f11ba6a4995bd963ea518b7a,
+        type: 2}
+      propertyPath: animations.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 224000010313209340, guid: 5eed0a98f11ba6a4995bd963ea518b7a,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -207,9 +212,39 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 0.99904823
       objectReference: {fileID: 0}
+    - target: {fileID: 114000012993028928, guid: 5eed0a98f11ba6a4995bd963ea518b7a,
+        type: 2}
+      propertyPath: animations.Array.data[0]
+      value: 
+      objectReference: {fileID: 100984917}
+    - target: {fileID: 114000012993028928, guid: 5eed0a98f11ba6a4995bd963ea518b7a,
+        type: 2}
+      propertyPath: animations.Array.data[1]
+      value: 
+      objectReference: {fileID: 100984916}
+    - target: {fileID: 114000012993028928, guid: 5eed0a98f11ba6a4995bd963ea518b7a,
+        type: 2}
+      propertyPath: animations.Array.data[2]
+      value: 
+      objectReference: {fileID: 100984915}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5eed0a98f11ba6a4995bd963ea518b7a, type: 2}
   m_IsPrefabParent: 0
+--- !u!111 &100984915 stripped
+Animation:
+  m_PrefabParentObject: {fileID: 111000014130828194, guid: 5eed0a98f11ba6a4995bd963ea518b7a,
+    type: 2}
+  m_PrefabInternal: {fileID: 100984914}
+--- !u!111 &100984916 stripped
+Animation:
+  m_PrefabParentObject: {fileID: 111000011255647448, guid: 5eed0a98f11ba6a4995bd963ea518b7a,
+    type: 2}
+  m_PrefabInternal: {fileID: 100984914}
+--- !u!111 &100984917 stripped
+Animation:
+  m_PrefabParentObject: {fileID: 111000011940842612, guid: 5eed0a98f11ba6a4995bd963ea518b7a,
+    type: 2}
+  m_PrefabInternal: {fileID: 100984914}
 --- !u!1 &159563975
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,9 +940,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basePath: Audio\GeneratedSoundBanks
   language: Danish
-  defaultPoolSize: 16384
-  lowerPoolSize: 16384
-  streamingPoolSize: 4096
+  defaultPoolSize: 131072
+  lowerPoolSize: 65536
+  streamingPoolSize: 32768
   preparePoolSize: 0
   memoryCutoffThreshold: 0.95
   engineLogging: 1
