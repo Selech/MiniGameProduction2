@@ -240,6 +240,7 @@ public class PlayerReactionsController : MonoBehaviour
     void StopMovement(WinChunkEnteredEvent e)
     {
         int amountOfCarriablesOnBike = stackedList.CollectedCarriables.Count - numberOfLostCarriables;
+        amountOfCarriablesOnBike = amountOfCarriablesOnBike == 0 ? 1 : amountOfCarriablesOnBike;
         PlayerPrefs.SetInt("Amount of Carriables", amountOfCarriablesOnBike);
         movementController.StartDecelerating();
 
