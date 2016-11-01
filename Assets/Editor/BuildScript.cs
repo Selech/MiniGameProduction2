@@ -9,7 +9,7 @@ class BuildScript
     {
         string[] scenes = { "Assets/_Project/_Scenes/IntroCutscene.unity", "Assets/_Project/_Scenes/Gameplay.unity", "Assets/_Project/_Scenes/WinCutscene.unity" };
 
-        string buildPath = "/../Build/Android/";
+        string buildPath = "../Build/Android/";
 
         // Create build folder if not yet exists
         Directory.CreateDirectory(buildPath);
