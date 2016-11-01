@@ -30,6 +30,7 @@ public class Prefabbing : EditorWindow
                 l.gameObject.SetActive(false);
             }
 
+
             PrefabUtility.CreatePrefab("Assets/Resources/GeneratedChunks/" + finalName +".prefab", obj);
 
             foreach (var l in displayers)
